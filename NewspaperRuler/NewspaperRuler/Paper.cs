@@ -40,7 +40,7 @@ namespace NewspaperRuler
             approved = new Stamp(new Bitmap(Properties.Resources.Approved, Scl.Get(300), Scl.Get(250)));
             rejected = new Stamp(new Bitmap(Properties.Resources.Rejected, Scl.Get(300), Scl.Get(250)));
 
-            notifications = new NotificationPanel(new Point(0, -Scl.Get(100)), Scl.Resolution, this.sounds.Notification);
+            notifications = new NotificationPanel(new Point(0, -Scl.Get(120)), Scl.Resolution, this.sounds.Notification);
             RemoveStamps();
             stats.GoToNextLevel();
             NextEvent(false);

@@ -17,8 +17,8 @@ namespace NewspaperRuler
 
         public static void Initialize()
         {
-            TextFont = new Font(fontName, Scl.GetForTextSize(16));
-            TitleFont = new Font(fontName, Scl.GetForTextSize(20), FontStyle.Bold);
+            TextFont = new Font(fontName, Scl.Get(16));
+            TitleFont = new Font(fontName, Scl.Get(20), FontStyle.Bold);
             BigFont = new Font(fontName, Scl.Get(23));
         }
     }

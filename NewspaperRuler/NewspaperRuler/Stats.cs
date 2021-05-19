@@ -10,7 +10,7 @@ namespace NewspaperRuler
         public static GraphicObject NoteBackground { get; set; }
 
         private int degreeGovernmentAnger = 0;
-        private DateTime date = new DateTime(1998, 9, 27);
+        private DateTime date = new DateTime(1981, 9, 27);
 
         public int Money { get; private set; }
 
