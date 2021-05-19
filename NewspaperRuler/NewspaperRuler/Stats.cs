@@ -7,10 +7,10 @@ namespace NewspaperRuler
 {
     public class Stats
     {
-        private static GraphicObject noteBackground = new GraphicObject(new Bitmap(Properties.Resources.NoteBackground1));
+        public static GraphicObject NoteBackground { get; set; }
 
         private int degreeGovernmentAnger = 0;
-        private DateTime date = new DateTime(1998, 9, 28);
+        private DateTime date = new DateTime(1998, 9, 27);
 
         public int Money { get; private set; }
 
@@ -88,21 +88,21 @@ namespace NewspaperRuler
                             "\n\n\tУ Тимы на носу школьные выпускные экзамены, но я уверена, что он со всем справится. Он же у нас такой умничка!" +
                             "\n\n\tМы по тебе очень скучаем и сильно ждём!" +
                             "\n\n\tЦелую, твоя любимая жена";
-                        notes.Add(new Note(noteBackground, text, "ОК"));
+                        notes.Add(new Note(NoteBackground, text, "ОК"));
                         text = "\tТссс... Я раньше был на твоём месте. Меня уволили из-за малешей ошибочки. Руководство не должно узнать об этой записке. Разве не видишь? Аппарат управления прогнил изнутри." +
                             "\n\n\tГосударство устанавливает неведомое количество правил, в результате которых большинство правдивых статей не проходит к публикации." +
                             "\n\n\tНо люди хотят ВСЮ правду. Иначе говоря, отклоняя статьи, доверие читателей к государству теряется. " +
                             "Но доверие читателей - то что ХОЧЕТ видеть государство. От этого зависит и твоя зарплата. То есть, государство сознательно не даёт тебе спокойно работать." +
                             "\n\n\tЯ ничего такого не имею в виду. Просто хочу, чтобы ты пересмотрел то, до чего ты докатился сейчас. Хочу, чтоб ты принимал разумные решения. Работа государственным служащим - дело грязное." +
                             "\n\n\tИ помни, ты меня не знаешь. Тссс...";
-                        notes.Add(new Note(noteBackground, text, "ОК"));
+                        notes.Add(new Note(NoteBackground, text, "ОК"));
                         break;
                     }
                 case 2:
                     {
                         var text = "\tПривет, красавчик!" +
                             "\n\n\tВстретимся в баре \"Алый цветок\" сегодня в 20:00";
-                        notes.Add(new Note(noteBackground, text, "Пойти", "Игнорировать", "Вы пойдёте на свидание с таинственной незнакомкой", 
+                        notes.Add(new Note(NoteBackground, text, "Пойти", "Игнорировать", "Вы пойдёте на свидание с таинственной незнакомкой", 
                             "Вы не пойдёте на свидание с таинственной незнакомкой", "MainCharacterWasOnDate"));
                         if (EventFlags[0]["ArticleAboutChampionWasApproved"])
                             text = "\tМногоуважаемый государственный служащий," +
@@ -116,7 +116,7 @@ namespace NewspaperRuler
                                 "Туда не берут беременных, но об этом никто не узнает, ведь срок моей беременности только начался." +
                                 "\n\n\tСпасибо Вам ещё раз! Примите от меня нескромный подарок в размере 50 ТОКЕНОВ" +
                                 "\n\n\tГалина Руш";
-                        notes.Add(new Note(noteBackground, text, "OK"));
+                        notes.Add(new Note(NoteBackground, text, "OK"));
                         break;
                             }
             }
@@ -153,7 +153,7 @@ namespace NewspaperRuler
                     break;
             }
             if (text.ToString() == "") return null;
-            return new Article(new GraphicObject(ArticleConstructor.ArticleBackground), text.ToString(), title);
+            return new Article(ArticleConstructor.ArticleBackground, text.ToString(), title);
         }
     }
 }

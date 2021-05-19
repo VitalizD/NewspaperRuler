@@ -15,9 +15,9 @@ namespace NewspaperRuler
         private int waitBeforeOutNotification = 0;
         private readonly Action playSound;
 
-        public NotificationPanel(Point position, Action sound) : base(position)
+        public NotificationPanel(Point position, Size resolution, Action sound) : base(position)
         {
-            rectangle = new Rectangle(position, new Size(1550, 40));
+            rectangle = new Rectangle(position, new Size(resolution.Width, Scl.Get(40)));
             playSound = sound;
         }
 

@@ -9,7 +9,7 @@ namespace NewspaperRuler
     {
         private readonly Sounds sounds;
 
-        private GraphicObject picture = new GraphicObject(new Bitmap(Properties.Resources.Paper, 650, 900), new Point());
+        private GraphicObject picture;
 
         private readonly Control.ControlCollection controls;
 
@@ -18,13 +18,13 @@ namespace NewspaperRuler
         private Article currentArticle;
         private Note currentNote;
 
-        private GraphicObject providedStamp = new GraphicObject(Properties.Resources.Approved, Form1.Beyond);
+        private GraphicObject providedStamp = new GraphicObject(Properties.Resources.Approved, 300, 250, Form1.Beyond);
 
         private int waitBeforeOutPaper = 0;
         private Action movePaperToSide;
 
-        private readonly Stamp approved = new Stamp(new Bitmap(Properties.Resources.Approved, 300, 250), new Point(100, 200));
-        private readonly Stamp rejected = new Stamp(new Bitmap(Properties.Resources.Rejected, 300, 250), new Point(1050, 200));
+        private readonly Stamp approved = new Stamp(new Bitmap(Properties.Resources.Approved, 300, 250));
+        private readonly Stamp rejected = new Stamp(new Bitmap(Properties.Resources.Rejected, 300, 250));
         private bool stampsAreVisible;
 
         private readonly Stats stats;
@@ -36,7 +36,11 @@ namespace NewspaperRuler
             this.sounds = sounds;
             this.controls = controls;
             this.stats = stats;
-            notifications = new NotificationPanel(new Point(0, -100), this.sounds.Notification);
+
+            approved = new Stamp(new Bitmap(Properties.Resources.Approved, Scl.Get(300), Scl.Get(250)));
+            rejected = new Stamp(new Bitmap(Properties.Resources.Rejected, Scl.Get(300), Scl.Get(250)));
+
+            notifications = new NotificationPanel(new Point(0, -Scl.Get(100)), Scl.Resolution, this.sounds.Notification);
             RemoveStamps();
             stats.GoToNextLevel();
             NextEvent(false);
@@ -81,8 +85,8 @@ namespace NewspaperRuler
             else if (rejected.OnPaper(picture)) SendArticle(false);
             else if (stampsAreVisible)
             {
-                approved.SetInitialPosition(e, sounds.StampReturn);
-                rejected.SetInitialPosition(e, sounds.StampReturn);
+                approved.MoveToInitialPosition(e, sounds.StampReturn);
+                rejected.MoveToInitialPosition(e, sounds.StampReturn);
             }
         }
 
@@ -162,17 +166,18 @@ namespace NewspaperRuler
             if (!picture.IsMoving) return;
             if (isEntering)
             {
-                if (picture.Position.X >= 400)
+                var center = Scl.Resolution.Width / 2 - picture.Bitmap.Width / 2;
+                if (picture.Position.X > center)
                 {
                     sounds.StampEnter();
                     isEntering = false;
-                    picture.Position = new Point(400, picture.Position.Y);
+                    picture.Position = new Point(center, picture.Position.Y);
                     picture.Stop();
                     if (currentArticle != null) CreateStamps();
                     else currentNote?.ShowButtons(controls);
                 }
             }
-            else if (picture.IsMoving && (picture.Position.X >= 2000 || picture.Position.X <= -800))
+            else if (picture.IsMoving && (picture.Position.X > Scl.Resolution.Width || picture.Position.X < -picture.Bitmap.Width))
             {
                 notifications.Show();
                 currentArticle = null;
@@ -187,7 +192,7 @@ namespace NewspaperRuler
         {
             if (isApproved)
             {
-                providedStamp = new GraphicObject(new Bitmap(approved.Bitmap, approved.Bitmap.Size - new Size(50, 50)), approved.Position + new Size(25, 25));
+                providedStamp = new GraphicObject(approved.Bitmap, approved.Bitmap.Size - new Size(50, 50), approved.Position + new Size(25, 25), false);
                 movePaperToSide = new Action(() => { picture.GoRight(); providedStamp.GoRight(); });
                 if (currentArticle.Flag != "") stats.SetFlagToTrue(currentArticle.Flag);
                 stats.Level.IncreaseLoyality(currentArticle.Loyality);
@@ -197,7 +202,7 @@ namespace NewspaperRuler
             }
             else
             {
-                providedStamp = new GraphicObject(new Bitmap(rejected.Bitmap, rejected.Bitmap.Size - new Size(50, 50)), rejected.Position + new Size(25, 25));
+                providedStamp = new GraphicObject(rejected.Bitmap, rejected.Bitmap.Size - new Size(50, 50), rejected.Position + new Size(25, 25), false);
                 movePaperToSide = new Action(() => { picture.GoLeft(); providedStamp.GoLeft(); });
                 stats.Level.IncreaseLoyality(-1);
             }
@@ -214,8 +219,8 @@ namespace NewspaperRuler
 
         private void CreateStamps()
         {
-            approved.SetInitialPosition();
-            rejected.SetInitialPosition();
+            approved.SetPosition(new Point(picture.Position.X - approved.Bitmap.Width, Scl.Get(300)));
+            rejected.SetPosition(new Point(picture.Position.X + picture.Bitmap.Width, Scl.Get(300)));
             stampsAreVisible = true;
         }
 

@@ -10,9 +10,16 @@ namespace NewspaperRuler
     public static class StringStyle
     {
         private static readonly string fontName = "Bookman Old Style";
-        public static Font TextFont { get; } = new Font(fontName, 16);
-        public static Font TitleFont { get; } = new Font(fontName, 20, FontStyle.Bold);
-        public static Font BigFont { get; } = new Font(fontName, 24);
+        public static Font TextFont { get; private set; }
+        public static Font TitleFont { get; private set; }
+        public static Font BigFont { get; private set; }
         public static SolidBrush Brush { get; } = new SolidBrush(Color.Black);
+
+        public static void Initialize()
+        {
+            TextFont = new Font(fontName, Scl.GetForTextSize(16));
+            TitleFont = new Font(fontName, Scl.GetForTextSize(20), FontStyle.Bold);
+            BigFont = new Font(fontName, Scl.Get(23));
+        }
     }
 }

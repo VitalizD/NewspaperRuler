@@ -20,8 +20,8 @@ namespace NewspaperRuler
             this.text = text;
             Background = background;
             if (continueButton != null)
-                this.ContinueButton = GetOption(continueButton, new Size(300, 50),
-                    new Point(600, 800));
+                this.ContinueButton = GetOption(continueButton, new Size(Scl.Get(300), Scl.Get(50)),
+                    new Point(Scl.Resolution.Width / 2 - Scl.Get(150), Scl.Resolution.Height - Scl.Get(60)));
         }
 
         public Note(GraphicObject background, string text, string positiveOption, string negativeOption, string positiveMessage, string negativeMessage, string flag)
@@ -30,10 +30,10 @@ namespace NewspaperRuler
             Flag = flag;
             PositiveMessage = positiveMessage;
             NegativeMessage = negativeMessage;
-            this.PositiveOption = GetOption(positiveOption, new Size(300, 50),
-                new Point(405, 800));
-            this.NegativeOption = GetOption(negativeOption, new Size(300, 50),
-                new Point(710, 800));
+            this.PositiveOption = GetOption(positiveOption, new Size(Scl.Get(300), Scl.Get(50)),
+                new Point(Scl.Resolution.Width / 2 - Scl.Get(305), Scl.Resolution.Height - Scl.Get(60)));
+            this.NegativeOption = GetOption(negativeOption, new Size(Scl.Get(300), Scl.Get(50)),
+                new Point(Scl.Resolution.Width / 2 + Scl.Get(5), Scl.Resolution.Height - Scl.Get(60)));
         }
 
         private Label GetOption(string text, Size size, Point position)
@@ -53,7 +53,7 @@ namespace NewspaperRuler
         public void Paint(Graphics graphics)
         {
             graphics.DrawString(text, StringStyle.TextFont, StringStyle.Brush, new Rectangle(
-                Background.Position + new Size(30, 30), Background.Bitmap.Size - new Size(60, 60)));
+                Background.Position + new Size(Scl.Get(30), Scl.Get(30)), Background.Bitmap.Size - new Size(Scl.Get(60), Scl.Get(60))));
         }
 
         public void HideButtons(Control.ControlCollection controls)

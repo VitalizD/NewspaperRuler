@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Article.cs" />
     <Compile Include="AuxiliaryMethods.cs" />
+    <Compile Include="Scl.cs" />
     <Compile Include="NotificationPanel.cs" />
     <Compile Include="Sounds.cs" />
     <Compile Include="Mistake.cs" />

@@ -40,13 +40,13 @@ namespace NewspaperRuler
         public void Paint(Graphics graphics)
         {
             graphics.DrawString(Text, StringStyle.TextFont, StringStyle.Brush, new Rectangle(
-                Background.Position + new Size(30, 160), Background.Bitmap.Size - new Size(60, 260)));
+                Background.Position + new Size(Scl.Get(30), Scl.Get(160)), Background.Bitmap.Size - new Size(60, 100)));
             if (Title != null)
                 graphics.DrawString(Title, StringStyle.TitleFont, StringStyle.Brush, new Rectangle(
-                    Background.Position + new Size(30, 70), new Size(Background.Bitmap.Width - 90, 100)), 
+                    Background.Position + new Size(Scl.Get(30), Scl.Get(70)), new Size(Background.Bitmap.Width - Scl.Get(90), Scl.Get(100))), 
                     new StringFormat { Alignment = StringAlignment.Center });
         }
 
-        public string ExtractBeginning() => Text.Substring(0, 55);
+        public string ExtractBeginning() => Text.Substring(0, Scl.Get(55));
     }
 }

@@ -11,17 +11,19 @@ namespace NewspaperRuler
 
         private Size shift = new Size(0, 0);
 
-        public GraphicObject(Bitmap bitmap, Point position)
+        public GraphicObject(Image image, int width, int height, Point position, bool zoom = true)
         {
-            this.Bitmap = bitmap;
-            this.Position = position;
+            if (image == null) Bitmap = null;
+            else if (zoom) Bitmap = new Bitmap(image, Scl.Get(width), Scl.Get(height));
+            else Bitmap = new Bitmap(image, width, height);
+            Position = position;
         }
 
-        public GraphicObject(Bitmap bitmap) : this(bitmap, new Point()) { }
+        public GraphicObject(Image image, Size size, Point position, bool zoom = true) : this(image, size.Width, size.Height, position, zoom) { }
 
-        public GraphicObject(Point position) : this(null, position) { }
+        public GraphicObject(Image image, int width, int height, bool zoom = true) : this(image, width, height, new Point(), zoom) { }
 
-        public GraphicObject(GraphicObject another) : this(another.Bitmap, another.Position) { }
+        public GraphicObject(Point position) : this(null, 1, 1, position) { }
 
         public void Paint(Graphics graphics)
         {

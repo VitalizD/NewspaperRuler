@@ -10,7 +10,7 @@ namespace NewspaperRuler
     {
         public static List<List<Article>> ArticlesByLevel { get; private set; }
 
-        public static GraphicObject ArticleBackground { get; private set; } = new GraphicObject(new Bitmap(Properties.Resources.Paper, 650, 900));
+        public static GraphicObject ArticleBackground { get; set; }
 
         public static void Initialize()
         {

@@ -8,8 +8,7 @@ namespace NewspaperRuler
     {
         public Bitmap Bitmap { get; }
         public Point Position { get; set; }
-
-        private readonly Point initialPosition;
+        private Point initialPosition;
         private bool isDraggable = false;
 
         public Stamp(Bitmap bitmap, Point position)
@@ -18,6 +17,8 @@ namespace NewspaperRuler
             Position = position;
             Bitmap = bitmap;
         }
+
+        public Stamp(Bitmap bitmap) : this(bitmap, Form1.Beyond) { }
 
         public void MouseDown(MouseEventArgs e, Action playSound)
         {
@@ -53,7 +54,7 @@ namespace NewspaperRuler
              Position = initialPosition;
         }
 
-        public void SetInitialPosition(MouseEventArgs e, Action playSound)
+        public void MoveToInitialPosition(MouseEventArgs e, Action playSound)
         {
             if (!CursorOnStamp(e)) return;
             SetInitialPosition();
@@ -61,5 +62,11 @@ namespace NewspaperRuler
         }
 
         private bool CursorOnStamp(MouseEventArgs e) => AuxiliaryMethods.IsClickedOnArea(e.Location, Position, Bitmap.Size);
+
+        public void SetPosition(Point value)
+        {
+            Position = value;
+            initialPosition = value;
+        }
     }
 }
