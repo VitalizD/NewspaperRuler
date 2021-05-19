@@ -55,13 +55,15 @@
   <ItemGroup>
     <Compile Include="Article.cs" />
     <Compile Include="AuxiliaryMethods.cs" />
+    <Compile Include="ElementControl.cs" />
+    <Compile Include="InformationPanel.cs" />
     <Compile Include="Scl.cs" />
     <Compile Include="NotificationPanel.cs" />
     <Compile Include="Sounds.cs" />
     <Compile Include="Mistake.cs" />
     <Compile Include="LevelData.cs" />
     <Compile Include="Stats.cs" />
-    <Compile Include="Paper.cs" />
+    <Compile Include="LevelController.cs" />
     <Compile Include="ArticleConstructor.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="StringStyle.cs" />
