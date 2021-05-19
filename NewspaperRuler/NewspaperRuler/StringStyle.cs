@@ -13,7 +13,9 @@ namespace NewspaperRuler
         public static Font TextFont { get; private set; }
         public static Font TitleFont { get; private set; }
         public static Font BigFont { get; private set; }
-        public static SolidBrush Brush { get; } = new SolidBrush(Color.Black);
+        public static SolidBrush Black { get; } = new SolidBrush(Color.Black);
+        public static SolidBrush White { get; } = new SolidBrush(Color.White);
+        public static Pen Pen { get; } = new Pen(Color.Black);
 
         public static void Initialize()
         {

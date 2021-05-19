@@ -7,12 +7,12 @@ namespace NewspaperRuler
 {
     public class WorkTable
     {
-        private readonly Paper paper;
+        private readonly LevelController paper;
         private readonly Sounds sounds = new Sounds();
 
         public WorkTable(Control.ControlCollection controls, Stats stats)
         {
-            paper = new Paper(controls, stats, sounds);
+            paper = new LevelController(controls, stats, sounds);
         }
 
         public void Paint(Graphics graphics)

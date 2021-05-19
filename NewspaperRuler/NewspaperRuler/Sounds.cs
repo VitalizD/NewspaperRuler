@@ -15,12 +15,14 @@ namespace NewspaperRuler
         private readonly WindowsMediaPlayer chooseOption = new WindowsMediaPlayer();
         private readonly WindowsMediaPlayer paper = new WindowsMediaPlayer();
         private readonly WindowsMediaPlayer notification = new WindowsMediaPlayer();
+        private readonly WindowsMediaPlayer panelShow = new WindowsMediaPlayer();
+        private readonly WindowsMediaPlayer panelHide = new WindowsMediaPlayer();
 
         public Sounds()
         {
             music.settings.volume = 60;
             music.URL = @"Sounds\Music.wav";
-            stampPut.URL = @"Sounds\StampPut.mp3";
+            stampPut.URL = @"Sounds\StampPut.wav";
             for (var i = 0; i < stampTake.Length; i++) stampTake[i] = new WindowsMediaPlayer();
             stampTake[0].URL = @"Sounds\StampTake1.wav";
             stampTake[1].URL = @"Sounds\StampTake2.wav";
@@ -32,7 +34,9 @@ namespace NewspaperRuler
             stampEnter.URL = @"Sounds\StampEnter.wav";
             chooseOption.URL = @"Sounds\ChooseOption.wav";
             paper.URL = @"Sounds\Paper.wav";
-            notification.URL = @"Sounds\Notification.mp3";
+            notification.URL = @"Sounds\Notification.wav";
+            panelShow.URL = @"Sounds\PanelShow.wav";
+            panelHide.URL = @"Sounds\PanelHide.wav";
         }
 
         public void Tick()
@@ -54,6 +58,10 @@ namespace NewspaperRuler
         public void ChooseOption() => Play(chooseOption);
 
         public void Notification() => Play(notification);
+
+        public void PanelShow() => Play(panelShow);
+
+        public void PanelHide() => Play(panelHide);
 
         private void Play(WindowsMediaPlayer sound) => sound.controls.play();
 

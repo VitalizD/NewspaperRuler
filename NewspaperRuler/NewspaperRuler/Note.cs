@@ -52,7 +52,7 @@ namespace NewspaperRuler
 
         public void Paint(Graphics graphics)
         {
-            graphics.DrawString(text, StringStyle.TextFont, StringStyle.Brush, new Rectangle(
+            graphics.DrawString(text, StringStyle.TextFont, StringStyle.Black, new Rectangle(
                 Background.Position + new Size(Scl.Get(30), Scl.Get(30)), Background.Bitmap.Size - new Size(Scl.Get(60), Scl.Get(60))));
         }
 

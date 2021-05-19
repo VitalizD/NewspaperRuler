@@ -13,9 +13,9 @@ namespace NewspaperRuler
         public Form1()
         {
             InitializeComponent();
-            ArticleConstructor.ArticleBackground = new GraphicObject(Properties.Resources.Paper, 720, 970);
+            ArticleConstructor.ArticleBackground = new GraphicObject(Properties.Resources.Paper, 720, 970, 125);
             ArticleConstructor.Initialize();
-            Stats.NoteBackground = new GraphicObject(Properties.Resources.NoteBackground1, 750, 1000);
+            Stats.NoteBackground = new GraphicObject(Properties.Resources.NoteBackground1, 750, 1000, 125);
             StringStyle.Initialize();
             DoubleBuffered = true;
 

@@ -15,7 +15,7 @@ namespace NewspaperRuler
         private int waitBeforeOutNotification = 0;
         private readonly Action playSound;
 
-        public NotificationPanel(Point position, Size resolution, Action sound) : base(position)
+        public NotificationPanel(Point position, Size resolution, Action sound) : base(position, 5)
         {
             rectangle = new Rectangle(position, new Size(resolution.Width, Scl.Get(40)));
             playSound = sound;
@@ -23,9 +23,9 @@ namespace NewspaperRuler
 
         public new void Paint(Graphics graphics)
         {
-            graphics.DrawRectangle(new Pen(StringStyle.Brush), rectangle);
+            graphics.DrawRectangle(new Pen(StringStyle.Black), rectangle);
             graphics.FillRectangle(new SolidBrush(Color.FromArgb(210, 180, 140)), rectangle);
-            graphics.DrawString(text, StringStyle.BigFont, StringStyle.Brush, rectangle, 
+            graphics.DrawString(text, StringStyle.BigFont, StringStyle.Black, rectangle, 
                 new StringFormat { Alignment = StringAlignment.Center });
         }
 
@@ -54,6 +54,7 @@ namespace NewspaperRuler
         public void Tick()
         {
             rectangle.Location = Position;
+            Move();
             if (!isMoving && waitBeforeOutNotification > 0)
             {
                 waitBeforeOutNotification--;
@@ -71,9 +72,9 @@ namespace NewspaperRuler
                 StopMoving();
                 waitBeforeOutNotification = 80;
             }
-            else if (Position.Y < -40)
+            else if (Position.Y < -45)
             {
-                Position = new Point(Position.X, -40);
+                Position = new Point(Position.X, -45);
                 StopMoving();
                 ShowPanel();
             }
