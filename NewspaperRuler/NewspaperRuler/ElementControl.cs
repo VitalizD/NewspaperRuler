@@ -14,6 +14,7 @@ namespace NewspaperRuler
 
         private readonly string description;
         private Point descriptionPosition;
+        private readonly Action playSound;
 
         public ElementControl(string description, Image image, int width, int height, bool zoom = true) 
             : base(image, width, height, zoom)
@@ -24,6 +25,15 @@ namespace NewspaperRuler
 
         public ElementControl(Image image, int width, int height, bool zoom = true)
             : base(image, width, height, Form1.Beyond, zoom) { }
+
+        public ElementControl(string description, Action playerOnClick, Image image, int width, int height, bool zoom = true)
+            : this(description, image, width, height, zoom)
+        {
+            playSound = playerOnClick;
+        }
+
+        public ElementControl(Action playerOnClick, Image image, int width, int height, bool zoom = true)
+            : this(null, playerOnClick, image, width, height, zoom) { }
 
         public void ShowImage(Point imagePosition)
         {
@@ -45,6 +55,12 @@ namespace NewspaperRuler
 
         public bool CursorIsHovered() =>
             AuxiliaryMethods.IsClickedOnArea(Cursor.Position, Position, Bitmap.Size);
+
+        public void PlaySound()
+        {
+            if (playSound is null) return;
+            playSound();
+        }
 
         public new void Paint(Graphics graphics)
         {

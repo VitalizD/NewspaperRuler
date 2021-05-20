@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System;
 
 namespace NewspaperRuler
 {
@@ -6,11 +7,20 @@ namespace NewspaperRuler
     {
         public Bitmap Bitmap { get; set; }
         public Point Position { get; set; }
+        public int MovementSpeed
+        {
+            get { return movementSpeed; }
+            set
+            {
+                if (value < 0) throw new ArgumentException("The value can't be less than zero");
+                movementSpeed = Scl.Get(value);
+            }
+        }
 
         public bool IsMoving { get { return shift != new Size(0, 0); } }
 
         private Size shift = new Size(0, 0);
-        private readonly int movementSpeed;
+        private int movementSpeed;
 
         public GraphicObject(Image image, int width, int height, Point position, int movementSpeed, bool zoom = true)
         {

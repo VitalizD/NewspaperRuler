@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
 
 namespace NewspaperRuler
@@ -30,6 +31,7 @@ namespace NewspaperRuler
 
         private readonly NotificationPanel notifications;
         private readonly InformationPanel decrees;
+        private readonly Remark remark;
 
         private readonly ElementControl decreesBook = new ElementControl("ПРИКАЗЫ", Properties.Resources.Book, 120, 100);
 
@@ -44,6 +46,7 @@ namespace NewspaperRuler
 
             notifications = new NotificationPanel(new Point(0, -Scl.Get(120)), Scl.Resolution, this.sounds.Notification);
             decrees = new InformationPanel(Properties.Resources.Frame, 500, 800, new Point(-Scl.Get(500), 0), sounds.PanelShow, sounds.PanelHide);
+            remark = new Remark(Properties.Resources.RemarkBackground, 600, 300, sounds);
 
             RemoveStamps();
             stats.GoToNextLevel();
@@ -61,15 +64,17 @@ namespace NewspaperRuler
             notifications.Paint(graphics);
             decreesBook.Paint(graphics);
             decrees.Paint(graphics);
+            remark.Paint(graphics);
         }
 
         public void MouseDown(MouseEventArgs e)
         {
             approved.MouseDown(e, sounds.StampTake);
             rejected.MouseDown(e, sounds.StampTake);
+            remark.MouseDown();
         }
 
-        private void MouseDownOnOption(object sender, MouseEventArgs e)
+        private void EventClickOnOption(object sender, MouseEventArgs e)
         {
             sounds.ChooseOption();
             var label = sender as Label;
@@ -140,14 +145,14 @@ namespace NewspaperRuler
         {
             currentNote = note;
             paper.Bitmap = note.Background.Bitmap;
-            currentNote.CreateClickEventForOptions(MouseDownOnOption);
+            currentNote.CreateClickEventForOptions(EventClickOnOption);
             EnterPaper();
         }
 
         private void EnterPaper()
         {
             sounds.Paper();
-            paper.Position = new Point(-800, 20);
+            paper.Position = new Point(-800, (int)(10 / Scl.Factor));
             isEntering = true;
             paper.GoRight();
         }
@@ -157,9 +162,10 @@ namespace NewspaperRuler
             sounds.Tick();
             notifications.Tick();
             decrees.Tick();
+            remark.Tick();
             paper.Move();
             providedStamp.Move();
-            CheckPosition();
+            CheckPaperPosition();
             if (waitBeforeOutPaper > 0)
             {
                 waitBeforeOutPaper -= 1;
@@ -174,7 +180,7 @@ namespace NewspaperRuler
             }
         }
 
-        private void CheckPosition()
+        private void CheckPaperPosition()
         {
             if (!paper.IsMoving) return;
             if (isEntering)
@@ -193,6 +199,7 @@ namespace NewspaperRuler
             else if (paper.IsMoving && (paper.Position.X > Scl.Resolution.Width || paper.Position.X < -paper.Bitmap.Width))
             {
                 notifications.Show();
+                remark.Show();
                 currentArticle = null;
                 currentNote = null;
                 paper.Stop();
@@ -212,6 +219,7 @@ namespace NewspaperRuler
                 stats.Level.IncreaseReprimandScore(currentArticle.ReprimandScore);
                 if (currentArticle.Title != "") notifications.Add($"В сегодняшнем выпуске: {currentArticle.Title}");
                 else notifications.Add($"В сегодняшнем выпуске: {currentArticle.ExtractBeginning()}...");
+                CheckForMistake();
             }
             else
             {
@@ -255,6 +263,21 @@ namespace NewspaperRuler
                     decrees.Add("№ 34.11. Отклонять статьи без заголовка");
                     break;
             }
+        }
+
+        private void CheckForMistake()
+        {
+            var remarkText = new StringBuilder();
+            switch (currentArticle.Mistake)
+            {
+                case Mistake.NoTitle: remarkText.Append("Статья без заголовка.\n\n"); break;
+                default: return;
+            }
+            stats.Level.IncreaseFine();
+            if (stats.Level.CurrentFine == 0)
+                remarkText.Append("При повторной ошибке мы наложим штраф, сумма которого будет вычтена из Вашей заработной платы.");
+            else remarkText.Append($"Штраф: {stats.Level.CurrentFine} ТОКЕНОВ");
+            remark.Add(remarkText.ToString());
         }
     }
 }

@@ -7,6 +7,7 @@ namespace NewspaperRuler
     public class LevelData
     {
         private static int fixedSalaryAmount = 100;
+        private int totalFine = 0;
 
         public static int FixedSalaryAmount
         {
@@ -31,6 +32,11 @@ namespace NewspaperRuler
             }
         }
 
+        public int BonusMoney { get; private set; } = 0;
+
+        public int CurrentFine { get; private set; } = 0;
+        public bool FirstFine { get; private set; } = true;
+
         public List<object> Events { get; } = new List<object>();
 
         public LevelData(List<Note> notes, List<Article> articles)
@@ -45,5 +51,19 @@ namespace NewspaperRuler
         public void IncreaseLoyality(int value) => Loyality += value;
 
         public void IncreaseReprimandScore(int value) => ReprimandScore += value;
+
+        public void IncreaseFine()
+        {
+            if (FirstFine) FirstFine = false;
+            else
+            {
+                CurrentFine += 100;
+                totalFine += CurrentFine;
+            }
+        }
+
+        public void IncreaseBonusMoney(int value) => BonusMoney += value;
+
+        public int GetTotalFine() => totalFine;
     }
 }

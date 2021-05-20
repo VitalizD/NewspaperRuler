@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Text;
+using System.Linq;
 
 namespace NewspaperRuler
 {
@@ -14,44 +14,16 @@ namespace NewspaperRuler
 
         public static void Initialize()
         {
-            ArticlesByLevel = new List<List<Article>>
-            {
-                Level1(),
-                Level2()
-            };
+            ArticlesByLevel = Directory.GetDirectories("Articles")
+                .Select(level => GetArticlesFromDirectory(level))
+                .ToList();
         }
 
-        private static List<Article> Level1()
+        private static List<Article> GetArticlesFromDirectory(string directory)
         {
-            return new List<Article>
-            {
-                ReadArticle(@"Articles\Level1\Article1.txt"),
-                ReadArticle(@"Articles\Level1\Article2.txt"),
-                ReadArticle(@"Articles\Level1\Article3.txt"),
-                ReadArticle(@"Articles\Level1\Article4.txt"),
-                ReadArticle(@"Articles\Level1\Article5.txt"),
-                ReadArticle(@"Articles\Level1\Article6.txt"),
-                ReadArticle(@"Articles\Level1\Article7.txt"),
-                ReadArticle(@"Articles\Level1\Article8.txt"),
-                ReadArticle(@"Articles\Level1\Article9.txt"),
-            };
-        }
-
-        private static List<Article> Level2()
-        {
-            return new List<Article>
-            {
-                ReadArticle(@"Articles\Level2\Article1.txt"),
-                ReadArticle(@"Articles\Level2\Article2.txt"),
-                ReadArticle(@"Articles\Level2\Article3.txt"),
-                ReadArticle(@"Articles\Level2\Article4.txt"),
-                ReadArticle(@"Articles\Level2\Article5.txt"),
-                ReadArticle(@"Articles\Level2\Article6.txt"),
-                ReadArticle(@"Articles\Level2\Article7.txt"),
-                ReadArticle(@"Articles\Level2\Article8.txt"),
-                ReadArticle(@"Articles\Level2\Article9.txt"),
-                ReadArticle(@"Articles\Level2\Article10.txt"),
-            };
+            return Directory.GetFiles(directory)
+                .Select(file => ReadArticle(file))
+                .ToList();
         }
 
         private static Article ReadArticle(string path)

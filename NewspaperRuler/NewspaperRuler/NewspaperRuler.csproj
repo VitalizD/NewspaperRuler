@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Article.cs" />
     <Compile Include="AuxiliaryMethods.cs" />
+    <Compile Include="Remark.cs" />
     <Compile Include="ElementControl.cs" />
     <Compile Include="InformationPanel.cs" />
     <Compile Include="Scl.cs" />
@@ -131,6 +132,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\NoteBackground1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RemarkBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TrashCan.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
