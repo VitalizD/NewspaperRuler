@@ -89,8 +89,8 @@ namespace NewspaperRuler
 
         public void Cancel() => Play(cancel);
 
-        private void Play(WindowsMediaPlayer sound) => sound.controls.play();
+        private void Play(WindowsMediaPlayer sound) => sound?.controls.play();
 
-        private void PlayRandom(WindowsMediaPlayer[] sounds) => sounds[random.Next(sounds.Length)].controls.play();
+        private void PlayRandom(WindowsMediaPlayer[] sounds) => sounds[random.Next(sounds.Length)]?.controls.play();
     }
 }

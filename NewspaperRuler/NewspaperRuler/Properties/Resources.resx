@@ -121,11 +121,80 @@
   <data name="Approved" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Approved.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Article1_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level1\Article1_1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article1_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level1\Article1_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article1_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level1\Article1_3.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article1_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level1\Article1_4.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article1_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level1\Article1_5.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article1_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level1\Article1_6.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article1_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level1\Article1_7.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article1_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level1\Article1_8.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article1_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level1\Article1_9.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article2_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level2\Article2_1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article2_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level2\Article2_10.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article2_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level2\Article2_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article2_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level2\Article2_3.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article2_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level2\Article2_4.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article2_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level2\Article2_5.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article2_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level2\Article2_6.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article2_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level2\Article2_7.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article2_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level2\Article2_8.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article2_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level2\Article2_9.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BeginLevel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\BeginLevel.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Book" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Book.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\Cancel.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ChooseOption" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\ChooseOption.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Error" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\Error.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Frame" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Frame.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,17 +205,62 @@
   <data name="Megaphone" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Megaphone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Money" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\Money.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Music" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\Music.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="NoteBackground1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NoteBackground1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Notification" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\Notification.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PanelHide" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\PanelHide.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PanelShow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\PanelShow.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Paper" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Paper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Paper1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\Paper.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Print" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\Print.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Rejected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Rejected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="RemarkBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RemarkBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StampEnter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\StampEnter.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StampPut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\StampPut.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StampReturn1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\StampReturn1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StampReturn2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\StampReturn2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StampTake1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\StampTake1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StampTake2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\StampTake2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StampTake3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\StampTake3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="StampTake4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Sounds\StampTake4.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="SwitchOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SwitchOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

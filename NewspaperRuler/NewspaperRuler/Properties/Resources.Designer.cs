@@ -71,6 +71,242 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Content:
+        ///	Правительство стартовало глобальную общественно-политическую Перестройку, в ходе которой пообещали увеличить количество рабочих мест более чем в 2 раза!.
+        /// </summary>
+        internal static string Article1_1 {
+            get {
+                return ResourceManager.GetString("Article1_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Content:
+        ///	Огромная часть населения страны голодает из-за отсутствия средств на проживание. Зарегистрированы первые летальные исходы..
+        /// </summary>
+        internal static string Article1_2 {
+            get {
+                return ResourceManager.GetString("Article1_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Content:
+        ///	В северо-восточном районе страны погиб весь урожай кукурузы вследствие внезапных заморозков. Температура воздуха упала до -17°C..
+        /// </summary>
+        internal static string Article1_3 {
+            get {
+                return ResourceManager.GetString("Article1_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Content:
+        ///	Прогноз погоды: ожидается облачная погода с редкими просветами солнца, температура воздуха поднимется до +7°C..
+        /// </summary>
+        internal static string Article1_4 {
+            get {
+                return ResourceManager.GetString("Article1_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Content:
+        ///	В ходе Перестройки планируется урезать права церкви. Священники требует невмешательства правительства в церковную сферу. Разгорелся скандал..
+        /// </summary>
+        internal static string Article1_5 {
+            get {
+                return ResourceManager.GetString("Article1_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Content:
+        ///	Министерство въезда закроет восточную границу из-за локальных конфликтов со странами Андиплантийской коалиции..
+        /// </summary>
+        internal static string Article1_6 {
+            get {
+                return ResourceManager.GetString("Article1_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Flag: ArticleAboutChampionWasApproved
+        ///Content:
+        ///	Прославленная олимпийская чемпионка Галина Руш беременна и скоро станет мамой. Поддержим её решительные действия!.
+        /// </summary>
+        internal static string Article1_7 {
+            get {
+                return ResourceManager.GetString("Article1_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Content:
+        ///	В ходе войны научный прогресс не стоял на месте. Учёные разработали новое мощнейшее оружие массового поражения, которое должно помочь защитить страну от очередных внеплановых вторжений. Министерство безопасности уверяет: гражданам нечего бояться..
+        /// </summary>
+        internal static string Article1_8 {
+            get {
+                return ResourceManager.GetString("Article1_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Content:
+        ///	Безопасность страны под серьёзной угрозой: прошедшая война опустошила практически все резервы государства, а страны-агрессоры вольны вновь переступить черту в любой момент..
+        /// </summary>
+        internal static string Article1_9 {
+            get {
+                return ResourceManager.GetString("Article1_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Title: Безработица убивает
+        ///Content:
+        ///	Массовый голод из-за отсутствия достаточного количества рабочих мест продолжается. Чиновники отказываются комментировать происходящее..
+        /// </summary>
+        internal static string Article2_1 {
+            get {
+                return ResourceManager.GetString("Article2_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Flag: ArticleOnProhibitionWeaponsWasApproved
+        ///Title: Научные достижения не помогут защитить страну
+        ///Content:
+        ///	Новое оружие массового поражения, предназначенное для защиты страны от внешних агрессоров, было отправлено в Международную ассоциацию мировой безопасности &quot;Апостол&quot; (МАМБА) на утверждение.
+        ///	МАМБА дала запрет на использование оружия из-за его сильной разрушительной силы..
+        /// </summary>
+        internal static string Article2_10 {
+            get {
+                return ResourceManager.GetString("Article2_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Прогноз погоды в Уинбурге
+        ///Content:
+        ///	Ожидаются сильные осадки и ветер, температура воздуха опустится до -3°C..
+        /// </summary>
+        internal static string Article2_2 {
+            get {
+                return ResourceManager.GetString("Article2_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: Осторожно, лёд!
+        ///Content:
+        ///	В северных районах страны после сходов горного снега и вследствие наступившей оттепели начался гололёд.
+        ///	Гражданам следует быть осторожными, выходя на улицу..
+        /// </summary>
+        internal static string Article2_3 {
+            get {
+                return ResourceManager.GetString("Article2_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Title: Война или мир?
+        ///Content:
+        ///	Угроза очередного вторжения войск стран Андиплантийской коалиции с востока усиливается. Министерство безопасности уверяет, что всё под контролем..
+        /// </summary>
+        internal static string Article2_4 {
+            get {
+                return ResourceManager.GetString("Article2_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Title: Зарплата снова опаздывает
+        ///Content:
+        ///	В Плиувиле рабочим трижды задержали заработную плату.
+        ///	Люди грозятся забросать камнями здание администрации Плиувиля, если им не вернут обещанное жалованье за непрерывный труд..
+        /// </summary>
+        internal static string Article2_5 {
+            get {
+                return ResourceManager.GetString("Article2_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Mistake: NoTitle
+        ///Content:
+        ///	Слава волонтёрам! Группа энтузиастов почистила и привела в порядок памятник военному руководителю Р. Г. Нескомову на главной площади столицы.
+        ///	Этот памятник не реставрировался со времён начала войны..
+        /// </summary>
+        internal static string Article2_6 {
+            get {
+                return ResourceManager.GetString("Article2_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: Скажем голоду нет!
+        ///Content:
+        ///	Государство выделит средства на закуп индивидуальных рационов питания, сухих пайков, в расчёте на каждого гражданина страны..
+        /// </summary>
+        internal static string Article2_7 {
+            get {
+                return ResourceManager.GetString("Article2_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Буря близ южных побережий
+        ///Content:
+        ///	Близ южной морской границы фиксируются резкие перепады атмосферного давления, что может привести к образованию урагана.
+        ///	Жителям прибрежных населённых пунктов следует быть готовыми к экстренной эвакуации..
+        /// </summary>
+        internal static string Article2_8 {
+            get {
+                return ResourceManager.GetString("Article2_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Mistake: NoTitle
+        ///Content:
+        ///	Респонденты сообщают, что в северо-восточных районах страны четвёртую часть кукурузы всё-таки удалось спасти.
+        ///	Собранный урожай будет распределён между гражданами, оставшихся без работы..
+        /// </summary>
+        internal static string Article2_9 {
+            get {
+                return ResourceManager.GetString("Article2_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Background {
@@ -81,12 +317,48 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream BeginLevel {
+            get {
+                return ResourceManager.GetStream("BeginLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Book {
             get {
                 object obj = ResourceManager.GetObject("Book", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Cancel {
+            get {
+                return ResourceManager.GetStream("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream ChooseOption {
+            get {
+                return ResourceManager.GetStream("ChooseOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Error {
+            get {
+                return ResourceManager.GetStream("Error", resourceCulture);
             }
         }
         
@@ -121,6 +393,24 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Money {
+            get {
+                return ResourceManager.GetStream("Money", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Music {
+            get {
+                return ResourceManager.GetStream("Music", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap NoteBackground1 {
@@ -131,12 +421,57 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Notification {
+            get {
+                return ResourceManager.GetStream("Notification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream PanelHide {
+            get {
+                return ResourceManager.GetStream("PanelHide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream PanelShow {
+            get {
+                return ResourceManager.GetStream("PanelShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Paper {
             get {
                 object obj = ResourceManager.GetObject("Paper", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Paper1 {
+            get {
+                return ResourceManager.GetStream("Paper1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Print {
+            get {
+                return ResourceManager.GetStream("Print", resourceCulture);
             }
         }
         
@@ -157,6 +492,78 @@ namespace NewspaperRuler.Properties {
             get {
                 object obj = ResourceManager.GetObject("RemarkBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream StampEnter {
+            get {
+                return ResourceManager.GetStream("StampEnter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream StampPut {
+            get {
+                return ResourceManager.GetStream("StampPut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream StampReturn1 {
+            get {
+                return ResourceManager.GetStream("StampReturn1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream StampReturn2 {
+            get {
+                return ResourceManager.GetStream("StampReturn2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream StampTake1 {
+            get {
+                return ResourceManager.GetStream("StampTake1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream StampTake2 {
+            get {
+                return ResourceManager.GetStream("StampTake2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream StampTake3 {
+            get {
+                return ResourceManager.GetStream("StampTake3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream StampTake4 {
+            get {
+                return ResourceManager.GetStream("StampTake4", resourceCulture);
             }
         }
         
