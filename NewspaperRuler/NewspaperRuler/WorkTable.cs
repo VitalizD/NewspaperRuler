@@ -10,9 +10,9 @@ namespace NewspaperRuler
         private readonly LevelController paper;
         private readonly Sounds sounds = new Sounds();
 
-        public WorkTable(Control.ControlCollection controls, Stats stats)
+        public WorkTable(Form1 form)
         {
-            paper = new LevelController(controls, stats, sounds);
+            paper = new LevelController(form, sounds);
         }
 
         public void Paint(Graphics graphics)

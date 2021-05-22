@@ -2,28 +2,37 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using System.Windows.Forms;
 
 namespace NewspaperRuler
 {
     public class Stats
     {
         public static GraphicObject NoteBackground { get; set; }
+        public static string MonetaryCurrencyName { get; } = "ТОКЕНОВ";
 
         private int degreeGovernmentAnger = 0;
+        private int rentDebts = 0;
+        private int productsDebts = 0;
+
         private DateTime date = new DateTime(1981, 9, 27);
         private int money;
+        private readonly DayEnd dayEnd;
+
+        private int rent = 120;
+        private int productsCost = 40;
 
         public int Money
         {
             get { return money; }
-            private set
+            set
             {
                 if (value < 0) money = 0;
                 else money = value;
             }
         }
 
-        public int LevelNumber { get; private set; } = 0;
+        public int LevelNumber { get; private set; } = 1;
 
         public int Loyality { get; private set; }
         
@@ -31,9 +40,10 @@ namespace NewspaperRuler
 
         public List<Dictionary<string, bool>> EventFlags { get; }
 
-        public Stats(int money)
+        public Stats(int money, DayEnd dayEnd)
         {
             Money = money;
+            this.dayEnd = dayEnd;
             EventFlags = new List<Dictionary<string, bool>>
             {
                 new Dictionary<string, bool>
@@ -61,28 +71,13 @@ namespace NewspaperRuler
 
         public void GoToNextLevel()
         {
-            LevelNumber++;
             date = date.AddDays(1);
             Level = new LevelData(CreateNotes(), ArticleConstructor.ArticlesByLevel[LevelNumber - 1]);
             var introduction = GetIntroduction();
             if (introduction != null) Level.AddIntroduction(introduction);
         }
 
-        public void FinishLevel()
-        {
-            if (Level.ReprimandScore < 3)
-            {
-                if (EventFlags[LevelNumber - 1].ContainsKey("MinistryIsSatisfied"))
-                {
-                    if (degreeGovernmentAnger > 0) degreeGovernmentAnger--;
-                    EventFlags[LevelNumber - 1]["MinistryIsSatisfied"] = true;
-                }
-            }
-            else degreeGovernmentAnger++;
-            Loyality += Level.Loyality;
-            Money += Level.Salary - Level.GetTotalFine();
-            GoToNextLevel();
-        }
+        public void FinishLevel() => UpdateStatistics();
 
         private List<Note> CreateNotes()
         {
@@ -127,7 +122,7 @@ namespace NewspaperRuler
                                 "\n\n\tГалина Руш";
                         notes.Add(new Note(NoteBackground, text, "OK"));
                         break;
-                            }
+                    }
             }
             return notes;
         }
@@ -167,6 +162,97 @@ namespace NewspaperRuler
             }
             if (text.ToString() == "") return null;
             return new Article(ArticleConstructor.ArticleBackground, text.ToString(), title);
+        }
+
+        private void UpdateStatistics()
+        {
+            if (Level.ReprimandScore < 3)
+            {
+                if (EventFlags[LevelNumber - 1].ContainsKey("MinistryIsSatisfied"))
+                {
+                    if (degreeGovernmentAnger > 0) degreeGovernmentAnger--;
+                    EventFlags[LevelNumber - 1]["MinistryIsSatisfied"] = true;
+                }
+            }
+            else degreeGovernmentAnger++;
+
+            Loyality += Level.Loyality;
+            Money += Level.Salary - Level.GetTotalFine();
+
+            LevelNumber++;
+
+            dayEnd.InformationTexts.Add(GetLabel(GetWarnings()));
+
+            dayEnd.StatsTexts.Add(GetLabel($"Лояльность граждан:\t\t{Loyality}"));
+            dayEnd.StatsTexts.Add(GetLabel($"Зарплата:\t\t{Level.Salary}"));
+            if (Level.CurrentFine != 0) dayEnd.StatsTexts.Add(GetLabel($"Штраф:\t\t-{Level.GetTotalFine()}"));
+
+            switch (LevelNumber - 1)
+            {
+                case 1:
+                    dayEnd.InformationTexts.Add(GetLabel("Отметьте расходы, которые можете себе позволить."));
+                    break;
+                case 2:
+                    rent += 30;
+                    dayEnd.InformationTexts.Add(GetLabel("Квартплата увеличена."));
+                    if (!EventFlags[0]["ArticleAboutChampionWasApproved"])
+                    {
+                        Money += 50;
+                        dayEnd.StatsTexts.Add(GetLabel($"Подарок от Галины Руш:\t\t50"));
+                    }
+                    if (EventFlags[1]["MainCharacterWasOnDate"])
+                    {
+                        Money -= 30;
+                        dayEnd.StatsTexts.Add(GetLabel($"Посещение бара \"Алый цветок\":\t\t-30"));
+                    }
+                    break;
+            }
+            dayEnd.StatsTexts.Add(GetLabel($"Итого:\t\t{Money} {MonetaryCurrencyName}"));
+
+            dayEnd.Expenses.Add(new Expense($"Квартплата:\t\t{rent} {MonetaryCurrencyName}", rent, ExpenseType.Rent));
+            dayEnd.Expenses.Add(new Expense($"Продукты:\t\t{productsCost} {MonetaryCurrencyName}", productsCost, ExpenseType.Products));
+
+            dayEnd.RecalculatePositions();
+
+            Label GetLabel(string text)
+            {
+                return new Label
+                {
+                    Text = text,
+                    ForeColor = Color.White,
+                    Font = StringStyle.TitleFont,
+                    AutoSize = true
+                };
+            }
+
+            string GetWarnings()
+            {
+                var information = new StringBuilder();
+
+                if (degreeGovernmentAnger == 2)
+                    information.Append("Руководство недовольно Вашей работой и ищет нового кандидата на Ваше место. ");
+
+                if (productsDebts == 1) information.Append("Вы голодны. ");
+                else if (productsDebts == 2) information.Append("Вы умираете с голоду. ");
+
+                if (rentDebts >= 2 && rentDebts <= 3) information.Append("У Вас остались неоплаченные долги по счетам. ");
+                else if (rentDebts >= 4 && rentDebts <= 5) information.Append("Коммунальное хозяйство " +
+                    "выселит Вас из квартиры, если Вы не закроете долги по счетам. ");
+
+                return information.ToString();
+            }
+        }
+
+        public void ApplyExpenses()
+        {
+            foreach (var expence in dayEnd.Expenses)
+            {
+                if (expence.Marked) continue;
+                if (expence.Type is ExpenseType.Rent) rentDebts += 3;
+                else if (expence.Type is ExpenseType.Products) productsDebts += 2;
+            }
+            if (rentDebts > 0) rentDebts--;
+            if (productsDebts > 0) productsDebts--;
         }
     }
 }

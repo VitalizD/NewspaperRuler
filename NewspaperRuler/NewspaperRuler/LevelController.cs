@@ -9,12 +9,12 @@ namespace NewspaperRuler
     public class LevelController
     {
         private readonly Sounds sounds;
+        private readonly Stats stats;
+        private readonly Form1 form;
 
-        private GraphicObject paper;
+        private bool paperIsEntering;
 
-        private readonly Control.ControlCollection controls;
-
-        private bool isEntering;
+        private Interface currentInterface = Interface.WorkTable;
 
         private Article currentArticle;
         private Note currentNote;
@@ -22,12 +22,11 @@ namespace NewspaperRuler
         private int waitBeforeOutPaper = 0;
         private Action movePaperToSide;
 
+        private GraphicObject paper;
         private GraphicObject providedStamp = new GraphicObject(Properties.Resources.Approved, 300, 250, Form1.Beyond);
         private readonly Stamp approved = new Stamp(new Bitmap(Properties.Resources.Approved, 300, 250));
         private readonly Stamp rejected = new Stamp(new Bitmap(Properties.Resources.Rejected, 300, 250));
         private bool stampsAreVisible;
-
-        private readonly Stats stats;
 
         private readonly NotificationPanel notifications;
         private readonly InformationPanel decrees;
@@ -35,11 +34,14 @@ namespace NewspaperRuler
 
         private readonly ElementControl decreesBook = new ElementControl("ПРИКАЗЫ", Properties.Resources.Book, 120, 100);
 
-        public LevelController(Control.ControlCollection controls, Stats stats, Sounds sounds)
+        private readonly DayEnd dayEnd;
+
+        private bool levelCompleted;
+
+        public LevelController(Form1 form, Sounds sounds)
         {
             this.sounds = sounds;
-            this.controls = controls;
-            this.stats = stats;
+            this.form = form;
 
             approved = new Stamp(new Bitmap(Properties.Resources.Approved, Scl.Get(300), Scl.Get(250)));
             rejected = new Stamp(new Bitmap(Properties.Resources.Rejected, Scl.Get(300), Scl.Get(250)));
@@ -48,6 +50,12 @@ namespace NewspaperRuler
             decrees = new InformationPanel(Properties.Resources.Frame, 500, 800, new Point(-Scl.Get(500), 0), sounds.PanelShow, sounds.PanelHide);
             remark = new Remark(Properties.Resources.RemarkBackground, 600, 300, sounds);
 
+            dayEnd = new DayEnd(sounds, form.Controls);
+            dayEnd.CreateEventClickOnContinue(MouseDownOnNextDayButton);
+
+            stats = new Stats(100, dayEnd);
+
+            ChangeInterface(Interface.WorkTable);
             RemoveStamps();
             stats.GoToNextLevel();
             NextEvent(false);
@@ -55,16 +63,20 @@ namespace NewspaperRuler
 
         public void Paint(Graphics graphics)
         {
-            paper.Paint(graphics);
-            approved.Paint(graphics);
-            rejected.Paint(graphics);
-            providedStamp.Paint(graphics);
-            currentArticle?.Paint(graphics);
-            currentNote?.Paint(graphics);
-            notifications.Paint(graphics);
-            decreesBook.Paint(graphics);
-            decrees.Paint(graphics);
-            remark.Paint(graphics);
+            if (currentInterface is Interface.WorkTable)
+            {
+                paper.Paint(graphics);
+                approved.Paint(graphics);
+                rejected.Paint(graphics);
+                providedStamp.Paint(graphics);
+                currentArticle?.Paint(graphics);
+                currentNote?.Paint(graphics);
+                notifications.Paint(graphics);
+                decreesBook.Paint(graphics);
+                decrees.Paint(graphics);
+                remark.Paint(graphics);
+            }
+            else if (currentInterface is Interface.DayEnd) dayEnd.Paint(graphics);
         }
 
         public void MouseDown(MouseEventArgs e)
@@ -72,9 +84,13 @@ namespace NewspaperRuler
             approved.MouseDown(e, sounds.StampTake);
             rejected.MouseDown(e, sounds.StampTake);
             remark.MouseDown();
+
+            var money = stats.Money;
+            dayEnd.MouseDown(ref money);
+            stats.Money = money;
         }
 
-        private void EventClickOnOption(object sender, MouseEventArgs e)
+        private void MouseDownOnOption(object sender, MouseEventArgs e)
         {
             sounds.ChooseOption();
             var label = sender as Label;
@@ -86,6 +102,17 @@ namespace NewspaperRuler
             else if (label == currentNote.NegativeOption)
                 notifications.Add(currentNote.NegativeMessage);
             SendNote();
+        }
+
+        private void MouseDownOnNextDayButton(object sender, MouseEventArgs e)
+        {
+            sounds.BeginLevel();
+            stats.ApplyExpenses();
+            dayEnd.Reset();
+            stats.GoToNextLevel();
+            ChangeInterface(Interface.WorkTable);
+            AddNewElementsToLevel();
+            NextEvent(false);
         }
 
         public void MouseUp(MouseEventArgs e)
@@ -111,10 +138,8 @@ namespace NewspaperRuler
         {
             if (stats.Level.Events.Count == 0) 
             {
-                stats.FinishLevel();
-                AddNewElementsToLevel();
-                NextEvent(false);
-                return; 
+                levelCompleted = true;
+                return;
             }
             var index = 0;
             if (isRandom) index = new Random().Next(stats.Level.Events.Count);
@@ -145,7 +170,7 @@ namespace NewspaperRuler
         {
             currentNote = note;
             paper.Bitmap = note.Background.Bitmap;
-            currentNote.CreateClickEventForOptions(EventClickOnOption);
+            currentNote.CreateClickEventForOptions(MouseDownOnOption);
             EnterPaper();
         }
 
@@ -153,7 +178,7 @@ namespace NewspaperRuler
         {
             sounds.Paper();
             paper.Position = new Point(-800, (int)(10 / Scl.Factor));
-            isEntering = true;
+            paperIsEntering = true;
             paper.GoRight();
         }
 
@@ -163,37 +188,43 @@ namespace NewspaperRuler
             notifications.Tick();
             decrees.Tick();
             remark.Tick();
+            dayEnd.Tick();
             paper.Move();
             providedStamp.Move();
             CheckPaperPosition();
+
             if (waitBeforeOutPaper > 0)
             {
                 waitBeforeOutPaper -= 1;
                 if (waitBeforeOutPaper == 0) 
                     movePaperToSide();
             }
+
             if (decreesBook.IsVisible)
             {
                 if (decreesBook.CursorIsHovered())
                     decrees.Show();
                 else decrees.Hide();
             }
+
+            if (levelCompleted && !remark.Enabled)
+                FinishLevel();
         }
 
         private void CheckPaperPosition()
         {
             if (!paper.IsMoving) return;
-            if (isEntering)
+            if (paperIsEntering)
             {
                 var center = Scl.Resolution.Width / 2 - paper.Bitmap.Width / 2;
                 if (paper.Position.X > center)
                 {
                     sounds.StampEnter();
-                    isEntering = false;
+                    paperIsEntering = false;
                     paper.Position = new Point(center, paper.Position.Y);
                     paper.Stop();
                     if (currentArticle != null) CreateStamps();
-                    else currentNote?.ShowButtons(controls);
+                    else currentNote?.ShowButtons(form.Controls);
                 }
             }
             else if (paper.IsMoving && (paper.Position.X > Scl.Resolution.Width || paper.Position.X < -paper.Bitmap.Width))
@@ -225,7 +256,7 @@ namespace NewspaperRuler
             {
                 providedStamp = new GraphicObject(rejected.Bitmap, rejected.Bitmap.Size - new Size(50, 50), rejected.Position + new Size(25, 25), false);
                 movePaperToSide = new Action(() => { paper.GoLeft(); providedStamp.GoLeft(); });
-                stats.Level.IncreaseLoyality(-1);
+                if (currentArticle.Loyality != 0) stats.Level.IncreaseLoyality(-1);
             }
             sounds.StampPut();
             RemoveStamps();
@@ -235,7 +266,7 @@ namespace NewspaperRuler
         private void SendNote()
         {
             paper.GoLeft();
-            currentNote.HideButtons(controls);
+            currentNote.HideButtons(form.Controls);
         }
 
         private void CreateStamps()
@@ -278,6 +309,26 @@ namespace NewspaperRuler
                 remarkText.Append("При повторной ошибке мы наложим штраф, сумма которого будет вычтена из Вашей заработной платы.");
             else remarkText.Append($"Штраф: {stats.Level.CurrentFine} ТОКЕНОВ");
             remark.Add(remarkText.ToString());
+        }
+
+        private void ChangeInterface(Interface value)
+        {
+            currentInterface = value;
+            if (value is Interface.WorkTable)
+                form.BackgroundImage = Properties.Resources.Background;
+            else if (value is Interface.DayEnd)
+            {
+                form.BackgroundImage = null;
+                form.BackColor = Color.Black;
+            }
+        }
+
+        private void FinishLevel()
+        {
+            levelCompleted = false;
+            stats.FinishLevel();
+            dayEnd.ShowAll();
+            ChangeInterface(Interface.DayEnd);
         }
     }
 }

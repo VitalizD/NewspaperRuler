@@ -18,6 +18,8 @@ namespace NewspaperRuler
         private readonly WindowsMediaPlayer panelShow = new WindowsMediaPlayer();
         private readonly WindowsMediaPlayer panelHide = new WindowsMediaPlayer();
         private readonly WindowsMediaPlayer printingMachine = new WindowsMediaPlayer();
+        private readonly WindowsMediaPlayer beginLevel = new WindowsMediaPlayer();
+        private readonly WindowsMediaPlayer cancel = new WindowsMediaPlayer();
 
         public Sounds()
         {
@@ -39,6 +41,11 @@ namespace NewspaperRuler
             panelShow.URL = @"Sounds\PanelShow.wav";
             panelHide.URL = @"Sounds\PanelHide.wav";
             printingMachine.URL = @"Sounds\Print.wav";
+            beginLevel.URL = @"Sounds\BeginLevel.mp3";
+            beginLevel.settings.volume = 60;
+            cancel.URL = @"Sounds\Cancel.wav";
+            cancel.close();
+            beginLevel.close();
             panelHide.close();
             printingMachine.close();
             panelShow.close();
@@ -77,6 +84,10 @@ namespace NewspaperRuler
         public void PanelHide() => Play(panelHide);
 
         public void PrintingMachine() => Play(printingMachine);
+
+        public void BeginLevel() => Play(beginLevel);
+
+        public void Cancel() => Play(cancel);
 
         private void Play(WindowsMediaPlayer sound) => sound.controls.play();
 

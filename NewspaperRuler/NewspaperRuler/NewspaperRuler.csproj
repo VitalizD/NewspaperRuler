@@ -55,6 +55,10 @@
   <ItemGroup>
     <Compile Include="Article.cs" />
     <Compile Include="AuxiliaryMethods.cs" />
+    <Compile Include="ExpenseType.cs" />
+    <Compile Include="Expense.cs" />
+    <Compile Include="Interface.cs" />
+    <Compile Include="DayEnd.cs" />
     <Compile Include="Remark.cs" />
     <Compile Include="ElementControl.cs" />
     <Compile Include="InformationPanel.cs" />
@@ -138,6 +142,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TrashCan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SwitchOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SwitchOn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

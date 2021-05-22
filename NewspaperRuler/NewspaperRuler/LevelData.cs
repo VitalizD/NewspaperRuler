@@ -28,11 +28,9 @@ namespace NewspaperRuler
             get 
             {
                 if (Loyality <= 0) return FixedSalaryAmount;
-                return FixedSalaryAmount + Loyality * 50;
+                return FixedSalaryAmount + Loyality * 35;
             }
         }
-
-        public int BonusMoney { get; private set; } = 0;
 
         public int CurrentFine { get; private set; } = 0;
         public bool FirstFine { get; private set; } = true;
@@ -61,8 +59,6 @@ namespace NewspaperRuler
                 totalFine += CurrentFine;
             }
         }
-
-        public void IncreaseBonusMoney(int value) => BonusMoney += value;
 
         public int GetTotalFine() => totalFine;
     }

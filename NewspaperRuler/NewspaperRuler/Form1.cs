@@ -19,8 +19,7 @@ namespace NewspaperRuler
             StringStyle.Initialize();
             DoubleBuffered = true;
 
-            var stats = new Stats(100);
-            workTable = new WorkTable(Controls, stats);
+            workTable = new WorkTable(this);
 
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None;

@@ -12,14 +12,17 @@ namespace NewspaperRuler
             get { return Position.X > -Bitmap.Width && Position.Y > -Bitmap.Height; }
         }
 
-        private readonly string description;
-        private Point descriptionPosition;
+        public string Description { get; set; }
+
+        private Point descriptionPosition = Form1.Beyond;
         private readonly Action playSound;
+        private Size textAreaSize;
 
         public ElementControl(string description, Image image, int width, int height, bool zoom = true) 
             : base(image, width, height, zoom)
         {
-            this.description = description;
+            this.Description = description;
+            textAreaSize = new Size(Scl.Get(200), Scl.Get(300));
             Hide();
         }
 
@@ -43,7 +46,7 @@ namespace NewspaperRuler
         
         public void ShowDescription(Point descriptionPosition)
         {
-            if (description != null) 
+            if (Description != null) 
                 this.descriptionPosition = descriptionPosition;
         }
 
@@ -65,9 +68,11 @@ namespace NewspaperRuler
         public new void Paint(Graphics graphics)
         {
             base.Paint(graphics);
-            if (description != null)
-                graphics.DrawString(description, StringStyle.TitleFont, StringStyle.White, new Rectangle(
-                    descriptionPosition, new Size(Scl.Get(200), Scl.Get(300))));
+            if (Description != null)
+                graphics.DrawString(Description, StringStyle.TitleFont, StringStyle.White, new Rectangle
+                (descriptionPosition, textAreaSize));
         }
+
+        public void SetTextAreaSize(Size value) => textAreaSize = value;
     }
 }

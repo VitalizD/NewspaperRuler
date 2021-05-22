@@ -45,6 +45,7 @@ namespace NewspaperRuler
                 Location = position,
                 Font = StringStyle.TitleFont,
                 ForeColor = Color.Brown,
+                BackColor = Color.White,
                 BorderStyle = BorderStyle.FixedSingle,
                 TextAlign = ContentAlignment.MiddleCenter
             };

@@ -14,6 +14,11 @@ namespace NewspaperRuler
         private bool isEntering;
         private bool showed;
 
+        public bool Enabled
+        {
+            get { return isEntering || showed; }
+        }
+
         public Remark(Image image, int width, int height, Sounds sounds)
             : base(image, width, height, new Point(Scl.Resolution.Width, Scl.Resolution.Height))
         {
