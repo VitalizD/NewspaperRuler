@@ -15,14 +15,14 @@ namespace NewspaperRuler
         public static void Initialize()
         {
             ArticlesByLevel = Directory.GetDirectories("Articles")
-                .Select(level => GetArticlesFromDirectory(level))
+                .Select(GetArticlesFromDirectory)
                 .ToList();
         }
 
         private static List<Article> GetArticlesFromDirectory(string directory)
         {
             return Directory.GetFiles(directory)
-                .Select(file => ReadArticle(file))
+                .Select(ReadArticle)
                 .ToList();
         }
 
@@ -35,6 +35,7 @@ namespace NewspaperRuler
             var reprimandScore = 0;
             var mistake = Mistake.None;
             var flag = "";
+            // Руками разбирать формат статьи неудобно. Возьми лучше Newtonwoft.Json или System.Text.Json
             while (true)
             {
                 var line = reader.ReadLine();

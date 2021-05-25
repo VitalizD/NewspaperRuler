@@ -15,8 +15,11 @@ namespace NewspaperRuler
             InitializeComponent();
             ArticleConstructor.ArticleBackground = new GraphicObject(Properties.Resources.Paper, 720, 970, 125);
             ArticleConstructor.Initialize();
+
+            // Работать со статическими переменными сложно. Лучше сделай NoteBackground экземплярным и передай Stats куда нужно.
             Stats.NoteBackground = new GraphicObject(Properties.Resources.NoteBackground1, 750, 1000, 125);
             StringStyle.Initialize();
+
             DoubleBuffered = true;
 
             workTable = new WorkTable(this);
@@ -25,13 +28,14 @@ namespace NewspaperRuler
             this.FormBorderStyle = FormBorderStyle.None;
             this.BackgroundImage = Properties.Resources.Background;
 
-            Paint += new PaintEventHandler(OnPaint);
+            // можно писать короче: так
+            Paint += OnPaint;
             MouseDown += new MouseEventHandler(OnMouseDown);
             MouseUp += new MouseEventHandler(OnMouseUp);
             MouseMove += new MouseEventHandler(OnMouseMove);
             KeyDown += new KeyEventHandler(OnKeyDown);
 
-            var graphicsUpdate = new Timer() { Interval = 40 };
+            var graphicsUpdate = new Timer { Interval = 40 };
             graphicsUpdate.Tick += new EventHandler(OnTick);
             graphicsUpdate.Start();
         }
@@ -43,8 +47,9 @@ namespace NewspaperRuler
 
         private void OnTick(object sender, EventArgs e)
         {
-            Invalidate();
-            workTable.Tick();
+            // Так ты рисуешь предыдущее состояние.
+            Invalidate(); // вызывает перерисовку
+            workTable.Tick(); // обновляет состояние
         }
 
         private void OnMouseDown(object sender, MouseEventArgs e) => workTable.MouseDown(e);

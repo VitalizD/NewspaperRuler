@@ -11,7 +11,7 @@ namespace NewspaperRuler
 
         public static int FixedSalaryAmount
         {
-            get { return fixedSalaryAmount; }
+            get => fixedSalaryAmount;
             set
             {
                 if (value < 0) throw new ArgumentException("The value can't be less than zero");

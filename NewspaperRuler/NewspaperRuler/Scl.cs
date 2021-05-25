@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 namespace NewspaperRuler
 {
+    // Непонятное название класса
     public static class Scl
     {
         /// <summary>
