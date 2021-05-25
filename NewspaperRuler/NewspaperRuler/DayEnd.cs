@@ -88,6 +88,7 @@ namespace NewspaperRuler
             }
         }
 
+        // лучше пусть он возвращает новое значение денег, чем модифицирует параметр
         public void MouseDown(ref int money)
         {
             foreach (var _switch in Expenses)

@@ -24,6 +24,7 @@ namespace NewspaperRuler
 
         private GraphicObject paper;
         private GraphicObject providedStamp = new GraphicObject(Properties.Resources.Approved, 300, 250, Form1.Beyond);
+        // Эти инициализваторы не работают, т.к. в конструкторе эти поля перетираются
         private readonly Stamp approved = new Stamp(new Bitmap(Properties.Resources.Approved, 300, 250));
         private readonly Stamp rejected = new Stamp(new Bitmap(Properties.Resources.Rejected, 300, 250));
         private bool stampsAreVisible;
@@ -63,6 +64,9 @@ namespace NewspaperRuler
 
         public void Paint(Graphics graphics)
         {
+            // лучше отрисовку сделать на полиморфизме, а не на Enum. Можно завести интерфейс IUserInterface
+            // с методом Paint(Graphics graphics)
+            // и две реализации - DayEnd и WorkTable
             if (currentInterface is Interface.WorkTable)
             {
                 paper.Paint(graphics);
@@ -193,6 +197,7 @@ namespace NewspaperRuler
             providedStamp.Move();
             CheckPaperPosition();
 
+            // здесь стоит выделить компонент для ожидания, иначе в других мастах будет аналогичный код.
             if (waitBeforeOutPaper > 0)
             {
                 waitBeforeOutPaper -= 1;
@@ -241,6 +246,7 @@ namespace NewspaperRuler
 
         private void SendArticle(bool isApproved)
         {
+            // по сути этот метод - это два разных метода и лучше их разделить
             if (isApproved)
             {
                 providedStamp = new GraphicObject(approved.Bitmap, approved.Bitmap.Size - new Size(50, 50), approved.Position + new Size(25, 25), false);
@@ -285,6 +291,7 @@ namespace NewspaperRuler
 
         private void AddNewElementsToLevel()
         {
+            // эти вещи стоит унести в ресурсы как и текст уровней
             switch (stats.LevelNumber)
             {
                 case 2:
