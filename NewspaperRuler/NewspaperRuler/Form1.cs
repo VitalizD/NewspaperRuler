@@ -8,50 +8,47 @@ namespace NewspaperRuler
     {
         public static Point Beyond { get; } = new Point(-5000, 0);
 
-        private readonly WorkTable workTable;
+        private readonly Controller controller;
 
         public Form1()
         {
             InitializeComponent();
-            ArticleConstructor.ArticleBackground = new GraphicObject(Properties.Resources.Paper, 720, 970, 125);
-            ArticleConstructor.Initialize();
-            Stats.NoteBackground = new GraphicObject(Properties.Resources.NoteBackground1, 750, 1000, 125);
-            StringStyle.Initialize();
+
             DoubleBuffered = true;
 
-            workTable = new WorkTable(this);
+            controller = new Controller(this);
 
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None;
             this.BackgroundImage = Properties.Resources.Background;
 
-            Paint += new PaintEventHandler(OnPaint);
-            MouseDown += new MouseEventHandler(OnMouseDown);
-            MouseUp += new MouseEventHandler(OnMouseUp);
-            MouseMove += new MouseEventHandler(OnMouseMove);
-            KeyDown += new KeyEventHandler(OnKeyDown);
+            Paint += OnPaint;
+            MouseDown += OnMouseDown;
+            MouseUp += OnMouseUp;
+            MouseMove += OnMouseMove;
+            KeyDown += OnKeyDown;
 
-            var graphicsUpdate = new Timer() { Interval = 40 };
-            graphicsUpdate.Tick += new EventHandler(OnTick);
+            var graphicsUpdate = new Timer { Interval = 40 };
+            graphicsUpdate.Tick += OnTick;
             graphicsUpdate.Start();
         }
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
-            workTable.Paint(e.Graphics);
+            controller.Paint(e.Graphics);
         }
 
         private void OnTick(object sender, EventArgs e)
         {
+            controller.EveryTick();
             Invalidate();
-            workTable.Tick();
         }
 
-        private void OnMouseDown(object sender, MouseEventArgs e) => workTable.MouseDown(e);
+        private void OnMouseDown(object sender, MouseEventArgs e) => controller.MouseDown();
 
-        private void OnMouseUp(object sender, MouseEventArgs e) => workTable.MouseUp(e);
+        private void OnMouseUp(object sender, MouseEventArgs e) => controller.MouseUp();
 
-        private void OnMouseMove(object sender, MouseEventArgs e) => workTable.MouseMove();
+        private void OnMouseMove(object sender, MouseEventArgs e) => controller.MouseMove();
 
         private void OnKeyDown(object sender, KeyEventArgs e)
         {

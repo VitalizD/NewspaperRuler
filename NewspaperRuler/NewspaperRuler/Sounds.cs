@@ -37,11 +37,11 @@ namespace NewspaperRuler
             stampEnter.URL = @"Sounds\StampEnter.wav";
             chooseOption.URL = @"Sounds\ChooseOption.wav";
             paper.URL = @"Sounds\Paper.wav";
-            notification.URL = @"Sounds\Notification.mp3";
+            notification.URL = @"Sounds\Notification.wav";
             panelShow.URL = @"Sounds\PanelShow.wav";
             panelHide.URL = @"Sounds\PanelHide.wav";
             printingMachine.URL = @"Sounds\Print.wav";
-            beginLevel.URL = @"Sounds\BeginLevel.mp3";
+            beginLevel.URL = @"Sounds\BeginLevel.wav";
             beginLevel.settings.volume = 60;
             cancel.URL = @"Sounds\Cancel.wav";
             cancel.close();
@@ -59,7 +59,7 @@ namespace NewspaperRuler
             foreach (var sound in stampReturn) sound.close();
         }
 
-        public void Tick()
+        public void EveryTick()
         {
             if (music.playState != WMPPlayState.wmppsPlaying) 
                 music.controls.play();

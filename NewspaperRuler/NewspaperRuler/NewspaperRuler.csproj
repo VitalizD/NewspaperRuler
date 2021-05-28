@@ -59,21 +59,23 @@
     <Compile Include="Expense.cs" />
     <Compile Include="Interface.cs" />
     <Compile Include="DayEnd.cs" />
+    <Compile Include="IUserInterface.cs" />
     <Compile Include="Remark.cs" />
     <Compile Include="ElementControl.cs" />
     <Compile Include="InformationPanel.cs" />
-    <Compile Include="Scl.cs" />
+    <Compile Include="Scale.cs" />
     <Compile Include="NotificationPanel.cs" />
     <Compile Include="Sounds.cs" />
     <Compile Include="Mistake.cs" />
     <Compile Include="LevelData.cs" />
     <Compile Include="Stats.cs" />
-    <Compile Include="LevelController.cs" />
+    <Compile Include="Controller.cs" />
     <Compile Include="ArticleConstructor.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="StringStyle.cs" />
     <Compile Include="GraphicObject.cs" />
     <Compile Include="Stamp.cs" />
+    <Compile Include="Waiting.cs" />
     <Compile Include="WorkTable.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -96,6 +98,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Font.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -336,6 +341,96 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Articles\Level2\Article2_10.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level3\Article3_1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level3\Article3_2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level3\Article3_3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level3\Article3_4.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level3\Article3_5.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level3\Article3_6.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level3\Article3_7.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level3\Article3_8.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level3\Article3_9.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level3\Article3_10.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level3\Article3_11.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level3\Article3_12.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level3\Article3_13.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level1\Article1_10.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level2\Article2_11.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Decrees\DecreesLevel2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Decrees\DecreesLevel3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level3\Article3_14.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

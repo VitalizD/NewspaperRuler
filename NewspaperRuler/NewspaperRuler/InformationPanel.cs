@@ -19,10 +19,16 @@ namespace NewspaperRuler
             this.playSoundPanelShow = playSoundPanelShow;
         }
 
-        public void Add(string text)
+        public void Add(string text) => 
+            areas.Add((text, new Rectangle(new Point(), new Size(Scale.Get(350), Scale.Get(50)))));
+
+        public void Add(string[] texts)
         {
-            areas.Add((text, new Rectangle(new Point(), new Size(Scl.Get(350), Scl.Get(50)))));
+            foreach (var text in texts)
+                Add(text);
         }
+
+        public void Clear() => areas.Clear();
 
         public new void Paint(Graphics graphics)
         {
@@ -30,7 +36,7 @@ namespace NewspaperRuler
             for (var i = 0; i < areas.Count; i++)
             {
                 var rectangle = areas[i].rectangle;
-                rectangle.Location = new Point(Position.X + Scl.Get(100), Position.Y + Scl.Get(70) + (Scl.Get(10)  + rectangle.Height) * i);
+                rectangle.Location = new Point(Position.X + Scale.Get(100), Position.Y + Scale.Get(70) + (Scale.Get(10)  + rectangle.Height) * i);
                 graphics.DrawRectangle(StringStyle.Pen, rectangle);
                 graphics.FillRectangle(new SolidBrush(Color.LightGray), rectangle);
                 graphics.DrawString(areas[i].text, StringStyle.TextFont, StringStyle.Black, rectangle);
@@ -50,7 +56,7 @@ namespace NewspaperRuler
             GoLeft();
         }
 
-        public void Tick()
+        public void EveryTick()
         {
             Move();
             if (Position.X > -Bitmap.Width / 5)

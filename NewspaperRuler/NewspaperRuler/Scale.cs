@@ -4,10 +4,10 @@ using System.Windows.Forms;
 
 namespace NewspaperRuler
 {
-    public static class Scl
+    public static class Scale
     {
         /// <summary>
-        /// Масшатбный коэффициент
+        /// Масштабный коэффициент
         /// </summary>
         public static double Factor { get; } = Math.Min(
             SystemInformation.PrimaryMonitorMaximizedWindowSize.Width / 1552.0,

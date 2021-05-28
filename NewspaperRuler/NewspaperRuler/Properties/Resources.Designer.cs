@@ -82,8 +82,22 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Content:
+        ///	Фестиваль света уже скоро! 31 сентября на главной площади столицы традиционно состоится одно из самых знаменательных событий страны – фестиваль света: тысячи лампочек будут зажжены в центре города.
+        ///	Из них будут созданы рисунки и картины, которые оценят даже самые искушённые ценители красоты. Да-да, послевоенное время не станет помехой для проведения традиционного праздника. Следите за нам в новостях!
+        ///.
+        /// </summary>
+        internal static string Article1_10 {
+            get {
+                return ResourceManager.GetString("Article1_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 1
         ///Reprimand: 1
+        ///Mistake: PessimisticArticle
         ///Content:
         ///	Огромная часть населения страны голодает из-за отсутствия средств на проживание. Зарегистрированы первые летальные исходы..
         /// </summary>
@@ -96,6 +110,7 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 1
         ///Reprimand: 1
+        ///Mistake: PessimisticArticle
         ///Content:
         ///	В северо-восточном районе страны погиб весь урожай кукурузы вследствие внезапных заморозков. Температура воздуха упала до -17°C..
         /// </summary>
@@ -107,6 +122,7 @@ namespace NewspaperRuler.Properties {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Mistake: PessimisticArticle
         ///Content:
         ///	Прогноз погоды: ожидается облачная погода с редкими просветами солнца, температура воздуха поднимется до +7°C..
         /// </summary>
@@ -119,6 +135,7 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 1
         ///Reprimand: 1
+        ///Mistake: PessimisticArticle
         ///Content:
         ///	В ходе Перестройки планируется урезать права церкви. Священники требует невмешательства правительства в церковную сферу. Разгорелся скандал..
         /// </summary>
@@ -131,6 +148,7 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 1
         ///Reprimand: 1
+        ///Mistake: PessimisticArticle
         ///Content:
         ///	Министерство въезда закроет восточную границу из-за локальных конфликтов со странами Андиплантийской коалиции..
         /// </summary>
@@ -166,6 +184,7 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 1
         ///Reprimand: 1
+        ///Mistake: PessimisticArticle
         ///Content:
         ///	Безопасность страны под серьёзной угрозой: прошедшая война опустошила практически все резервы государства, а страны-агрессоры вольны вновь переступить черту в любой момент..
         /// </summary>
@@ -178,6 +197,8 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 1
         ///Reprimand: 1
+        ///Flag: ArticleOnMassStarvationWasApproved
+        ///Mistake: PessimisticArticle
         ///Title: Безработица убивает
         ///Content:
         ///	Массовый голод из-за отсутствия достаточного количества рабочих мест продолжается. Чиновники отказываются комментировать происходящее..
@@ -191,6 +212,7 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 1
         ///Reprimand: 1
+        ///Mistake: PessimisticArticle
         ///Flag: ArticleOnProhibitionWeaponsWasApproved
         ///Title: Научные достижения не помогут защитить страну
         ///Content:
@@ -200,6 +222,19 @@ namespace NewspaperRuler.Properties {
         internal static string Article2_10 {
             get {
                 return ResourceManager.GetString("Article2_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Фестиваль света
+        ///Content:
+        ///	Подготовка к фестивалю идёт полным ходом. Каждый гражданин может внести свой вклад в организацию главного мероприятия. Мы ждём вас на главной площади: любая помощь не помешает!
+        ///	Фестиваль состоится через 2 дня..
+        /// </summary>
+        internal static string Article2_11 {
+            get {
+                return ResourceManager.GetString("Article2_11", resourceCulture);
             }
         }
         
@@ -231,6 +266,7 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 1
         ///Reprimand: 1
+        ///Mistake: PessimisticArticle
         ///Title: Война или мир?
         ///Content:
         ///	Угроза очередного вторжения войск стран Андиплантийской коалиции с востока усиливается. Министерство безопасности уверяет, что всё под контролем..
@@ -244,6 +280,8 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 1
         ///Reprimand: 1
+        ///Mistake: PessimisticArticle
+        ///Flag: ArticleAboutSalaryDelayWasApproved
         ///Title: Зарплата снова опаздывает
         ///Content:
         ///	В Плиувиле рабочим трижды задержали заработную плату.
@@ -270,6 +308,7 @@ namespace NewspaperRuler.Properties {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Flag: ArticleOnDryRationsWasApproved
         ///Title: Скажем голоду нет!
         ///Content:
         ///	Государство выделит средства на закуп индивидуальных рационов питания, сухих пайков, в расчёте на каждого гражданина страны..
@@ -303,6 +342,206 @@ namespace NewspaperRuler.Properties {
         internal static string Article2_9 {
             get {
                 return ResourceManager.GetString("Article2_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: Cookies банкрот?
+        ///Content:
+        ///	Недавнее исследование независимой частной экспертизы по контролю качества продуктов выявило, что всеми любимое лакомство — сдобное печенье Cookies — содержит в себе токсичные вещества в незначительных количествах вследствие неоднократного нарушения технологии производства и условий хранения.
+        ///	Компания Cookies, которая назвала печенье в свою честь, терпит огромные убытки..
+        /// </summary>
+        internal static string Article3_1 {
+            get {
+                return ResourceManager.GetString("Article3_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Mistake: NoTitle
+        ///Content:
+        ///	Владелец частной аптеки &quot;Таблеточка&quot; приговорена к лишению свободы. Срок не сообщается, но ясно, что надолго.
+        ///	Судя по показаниям очевидцев, она промышляла порошковыми запрещёнными веществами, продавая их под видом лекарства от головной боли..
+        /// </summary>
+        internal static string Article3_10 {
+            get {
+                return ResourceManager.GetString("Article3_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Прогноз погоды в юго-восточных областях
+        ///Content:
+        ///	Поставщиком тёплого воздуха является циклон. Он штурмует юго-восточные границы, но этот тёплый воздух сопровождают осадки: будет сильные дожди.
+        ///	Сегодня температура опустится до -6°С, зато завтра настанет оттепель..
+        /// </summary>
+        internal static string Article3_11 {
+            get {
+                return ResourceManager.GetString("Article3_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Mistake: NoTitle
+        ///Content:
+        ///	На главной площади столицы пройдёт ярмарка фермерских продуктов, выращенных гражданами собственноручно.
+        ///	Администрация города дала разрешение на организацию данного мероприятия..
+        /// </summary>
+        internal static string Article3_12 {
+            get {
+                return ResourceManager.GetString("Article3_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Mistake: PremeditatedMurder
+        ///Title: Происшествие у ТЦ &quot;Сатурн&quot;
+        ///Content:
+        ///	Тело 54-летней женщины обнаружили у торгового центра &quot;Сатурн&quot;.
+        ///	Судя по всему, жертва была убита быстро и жестоко: на теле специалисты нашли по крайне мере 12 ножевых ранений.
+        ///	На месте уже работает следственно-оперативная группа..
+        /// </summary>
+        internal static string Article3_13 {
+            get {
+                return ResourceManager.GetString("Article3_13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Перенос фестиваля света
+        ///Content:
+        ///	Вышел приказ о переносе фестиваля света на 3 октября. Как сообщает Министерство культуры, это связано с накопившимися финансовыми проблемами. Однако традиционный праздник всё же будет проведён, но с опозданием.
+        ///	Фестиваль состоится через 3 дня.
+        ///.
+        /// </summary>
+        internal static string Article3_14 {
+            get {
+                return ResourceManager.GetString("Article3_14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Mistake: War
+        ///Title: Наше будущее под угрозой?
+        ///Content:
+        ///	Несмотря на запрет МАМБА использовать новое оружие массового поражения, военное руководство вопреки этому планирует применить его близ восточной границы в борьбе со странами Андиплантийской коалиции..
+        /// </summary>
+        internal static string Article3_2 {
+            get {
+                return ResourceManager.GetString("Article3_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: Безработица торжествует
+        ///Content:
+        ///	На вопрос о формировании новых рабочих мест в рамках Перестройки правительство дало ответ, что временно приостанавливает данный процесс. Причина неизвестна.
+        ///	Такой поворот событий вызвал большое негодование среди граждан..
+        /// </summary>
+        internal static string Article3_3 {
+            get {
+                return ResourceManager.GetString("Article3_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Mistake: War
+        ///Title: Новая агрессия с севера
+        ///Content:
+        ///	Замечены военные лагеря Убрингстона близ северной границы страны.
+        ///	Похоже, они не сдадутся, пока не отвоюют наше побережье Зелёного моря, которое даёт безграничные возможности для прокладывания морских торговых путей к большинству северным странам..
+        /// </summary>
+        internal static string Article3_4 {
+            get {
+                return ResourceManager.GetString("Article3_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Mistake: War
+        ///Title: Вас не забудем.
+        ///Content:
+        ///	Продолжающиеся военные конфликты близ восточной границы унесли жизни 289 человек..
+        /// </summary>
+        internal static string Article3_5 {
+            get {
+                return ResourceManager.GetString("Article3_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Mistake: War
+        ///Title: Новые поборы?
+        ///Content:
+        ///	На формирование новой армии ушли средства, которые составляли очередные внеплановые налоги с граждан.
+        ///	У людей, не имевших денежных средств, изымали продукты питания и одежду.
+        ///	Армия отправится на подкрепление в борьбе со странами Андиплантийской коалиции..
+        /// </summary>
+        internal static string Article3_6 {
+            get {
+                return ResourceManager.GetString("Article3_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Mistake: War
+        ///Title: Безопасность страны — превыше всего
+        ///Content:
+        ///	Министерство безопасности старается удерживать агрессоров за чертой страны, однако военные конфликты только усиливаются.
+        ///	Вероятно, именно это стало весомой причиной внеплановых поборов и затягивания с программой Перестройки..
+        /// </summary>
+        internal static string Article3_7 {
+            get {
+                return ResourceManager.GetString("Article3_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Mistake: War
+        ///Title: Дефицит муки
+        ///Content:
+        ///	Доставка импортной муки в пункты продажи прекратилась в связи с дорогой, проходящей через горячую точку военных конфликтов близ восточной границы.
+        ///	Покупатели в панике разбирают оставшуюся муку с полок магазинов.
+        ///	Однако фирма &quot;Cake is Fake&quot; спешит всех успокоить: руководство компании планирует начало строительства фабрик по производству муки по всей стране. Закупочную цену товара пока не сообщают..
+        /// </summary>
+        internal static string Article3_8 {
+            get {
+                return ResourceManager.GetString("Article3_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Mistake: War
+        ///Title: Философская дискуссия &quot;Привет из прошлого&quot;
+        ///Content:
+        ///	Почему именно наша страна находится под прицелом других стран? В чём причина военных конфликтов, не дающих нам спокойно жить уже на протяжении 5 лет? И есть ли вообще такая причина?
+        ///	Может, мы им просто не нравимся?  А может, мы лишняя пешка на международной арене?
+        ///	Обо всём этом поговорим в сегодняшней документально-исследовательской статье &quot;Привет из прошлого&quot;..
+        /// </summary>
+        internal static string Article3_9 {
+            get {
+                return ResourceManager.GetString("Article3_9", resourceCulture);
             }
         }
         
@@ -354,11 +593,42 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на № 34.10. Отклонять статьи пессимистического характера
+        ///№ 34.11. Отклонять статьи без заголовка.
+        /// </summary>
+        internal static string DecreesLevel2 {
+            get {
+                return ResourceManager.GetString("DecreesLevel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на № 34.11. Отклонять статьи без заголовка
+        ///№ 34.12. Отклонять статьи с упоминаниями о войне
+        ///№ 34.13. Отклонять статьи об умышленных убийствах.
+        /// </summary>
+        internal static string DecreesLevel3 {
+            get {
+                return ResourceManager.GetString("DecreesLevel3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream Error {
             get {
                 return ResourceManager.GetStream("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Font {
+            get {
+                object obj = ResourceManager.GetObject("Font", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

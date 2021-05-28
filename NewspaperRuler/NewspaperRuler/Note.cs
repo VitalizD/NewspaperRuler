@@ -9,31 +9,33 @@ namespace NewspaperRuler
 
         public GraphicObject Background { get; }
         public string Flag { get; }
+        public int NumberInQueue { get; }
         public Label ContinueButton { get; }
         public Label PositiveOption { get; }
         public Label NegativeOption { get; }
         public string PositiveMessage { get; }
         public string NegativeMessage { get; }
 
-        public Note(GraphicObject background, string text, string continueButton)
+        public Note(GraphicObject background, string text, string continueButton, int numberInQueue = -1)
         {
             this.text = text;
             Background = background;
+            NumberInQueue = numberInQueue;
             if (continueButton != null)
-                this.ContinueButton = GetOption(continueButton, new Size(Scl.Get(300), Scl.Get(50)),
-                    new Point(Scl.Resolution.Width / 2 - Scl.Get(150), Scl.Resolution.Height - Scl.Get(60)));
+                this.ContinueButton = GetOption(continueButton, new Size(Scale.Get(300), Scale.Get(50)),
+                    new Point(Scale.Resolution.Width / 2 - Scale.Get(150), Scale.Resolution.Height - Scale.Get(60)));
         }
 
-        public Note(GraphicObject background, string text, string positiveOption, string negativeOption, string positiveMessage, string negativeMessage, string flag)
-            : this(background, text, null)
+        public Note(GraphicObject background, string text, string positiveOption, string negativeOption, string positiveMessage, string negativeMessage, string flag, int numberInQueue = -1)
+            : this(background, text, null, numberInQueue)
         {
             Flag = flag;
             PositiveMessage = positiveMessage;
             NegativeMessage = negativeMessage;
-            this.PositiveOption = GetOption(positiveOption, new Size(Scl.Get(300), Scl.Get(50)),
-                new Point(Scl.Resolution.Width / 2 - Scl.Get(305), Scl.Resolution.Height - Scl.Get(60)));
-            this.NegativeOption = GetOption(negativeOption, new Size(Scl.Get(300), Scl.Get(50)),
-                new Point(Scl.Resolution.Width / 2 + Scl.Get(5), Scl.Resolution.Height - Scl.Get(60)));
+            this.PositiveOption = GetOption(positiveOption, new Size(Scale.Get(300), Scale.Get(50)),
+                new Point(Scale.Resolution.Width / 2 - Scale.Get(305), Scale.Resolution.Height - Scale.Get(60)));
+            this.NegativeOption = GetOption(negativeOption, new Size(Scale.Get(300), Scale.Get(50)),
+                new Point(Scale.Resolution.Width / 2 + Scale.Get(5), Scale.Resolution.Height - Scale.Get(60)));
         }
 
         private Label GetOption(string text, Size size, Point position)
@@ -43,7 +45,7 @@ namespace NewspaperRuler
                 Text = text,
                 Size = size,
                 Location = position,
-                Font = StringStyle.TitleFont,
+                Font = new Font(StringStyle.FontName, Scale.Get(20), FontStyle.Bold),
                 ForeColor = Color.Brown,
                 BackColor = Color.White,
                 BorderStyle = BorderStyle.FixedSingle,
@@ -54,7 +56,7 @@ namespace NewspaperRuler
         public void Paint(Graphics graphics)
         {
             graphics.DrawString(text, StringStyle.TextFont, StringStyle.Black, new Rectangle(
-                Background.Position + new Size(Scl.Get(30), Scl.Get(30)), Background.Bitmap.Size - new Size(Scl.Get(60), Scl.Get(60))));
+                Background.Position + new Size(Scale.Get(30), Scale.Get(30)), Background.Bitmap.Size - new Size(Scale.Get(60), Scale.Get(60))));
         }
 
         public void HideButtons(Control.ControlCollection controls)

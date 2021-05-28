@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
@@ -8,14 +9,14 @@ namespace NewspaperRuler
 {
     public class Stats
     {
-        public static GraphicObject NoteBackground { get; set; }
+        public GraphicObject NoteBackground { get; set; }
         public static string MonetaryCurrencyName { get; } = "ТОКЕНОВ";
 
         private int degreeGovernmentAnger = 0;
         private int rentDebts = 0;
         private int productsDebts = 0;
 
-        private DateTime date = new DateTime(1981, 9, 27);
+        private DateTime date = new DateTime(1987, 9, 27);
         private int money;
         private readonly DayEnd dayEnd;
 
@@ -44,18 +45,28 @@ namespace NewspaperRuler
         {
             Money = money;
             this.dayEnd = dayEnd;
+            NoteBackground = new GraphicObject(Properties.Resources.NoteBackground1, 750, 1000, 125);
             EventFlags = new List<Dictionary<string, bool>>
             {
                 new Dictionary<string, bool>
                 {
                     ["MinistryIsSatisfied"] = false,
-                    ["ArticleAboutChampionWasApproved"] = false
+                    ["ArticleAboutChampionWasApproved"] = false,
                 },
                 new Dictionary<string, bool>
                 {
                     ["MinistryIsSatisfied"] = false,
                     ["ArticleOnProhibitionWeaponsWasApproved"] = false,
-                    ["MainCharacterWasOnDate"] = false
+                    ["MainCharacterWasOnDate"] = false,
+                    ["ArticleOnMassStarvationWasApproved"] = false,
+                    ["ArticleOnDryRationsWasApproved"] = false,
+                    ["ArticleAboutSalaryDelayWasApproved"] = false,
+                    ["SalaryIncreased"] = false
+
+                },
+                new Dictionary<string, bool>
+                {
+                    ["MinistryIsSatisfied"] = false,
                 }
             };
         }
@@ -73,8 +84,8 @@ namespace NewspaperRuler
         {
             date = date.AddDays(1);
             Level = new LevelData(CreateNotes(), ArticleConstructor.ArticlesByLevel[LevelNumber - 1]);
-            var introduction = GetIntroduction();
-            if (introduction != null) Level.AddIntroduction(introduction);
+            CreateIntroduction();
+            Level.BuildEventQueue();
         }
 
         public void FinishLevel() => UpdateStatistics();
@@ -123,14 +134,57 @@ namespace NewspaperRuler
                         notes.Add(new Note(NoteBackground, text, "OK"));
                         break;
                     }
+                case 3:
+                    {
+                        var text = new StringBuilder("\tСегодня мы, обычные люди, запускаем собственную газету, которая будет повествовать о РЕАЛЬНЫХ событиях в стране, а не о" +
+                            " бессовестной лжи, которую забивают в наши головы чиновники.");
+                        if (!EventFlags[1]["ArticleOnMassStarvationWasApproved"])
+                            text.Append("\n\tПочему нам не рассказывают о массовом голоде, охватившем всю страну?");
+                        if (!EventFlags[1]["ArticleAboutSalaryDelayWasApproved"])
+                            text.Append("\n\tПочему от нас скрыли информацию о задержке зарплаты в Плиувиле?");
+                        if (!EventFlags[1]["ArticleOnMassStarvationWasApproved"] || !EventFlags[1]["ArticleAboutSalaryDelayWasApproved"])
+                            text.Append(" Да-да, мы об этом знаем и без гос. газеты.");
+                        text.Append("\n\n\tПосмотрите на здание мэрии столицы — на нём же отчётливо кто-то написал \"Лжецы!\"." +
+                            "\n\n\tНаша маленькая редакция будет работать в скрытном режиме. Просим не разглашать сведения о нашем существовании правительственным органам.");
+                        notes.Add(new Note(NoteBackground, text.ToString(), "OK", 0));
+
+                        text.Clear();
+                        text.Append("\tИ снова привет, красавчик!");
+                        if (EventFlags[1]["MainCharacterWasOnDate"])
+                            text.Append("\n\n\tПомнишь нашу с тобой встречу в баре? У тебя был такой удивлённый взгляд... " +
+                                "Жаль, что встреча так быстро завершилась, ведь ты почему-то поспешил уйти. " +
+                                "Предлагаю встретиться повторно, но уже с обсуждением ближайшего будущего твоей семьи. ");
+                        else text.Append("\n\n\tНетрудно было догадаться, что мне не стоило рассчитывать на нашу встречу в баре. " +
+                            "Что ж, у меня есть предложение, которое тебя точно заинтересует. Оно касается ближайшего будущего твоей семьи. " +
+                            "Предлагаю обсудить это наедине.");
+                        text.Append("\n\n\tЯ вольна переселить всех вас в роскошные апартаменты, обеспечить достойной работой и, о да, я много чего ещё могу. " +
+                            "Но взамен я бы хотела получить кое-что. Дай знать, когда будешь готов прийти." +
+                            "\n\n\tЧао!");
+                        notes.Add(new Note(NoteBackground, text.ToString(), "OK"));
+
+                        text.Clear();
+                        text.Append("\tЗдравствуй, дорогой!");
+                        if (EventFlags[1]["ArticleOnDryRationsWasApproved"])
+                            text.Append("\n\n\tЯ видела опубликованную тобой новость о том, что всем выдадут индивидуальный рацион питания. И это случилось! " +
+                                "Сегодня на почте мне действительно выдали 2 сухих пайка.");
+                        else text.Append("\n\n\tСоседка сообщила, что на почте каждого ждёт индивидуальный рацион питания от государства. " +
+                            "Я не видела эту новость в газете, и, если бы не соседка, я бы так и не узнала. На почте мне действительно выдали 2 сухих пайка.");
+                        text.Append("\n\tНо, к великому сожалению, этого хватит лишь на пару дней. Я по-прежнему не могу найти работу. Я неоднократно посылала " +
+                            "письма с жалобами в администрацию города. Мне ответили, что создание рабочих мест в процессе. Но пока их создают, не знаю, как долго мы протянем..." +
+                            "\n\n\tЗавтра у Тимоши первый экзамен. Будем держать за него ручки. Это очень важно, ведь " +
+                            "отличные результаты позволят ему поступить в высшую академию." +
+                            "\n\n\tЦелую, твоя любимая жена.");
+                        notes.Add(new Note(NoteBackground, text.ToString(), "OK"));
+                        break;
+                    }
             }
             return notes;
         }
 
-        private Article GetIntroduction()
+        private void CreateIntroduction()
         {
             var text = new StringBuilder();
-            var title = "";
+            var order = 0;
             switch (LevelNumber)
             {
                 case 1:
@@ -141,7 +195,6 @@ namespace NewspaperRuler
                         "\n\n\tПеретаскивайте ШТАМПЫ на бумагу, чтобы сделать выбор." +
                         "\n\n\tС уважением," +
                         "\n\tМинистерство цензуры и печати");
-                    title = date.ToString("D");
                     break;
                 case 2:
                     text.Append("\tЗдравствуйте, редактор!");
@@ -157,11 +210,38 @@ namespace NewspaperRuler
                         "\n\n\tОбращайте внимание на информацию о ПОГОДЕ: граждане любят знать точные прогнозы." +
                         "\n\n\tС уважением," +
                         "\n\tМинистерство цензуры и печати");
-                    title = date.ToString("D");
+                    break;
+                case 3:
+                    text.Append("\tЗдравствуйте, редактор!");
+                    if (!EventFlags[1]["MinistryIsSatisfied"])
+                        text.Append("\n\n\tМы недовольны Вашей работой. Ваша задача состояла в публикации исключительно статей " +
+                            "позитивного характера, но Вы с ней не справились.");
+                    text.Append("\n\n\tВероятно, Вы слышали о художестве проказников на стенах мэрии. Это недопустимо. " +
+                        "Люди хотят слышать правду. Приказ №34.10 утрачивает свою силу: Вы можете публиковать статьи пессимистического характера. " +
+                        "Однако мы не имеем права разглашать информацию о ходе военных конфликтов на границе, иначе у нас будут серьёзные проблемы. " +
+                        "Пожалуйста, не забудьте проверить перечень приказов.");
+                    if (!EventFlags[1]["ArticleOnProhibitionWeaponsWasApproved"])
+                    {
+                        text.Append("\n\n\tМы, несомненно, признательны Вам в том, что Вы не допустили к публикации новость о наставлениях МАМБА. " +
+                            "Министерство безопасности планирует пусть новое оружие в ход. Просим продолжать держать это в секрете.");
+                        if (EventFlags[1]["MinistryIsSatisfied"])
+                        {
+                            text.Append($"\n\tВы хорошо поработали. Ваша зарплата будет увеличена на 100 {MonetaryCurrencyName}");
+                            EventFlags[1]["SalaryIncreased"] = true;
+                        }
+                    }
+                    else
+                        text.Append("\n\n\tОпубликованная Вами новость о наставлениях МАМБА создало нам много проблем, ведь  " +
+                            "Министерство военных дел планирует пусть новое оружие в ход. Пожалуйста, держите это в секрете.");
+                        text.Append("\n\n\tНе забывайте проверять наличие ЗАГОЛОВКА в статьях." +
+                        "\n\n\tС уважением," +
+                        "\n\tМинистерство цензуры и печати");
+                    order = 1;
                     break;
             }
-            if (text.ToString() == "") return null;
-            return new Article(ArticleConstructor.ArticleBackground, text.ToString(), title);
+            if (text.ToString() == "") return;
+            var title = date.ToString("D");
+            Level.Insert(order, new Article(ArticleConstructor.ArticleBackground, text.ToString(), title, order));
         }
 
         private void UpdateStatistics()
@@ -174,14 +254,14 @@ namespace NewspaperRuler
                     EventFlags[LevelNumber - 1]["MinistryIsSatisfied"] = true;
                 }
             }
-            else degreeGovernmentAnger++;
+            else degreeGovernmentAnger += Level.ReprimandScore - 1;
 
             Loyality += Level.Loyality;
             Money += Level.Salary - Level.GetTotalFine();
 
             LevelNumber++;
 
-            dayEnd.InformationTexts.Add(GetLabel(GetWarnings()));
+            CreateWarnings();
 
             dayEnd.StatsTexts.Add(GetLabel($"Лояльность граждан:\t\t{Loyality}"));
             dayEnd.StatsTexts.Add(GetLabel($"Зарплата:\t\t{Level.Salary}"));
@@ -206,6 +286,21 @@ namespace NewspaperRuler
                         dayEnd.StatsTexts.Add(GetLabel($"Посещение бара \"Алый цветок\":\t\t-30"));
                     }
                     break;
+                case 3:
+                    if (EventFlags[0]["ArticleAboutChampionWasApproved"])
+                    {
+                        Money -= 50;
+                        dayEnd.StatsTexts.Add(GetLabel($"Штраф от Министерства социальной защиты:\t\t-50"));
+                        dayEnd.InformationTexts.Add(GetLabel("Министерство социальной защиты налагает штраф за нарушение"));
+                        dayEnd.InformationTexts.Add(GetLabel("неприкосновенности частной жизни гражданки Галины Руш."));
+                    }
+                    if (EventFlags[1]["SalaryIncreased"])
+                    {
+                        Money += 100;
+                        dayEnd.StatsTexts.Add(GetLabel($"Бонус к зарплате:\t\t100"));
+                        dayEnd.InformationTexts.Add(GetLabel("Ваша сегодняшняя зарплата увеличена за хорошую работу."));
+                    }
+                    break;
             }
             dayEnd.StatsTexts.Add(GetLabel($"Итого:\t\t{Money} {MonetaryCurrencyName}"));
 
@@ -221,25 +316,26 @@ namespace NewspaperRuler
                     Text = text,
                     ForeColor = Color.White,
                     Font = StringStyle.TitleFont,
-                    AutoSize = true
+                    AutoSize = true,
                 };
             }
 
-            string GetWarnings()
+            void CreateWarnings()
             {
-                var information = new StringBuilder();
+                if (degreeGovernmentAnger == 3 || degreeGovernmentAnger == 4)
+                    dayEnd.InformationTexts.Add(GetLabel("Руководство ищет нового кандидата на Ваше место."));
+                if (degreeGovernmentAnger == 1 || degreeGovernmentAnger == 2)
+                    dayEnd.InformationTexts.Add(GetLabel("Руководство недовольно Вашей работой. Не забывайте об обязательных приказах."));
 
-                if (degreeGovernmentAnger == 2)
-                    information.Append("Руководство недовольно Вашей работой и ищет нового кандидата на Ваше место. ");
+                if (productsDebts == 1)
+                    dayEnd.InformationTexts.Add(GetLabel("Вы голодны."));
+                else if (productsDebts == 2)
+                    dayEnd.InformationTexts.Add(GetLabel("Вы умираете с голоду."));
 
-                if (productsDebts == 1) information.Append("Вы голодны. ");
-                else if (productsDebts == 2) information.Append("Вы умираете с голоду. ");
-
-                if (rentDebts >= 2 && rentDebts <= 3) information.Append("У Вас остались неоплаченные долги по счетам. ");
-                else if (rentDebts >= 4 && rentDebts <= 5) information.Append("Коммунальное хозяйство " +
-                    "выселит Вас из квартиры, если Вы не закроете долги по счетам. ");
-
-                return information.ToString();
+                if (rentDebts == 1 || rentDebts == 2)
+                    dayEnd.InformationTexts.Add(GetLabel("У Вас остались неоплаченные долги по счетам."));
+                else if (rentDebts == 3 || rentDebts == 4)
+                    dayEnd.InformationTexts.Add(GetLabel("Коммунальное хозяйство собирается выселить Вас из квартиры."));
             }
         }
 
@@ -253,6 +349,21 @@ namespace NewspaperRuler
             }
             if (rentDebts > 0) rentDebts--;
             if (productsDebts > 0) productsDebts--;
+        }
+
+        public string[] GetDecrees()
+        {
+            var result = new List<string>();
+            if (!File.Exists($"Decrees\\DecreesLevel{LevelNumber}.txt"))
+                return new string[0];
+            var reader = new StreamReader($"Decrees\\DecreesLevel{LevelNumber}.txt");
+            var line = reader.ReadLine();
+            while (line != null)
+            {
+                result.Add(line);
+                line = reader.ReadLine();
+            }
+            return result.ToArray();
         }
     }
 }

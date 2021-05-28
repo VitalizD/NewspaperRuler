@@ -124,6 +124,9 @@
   <data name="Article1_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Articles\Level1\Article1_1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="Article1_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level1\Article1_10.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Article1_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Articles\Level1\Article1_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -154,6 +157,9 @@
   <data name="Article2_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Articles\Level2\Article2_10.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="Article2_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level2\Article2_11.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Article2_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Articles\Level2\Article2_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -178,6 +184,48 @@
   <data name="Article2_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Articles\Level2\Article2_9.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="Article3_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level3\Article3_1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article3_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level3\Article3_10.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article3_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level3\Article3_11.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article3_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level3\Article3_12.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article3_13" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level3\Article3_13.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article3_14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level3\Article3_14.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article3_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level3\Article3_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article3_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level3\Article3_3.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article3_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level3\Article3_4.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article3_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level3\Article3_5.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article3_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level3\Article3_6.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article3_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level3\Article3_7.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article3_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level3\Article3_8.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article3_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level3\Article3_9.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -193,8 +241,17 @@
   <data name="ChooseOption" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Sounds\ChooseOption.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="DecreesLevel2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Decrees\DecreesLevel2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DecreesLevel3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Decrees\DecreesLevel3.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Error" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Sounds\Error.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Font" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Font.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Frame" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Frame.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

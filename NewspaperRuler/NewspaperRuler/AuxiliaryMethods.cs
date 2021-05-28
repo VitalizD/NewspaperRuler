@@ -1,11 +1,12 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace NewspaperRuler
 {
     public static class AuxiliaryMethods
     {
-        public static bool IsClickedOnArea(Point mouseLocation, Point position, Size size) =>
-            mouseLocation.X >= position.X && mouseLocation.X <= position.X + size.Width
-            && mouseLocation.Y >= position.Y && mouseLocation.Y <= position.Y + size.Height;
+        public static bool IsClickedOnArea(Rectangle area) =>
+            Cursor.Position.X >= area.X && Cursor.Position.X <= area.X + area.Width
+            && Cursor.Position.Y >= area.Y && Cursor.Position.Y <= area.Y + area.Height;
     }
 }

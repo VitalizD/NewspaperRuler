@@ -25,10 +25,10 @@ namespace NewspaperRuler
             this.cost = cost;
             Type = type;
             Selector = new ElementControl(name, Properties.Resources.SwitchOff, selectorSize.Width, selectorSize.Height);
-            Selector.SetTextAreaSize(new Size(Scl.Get(1400), Scl.Get(50)));
+            Selector.SetTextAreaSize(new Size(Scale.Get(1400), Scale.Get(50)));
             mark.URL = @"Sounds\ChooseOption.wav";
             cancel.URL = @"Sounds\Cancel.wav";
-            error.URL = @"Sounds\Error.mp3";
+            error.URL = @"Sounds\Error.wav";
             error.settings.volume = 50;
             error.close();
             mark.close();
@@ -37,14 +37,14 @@ namespace NewspaperRuler
 
         public void Paint(Graphics graphics) => Selector.Paint(graphics);
 
-        public void SetMark(ref int money)
+        public int SetMark(int money)
         {
             if (Marked)
             {
                 Marked = false;
                 cancel.controls.play();
-                Selector.Bitmap = new Bitmap(Properties.Resources.SwitchOff, Scl.Get(selectorSize.Width), Scl.Get(selectorSize.Height));
-                money += cost;
+                Selector.Bitmap = new Bitmap(Properties.Resources.SwitchOff, Scale.Get(selectorSize.Width), Scale.Get(selectorSize.Height));
+                return cost;
             }
             else
             {
@@ -52,10 +52,11 @@ namespace NewspaperRuler
                 {
                     Marked = true;
                     mark.controls.play();
-                    Selector.Bitmap = new Bitmap(Properties.Resources.SwitchOn, Scl.Get(selectorSize.Width), Scl.Get(selectorSize.Height));
-                    money -= cost;
+                    Selector.Bitmap = new Bitmap(Properties.Resources.SwitchOn, Scale.Get(selectorSize.Width), Scale.Get(selectorSize.Height));
+                    return -cost;
                 }
                 else error.controls.play();
+                return 0;
             }
         }
     }

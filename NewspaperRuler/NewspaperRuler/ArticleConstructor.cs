@@ -12,17 +12,18 @@ namespace NewspaperRuler
 
         public static GraphicObject ArticleBackground { get; set; }
 
-        public static void Initialize()
+        static ArticleConstructor()
         {
+            ArticleBackground = new GraphicObject(Properties.Resources.Paper, 720, 970, 125);
             ArticlesByLevel = Directory.GetDirectories("Articles")
-                .Select(level => GetArticlesFromDirectory(level))
+                .Select(GetArticlesFromDirectory)
                 .ToList();
         }
 
         private static List<Article> GetArticlesFromDirectory(string directory)
         {
             return Directory.GetFiles(directory)
-                .Select(file => ReadArticle(file))
+                .Select(ReadArticle)
                 .ToList();
         }
 
@@ -35,6 +36,7 @@ namespace NewspaperRuler
             var reprimandScore = 0;
             var mistake = Mistake.None;
             var flag = "";
+            var numberInQueue = -1;
             while (true)
             {
                 var line = reader.ReadLine();
@@ -56,6 +58,7 @@ namespace NewspaperRuler
                             case "Content": flagContent = true; break;
                             case "Mistake": Enum.TryParse(remainingPart, out mistake); break;
                             case "Flag": flag = remainingPart; break;
+                            case "Order": numberInQueue = int.Parse(remainingPart); break;
                             default: throw new ArgumentException($"This tag doesn't exist: {tag}");
                         }
                         break;
@@ -66,7 +69,7 @@ namespace NewspaperRuler
                 if (flagContent) break;
             }
             var text = reader.ReadToEnd();
-            return new Article(ArticleBackground, text, title, genre, mistake, loyality, reprimandScore, flag);
+            return new Article(ArticleBackground, text, title, genre, mistake, loyality, reprimandScore, flag, numberInQueue);
         }
     }
 }

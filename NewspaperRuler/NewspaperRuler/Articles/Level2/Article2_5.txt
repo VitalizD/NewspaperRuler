@@ -1,5 +1,7 @@
 Loyality: 1
 Reprimand: 1
+Mistake: PessimisticArticle
+Flag: ArticleAboutSalaryDelayWasApproved
 Title: Зарплата снова опаздывает
 Content:
 	В Плиувиле рабочим трижды задержали заработную плату.

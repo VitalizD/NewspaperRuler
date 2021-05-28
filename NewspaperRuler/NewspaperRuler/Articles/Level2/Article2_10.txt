@@ -1,5 +1,6 @@
 Loyality: 1
 Reprimand: 1
+Mistake: PessimisticArticle
 Flag: ArticleOnProhibitionWeaponsWasApproved
 Title: Научные достижения не помогут защитить страну
 Content:

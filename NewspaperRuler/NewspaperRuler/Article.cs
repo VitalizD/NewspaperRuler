@@ -13,40 +13,35 @@ namespace NewspaperRuler
         public int Loyality { get; }
         public int ReprimandScore { get; }
         public string Flag { get; }
+        public int NumberInQueue { get; }
 
-        public Article(GraphicObject background, string text, string title, string genre, Mistake mistake, int loyality, int reprimandScore, string flag)
+        /// <param name="numberInQueue">Укажите -1, чтобы установить случайное место в очереди.</param>
+        public Article(GraphicObject background, string text, string title, string genre, Mistake mistake, int loyality, int reprimandScore, string flag, int numberInQueue)
         {
             Background = background;
-            this.Text = text;
-            this.Title = title;
-            this.Genre = genre;
+            Text = text;
+            Title = title;
+            Genre = genre;
             Mistake = mistake;
             Loyality = loyality;
             ReprimandScore = reprimandScore;
             Flag = flag;
+            NumberInQueue = numberInQueue;
         }
 
-        public Article(GraphicObject background, string text) : this(background, text, "", "", Mistake.None, 0, 0, "") { }
-        public Article(GraphicObject background, string text, Mistake mistake) : this(background, text, "", "", mistake, 0, 0, "") { }
-        public Article(GraphicObject background, string text, string title) : this(background, text, title, "", Mistake.None, 0, 0, "") { }
-        public Article(GraphicObject background, string text, string title, Mistake mistake) : this(background, text, title, "", mistake, 0, 0, "") { }
-        public Article(GraphicObject background, string text, string title, string genre) : this(background, text, title, genre, Mistake.None, 0, 0, "") { }
-        public Article(GraphicObject background, string text, string title, string genre, Mistake mistake) : this(background, text, title, genre, mistake, 0, 0, "") { }
-        public Article(GraphicObject background, string text, string title, string genre, int loyality) : this(background, text, title, genre, Mistake.None, loyality, 0, "") { }
-        public Article(GraphicObject background, string text, string title, string genre, int loyality, int reprimandScore) : this(background, text, title, genre, Mistake.None, loyality, reprimandScore, "") { }
-        public Article(GraphicObject background, string text, int loyality) : this(background, text, null, null, Mistake.None, loyality, 0, "") { }
-        public Article(GraphicObject background, string text, string title, int loyality) : this(background, text, title, "", Mistake.None, loyality, 0, "") { }
+        public Article(GraphicObject background, string text, string title, int numberInQueue) 
+            : this(background, text, title, "", Mistake.None, 0, 0, "", numberInQueue) { }
 
         public void Paint(Graphics graphics)
         {
             graphics.DrawString(Text, StringStyle.TextFont, StringStyle.Black, new Rectangle(
-                Background.Position + new Size(Scl.Get(30), Scl.Get(160)), Background.Bitmap.Size - new Size(60, 100)));
+                Background.Position + new Size(Scale.Get(30), Scale.Get(160)), Background.Bitmap.Size - new Size(60, 120)));
             if (Title != null)
                 graphics.DrawString(Title, StringStyle.TitleFont, StringStyle.Black, new Rectangle(
-                    Background.Position + new Size(Scl.Get(30), Scl.Get(70)), new Size(Background.Bitmap.Width - Scl.Get(90), Scl.Get(100))), 
+                    Background.Position + new Size(Scale.Get(30), Scale.Get(70)), new Size(Background.Bitmap.Width - Scale.Get(90), Scale.Get(100))), 
                     new StringFormat { Alignment = StringAlignment.Center });
         }
 
-        public string ExtractBeginning() => Text.Substring(0, Scl.Get(55));
+        public string ExtractBeginning() => Text.Substring(0, Scale.Get(55));
     }
 }

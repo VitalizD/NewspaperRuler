@@ -4,25 +4,22 @@ using System.Windows.Forms;
 
 namespace NewspaperRuler
 {
-    public class Stamp
+    public class Stamp : GraphicObject
     {
-        public Bitmap Bitmap { get; }
-        public Point Position { get; set; }
         private Point initialPosition;
         private bool isDraggable = false;
 
-        public Stamp(Bitmap bitmap, Point position)
+        public Stamp(Image image, int width, int height, Point position) 
+            : base(image, width, height, position)
         {
             initialPosition = position;
-            Position = position;
-            Bitmap = bitmap;
         }
 
-        public Stamp(Bitmap bitmap) : this(bitmap, Form1.Beyond) { }
+        public Stamp(Image image, int width, int height) : this(image, width, height, Form1.Beyond) { }
 
-        public void MouseDown(MouseEventArgs e, Action playSound)
+        public void MouseDown(Action playSound)
         {
-            if (CursorOnStamp(e))
+            if (CursorOnStamp())
             {
                 playSound();
                 isDraggable = true;
@@ -41,8 +38,6 @@ namespace NewspaperRuler
                 Position = new Point(Cursor.Position.X - Bitmap.Width / 2, Cursor.Position.Y - Bitmap.Height / 2);
         }
 
-        public void Paint(Graphics graphics) => graphics.DrawImage(Bitmap, Position);
-
         public bool OnPaper(GraphicObject paper) =>
             Position.X >= paper.Position.X + Bitmap.Width / 4
             && Position.X <= paper.Position.X + paper.Bitmap.Width - Bitmap.Width
@@ -54,14 +49,15 @@ namespace NewspaperRuler
              Position = initialPosition;
         }
 
-        public void MoveToInitialPosition(MouseEventArgs e, Action playSound)
+        public void Return(Action playSound)
         {
-            if (!CursorOnStamp(e)) return;
+            if (!CursorOnStamp()) return;
             SetInitialPosition();
             playSound();
         }
 
-        private bool CursorOnStamp(MouseEventArgs e) => AuxiliaryMethods.IsClickedOnArea(e.Location, Position, Bitmap.Size);
+        private bool CursorOnStamp() 
+            => AuxiliaryMethods.IsClickedOnArea(new Rectangle(Position, Bitmap.Size));
 
         public void SetPosition(Point value)
         {

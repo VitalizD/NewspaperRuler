@@ -22,7 +22,7 @@ namespace NewspaperRuler
             : base(image, width, height, zoom)
         {
             this.Description = description;
-            textAreaSize = new Size(Scl.Get(200), Scl.Get(300));
+            textAreaSize = new Size(Scale.Get(200), Scale.Get(300));
             Hide();
         }
 
@@ -57,7 +57,7 @@ namespace NewspaperRuler
         }
 
         public bool CursorIsHovered() =>
-            AuxiliaryMethods.IsClickedOnArea(Cursor.Position, Position, Bitmap.Size);
+            AuxiliaryMethods.IsClickedOnArea(new Rectangle(Position, Bitmap.Size));
 
         public void PlaySound()
         {

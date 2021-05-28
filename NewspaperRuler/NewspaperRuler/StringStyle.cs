@@ -5,7 +5,7 @@ namespace NewspaperRuler
 {
     public static class StringStyle
     {
-        private static FontFamily fontFamily;
+        private readonly static FontFamily fontFamily;
 
         public static string FontName { get; } = "Bookman Old Style";
         public static Font TextFont { get; private set; }
@@ -15,14 +15,14 @@ namespace NewspaperRuler
         public static SolidBrush White { get; } = new SolidBrush(Color.White);
         public static Pen Pen { get; } = new Pen(Color.Black);
 
-        public static void Initialize()
+        static StringStyle()
         {
             var fontCollection = new PrivateFontCollection();
-            fontCollection.AddFontFile(@"7784.ttf"); 
+            fontCollection.AddFontFile(@"font.ttf"); 
             fontFamily = fontCollection.Families[0];
-            TextFont = new Font(fontFamily, Scl.Get(16));
-            TitleFont = new Font(fontFamily, Scl.Get(20), FontStyle.Bold);
-            BigFont = new Font(fontFamily, Scl.Get(23));
+            TextFont = new Font(fontFamily, Scale.Get(16));
+            TitleFont = new Font(fontFamily, Scale.Get(20), FontStyle.Bold);
+            BigFont = new Font(fontFamily, Scale.Get(23));
         }
     }
 }

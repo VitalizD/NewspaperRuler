@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace NewspaperRuler
 {
-    public class DayEnd
+    public class DayEnd : IUserInterface
     {
         public List<Label> StatsTexts { get; } = new List<Label>();
 
@@ -19,7 +19,7 @@ namespace NewspaperRuler
         private readonly Control.ControlCollection controls;
         private readonly Sounds sounds;
 
-        private int waitBeforeShowingNextText = 0;
+        private readonly Waiting showNextText;
 
         private bool animationIsProgress;
 
@@ -30,6 +30,7 @@ namespace NewspaperRuler
         {
             this.sounds = sounds;
             this.controls = controls;
+            showNextText = new Waiting(Print);
             continueButton = new Label
             {
                 Text = "СЛЕДУЮЩИЙ ДЕНЬ",
@@ -37,25 +38,25 @@ namespace NewspaperRuler
                 ForeColor = Color.White,
                 BorderStyle = BorderStyle.FixedSingle,
                 TextAlign = ContentAlignment.MiddleCenter,
-                Size = new Size(Scl.Get(400), Scl.Get(50))
+                Size = new Size(Scale.Get(400), Scale.Get(50))
             };
-            continueButton.Location = new Point(Scl.Resolution.Width / 2 - Scl.Get(continueButton.Width / 2), Scl.Resolution.Height - continueButton.PreferredHeight - Scl.Get(20));
+            continueButton.Location = new Point(Scale.Resolution.Width / 2 - Scale.Get(continueButton.Width / 2), Scale.Resolution.Height - continueButton.PreferredHeight - Scale.Get(20));
         }
 
         public void CreateEventClickOnContinue(MouseEventHandler clickEvent) => continueButton.MouseDown += clickEvent;
 
         public void RecalculatePositions()
         {
-            var x = Scl.Get(100);
-            var y = Scl.Get(80);
+            var x = Scale.Get(100);
+            var y = Scale.Get(80);
             Change(InformationTexts);
-            y += Scl.Get(50);
+            y += Scale.Get(30);
             Change(StatsTexts);
-            y += Scl.Get(50);
+            y += Scale.Get(30);
             for (var i = 0; i < Expenses.Count; i++)
             {
-                Expenses[i].InitialPosition = new Point(Scl.Resolution.Width - Expenses[i].Selector.Bitmap.Width - Scl.Get(200), y);
-                y += Scl.Get(55);
+                Expenses[i].InitialPosition = new Point(Scale.Resolution.Width - Expenses[i].Selector.Bitmap.Width - Scale.Get(200), y);
+                y += Scale.Get(55);
             }
 
             void Change(List<Label> texts)
@@ -63,14 +64,14 @@ namespace NewspaperRuler
                 foreach (var text in texts)
                 {
                     text.Location = new Point(x, y);
-                    y += text.PreferredHeight + Scl.Get(5);
+                    y += text.PreferredHeight;
                 }
             }
         }
 
         public void Paint(Graphics graphics)
         {
-            graphics.DrawString("ИТОГИ ДНЯ", StringStyle.TitleFont, StringStyle.White, new Point(Scl.Resolution.Width / 2 - Scl.Get(125), Scl.Get(10)));
+            graphics.DrawString("ИТОГИ ДНЯ", StringStyle.TitleFont, StringStyle.White, new Point(Scale.Resolution.Width / 2 - Scale.Get(125), Scale.Get(10)));
             foreach (var label in showedTexts)
                 graphics.DrawString(label.Text, label.Font, new SolidBrush(label.ForeColor), label.Location);
             if (showedExpenses)
@@ -78,42 +79,47 @@ namespace NewspaperRuler
                     expense.Paint(graphics);
         }
 
-        public void Tick()
+        public void EveryTick()
         {
-            if (waitBeforeShowingNextText > 0)
-            {
-                waitBeforeShowingNextText--;
-                if (waitBeforeShowingNextText == 0)
-                    Print();
-            }
+            showNextText.EveryTick();
         }
 
-        public void MouseDown(ref int money)
+        public int MouseDown(int money)
         {
+            var increaseInMoney = 0;
             foreach (var _switch in Expenses)
             {
                 if (_switch.Selector.CursorIsHovered())
                 {
-                    _switch.SetMark(ref money);
+                    increaseInMoney = _switch.SetMark(money);
                     foreach (var stat in StatsTexts)
+                    {
                         if (stat.Text.Substring(0, 5) == "Итого")
-                            stat.Text = $"Итого:\t\t{money} {Stats.MonetaryCurrencyName}";
+                        {
+                            stat.Text = $"Итого:\t\t{money + increaseInMoney} {Stats.MonetaryCurrencyName}";
+                            break;
+                        }
+                    }
+                    break;
                 }
             }
+            return increaseInMoney;
         }
+
+        public void MouseDown() { }
 
         public void ShowAll()
         {
             if (animationIsProgress) return;
             animationIsProgress = true;
-            waitBeforeShowingNextText = 10;
+            showNextText.WaitAndExecute(10);
         }
 
         private int iterator = 0;
         private bool flag;
         private void Print()
         {
-            waitBeforeShowingNextText = 10;
+            showNextText.WaitAndExecute(10);
             if (!flag)
             {
                 if (iterator == InformationTexts.Count || InformationTexts.Count == 0)
@@ -129,7 +135,7 @@ namespace NewspaperRuler
                 iterator = -1;
                 animationIsProgress = false;
                 showedExpenses = true;
-                waitBeforeShowingNextText = 0;
+                showNextText.Cancel();
                 controls.Add(continueButton);
                 ShowExpenses();
             }
@@ -142,7 +148,7 @@ namespace NewspaperRuler
             for (var i = 0; i < Expenses.Count; i++)
             {
                 Expenses[i].Selector.ShowImage(Expenses[i].InitialPosition);
-                Expenses[i].Selector.ShowDescription(new Point(Scl.Get(100), Expenses[i].InitialPosition.Y));
+                Expenses[i].Selector.ShowDescription(new Point(Scale.Get(100), Expenses[i].InitialPosition.Y));
             }
         }
 
@@ -156,5 +162,9 @@ namespace NewspaperRuler
             showedTexts.Clear();
             controls.Remove(continueButton);
         }
+
+        public void MouseUp() { }
+
+        public void MouseMove() { }
     }
 }

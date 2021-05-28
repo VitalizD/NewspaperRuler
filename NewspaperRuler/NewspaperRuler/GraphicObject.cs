@@ -13,7 +13,7 @@ namespace NewspaperRuler
             set
             {
                 if (value < 0) throw new ArgumentException("The value can't be less than zero");
-                movementSpeed = Scl.Get(value);
+                movementSpeed = Scale.Get(value);
             }
         }
 
@@ -25,7 +25,7 @@ namespace NewspaperRuler
         public GraphicObject(Image image, int width, int height, Point position, int movementSpeed, bool zoom = true)
         {
             if (image == null) Bitmap = null;
-            else if (zoom) Bitmap = new Bitmap(image, Scl.Get(width), Scl.Get(height));
+            else if (zoom) Bitmap = new Bitmap(image, Scale.Get(width), Scale.Get(height));
             else Bitmap = new Bitmap(image, width, height);
             Position = position;
             this.movementSpeed = movementSpeed;

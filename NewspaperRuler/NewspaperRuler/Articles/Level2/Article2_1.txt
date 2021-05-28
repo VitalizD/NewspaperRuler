@@ -1,5 +1,7 @@
 Loyality: 1
 Reprimand: 1
+Flag: ArticleOnMassStarvationWasApproved
+Mistake: PessimisticArticle
 Title: Безработица убивает
 Content:
 	Массовый голод из-за отсутствия достаточного количества рабочих мест продолжается. Чиновники отказываются комментировать происходящее.

@@ -12,13 +12,14 @@ namespace NewspaperRuler
         private readonly Queue<string> notifications = new Queue<string>();
         private bool isMoving;
         private bool enabled;
-        private int waitBeforeOutNotification = 0;
         private readonly Action playSound;
+        private readonly Waiting outNotification;
 
-        public NotificationPanel(Point position, Size resolution, Action sound) : base(position, 5)
+        public NotificationPanel(Size resolution, Action sound) : base(new Point(0, -Scale.Get(45)), 5)
         {
-            rectangle = new Rectangle(position, new Size(resolution.Width, Scl.Get(40)));
+            rectangle = new Rectangle(new Point(0, -Scale.Get(45)), new Size(resolution.Width, Scale.Get(40)));
             playSound = sound;
+            outNotification = new Waiting(GoUp);
         }
 
         public new void Paint(Graphics graphics)
@@ -51,17 +52,13 @@ namespace NewspaperRuler
             GoDown();
         }
 
-        public void Tick()
+        public void EveryTick()
         {
             rectangle.Location = Position;
             Move();
-            if (!isMoving && waitBeforeOutNotification > 0)
-            {
-                waitBeforeOutNotification--;
-                if (waitBeforeOutNotification == 0) 
-                    GoUp();
-            }
-            else CheckPosition();
+            if (!isMoving) 
+                outNotification.EveryTick();
+            CheckPosition();
         }
 
         private void CheckPosition()
@@ -70,7 +67,7 @@ namespace NewspaperRuler
             {
                 Position = new Point(Position.X, 0);
                 StopMoving();
-                waitBeforeOutNotification = 80;
+                outNotification.WaitAndExecute(80);
             }
             else if (Position.Y < -45)
             {
