@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using WMPLib;
 
 namespace NewspaperRuler
 {
@@ -26,54 +25,77 @@ namespace NewspaperRuler
         private bool paperIsEntering;
         private bool levelCompleted;
 
-        private readonly ElementControl decreesBook = new ElementControl("ПРИКАЗЫ", Properties.Resources.Book, 120, 100);
+        private readonly ElementControl decreesBook = new ElementControl("ПРИКАЗЫ", StringStyle.White, Properties.Resources.Book, 120, 100);
+        private readonly ElementControl menuButton = new ElementControl("МЕНЮ", StringStyle.Black, Properties.Resources.Button, 130, 50);
 
         private readonly Sounds sounds;
-        private readonly Stats stats;
         private readonly DayEnd dayEnd;
         private readonly Form1 form;
+        private GameOver gameOver;
 
-        private readonly Action<Interface> changeInterface;
+        public Stats Stats { get; private set; }
+        private Stats backup;
+        private Stats tempBackup;
 
-        public WorkTable(Form1 form, Sounds sounds, Stats stats, DayEnd dayEnd, Action<Interface> changeInterface)
+        private readonly Action<IUserInterface> changeInterface;
+        private readonly Action changeInterfaceToMainMenu;
+
+        public WorkTable(Form1 form, Sounds sounds, DayEnd dayEnd, 
+            Action<IUserInterface> changeInterface, Action changeInterfaceToMainMenu)
         {
             this.sounds = sounds;
             this.form = form;
-            this.stats = stats;
             this.dayEnd = dayEnd;
             this.changeInterface = changeInterface;
+            this.changeInterfaceToMainMenu = changeInterfaceToMainMenu;
             dayEnd.CreateEventClickOnContinue(MouseDownOnNextDayButton);
 
             approved = new Stamp(Properties.Resources.Approved, 300, 250);
             rejected = new Stamp(Properties.Resources.Rejected, 300, 250);
             providedStamp = new GraphicObject(Properties.Resources.Approved, 300, 250, Form1.Beyond);
 
-            notifications = new NotificationPanel(Scale.Resolution, sounds.Notification);
-            decrees = new InformationPanel(Properties.Resources.Frame, 500, 800, new Point(-Scale.Get(500), 0), sounds.PanelShow, sounds.PanelHide);
+            notifications = new NotificationPanel(Scale.Resolution, sounds.PlayNotification);
+            decrees = new InformationPanel(Properties.Resources.Frame, 500, 800, new Point(-Scale.Get(500), 0), sounds.PlayPanelShow, sounds.PlayPanelHide);
             remark = new Remark(Properties.Resources.RemarkBackground, 600, 300, sounds);
 
+            menuButton.ShowImage(new Point(Scale.Resolution.Width - menuButton.Bitmap.Width, 0));
+            menuButton.ShowDescription(new Point(menuButton.Position.X + Scale.Get(10), menuButton.Position.Y + Scale.Get(10)));
+        }
+
+        public void StartGame(Difficulties difficulty)
+        {
+            sounds.PlayBeginLevel();
+            sounds.PlayMusic();
+
             RemoveStamps();
-            stats.GoToNextLevel();
+
+            Stats = new Stats(dayEnd);
+            Stats.SetDifficulty(difficulty);
+
+            decreesBook.Hide();
+            decrees.Clear();
+
+            Stats.GoToNextLevel();
             NextEvent();
         }
 
         public void Paint(Graphics graphics)
         {
-            paper.Paint(graphics);
-            approved.Paint(graphics);
-            rejected.Paint(graphics);
-            providedStamp.Paint(graphics);
+            paper?.Paint(graphics);
+            approved?.Paint(graphics);
+            rejected?.Paint(graphics);
+            providedStamp?.Paint(graphics);
             currentArticle?.Paint(graphics);
             currentNote?.Paint(graphics);
-            notifications.Paint(graphics);
-            decreesBook.Paint(graphics);
-            decrees.Paint(graphics);
-            remark.Paint(graphics);
+            menuButton?.Paint(graphics);
+            notifications?.Paint(graphics);
+            decreesBook?.Paint(graphics);
+            decrees?.Paint(graphics);
+            remark?.Paint(graphics);
         }
 
         public void EveryTick()
         {
-            sounds.EveryTick();
             notifications.EveryTick();
             decrees.EveryTick();
             remark.EveryTick();
@@ -96,9 +118,12 @@ namespace NewspaperRuler
 
         public void MouseDown()
         {
-            approved.MouseDown(sounds.StampTake);
-            rejected.MouseDown(sounds.StampTake);
+            approved.MouseDown(sounds.PlayStampTake);
+            rejected.MouseDown(sounds.PlayStampTake);
             remark.MouseDown();
+
+            if (menuButton.CursorIsHovered())
+                GoMainMenu();
         }
 
         public void MouseUp()
@@ -109,8 +134,8 @@ namespace NewspaperRuler
             else if (rejected.OnPaper(paper)) SendArticle(false);
             else if (stampsAreVisible)
             {
-                approved.Return(sounds.StampReturn);
-                rejected.Return(sounds.StampReturn);
+                approved.Return(sounds.PlayStampReturn);
+                rejected.Return(sounds.PlayStampReturn);
             }
         }
 
@@ -122,11 +147,11 @@ namespace NewspaperRuler
 
         private void MouseDownOnOption(object sender, MouseEventArgs e)
         {
-            sounds.ChooseOption();
+            sounds.PlayChooseOption();
             var label = sender as Label;
             if (label == currentNote.PositiveOption)
             {
-                stats.SetFlagToTrue(currentNote.Flag);
+                Stats.SetFlagToTrue(currentNote.Flag);
                 notifications.Add(currentNote.PositiveMessage);
             }
             else if (label == currentNote.NegativeOption)
@@ -136,24 +161,34 @@ namespace NewspaperRuler
 
         private void MouseDownOnNextDayButton(object sender, MouseEventArgs e)
         {
-            sounds.BeginLevel();
-            stats.ApplyExpenses();
+            Stats.ApplyExpenses();
             dayEnd.Reset();
-            stats.GoToNextLevel();
-            changeInterface(Interface.WorkTable);
+
+            gameOver = Stats.CheckLoss(form.Controls);
+            if (gameOver != null)
+            {
+                GoToGameOver();
+                return;
+            }
+
+            backup = (Stats)tempBackup.Clone();
+            sounds.PlayBeginLevel();
+            sounds.PlayMusic();
+            Stats.GoToNextLevel();
+            changeInterface(this);
             AddNewElementsToLevel();
             NextEvent();
         }
 
         private void NextEvent()
         {
-            if (stats.Level.Events.Count == 0)
+            if (Stats.Level.Events.Count == 0)
             {
                 levelCompleted = true;
                 return;
             }
 
-            var _event = stats.Level.Events.Dequeue();
+            var _event = Stats.Level.Events.Dequeue();
 
             if (_event.GetType() == typeof(Article))
             {
@@ -186,7 +221,7 @@ namespace NewspaperRuler
 
         private void EnterPaper()
         {
-            sounds.Paper();
+            sounds.PlayPaper();
             paper.Position = new Point(-800, (int)(10 / Scale.Factor));
             paperIsEntering = true;
             paper.GoRight();
@@ -200,7 +235,7 @@ namespace NewspaperRuler
                 var center = Scale.Resolution.Width / 2 - paper.Bitmap.Width / 2;
                 if (paper.Position.X > center)
                 {
-                    sounds.StampEnter();
+                    sounds.PlayStampEnter();
                     paperIsEntering = false;
                     paper.Position = new Point(center, paper.Position.Y);
                     paper.Stop();
@@ -225,7 +260,7 @@ namespace NewspaperRuler
             if (isApproved) ApproveArticle();
             else RejectArticle();
 
-            sounds.StampPut();
+            sounds.PlayStampPut();
             RemoveStamps();
             outPaper.WaitAndExecute(10);
         }
@@ -234,9 +269,9 @@ namespace NewspaperRuler
         {
             providedStamp = new GraphicObject(approved.Bitmap, approved.Bitmap.Size - new Size(50, 50), approved.Position + new Size(25, 25), false);
             outPaper = new Waiting(new Action(() => { paper.GoRight(); providedStamp.GoRight(); }));
-            if (currentArticle.Flag != "") stats.SetFlagToTrue(currentArticle.Flag);
-            stats.Level.IncreaseLoyality(currentArticle.Loyality);
-            stats.Level.IncreaseReprimandScore(currentArticle.ReprimandScore);
+            if (currentArticle.Flag != "") Stats.SetFlagToTrue(currentArticle.Flag);
+            Stats.Level.IncreaseLoyality(currentArticle.Loyality);
+            Stats.Level.IncreaseReprimandScore(currentArticle.ReprimandScore);
             if (currentArticle.Title != "") notifications.Add($"В сегодняшнем выпуске: {currentArticle.Title}");
             else notifications.Add($"В сегодняшнем выпуске: {currentArticle.ExtractBeginning()}...");
             CheckForMistake();
@@ -246,7 +281,7 @@ namespace NewspaperRuler
         {
             providedStamp = new GraphicObject(rejected.Bitmap, rejected.Bitmap.Size - new Size(50, 50), rejected.Position + new Size(25, 25), false);
             outPaper = new Waiting(new Action(() => { paper.GoLeft(); providedStamp.GoLeft(); }));
-            if (currentArticle.Loyality != 0) stats.Level.IncreaseLoyality(-1);
+            if (currentArticle.Loyality != 0) Stats.Level.IncreaseLoyality(-1);
         }
 
         private void SendNote()
@@ -271,21 +306,14 @@ namespace NewspaperRuler
 
         private void AddNewElementsToLevel()
         {
-            switch (stats.LevelNumber)
+            switch (Stats.LevelNumber)
             {
                 case 2:
                     decreesBook.ShowImage(new Point(0, Scale.Resolution.Height - decreesBook.Bitmap.Height));
                     decreesBook.ShowDescription(new Point(decreesBook.Position.X + decreesBook.Bitmap.Width + Scale.Get(10), decreesBook.Position.Y + decreesBook.Bitmap.Height / 2));
-                    //decrees.Add("№ 34.10. Отклонять статьи пессимистического характера");
-                    //decrees.Add("№ 34.11. Отклонять статьи без заголовка");
                     break;
-                    //case 3:
-                    //    decrees.RemoveAt(0);
-                    //    decrees.Add("№ 34.12. Запрещены упоминания о войне");
-                    //    decrees.Add("№ 34.13. Отклонять статьи об умышленных убийствах");
-                    //    break;
             }
-            var newDecrees = stats.GetDecrees();
+            var newDecrees = Stats.GetDecrees();
             decrees.Clear();
             decrees.Add(newDecrees);
         }
@@ -303,10 +331,10 @@ namespace NewspaperRuler
             }
             if (currentArticle.ReprimandScore == 0)
             {
-                stats.Level.IncreaseFine();
-                if (stats.Level.CurrentFine == 0)
+                Stats.Level.IncreaseFine();
+                if (Stats.Level.CurrentFine == 0)
                     remarkText.Append("\n\nПри повторных ошибках будет наложен штраф.");
-                else remarkText.Append($"\n\nШтраф: {stats.Level.CurrentFine} ТОКЕНОВ");
+                else remarkText.Append($"\n\nШтраф: {Stats.Level.CurrentFine} ТОКЕНОВ");
             }
             else remarkText.Append("\n\nЗамечание без штрафа.");
             remark.Add(remarkText.ToString());
@@ -315,9 +343,51 @@ namespace NewspaperRuler
         private void FinishLevel()
         {
             levelCompleted = false;
-            stats.FinishLevel();
-            dayEnd.ShowAll();
-            changeInterface(Interface.DayEnd);
+            notifications.Clear();
+            remark.Clear();
+            Stats.UpdateReprimandScore();
+            GoToDayEndOrLoss();
         }
+
+        private void GoToDayEndOrLoss()
+        {
+            gameOver = Stats.CheckLoss(form.Controls);
+            if (gameOver is null)
+            {
+                tempBackup = (Stats)Stats.Clone();
+                Stats.FinishLevel();
+                dayEnd.ShowAll();
+                changeInterface(dayEnd);
+            }
+            else GoToGameOver();
+        }
+
+        private void GoToGameOver()
+        {
+            changeInterface(gameOver);
+            sounds.StopMusic();
+            sounds.PlayGameOver();
+            if (backup is null) gameOver.CreateOnlyMainMenuButton(MouseDownOnMainMenuButton);
+            else gameOver.CreateMainMenuButtonAndReturnButton(MouseDownOnMainMenuButton, MouseDownOnReturnButton);
+        }
+
+
+        private void MouseDownOnReturnButton(object sender, MouseEventArgs e)
+        {
+            Stats = backup;
+            sounds.PlayBeginLevel();
+            GoToDayEndOrLoss();
+        }
+
+        private void MouseDownOnMainMenuButton(object sender, MouseEventArgs e) => GoMainMenu();
+
+        private void GoMainMenu()
+        {
+            sounds.StopMusic();
+            sounds.PlayMenuButton();
+            changeInterfaceToMainMenu();
+        }
+
+        public void SetFormBackground(Form1 form) => form.BackgroundImage = Properties.Resources.Background;
     }
 }

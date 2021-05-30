@@ -20,7 +20,7 @@ namespace NewspaperRuler
 
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None;
-            this.BackgroundImage = Properties.Resources.Background;
+            //this.BackgroundImage = Properties.Resources.Background;
 
             Paint += OnPaint;
             MouseDown += OnMouseDown;
@@ -50,9 +50,6 @@ namespace NewspaperRuler
 
         private void OnMouseMove(object sender, MouseEventArgs e) => controller.MouseMove();
 
-        private void OnKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape) this.Close();
-        }
+        private void OnKeyDown(object sender, KeyEventArgs e) { }
     }
 }

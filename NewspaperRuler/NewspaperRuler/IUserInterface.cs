@@ -2,9 +2,10 @@
 
 namespace NewspaperRuler
 {
-    interface IUserInterface
+    public interface IUserInterface
     {
         void Paint(Graphics graphics);
+        void SetFormBackground(Form1 form);
         void MouseDown();
         void MouseUp();
         void MouseMove();

@@ -20,6 +20,14 @@ namespace NewspaperRuler
         private readonly WindowsMediaPlayer printingMachine = new WindowsMediaPlayer();
         private readonly WindowsMediaPlayer beginLevel = new WindowsMediaPlayer();
         private readonly WindowsMediaPlayer cancel = new WindowsMediaPlayer();
+        private readonly WindowsMediaPlayer title = new WindowsMediaPlayer();
+        private readonly WindowsMediaPlayer mainMenu = new WindowsMediaPlayer();
+        private readonly WindowsMediaPlayer suddenness = new WindowsMediaPlayer();
+        private readonly WindowsMediaPlayer gameOver = new WindowsMediaPlayer();
+        private readonly WindowsMediaPlayer menuButton = new WindowsMediaPlayer();
+
+        private bool playMusicLoop;
+        private bool playMainMenuLoop;
 
         public Sounds()
         {
@@ -44,6 +52,17 @@ namespace NewspaperRuler
             beginLevel.URL = @"Sounds\BeginLevel.wav";
             beginLevel.settings.volume = 60;
             cancel.URL = @"Sounds\Cancel.wav";
+            title.URL = @"Sounds\Title.wav";
+            mainMenu.URL = @"Sounds\MainMenu.wav";
+            mainMenu.settings.volume = 40;
+            suddenness.URL = @"Sounds\Suddenness.wav";
+            gameOver.URL = @"Sounds\GameOver.wav";
+            menuButton.URL = @"Sounds\MenuButton.wav";
+            menuButton.close();
+            gameOver.close();
+            suddenness.close();
+            mainMenu.close();
+            title.close();
             cancel.close();
             beginLevel.close();
             panelHide.close();
@@ -61,33 +80,65 @@ namespace NewspaperRuler
 
         public void EveryTick()
         {
-            if (music.playState != WMPPlayState.wmppsPlaying) 
-                music.controls.play();
+            if (playMusicLoop && music.playState != WMPPlayState.wmppsPlaying)
+                Play(music);
+            if (playMainMenuLoop 
+                && mainMenu.playState != WMPPlayState.wmppsPlaying
+                && title.playState != WMPPlayState.wmppsPlaying)
+                Play(mainMenu);
         }
 
-        public void StampEnter() => Play(stampEnter);
+        public void PlayMusic() => playMusicLoop = true;
 
-        public void StampTake() => PlayRandom(stampTake);
+        public void PlayMainMenu() => playMainMenuLoop = true;
 
-        public void StampReturn() => PlayRandom(stampReturn);
+        public void StopMusic()
+        {
+            music.close();
+            playMusicLoop = false;
+        }
 
-        public void StampPut() => Play(stampPut);
+        public void StopMainMenu()
+        {
+            mainMenu.close();
+            playMainMenuLoop = false;
+        }
 
-        public void Paper() => Play(paper);
+        public void PlayTitle() => Play(title);
 
-        public void ChooseOption() => Play(chooseOption);
+        public void StopTitle() => title.close();
 
-        public void Notification() => Play(notification);
+        public void PlayStampEnter() => Play(stampEnter);
 
-        public void PanelShow() => Play(panelShow);
+        public void PlayStampTake() => PlayRandom(stampTake);
 
-        public void PanelHide() => Play(panelHide);
+        public void PlayStampReturn() => PlayRandom(stampReturn);
 
-        public void PrintingMachine() => Play(printingMachine);
+        public void PlayStampPut() => Play(stampPut);
 
-        public void BeginLevel() => Play(beginLevel);
+        public void PlayPaper() => Play(paper);
 
-        public void Cancel() => Play(cancel);
+        public void PlayChooseOption() => Play(chooseOption);
+
+        public void PlayNotification() => Play(notification);
+
+        public void PlayPanelShow() => Play(panelShow);
+
+        public void PlayPanelHide() => Play(panelHide);
+
+        public void StopPanelHide() => panelHide.close();
+
+        public void PlayPrintingMachine() => Play(printingMachine);
+
+        public void PlayBeginLevel() => Play(beginLevel);
+
+        public void PlayCancel() => Play(cancel);
+
+        public void PlaySuddenness() => Play(suddenness);
+
+        public void PlayGameOver() => Play(gameOver);
+
+        public void PlayMenuButton() => Play(menuButton);
 
         private void Play(WindowsMediaPlayer sound) => sound?.controls.play();
 

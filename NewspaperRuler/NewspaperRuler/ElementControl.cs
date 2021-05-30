@@ -15,13 +15,15 @@ namespace NewspaperRuler
         public string Description { get; set; }
 
         private Point descriptionPosition = Form1.Beyond;
+        private readonly SolidBrush brush;
         private readonly Action playSound;
         private Size textAreaSize;
 
-        public ElementControl(string description, Image image, int width, int height, bool zoom = true) 
+        public ElementControl(string description, SolidBrush brush, Image image, int width, int height, bool zoom = true) 
             : base(image, width, height, zoom)
         {
             this.Description = description;
+            this.brush = brush;
             textAreaSize = new Size(Scale.Get(200), Scale.Get(300));
             Hide();
         }
@@ -29,14 +31,14 @@ namespace NewspaperRuler
         public ElementControl(Image image, int width, int height, bool zoom = true)
             : base(image, width, height, Form1.Beyond, zoom) { }
 
-        public ElementControl(string description, Action playerOnClick, Image image, int width, int height, bool zoom = true)
-            : this(description, image, width, height, zoom)
+        public ElementControl(string description, SolidBrush brush, Action playerOnClick, Image image, int width, int height, bool zoom = true)
+            : this(description, brush, image, width, height, zoom)
         {
             playSound = playerOnClick;
         }
 
         public ElementControl(Action playerOnClick, Image image, int width, int height, bool zoom = true)
-            : this(null, playerOnClick, image, width, height, zoom) { }
+            : this(null, null, playerOnClick, image, width, height, zoom) { }
 
         public void ShowImage(Point imagePosition)
         {
@@ -56,9 +58,6 @@ namespace NewspaperRuler
             descriptionPosition = Form1.Beyond;
         }
 
-        public bool CursorIsHovered() =>
-            AuxiliaryMethods.IsClickedOnArea(new Rectangle(Position, Bitmap.Size));
-
         public void PlaySound()
         {
             if (playSound is null) return;
@@ -69,7 +68,7 @@ namespace NewspaperRuler
         {
             base.Paint(graphics);
             if (Description != null)
-                graphics.DrawString(Description, StringStyle.TitleFont, StringStyle.White, new Rectangle
+                graphics.DrawString(Description, StringStyle.TitleFont, brush, new Rectangle
                 (descriptionPosition, textAreaSize));
         }
 

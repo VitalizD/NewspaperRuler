@@ -45,7 +45,7 @@ namespace NewspaperRuler
                 Text = text,
                 Size = size,
                 Location = position,
-                Font = new Font(StringStyle.FontName, Scale.Get(20), FontStyle.Bold),
+                Font = new Font(StringStyle.FontNameForLabels, Scale.Get(20), FontStyle.Bold),
                 ForeColor = Color.Brown,
                 BackColor = Color.White,
                 BorderStyle = BorderStyle.FixedSingle,

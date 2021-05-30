@@ -7,25 +7,26 @@ using System.Windows.Forms;
 
 namespace NewspaperRuler
 {
-    public class Stats
+    public class Stats : ICloneable
     {
-        public GraphicObject NoteBackground { get; set; }
         public static string MonetaryCurrencyName { get; } = "ТОКЕНОВ";
+        private readonly GraphicObject noteBackground;
+        private DateTime date = new DateTime(1987, 9, 27);
+        private readonly DayEnd dayEnd;
 
         private int degreeGovernmentAnger = 0;
         private int rentDebts = 0;
         private int productsDebts = 0;
 
-        private DateTime date = new DateTime(1987, 9, 27);
-        private int money;
-        private readonly DayEnd dayEnd;
-
         private int rent = 120;
         private int productsCost = 40;
 
+        private int money;
+        private int loyalityFactor = 1;
+
         public int Money
         {
-            get { return money; }
+            get => money;
             set
             {
                 if (value < 0) money = 0;
@@ -41,11 +42,11 @@ namespace NewspaperRuler
 
         public List<Dictionary<string, bool>> EventFlags { get; }
 
-        public Stats(int money, DayEnd dayEnd)
+        public Stats(DayEnd dayEnd)
         {
-            Money = money;
+            Money = 100;
             this.dayEnd = dayEnd;
-            NoteBackground = new GraphicObject(Properties.Resources.NoteBackground1, 750, 1000, 125);
+            noteBackground = new GraphicObject(Properties.Resources.NoteBackground1, 750, 1000, 125);
             EventFlags = new List<Dictionary<string, bool>>
             {
                 new Dictionary<string, bool>
@@ -83,12 +84,10 @@ namespace NewspaperRuler
         public void GoToNextLevel()
         {
             date = date.AddDays(1);
-            Level = new LevelData(CreateNotes(), ArticleConstructor.ArticlesByLevel[LevelNumber - 1]);
+            Level = new LevelData(CreateNotes(), ArticleConstructor.ArticlesByLevel[LevelNumber - 1], loyalityFactor);
             CreateIntroduction();
             Level.BuildEventQueue();
         }
-
-        public void FinishLevel() => UpdateStatistics();
 
         private List<Note> CreateNotes()
         {
@@ -103,21 +102,21 @@ namespace NewspaperRuler
                             "\n\n\tУ Тимы на носу школьные выпускные экзамены, но я уверена, что он со всем справится. Он же у нас такой умничка!" +
                             "\n\n\tМы по тебе очень скучаем и сильно ждём!" +
                             "\n\n\tЦелую, твоя любимая жена";
-                        notes.Add(new Note(NoteBackground, text, "ОК"));
+                        notes.Add(new Note(noteBackground, text, "ОК"));
                         text = "\tТссс... Я раньше был на твоём месте. Меня уволили из-за малешей ошибочки. Руководство не должно узнать об этой записке. Разве не видишь? Аппарат управления прогнил изнутри." +
                             "\n\n\tГосударство устанавливает неведомое количество правил, в результате которых большинство правдивых статей не проходит к публикации." +
                             "\n\n\tНо люди хотят ВСЮ правду. Иначе говоря, отклоняя статьи, доверие читателей к государству теряется. " +
                             "Но доверие читателей - то что ХОЧЕТ видеть государство. От этого зависит и твоя зарплата. То есть, государство сознательно не даёт тебе спокойно работать." +
                             "\n\n\tЯ ничего такого не имею в виду. Просто хочу, чтобы ты пересмотрел то, до чего ты докатился сейчас. Хочу, чтоб ты принимал разумные решения. Работа государственным служащим - дело грязное." +
                             "\n\n\tИ помни, ты меня не знаешь. Тссс...";
-                        notes.Add(new Note(NoteBackground, text, "ОК"));
+                        notes.Add(new Note(noteBackground, text, "ОК"));
                         break;
                     }
                 case 2:
                     {
                         var text = "\tПривет, красавчик!" +
                             "\n\n\tВстретимся в баре \"Алый цветок\" сегодня в 20:00";
-                        notes.Add(new Note(NoteBackground, text, "Пойти", "Игнорировать", "Вы пойдёте на свидание с таинственной незнакомкой", 
+                        notes.Add(new Note(noteBackground, text, "Пойти", "Игнорировать", "Вы пойдёте на свидание с таинственной незнакомкой", 
                             "Вы не пойдёте на свидание с таинственной незнакомкой", "MainCharacterWasOnDate"));
                         if (EventFlags[0]["ArticleAboutChampionWasApproved"])
                             text = "\tМногоуважаемый государственный служащий," +
@@ -131,7 +130,7 @@ namespace NewspaperRuler
                                 "Туда не берут беременных, но об этом никто не узнает, ведь срок моей беременности только начался." +
                                 "\n\n\tСпасибо Вам ещё раз! Примите от меня нескромный подарок в размере 50 ТОКЕНОВ." +
                                 "\n\n\tГалина Руш";
-                        notes.Add(new Note(NoteBackground, text, "OK"));
+                        notes.Add(new Note(noteBackground, text, "OK"));
                         break;
                     }
                 case 3:
@@ -139,14 +138,14 @@ namespace NewspaperRuler
                         var text = new StringBuilder("\tСегодня мы, обычные люди, запускаем собственную газету, которая будет повествовать о РЕАЛЬНЫХ событиях в стране, а не о" +
                             " бессовестной лжи, которую забивают в наши головы чиновники.");
                         if (!EventFlags[1]["ArticleOnMassStarvationWasApproved"])
-                            text.Append("\n\tПочему нам не рассказывают о массовом голоде, охватившем всю страну?");
+                            text.Append("\n\n\tПочему нам не рассказывают о массовом голоде, охватившем всю страну?");
                         if (!EventFlags[1]["ArticleAboutSalaryDelayWasApproved"])
-                            text.Append("\n\tПочему от нас скрыли информацию о задержке зарплаты в Плиувиле?");
+                            text.Append("\n\n\tПочему от нас скрыли информацию о задержке зарплаты в Плиувиле?");
                         if (!EventFlags[1]["ArticleOnMassStarvationWasApproved"] || !EventFlags[1]["ArticleAboutSalaryDelayWasApproved"])
                             text.Append(" Да-да, мы об этом знаем и без гос. газеты.");
                         text.Append("\n\n\tПосмотрите на здание мэрии столицы — на нём же отчётливо кто-то написал \"Лжецы!\"." +
                             "\n\n\tНаша маленькая редакция будет работать в скрытном режиме. Просим не разглашать сведения о нашем существовании правительственным органам.");
-                        notes.Add(new Note(NoteBackground, text.ToString(), "OK", 0));
+                        notes.Add(new Note(noteBackground, text.ToString(), "OK", 0));
 
                         text.Clear();
                         text.Append("\tИ снова привет, красавчик!");
@@ -160,7 +159,7 @@ namespace NewspaperRuler
                         text.Append("\n\n\tЯ вольна переселить всех вас в роскошные апартаменты, обеспечить достойной работой и, о да, я много чего ещё могу. " +
                             "Но взамен я бы хотела получить кое-что. Дай знать, когда будешь готов прийти." +
                             "\n\n\tЧао!");
-                        notes.Add(new Note(NoteBackground, text.ToString(), "OK"));
+                        notes.Add(new Note(noteBackground, text.ToString(), "OK"));
 
                         text.Clear();
                         text.Append("\tЗдравствуй, дорогой!");
@@ -169,12 +168,12 @@ namespace NewspaperRuler
                                 "Сегодня на почте мне действительно выдали 2 сухих пайка.");
                         else text.Append("\n\n\tСоседка сообщила, что на почте каждого ждёт индивидуальный рацион питания от государства. " +
                             "Я не видела эту новость в газете, и, если бы не соседка, я бы так и не узнала. На почте мне действительно выдали 2 сухих пайка.");
-                        text.Append("\n\tНо, к великому сожалению, этого хватит лишь на пару дней. Я по-прежнему не могу найти работу. Я неоднократно посылала " +
+                        text.Append("\n\n\tНо, к великому сожалению, этого хватит лишь на пару дней. Я по-прежнему не могу найти работу. Я неоднократно посылала " +
                             "письма с жалобами в администрацию города. Мне ответили, что создание рабочих мест в процессе. Но пока их создают, не знаю, как долго мы протянем..." +
                             "\n\n\tЗавтра у Тимоши первый экзамен. Будем держать за него ручки. Это очень важно, ведь " +
                             "отличные результаты позволят ему поступить в высшую академию." +
                             "\n\n\tЦелую, твоя любимая жена.");
-                        notes.Add(new Note(NoteBackground, text.ToString(), "OK"));
+                        notes.Add(new Note(noteBackground, text.ToString(), "OK"));
                         break;
                     }
             }
@@ -189,8 +188,10 @@ namespace NewspaperRuler
             {
                 case 1:
                     text.Append("\tЗдравствуйте, редактор!" +
-                        "\n\n\tВ результате перераспределения кадров в области государственной печати мы освободили рабочее место главного редактора, которое теперь занимаете Вы. Просто следуйте инструкциям, и до следующего перераспределения рабочее место останется за Вами." +
-                        "\n\n\tВо время исполнения должностных обязанностей Вы освобождаетесь от срочного призыва на военные действия." +
+                        "\n\n\tВ ходе глобальной программы Перестройки мы освободили 1 рабочее место главного редактора в государственной газете, которое теперь занимаете Вы. " +
+                        "Просто следуйте инструкциям, и до следующего перераспределения кадров рабочее место останется за Вами." +
+                        "\n\n\tВо время исполнения должностных обязанностей Вы освобождаетесь от срочного призыва на военные действия. " +
+                        "Для Вашего удобства мы также выделили Вам квартиру в центре столицы по адресу: ул. Торжественная, д. 47, кв. 14." +
                         "\n\n\tПосле прошедшей войны мы наблюдаем агрессивные настроения граждан: по ряду городов прошли восстания. В наших интересах показать людям, что ситуация налаживается, и Ваша сегодняшняя задача — публиковать только статьи ПОЗИТИВНОГО характера." +
                         "\n\n\tПеретаскивайте ШТАМПЫ на бумагу, чтобы сделать выбор." +
                         "\n\n\tС уважением," +
@@ -226,7 +227,7 @@ namespace NewspaperRuler
                             "Министерство безопасности планирует пусть новое оружие в ход. Просим продолжать держать это в секрете.");
                         if (EventFlags[1]["MinistryIsSatisfied"])
                         {
-                            text.Append($"\n\tВы хорошо поработали. Ваша зарплата будет увеличена на 100 {MonetaryCurrencyName}");
+                            text.Append($"\n\tВы хорошо поработали. Ваша зарплата будет увеличена на 100 {MonetaryCurrencyName}.");
                             EventFlags[1]["SalaryIncreased"] = true;
                         }
                     }
@@ -244,18 +245,8 @@ namespace NewspaperRuler
             Level.Insert(order, new Article(ArticleConstructor.ArticleBackground, text.ToString(), title, order));
         }
 
-        private void UpdateStatistics()
+        public void FinishLevel()
         {
-            if (Level.ReprimandScore < 3)
-            {
-                if (EventFlags[LevelNumber - 1].ContainsKey("MinistryIsSatisfied"))
-                {
-                    if (degreeGovernmentAnger > 0) degreeGovernmentAnger--;
-                    EventFlags[LevelNumber - 1]["MinistryIsSatisfied"] = true;
-                }
-            }
-            else degreeGovernmentAnger += Level.ReprimandScore - 1;
-
             Loyality += Level.Loyality;
             Money += Level.Salary - Level.GetTotalFine();
 
@@ -339,6 +330,19 @@ namespace NewspaperRuler
             }
         }
 
+        public void UpdateReprimandScore()
+        {
+            if (Level.ReprimandScore < 3)
+            {
+                if (EventFlags[LevelNumber - 1].ContainsKey("MinistryIsSatisfied"))
+                {
+                    if (degreeGovernmentAnger > 0) degreeGovernmentAnger--;
+                    EventFlags[LevelNumber - 1]["MinistryIsSatisfied"] = true;
+                }
+            }
+            else degreeGovernmentAnger += Level.ReprimandScore - 1;
+        }
+
         public void ApplyExpenses()
         {
             foreach (var expence in dayEnd.Expenses)
@@ -364,6 +368,34 @@ namespace NewspaperRuler
                 line = reader.ReadLine();
             }
             return result.ToArray();
+        }
+
+        public object Clone() => MemberwiseClone();
+
+        public GameOver CheckLoss(Control.ControlCollection controls)
+        {
+            if (degreeGovernmentAnger >= 5)
+                return new GameOver(controls, new GraphicObject(Properties.Resources.Fired, 450, 350),
+                    "Вы уволены. Министерство цензуры и печати нашло Вам замену. " +
+                    "Вы вернулись к своей семье, где Вам суждено жить в бедности до конца своих дней...");
+
+            if (productsDebts >= 3)
+                return new GameOver(controls, new GraphicObject(Properties.Resources.Dead, 450, 450),
+                    "Вы потеряли сознание из-за сильного голода. Последнее, что Вы помните, — перед обмороком Вы мылись в душе...");
+
+            if (rentDebts >= 5)
+                return new GameOver(controls, new GraphicObject(Properties.Resources.Expired, 500, 270),
+                    "Вас выселили из квартиры. Вам пришлось вернуться в деревню к семье, " +
+                    "но Вы не можете ежедневно ходить на работу из-за дальнего расстояния." +
+                    "Вас уволили. Вы обречены жить в бедности до конца своих дней...");
+
+            return null;
+        }
+
+        public void SetDifficulty(Difficulties difficulty)
+        {
+            if (difficulty is Difficulties.Normal) loyalityFactor = 1;
+            else loyalityFactor = 2;
         }
     }
 }

@@ -8,6 +8,7 @@ namespace NewspaperRuler
     {
         private static int fixedSalaryAmount = 100;
         private int totalFine = 0;
+        private readonly int loyalityFactor;
 
         public static int FixedSalaryAmount
         {
@@ -37,7 +38,7 @@ namespace NewspaperRuler
             get
             {
                 var result = 37 - Loyality * 1.5;
-                if (result < 10) return 10;
+                if (result < 15) return 15;
                 return result;
             }
         }
@@ -48,8 +49,10 @@ namespace NewspaperRuler
         public Queue<object> Events { get; private set; }
         private readonly List<object> preEvents = new List<object>();
 
-        public LevelData(List<Note> notes, List<Article> articles)
+        public LevelData(List<Note> notes, List<Article> articles, int loyalityFactor = 1)
         {
+            this.loyalityFactor = loyalityFactor;
+
             foreach (var note in notes) preEvents.Add(note);
             foreach (var article in articles) preEvents.Add(article);
 
@@ -94,7 +97,7 @@ namespace NewspaperRuler
 
         public void BuildEventQueue() => Events = new Queue<object>(preEvents);
 
-        public void IncreaseLoyality(int value) => Loyality += value;
+        public void IncreaseLoyality(int value) => Loyality += loyalityFactor * value;
 
         public void IncreaseReprimandScore(int value) => ReprimandScore += value;
 

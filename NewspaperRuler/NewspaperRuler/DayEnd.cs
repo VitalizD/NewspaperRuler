@@ -34,7 +34,7 @@ namespace NewspaperRuler
             continueButton = new Label
             {
                 Text = "СЛЕДУЮЩИЙ ДЕНЬ",
-                Font = new Font(StringStyle.FontName, 20, FontStyle.Bold),
+                Font = new Font(StringStyle.FontNameForLabels, Scale.Get(20), FontStyle.Bold),
                 ForeColor = Color.White,
                 BorderStyle = BorderStyle.FixedSingle,
                 TextAlign = ContentAlignment.MiddleCenter,
@@ -120,6 +120,7 @@ namespace NewspaperRuler
         private void Print()
         {
             showNextText.WaitAndExecute(10);
+            sounds.PlayPanelHide();
             if (!flag)
             {
                 if (iterator == InformationTexts.Count || InformationTexts.Count == 0)
@@ -138,8 +139,9 @@ namespace NewspaperRuler
                 showNextText.Cancel();
                 controls.Add(continueButton);
                 ShowExpenses();
+                sounds.StopPanelHide();
+                sounds.PlaySuddenness();
             }
-            sounds.PanelHide();
             iterator++;
         }
 
@@ -166,5 +168,11 @@ namespace NewspaperRuler
         public void MouseUp() { }
 
         public void MouseMove() { }
+
+        public void SetFormBackground(Form1 form)
+        {
+            form.BackgroundImage = null;
+            form.BackColor = Color.Black;
+        }
     }
 }

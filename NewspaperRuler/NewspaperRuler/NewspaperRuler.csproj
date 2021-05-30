@@ -55,11 +55,13 @@
   <ItemGroup>
     <Compile Include="Article.cs" />
     <Compile Include="AuxiliaryMethods.cs" />
+    <Compile Include="Difficulties.cs" />
+    <Compile Include="GameOver.cs" />
     <Compile Include="ExpenseType.cs" />
     <Compile Include="Expense.cs" />
-    <Compile Include="Interface.cs" />
     <Compile Include="DayEnd.cs" />
     <Compile Include="IUserInterface.cs" />
+    <Compile Include="MainMenu.cs" />
     <Compile Include="Remark.cs" />
     <Compile Include="ElementControl.cs" />
     <Compile Include="InformationPanel.cs" />
@@ -75,6 +77,7 @@
     <Compile Include="StringStyle.cs" />
     <Compile Include="GraphicObject.cs" />
     <Compile Include="Stamp.cs" />
+    <Compile Include="TextBoxControl.cs" />
     <Compile Include="Waiting.cs" />
     <Compile Include="WorkTable.cs" />
     <Compile Include="Form1.cs">
@@ -116,43 +119,69 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Background.jpg" />
+    <None Include="Resources\Background.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Frame.png" />
+    <None Include="Resources\Frame.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Mail.png" />
+    <None Include="Resources\Mail.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Megaphone.png" />
+    <None Include="Resources\Megaphone.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Paper.png" />
+    <None Include="Resources\Paper.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Approved.png" />
+    <None Include="Resources\Approved.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Rejected.png" />
+    <None Include="Resources\Rejected.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Book.png" />
+    <None Include="Resources\Book.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\NoteBackground1.jpg" />
+    <None Include="Resources\NoteBackground1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\RemarkBackground.png" />
+    <None Include="Resources\RemarkBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TrashCan.png" />
+    <None Include="Resources\TrashCan.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SwitchOff.png" />
+    <None Include="Resources\SwitchOff.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SwitchOn.png" />
+    <None Include="Resources\SwitchOn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Sounds\Cancel.wav">
@@ -431,6 +460,57 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Articles\Level3\Article3_14.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dead.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Expired.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fired.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sounds\GameOver.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sounds\MainMenu.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sounds\MenuButton.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sounds\Suddenness.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sounds\Title.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

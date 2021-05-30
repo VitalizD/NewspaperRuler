@@ -16,7 +16,7 @@ namespace NewspaperRuler
 
         public bool Enabled
         {
-            get { return isEntering || showed; }
+            get => isEntering || showed;
         }
 
         public Remark(Image image, int width, int height, Sounds sounds)
@@ -24,13 +24,11 @@ namespace NewspaperRuler
         {
             this.sounds = sounds;
             trashCan = new ElementControl(Properties.Resources.TrashCan, 30, 30);
-            //Position = Form1.Beyond;
         }
 
-        public void Add(string remark)
-        {
-            texts.Enqueue($"ЗАМЕЧАНИЕ\n\n{remark}");
-        }
+        public void Add(string remark) => texts.Enqueue($"ЗАМЕЧАНИЕ\n\n{remark}");
+
+        public void Clear() => texts.Clear();
 
         public new void Paint(Graphics graphics)
         {
@@ -58,7 +56,7 @@ namespace NewspaperRuler
             Position = new Point(Scale.Resolution.Width - Bitmap.Width, Scale.Resolution.Height);
             MovementSpeed = 5;
             currentText = texts.Dequeue();
-            sounds.PrintingMachine();
+            sounds.PlayPrintingMachine();
             GoUp();
         }
 
@@ -67,7 +65,7 @@ namespace NewspaperRuler
             showed = false;
             MovementSpeed = 100;
             trashCan.Hide();
-            sounds.Paper();
+            sounds.PlayPaper();
             GoRight();
         }
 

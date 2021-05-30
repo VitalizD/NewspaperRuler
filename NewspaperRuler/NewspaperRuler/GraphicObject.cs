@@ -66,6 +66,17 @@ namespace NewspaperRuler
 
         public void Stop() => shift = new Size(0, 0);
 
+        public void Stop(Point position)
+        {
+            Position = position;
+            Stop();
+        }
+
         public void Move() => Position += shift;
+
+        public bool CursorIsHovered() =>
+            AuxiliaryMethods.IsClickedOnArea(new Rectangle(Position, Bitmap.Size));
+
+        public void RemoveFromLayout() => Position = Form1.Beyond;
     }
 }

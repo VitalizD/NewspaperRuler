@@ -122,7 +122,6 @@ namespace NewspaperRuler.Properties {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 2
-        ///Mistake: PessimisticArticle
         ///Content:
         ///	Прогноз погоды: ожидается облачная погода с редкими просветами солнца, температура воздуха поднимется до +7°C..
         /// </summary>
@@ -575,6 +574,16 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Button {
+            get {
+                object obj = ResourceManager.GetObject("Button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream Cancel {
@@ -589,6 +598,16 @@ namespace NewspaperRuler.Properties {
         internal static System.IO.UnmanagedMemoryStream ChooseOption {
             get {
                 return ResourceManager.GetStream("ChooseOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Dead {
+            get {
+                object obj = ResourceManager.GetObject("Dead", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -623,6 +642,26 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Expired {
+            get {
+                object obj = ResourceManager.GetObject("Expired", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fired {
+            get {
+                object obj = ResourceManager.GetObject("Fired", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
         internal static byte[] Font {
@@ -643,6 +682,25 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream GameOver {
+            get {
+                return ResourceManager.GetStream("GameOver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logo {
+            get {
+                object obj = ResourceManager.GetObject("Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Mail {
@@ -653,12 +711,40 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream MainMenu {
+            get {
+                return ResourceManager.GetStream("MainMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Megaphone {
             get {
                 object obj = ResourceManager.GetObject("Megaphone", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MenuBackground {
+            get {
+                object obj = ResourceManager.GetObject("MenuBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream MenuButton {
+            get {
+                return ResourceManager.GetStream("MenuButton", resourceCulture);
             }
         }
         
@@ -838,6 +924,15 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Suddenness {
+            get {
+                return ResourceManager.GetStream("Suddenness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap SwitchOff {
@@ -854,6 +949,15 @@ namespace NewspaperRuler.Properties {
             get {
                 object obj = ResourceManager.GetObject("SwitchOn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Title {
+            get {
+                return ResourceManager.GetStream("Title", resourceCulture);
             }
         }
         

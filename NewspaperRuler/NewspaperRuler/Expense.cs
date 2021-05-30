@@ -24,7 +24,7 @@ namespace NewspaperRuler
         {
             this.cost = cost;
             Type = type;
-            Selector = new ElementControl(name, Properties.Resources.SwitchOff, selectorSize.Width, selectorSize.Height);
+            Selector = new ElementControl(name, StringStyle.White, Properties.Resources.SwitchOff, selectorSize.Width, selectorSize.Height);
             Selector.SetTextAreaSize(new Size(Scale.Get(1400), Scale.Get(50)));
             mark.URL = @"Sounds\ChooseOption.wav";
             cancel.URL = @"Sounds\Cancel.wav";

@@ -32,6 +32,8 @@ namespace NewspaperRuler
 
         public void Add(string text) => notifications.Enqueue(text);
 
+        public void Clear() => notifications.Clear();
+
         public void Show()
         {
             if (enabled) return;
