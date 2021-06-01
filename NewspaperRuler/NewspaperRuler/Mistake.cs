@@ -9,6 +9,8 @@
         War,
         MissingPerson,
         Deprecated,
-        Future
+        Future,
+        Advertisement,
+        Personality
     }
 }

@@ -7,6 +7,7 @@
         Heating,
         Family,
         Larisa,
-        Stranger
+        Stranger,
+        Festival
     }
 }

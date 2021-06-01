@@ -1,5 +1,6 @@
 Loyality: 1
 Order: 2
+Flag: AnnouncementOfDisappearanceOfGalinasHusbandWasApproved
 Mistake: MissingPerson
 Title: ОБЪЯВЛЕНИЕ О ПРОПАЖЕ
 Content:

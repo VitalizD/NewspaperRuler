@@ -20,12 +20,14 @@ namespace NewspaperRuler
 
         private readonly NotificationPanel notifications;
         private readonly InformationPanel decrees;
+        private readonly InformationPanel trends;
         private readonly Remark remark;
 
         private bool paperIsEntering;
         private bool levelCompleted;
 
         private readonly ElementControl decreesBook = new ElementControl("ПРИКАЗЫ", StringStyle.White, Properties.Resources.Book, 120, 100);
+        private readonly ElementControl loudspeaker = new ElementControl("ТРЕНДЫ ОБЩ. МНЕНИЯ", StringStyle.White, Properties.Resources.Megaphone, 110, 110);
         private readonly ElementControl menuButton = new ElementControl("МЕНЮ", StringStyle.Black, Properties.Resources.Button, 130, 50);
         private readonly ElementControl date = new ElementControl("", StringStyle.Black, Properties.Resources.Button, 280, 50);
 
@@ -57,6 +59,7 @@ namespace NewspaperRuler
 
             notifications = new NotificationPanel(Scale.Resolution, sounds.PlayNotification);
             decrees = new InformationPanel(Properties.Resources.Frame, 500, 800, new Point(-Scale.Get(500), 0), sounds.PlayPanelShow, sounds.PlayPanelHide);
+            trends = new InformationPanel(Properties.Resources.Frame, 500, 800, new Point(-Scale.Get(500), 0), sounds.PlayPanelShow, sounds.PlayPanelHide);
             remark = new Remark(Properties.Resources.RemarkBackground, 600, 300, sounds);
 
             menuButton.ShowImage(new Point(Scale.Resolution.Width - menuButton.Bitmap.Width, 0));
@@ -80,6 +83,9 @@ namespace NewspaperRuler
             decreesBook.Hide();
             decrees.Clear();
 
+            loudspeaker.Hide();
+            trends.Clear();
+
             Stats.GoToNextLevel();
             date.Description = Stats.Date.ToString("D");
             NextEvent();
@@ -97,7 +103,9 @@ namespace NewspaperRuler
             date?.Paint(graphics);
             notifications?.Paint(graphics);
             decreesBook?.Paint(graphics);
+            loudspeaker?.Paint(graphics);
             decrees?.Paint(graphics);
+            trends?.Paint(graphics);
             remark?.Paint(graphics);
         }
 
@@ -105,6 +113,7 @@ namespace NewspaperRuler
         {
             notifications.EveryTick();
             decrees.EveryTick();
+            trends.EveryTick();
             remark.EveryTick();
             dayEnd.EveryTick();
             outPaper?.EveryTick();
@@ -117,6 +126,13 @@ namespace NewspaperRuler
                 if (decreesBook.CursorIsHovered())
                     decrees.Show();
                 else decrees.Hide();
+            }
+
+            if (loudspeaker.IsVisible)
+            {
+                if (loudspeaker.CursorIsHovered())
+                    trends.Show();
+                else trends.Hide();
             }
 
             if (levelCompleted && !remark.Enabled)
@@ -299,8 +315,8 @@ namespace NewspaperRuler
 
         private void CreateStamps()
         {
-            approved.SetPosition(new Point(paper.Position.X - approved.Bitmap.Width, Scale.Get(300)));
-            rejected.SetPosition(new Point(paper.Position.X + paper.Bitmap.Width, Scale.Get(300)));
+            approved.SetPosition(new Point(paper.Position.X - approved.Bitmap.Width, Scale.Get(250)));
+            rejected.SetPosition(new Point(paper.Position.X + paper.Bitmap.Width, Scale.Get(250)));
             stampsAreVisible = true;
         }
 
@@ -319,10 +335,20 @@ namespace NewspaperRuler
                     decreesBook.ShowImage(new Point(0, Scale.Resolution.Height - decreesBook.Bitmap.Height));
                     decreesBook.ShowDescription(new Point(decreesBook.Position.X + decreesBook.Bitmap.Width + Scale.Get(10), decreesBook.Position.Y + decreesBook.Bitmap.Height / 2));
                     break;
+                case 5:
+                    loudspeaker.ShowImage(new Point(0, Scale.Resolution.Height - 2 * loudspeaker.Bitmap.Height - Scale.Get(10)));
+                    loudspeaker.ShowDescription(new Point(loudspeaker.Position.X + loudspeaker.Bitmap.Width + Scale.Get(10), loudspeaker.Position.Y + loudspeaker.Bitmap.Height / 3));
+                    break;
             }
+
             var newDecrees = Stats.GetDecrees();
             decrees.Clear();
             decrees.Add(newDecrees);
+
+            var newTrends = Stats.GetTrends();
+            trends.Clear();
+            trends.Add(newTrends);
+
             date.Description = Stats.Date.ToString("D");
         }
 
@@ -338,6 +364,8 @@ namespace NewspaperRuler
                 case Mistake.Deprecated: remarkText.Append("Устаревшая информация. Сверяйте дату в статье с текущей датой."); break;
                 case Mistake.Future: remarkText.Append("Информация \"из будущего\". Сверяйте дату в статье с текущей датой."); break;
                 case Mistake.MissingPerson: remarkText.Append("Объявления о пропажах людей подлежат отказу."); break;
+                case Mistake.Advertisement: remarkText.Append("Рекламные объявления запрещены."); break;
+                case Mistake.Personality: remarkText.Append("Статьи с упоминаниями конкретных личностей запрещены."); break;
                 default: return;
             }
             if (currentArticle.ReprimandScore == 0)

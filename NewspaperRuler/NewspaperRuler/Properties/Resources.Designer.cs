@@ -634,6 +634,7 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 1
         ///Order: 2
+        ///Flag: AnnouncementOfDisappearanceOfGalinasHusbandWasApproved
         ///Mistake: MissingPerson
         ///Title: ОБЪЯВЛЕНИЕ О ПРОПАЖЕ
         ///Content:
@@ -684,6 +685,7 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 1
         ///Mistake: MissingPerson
+        ///Flag: MissingPersonNoticeWasPublished
         ///Title: ОБЪЯВЛЕНИЕ
         ///Content:
         ///	В Плиувиле пропал мальчик, Геннадий, 13 лет. 29 сентября, в районе 19:30 сказал, что пошёл погулять с друзьями в сторону Капрастского пустыря, но домой он так и не вернулся. Рост 165 см, одет был в светлые джинсы и клетчатую красную рубашку.
@@ -768,6 +770,117 @@ namespace NewspaperRuler.Properties {
         internal static string Article4_9 {
             get {
                 return ResourceManager.GetString("Article4_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Mistake: PremeditatedMurder
+        ///Title: Камень на шею, да ко дну
+        ///Content:
+        ///	Один из городов всколыхнула новость об убийстве дальнобойщика, доставлявшего продукты в столицу государства..
+        /// </summary>
+        internal static string Article5_1 {
+            get {
+                return ResourceManager.GetString("Article5_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Mistake: War
+        ///Title: По законам военного времени
+        ///Content:
+        ///	Состоялся суд над мародёрами, запятнавшими имя воина-защитника..
+        /// </summary>
+        internal static string Article5_2 {
+            get {
+                return ResourceManager.GetString("Article5_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: А судьи кто?
+        ///Content:
+        ///	В средствах массовой информации разразился скандал, связанный с именем известного литератора. Причиной его стал выпуск новой книги о масштабах деятельности местной мафии..
+        /// </summary>
+        internal static string Article5_3 {
+            get {
+                return ResourceManager.GetString("Article5_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Вокруг света
+        ///Content:
+        ///	Наконец состоялся долгожданный фестиваль света. В столице государства зрителям были представлены новые технологии и искусство света. Отдельные территории превратились в парк чудес..
+        /// </summary>
+        internal static string Article5_4 {
+            get {
+                return ResourceManager.GetString("Article5_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Будет день, будет и рекорд
+        ///Content:
+        ///	В городе прошла презентация самого большого числа горелок, работающих одновременно. Организаторы надеются побить установленный рекорд..
+        /// </summary>
+        internal static string Article5_5 {
+            get {
+                return ResourceManager.GetString("Article5_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Mistake: Future
+        ///Title: На вкус и свет товарищи есть
+        ///Content:
+        ///	3 октября состоялась премьера светомузыкального представления. Зрителей удивили визуальные эффекты, созданные под музыкальные композиции..
+        /// </summary>
+        internal static string Article5_6 {
+            get {
+                return ResourceManager.GetString("Article5_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: Не в деньгах счастье
+        ///Content:
+        ///	В стране зафиксирован заболевший неизвестным вирусом пациент. Им оказался по иронии самый богатый человек..
+        /// </summary>
+        internal static string Article5_7 {
+            get {
+                return ResourceManager.GetString("Article5_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: А вечер перестал быть томным…
+        ///Content:
+        ///	На светской вечеринке одному из гостей стало плохо. Все гости переполошились, выдвигая разные версии происшедшего и находя признаки новой инфекции..
+        /// </summary>
+        internal static string Article5_8 {
+            get {
+                return ResourceManager.GetString("Article5_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Mistake: NoTitle
+        ///Content:
+        ///	Напрасно просил упавший человек о помощи. Многолюдная прежде улица словно вымерла. Вот что делает с людьми страх заразиться новым неизведанным вирусом..
+        /// </summary>
+        internal static string Article5_9 {
+            get {
+                return ResourceManager.GetString("Article5_9", resourceCulture);
             }
         }
         
@@ -874,6 +987,7 @@ namespace NewspaperRuler.Properties {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на № 34.11. Отклонять статьи без заголовка
+        ///№ 34.12. Отклонять статьи с упоминаниями о войне
         ///№ 34.13. Отклонять статьи об умышленных убийствах
         ///№ 34.14. Отклонять статьи с неактуальной информацией
         ///№ 34.15. Отклонять объявления о пропажах
@@ -1267,6 +1381,16 @@ namespace NewspaperRuler.Properties {
             get {
                 object obj = ResourceManager.GetObject("TrashCan", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Фестиваль света на главной площади
+        ///Закон и правопорядок.
+        /// </summary>
+        internal static string TrendsLevel5 {
+            get {
+                return ResourceManager.GetString("TrendsLevel5", resourceCulture);
             }
         }
     }
