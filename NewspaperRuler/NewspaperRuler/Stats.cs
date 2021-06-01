@@ -11,7 +11,6 @@ namespace NewspaperRuler
     {
         public static string MonetaryCurrencyName { get; } = "ТОКЕНОВ";
         private readonly GraphicObject noteBackground;
-        private DateTime date = new DateTime(1987, 9, 27);
         private readonly DayEnd dayEnd;
 
         private int degreeGovernmentAnger = 0;
@@ -23,6 +22,8 @@ namespace NewspaperRuler
 
         private int money;
         private int loyalityFactor = 1;
+
+        public DateTime Date { get; private set; } = new DateTime(1987, 9, 26);
 
         public int Money
         {
@@ -68,6 +69,14 @@ namespace NewspaperRuler
                 new Dictionary<string, bool>
                 {
                     ["MinistryIsSatisfied"] = false,
+                    ["MainCharacterWasOnDate"] = false,
+                    ["ArticleOnProhibitionWeaponsWasApproved"] = false,
+                },
+                new Dictionary<string, bool>
+                {
+                    ["TheMainCharacterPaidForSilence"] = true,
+                    ["TheMainCharacterPaidLarisa"] = true,
+                    ["MainCharacterGaveOutAboutSecretEditorialOffice"] = false,
                 }
             };
         }
@@ -83,7 +92,7 @@ namespace NewspaperRuler
 
         public void GoToNextLevel()
         {
-            date = date.AddDays(1);
+            Date = Date.AddDays(1);
             Level = new LevelData(CreateNotes(), ArticleConstructor.ArticlesByLevel[LevelNumber - 1], loyalityFactor);
             CreateIntroduction();
             Level.BuildEventQueue();
@@ -159,7 +168,7 @@ namespace NewspaperRuler
                         text.Append("\n\n\tЯ вольна переселить всех вас в роскошные апартаменты, обеспечить достойной работой и, о да, я много чего ещё могу. " +
                             "Но взамен я бы хотела получить кое-что. Дай знать, когда будешь готов прийти." +
                             "\n\n\tЧао!");
-                        notes.Add(new Note(noteBackground, text.ToString(), "OK"));
+                        notes.Add(new Note(noteBackground, text.ToString(), "ПОЙТИ", "ИГНОРИРОВАТЬ", "Вы пойдёте на встречу", "Вы не пойдёте на встречу", "MainCharacterWasOnDate"));
 
                         text.Clear();
                         text.Append("\tЗдравствуй, дорогой!");
@@ -174,6 +183,84 @@ namespace NewspaperRuler
                             "отличные результаты позволят ему поступить в высшую академию." +
                             "\n\n\tЦелую, твоя любимая жена.");
                         notes.Add(new Note(noteBackground, text.ToString(), "OK"));
+
+                        text.Clear();
+                        text.Append("\tДобрый день, уважаемый." +
+                            "\n\n\tМеня зовут Лариса. Я, конечно, не представитель МАМБА, но у меня есть связи с членами её команды. " +
+                            "Я всячески оказываю содействие в их благих делах." +
+                            "\n\n\tКак Вы знаете, МАМБА запретила нашей стране применять новейшее оружие массового поражения. Однако государство ослушалось. " +
+                            "Они собираются применить оружие на войсках стран Андиплантийской коалиции, но держат это в секрете." +
+                            "\n\n\tПожалуйста, опубликуйте следующую статью. Народ должен знать правду, а в интересах МАМБЫ предотвратить катастрофу, " +
+                            "которая может случиться вследствие использования опасного оружия." +
+                            "\n\n\tСпасибо");
+                        notes.Add(new Note(noteBackground, text.ToString(), "OK", 1));
+                        break;
+                    }
+                case 4:
+                    {
+                        var text = new StringBuilder();
+                        text.Append("\tНу что, красавчик, наконец-то ты понял, что я та ещё стерва. Ты, наверное, не понимаешь, но я тебе скажу. ");
+                        if (EventFlags[2]["MainCharacterWasOnDate"])
+                            text.Append("Ты пришёл на встречу, но вместо обсуждения делового предложения я вцепилась тебе в губы, после чего ты тут же поспешил уйти.");
+                        else
+                            text.Append("Ты явно не ожидал увидеть меня у своего подъезда. Я тут же вцепилась тебе в губы, но ты в недоумении поспешил скрыться за дверью.");
+                        text.Append("\n\n\tТы же понимаешь, что никакого делового предложения нет? Я тебя обманула. " +
+                            "Думаешь, это всё ? Хи-хи, не, это только начало. Ты от меня так просто не отделаешься." +
+                            $"\n\n\tМой тайный агент запечатлел на память наш с тобой поцелуй. Если не возражаешь, я отправлю его твоей жене. Но ты можешь это предотвратить, если дашь мне 250 {MonetaryCurrencyName}. " +
+                            "Я хочу денег. Много денег. И только ты можешь мне помочь, пупсик." +
+                            "\n\n\tДаю тебе 2 дня. Обещаю, после этого я больше не потревожу ни тебя, ни твою семью." +
+                            "\n\n\tИ не вздумай обращаться в полицию. " +
+                            "Мой агент знает твоё местоположение и готов сыграть роль беспощадного убийцы, если потребуется." +
+                            "\n\n\tЧао!");
+                        notes.Add(new Note(noteBackground, text.ToString(), "OK", 0));
+
+                        text.Clear();
+                        if (EventFlags[2]["ArticleOnProhibitionWeaponsWasApproved"])
+                            text.Append("\tЗдравствуйте, уважаемый." +
+                                "\n\n\tЭто снова я, Лариса. Команда МАМБА выражает Вам огромную благодарность за публикацию требуемой статьи. " +
+                                "Похоже, у военного руководства будут серьёзные проблемы…" +
+                                "\n\n\tНу а теперь перейдём от официальной речи к разговорной. Я приехала в столицу по работе на пару дней и скоро уеду обратно в деревню. Я знаю о Вашей проблеме с шантажисткой. " +
+                                "Вчера я была свидетелем вашей встречи и всё видела: и этот внезапный поцелуй, и странного типа, который вас фотографировал." +
+                                "\n\n\tВаша жена мне много о Вас рассказывала, поэтому я легко Вас опознала. Всё верно, я её соседка." +
+                                $"\n\n\tЯ всё улажу. Только дайте мне время и 25 {MonetaryCurrencyName} на кое-какие «карманные расходы». Не переживайте, они пойдут на благое дело. " +
+                                $"Не ведитесь на провокации шантажистки, она должна получить по заслугам. Просто одолжите мне 25 {MonetaryCurrencyName}.");
+                        else
+                            text.Append("\tЗдравствуйте, уважаемый." +
+                                "\n\n\tЭто снова я, Лариса. Очень жаль, что Вы отказались помогать команде МАМБА. Мы всё понимаем, государственный долг важнее." +
+                                "\n\n\tМне много рассказывала о Вас жена. Всё верно, я её соседка. Я приехала в столицу по работе на пару дней и скоро отправлюсь обратно в деревню." +
+                                "\n\n\tЯ легко Вас опознала вчера вечером. У Вас было свидание с красивой незнакомкой. " +
+                                "Я не стану вмешиваться в Вашу личную жизнь, но знайте, что Вы поступили очень подло по отношению к своей жене. " +
+                                "Не забывайте о своей семье: она самое дорогое, что у Вас есть." +
+                                "\n\n\tПрощайте");
+                        notes.Add(new Note(noteBackground, text.ToString(), "OK"));
+
+                        text.Clear();
+                        text.Append("\tЗдравствуйте,");
+                        if (EventFlags[0]["ArticleAboutChampionWasApproved"])
+                            text.Append("\n\n\tЯ сожалею, что поведала о Вас в Министерство социальной защиты, ведь могла просто промолчать. " +
+                                "Но сейчас мне нужна Ваша помощь!");
+                        else
+                            text.Append("\n\n\tВы мне очень помогли, когда отклонили новость о моей беременности. Но мне снова нужна Ваша помощь!");
+                        text.Append("\n\n\tДело серьёзное. Пропал мой муж. " +
+                            "Телефон заблокирован, от него и след простыл! Я не смогу построить семью без любимого." +
+                            "\n\n\tЯ понимаю, что Вам не положено, но, пожалуйста, опубликуйте следующее объявление о пропаже. " +
+                            "Поймите, это очень важно для меня. Обещаю, в долгу не останусь." +
+                            "\n\n\tГалина Руш");
+                        notes.Add(new Note(noteBackground, text.ToString(), "OK", 1));
+
+                        text.Clear();
+                        text.Append("\tДобрый день," +
+                            "\n\n\tДо нас дошла информация о некой тайной редакции, которую организовали граждане. " +
+                            "Они утверждают, что распространяют новости об истинных событиях, происходящих в стране. " +
+                            "Государственная газета публикует только достоверные и самые накипевшие новости. " +
+                            "Частные тайные организации, которые мы не можем никак контролировать, запрещены." +
+                            "\n\n\tВы не замечали никаких подобного рода тайных организаций? Может, вчера Вам приходила от них записка?" +
+                            "\n\n\tВ наших интересах устранить скрытные редакции, которые вольны забивать голову гражданам всем, чем захотят." +
+                            "\n\n\tЕсли Вам есть, что сказать, я жду Вас у себя в кабинете после окончания смены." +
+                            "\n\n\tС уважением," +
+                            "\n\tМинистр цензуры и печати Хорош Оливер Леопольдович");
+                        notes.Add(new Note(noteBackground, text.ToString(), "РАССКАЗАТЬ", "СКРЫТЬ",
+                            "Вы расскажете министру всё о тайной редакции", "Вы оставите тайну о скрытой редакции в секрете", "MainCharacterGaveOutAboutSecretEditorialOffice"));
                         break;
                     }
             }
@@ -239,9 +326,24 @@ namespace NewspaperRuler
                         "\n\tМинистерство цензуры и печати");
                     order = 1;
                     break;
+                case 4:
+                    text.Append("\tЗдравствуйте, редактор!");
+                    if (EventFlags[2]["ArticleOnProhibitionWeaponsWasApproved"])
+                        text.Append("\n\n\tВы не сохранили в секрете информацию о применении оружия массового поражения. " +
+                            "Мы в Вас разочарованы. Ваша зарплата сегодня будет урезана.");
+                    text.Append("\n\n\tВ последнее время много разговоров идёт о «фальшивых новостях», которые публикуются в мусорных СМИ. " +
+                        "Наша газета гарантирует полную достоверность выпускаемых новостей." +
+                        "\n\n\tОдни из способов проверить фальшивость – сверить даты. Пожалуйста, сверяйте даты в статье (если таковые есть) с текущей сегодняшней датой. " +
+                        "Отклоняйте статьи, в которых содержится устаревшая информация или информация «из будущего». Публикуйте только актуальные новости." +
+                        "\n\n\tГраждане с чего-то взяли, что в гос. газете можно размещать объявления о пропажах, однако этим занимается иная организация. " +
+                        "Пожалуйста, не забывайте также отклонять ОБЪЯВЛЕНИЯ О ПРОПАЖАХ ЛЮДЕЙ." +
+                        "\n\n\tС уважением," +
+                        "\n\tМинистерство цензуры и печати");
+                    break;
+
             }
             if (text.ToString() == "") return;
-            var title = date.ToString("D");
+            var title = Date.ToString("D");
             Level.Insert(order, new Article(ArticleConstructor.ArticleBackground, text.ToString(), title, order));
         }
 
@@ -292,6 +394,17 @@ namespace NewspaperRuler
                         dayEnd.InformationTexts.Add(GetLabel("Ваша сегодняшняя зарплата увеличена за хорошую работу."));
                     }
                     break;
+                case 4:
+                    productsCost += 10;
+                    dayEnd.InformationTexts.Add(GetLabel("Цены на продукты повысились."));
+                    dayEnd.Expenses.Add(new Expense($"Плата за молчание:\t\t250 {MonetaryCurrencyName}", 250, ExpenseType.Stranger));
+                    if (EventFlags[2]["ArticleOnProhibitionWeaponsWasApproved"])
+                    {
+                        Money -= 75;
+                        dayEnd.StatsTexts.Add(GetLabel($"Вычет из зарплаты:\t\t-75"));
+                        dayEnd.Expenses.Add(new Expense($"План Ларисы:\t\t25 {MonetaryCurrencyName}", 25, ExpenseType.Larisa));
+                    }
+                    break;
             }
             dayEnd.StatsTexts.Add(GetLabel($"Итого:\t\t{Money} {MonetaryCurrencyName}"));
 
@@ -321,7 +434,7 @@ namespace NewspaperRuler
                 if (productsDebts == 1)
                     dayEnd.InformationTexts.Add(GetLabel("Вы голодны."));
                 else if (productsDebts == 2)
-                    dayEnd.InformationTexts.Add(GetLabel("Вы умираете с голоду."));
+                    dayEnd.InformationTexts.Add(GetLabel("Вы умираете от голода."));
 
                 if (rentDebts == 1 || rentDebts == 2)
                     dayEnd.InformationTexts.Add(GetLabel("У Вас остались неоплаченные долги по счетам."));
@@ -348,8 +461,13 @@ namespace NewspaperRuler
             foreach (var expence in dayEnd.Expenses)
             {
                 if (expence.Marked) continue;
-                if (expence.Type is ExpenseType.Rent) rentDebts += 3;
-                else if (expence.Type is ExpenseType.Products) productsDebts += 2;
+                switch (expence.Type)
+                {
+                    case ExpenseType.Rent: rentDebts += 3; break;
+                    case ExpenseType.Products: productsDebts += 2; break;
+                    case ExpenseType.Stranger: EventFlags[3]["TheMainCharacterPaidForSilence"] = false; break;
+                    case ExpenseType.Larisa: EventFlags[3]["TheMainCharacterPaidLarisa"] = false; break;
+                }
             }
             if (rentDebts > 0) rentDebts--;
             if (productsDebts > 0) productsDebts--;
@@ -386,7 +504,7 @@ namespace NewspaperRuler
             if (rentDebts >= 5)
                 return new GameOver(controls, new GraphicObject(Properties.Resources.Expired, 500, 270),
                     "Вас выселили из квартиры. Вам пришлось вернуться в деревню к семье, " +
-                    "но Вы не можете ежедневно ходить на работу из-за дальнего расстояния." +
+                    "но Вы не можете ежедневно ходить на работу из-за дальнего расстояния. " +
                     "Вас уволили. Вы обречены жить в бедности до конца своих дней...");
 
             return null;

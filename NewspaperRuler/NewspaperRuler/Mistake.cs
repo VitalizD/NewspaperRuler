@@ -6,6 +6,9 @@
         PessimisticArticle,
         NoTitle,
         PremeditatedMurder,
-        War
+        War,
+        MissingPerson,
+        Deprecated,
+        Future
     }
 }

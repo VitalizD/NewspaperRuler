@@ -27,6 +27,7 @@ namespace NewspaperRuler
 
         private readonly ElementControl decreesBook = new ElementControl("ПРИКАЗЫ", StringStyle.White, Properties.Resources.Book, 120, 100);
         private readonly ElementControl menuButton = new ElementControl("МЕНЮ", StringStyle.Black, Properties.Resources.Button, 130, 50);
+        private readonly ElementControl date = new ElementControl("", StringStyle.Black, Properties.Resources.Button, 280, 50);
 
         private readonly Sounds sounds;
         private readonly DayEnd dayEnd;
@@ -60,6 +61,10 @@ namespace NewspaperRuler
 
             menuButton.ShowImage(new Point(Scale.Resolution.Width - menuButton.Bitmap.Width, 0));
             menuButton.ShowDescription(new Point(menuButton.Position.X + Scale.Get(10), menuButton.Position.Y + Scale.Get(10)));
+
+            date.ShowImage(new Point(0, 0));
+            date.ShowDescription(new Point(date.Position.X + Scale.Get(10), date.Position.Y + Scale.Get(10)));
+            date.SetTextAreaSize(new Size(300, 50));
         }
 
         public void StartGame(Difficulties difficulty)
@@ -76,6 +81,7 @@ namespace NewspaperRuler
             decrees.Clear();
 
             Stats.GoToNextLevel();
+            date.Description = Stats.Date.ToString("D");
             NextEvent();
         }
 
@@ -88,6 +94,7 @@ namespace NewspaperRuler
             currentArticle?.Paint(graphics);
             currentNote?.Paint(graphics);
             menuButton?.Paint(graphics);
+            date?.Paint(graphics);
             notifications?.Paint(graphics);
             decreesBook?.Paint(graphics);
             decrees?.Paint(graphics);
@@ -176,7 +183,7 @@ namespace NewspaperRuler
             sounds.PlayMusic();
             Stats.GoToNextLevel();
             changeInterface(this);
-            AddNewElementsToLevel();
+            UpdateElements();
             NextEvent();
         }
 
@@ -304,7 +311,7 @@ namespace NewspaperRuler
             stampsAreVisible = false;
         }
 
-        private void AddNewElementsToLevel()
+        private void UpdateElements()
         {
             switch (Stats.LevelNumber)
             {
@@ -316,6 +323,7 @@ namespace NewspaperRuler
             var newDecrees = Stats.GetDecrees();
             decrees.Clear();
             decrees.Add(newDecrees);
+            date.Description = Stats.Date.ToString("D");
         }
 
         private void CheckForMistake()
@@ -327,6 +335,9 @@ namespace NewspaperRuler
                 case Mistake.PessimisticArticle: remarkText.Append("Статьи пессимистического характера подлежат отказу."); break;
                 case Mistake.PremeditatedMurder: remarkText.Append("Упоминания об умышленных убийствах запрещены."); break;
                 case Mistake.War: remarkText.Append("Упоминания о войне запрещены."); break;
+                case Mistake.Deprecated: remarkText.Append("Устаревшая информация. Сверяйте дату в статье с текущей датой."); break;
+                case Mistake.Future: remarkText.Append("Информация \"из будущего\". Сверяйте дату в статье с текущей датой."); break;
+                case Mistake.MissingPerson: remarkText.Append("Объявления о пропажах людей подлежат отказу."); break;
                 default: return;
             }
             if (currentArticle.ReprimandScore == 0)

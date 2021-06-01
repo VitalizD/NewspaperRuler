@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NewspaperRuler
+﻿namespace NewspaperRuler
 {
     public enum ExpenseType
     {
         Rent,
         Products,
         Heating,
-        Family
+        Family,
+        Larisa,
+        Stranger
     }
 }

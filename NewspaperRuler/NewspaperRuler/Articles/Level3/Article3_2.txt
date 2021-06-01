@@ -1,5 +1,7 @@
-Loyality: 1
-Reprimand: 1
+Loyality: 2
+Reprimand: 2
+Order: 2
+Flag: ArticleOnProhibitionWeaponsWasApproved
 Mistake: War
 Title: Наше будущее под угрозой?
 Content:
