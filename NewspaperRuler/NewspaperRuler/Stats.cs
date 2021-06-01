@@ -37,7 +37,7 @@ namespace NewspaperRuler
             }
         }
 
-        public int LevelNumber { get; private set; } = 4;
+        public int LevelNumber { get; private set; } = 1;
 
         public int Loyality { get; private set; }
         
