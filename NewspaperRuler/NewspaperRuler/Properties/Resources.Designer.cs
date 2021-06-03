@@ -84,7 +84,7 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 2
         ///Content:
-        ///	Фестиваль света уже скоро! 31 сентября на главной площади столицы традиционно состоится одно из самых знаменательных событий страны – фестиваль света: тысячи лампочек будут зажжены в центре города.
+        ///	Фестиваль света уже скоро! 30 сентября на главной площади столицы традиционно состоится одно из самых знаменательных событий страны – фестиваль света: тысячи лампочек будут зажжены в центре города.
         ///	Из них будут созданы рисунки и картины, которые оценят даже самые искушённые ценители красоты. Да-да, послевоенное время не станет помехой для проведения традиционного праздника. Следите за нам в новостях!
         ///.
         /// </summary>
@@ -620,6 +620,7 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 1
         ///Mistake: Deprecated
+        ///Reprimand: 1
         ///Title: Новая школа в Плиувиле ждёт первых учеников
         ///Content:
         ///	Плиувильцы торжествуют, ведь для обучающихся открыта новая школа, которая начнёт свою историю с 4 мая 1982 года. Школа построена на месте руин бывшего стеклозаготовительного завода.
@@ -885,6 +886,243 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Virus
+        ///Title: Береги лёгкие смолоду
+        ///Content:
+        ///	В стране продолжает распространяться новый вирус под кодовым названием КРАБ, поражающий прежде всего лёгкие..
+        /// </summary>
+        internal static string Article6_1 {
+            get {
+                return ResourceManager.GetString("Article6_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: Не хлебом единым
+        ///Content:
+        ///	Государство все силы направляет на развитие промышленности. И это понятно. Прежде всего, человек должен есть, одеваться, иметь комфортные условия для жизни. 
+        ///
+        ///	Но душа просит праздника. Поэтому нельзя забывать о культурных заведениях и мероприятиях..
+        /// </summary>
+        internal static string Article6_10 {
+            get {
+                return ResourceManager.GetString("Article6_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Mistake: Future
+        ///Title: С миру по нитке
+        ///Content:
+        ///	В стране проведена благотворительная акция «Даёшь другому – помогаешь себе». 
+        ///
+        ///	Тысячи голодающих получили необходимую им помощь, что положительным образом сказалось на снижении мелкой преступности. Данные от 1 ноября 1987 г..
+        /// </summary>
+        internal static string Article6_11 {
+            get {
+                return ResourceManager.GetString("Article6_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Хорошо тому, кто в своём дому
+        ///Content:
+        ///	Правительство страны пытается обеспечить своих граждан жильём. В основном пока это коммунальные квартиры, так как не хватает средств для возведения отдельного жилья. 
+        ///
+        ///	Многие люди рады и такому подарку, оказавшись на улице из-за последствий локальных конфликтов, которые привели к разрушению жилых строений..
+        /// </summary>
+        internal static string Article6_12 {
+            get {
+                return ResourceManager.GetString("Article6_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: И нашим, и вашим
+        ///Content:
+        ///	Глава администрации района в споре о выделении земли фермерам. Он довёл конфликт до того, что пострадало общее дело. Земля так и осталась невозделанной. Данные от 2 октября 1987 г..
+        /// </summary>
+        internal static string Article6_13 {
+            get {
+                return ResourceManager.GetString("Article6_13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Mistake: ObsceneLanguage
+        ///Title: Афёра районного масштаба
+        ///Content:
+        ///	Мошенники изготавливали фальшивые газеты с «доказывающими выигрыш» таблицами. Но есть проблема: отсутствие прописки или документа, удостоверяющего личность. 
+        ///
+        ///	«Лоху» предлагают стать обладателем билета за довольно скромные (по сравнению с «призом») деньги, а когда он приходит за «законным вознаграждением», то с удивлением понимает, что его обманули..
+        /// </summary>
+        internal static string Article6_14 {
+            get {
+                return ResourceManager.GetString("Article6_14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Mistake: Opposition
+        ///Flag: MainCharacterHelpedGrasshoppers
+        ///Title: «Кузнечики» на политической арене
+        ///Content:
+        ///	Оппозиционная организация «Кузнечики» выступает за прекращение военных конфликтов на границе, восстановление экономики, строительство новых предприятий и предоставление работы ВСЕМ гражданам. Долой действующее правительство!
+        ///
+        ///	---цык-цык-цык---
+        ///.
+        /// </summary>
+        internal static string Article6_15 {
+            get {
+                return ResourceManager.GetString("Article6_15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Mistake: Advertisement
+        ///Title: Распродажа медицинских масок
+        ///Content:
+        ///	В аптеке &quot;Таблеточка&quot; со 2 по 5 октября состоится распродажа медицинских масок со скидкой 80%. Защитите себя и своих близких!
+        ///.
+        /// </summary>
+        internal static string Article6_16 {
+            get {
+                return ResourceManager.GetString("Article6_16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Virus
+        ///Title: Без права на прививку
+        ///Content:
+        ///	Власти столицы сообщают, что ввиду нехватки вакцины, прививать будут не всех, а только тех, кто в состоянии выкупить препарат..
+        /// </summary>
+        internal static string Article6_2 {
+            get {
+                return ResourceManager.GetString("Article6_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Virus
+        ///Title: Вакцина – не роскошь
+        ///Content:
+        ///	Новые случаи заболевания опаснейшим вирусом КРАБ привели к массовым митингам и волнениям населения. 
+        ///
+        ///	Народ выдвигает требование – сделать вакцину доступной всем..
+        /// </summary>
+        internal static string Article6_3 {
+            get {
+                return ResourceManager.GetString("Article6_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Virus
+        ///Title: Вакцинация от КРАБа
+        ///Content:
+        ///	Первые вакцины от нового опаснейшего вируса КРАБ уже разработаны за рубежом, однако в связи с тяжёлым финансовым состоянием государство не способно выделить средства на собственное производство вакцины, что вынуждает её импортировать.
+        ///
+        ///	Это даёт понять, что вакцина будет доступна далеко не всем гражданам, а только тем, кто имеет достаточно финансовых средств.
+        ///.
+        /// </summary>
+        internal static string Article6_4 {
+            get {
+                return ResourceManager.GetString("Article6_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Virus
+        ///Title: Симптомы и пути передачи вируса
+        ///Content:
+        ///	Учёные вывели симптомы и пути передачи опаснейшего вируса КРАБ и готовы поделиться результатом.
+        ///
+        ///	Вирус поражает лёгкие, что приводит к затруднённому дыханию, причём опаснейшая модификация вируса вызывает постоянную рвоту, а совокупность данных симптомов может привести к летальному исходу вследствие кислородного голодания.
+        ///
+        ///	Вирус передаётся преимущественно воздушно-капельным путём, а также может оседать на пов [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string Article6_5 {
+            get {
+                return ResourceManager.GetString("Article6_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Mistake: NoTitle
+        ///Content:
+        ///	Не подтвердился прогноз властей страны по достижению рекордного урожая, способного накормить народ. Подсчитали – прослезились! 
+        ///
+        ///	Недаром говорят, что цыплят по осени считают.
+        ///
+        ///.
+        /// </summary>
+        internal static string Article6_6 {
+            get {
+                return ResourceManager.GetString("Article6_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: Тише едешь – дальше будешь
+        ///Content:
+        ///	Спешка в выборе послевоенного развития страны, программа которого была утверждена 13 сентября 1987 г., непродуманные скорые реформы отрицательно сказались на экономике страны. ТОКЕНЫ обесценились. Выросла инфляция.
+        ///.
+        /// </summary>
+        internal static string Article6_7 {
+            get {
+                return ResourceManager.GetString("Article6_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Mistake: MissingPerson
+        ///Title: Кто ищет, тот всегда найдёт
+        ///Content:
+        ///	В период лесозаготовок потерялся один рабочий. Приглашаем волонтёров и неравнодушных людей принять участие в поисках человека. 
+        ///
+        ///	Сбор состоится в 14:00 по адресу: ул. Шехялицск, вход в парк &quot;Зверополис&quot;..
+        /// </summary>
+        internal static string Article6_8 {
+            get {
+                return ResourceManager.GetString("Article6_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Готовь камин летом
+        ///Content:
+        ///	Вследствие экономического кризиса зимой возможны недопоставки тепла в квартиры. Призываем жителей подготовиться!.
+        /// </summary>
+        internal static string Article6_9 {
+            get {
+                return ResourceManager.GetString("Article6_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Background {
@@ -1007,7 +1245,8 @@ namespace NewspaperRuler.Properties {
         ///№ 34.15. Отклонять объявления о пропажах
         ///№ 34.16. Отклонять рекламные объявления
         ///№ 34.17. Отклонять статьи о конкретных личностях
-        ///№ 34.18. Отклонять статьи о вирусе КРАБ.
+        ///№ 34.18. Отклонять статьи о вирусе КРАБ
+        ///№ 34.19. Отклонять статьи оппозиционного характера.
         /// </summary>
         internal static string DecreesLevel6 {
             get {
@@ -1042,6 +1281,26 @@ namespace NewspaperRuler.Properties {
         internal static string DecreesLevel8 {
             get {
                 return ResourceManager.GetString("DecreesLevel8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DoctorRecommended {
+            get {
+                object obj = ResourceManager.GetObject("DoctorRecommended", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Eraser {
+            get {
+                object obj = ResourceManager.GetObject("Eraser", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -1236,6 +1495,26 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pen {
+            get {
+                object obj = ResourceManager.GetObject("Pen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pencil {
+            get {
+                object obj = ResourceManager.GetObject("Pencil", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream Print {
@@ -1260,6 +1539,16 @@ namespace NewspaperRuler.Properties {
         internal static System.Drawing.Bitmap RemarkBackground {
             get {
                 object obj = ResourceManager.GetObject("RemarkBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Scissors {
+            get {
+                object obj = ResourceManager.GetObject("Scissors", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1385,12 +1674,23 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Фестиваль света на главной площади
+        ///   Ищет локализованную строку, похожую на Фестиваль света
         ///Закон и правопорядок.
         /// </summary>
         internal static string TrendsLevel5 {
             get {
                 return ResourceManager.GetString("TrendsLevel5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Новый неисследованный заразный вирус КРАБ
+        ///Коммунальное хозяйство
+        ///Благотворительность.
+        /// </summary>
+        internal static string TrendsLevel6 {
+            get {
+                return ResourceManager.GetString("TrendsLevel6", resourceCulture);
             }
         }
     }

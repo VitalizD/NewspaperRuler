@@ -27,7 +27,7 @@ namespace NewspaperRuler
         private bool levelCompleted;
 
         private readonly ElementControl decreesBook = new ElementControl("ПРИКАЗЫ", StringStyle.White, Properties.Resources.Book, 120, 100);
-        private readonly ElementControl loudspeaker = new ElementControl("ТРЕНДЫ ОБЩ. МНЕНИЯ", StringStyle.White, Properties.Resources.Megaphone, 110, 110);
+        private readonly ElementControl loudspeaker = new ElementControl("ТРЕНДЫ ОБЩ. МНЕНИЯ", StringStyle.White, Properties.Resources.Megaphone, 120, 110);
         private readonly ElementControl menuButton = new ElementControl("МЕНЮ", StringStyle.Black, Properties.Resources.Button, 130, 50);
         private readonly ElementControl date = new ElementControl("", StringStyle.Black, Properties.Resources.Button, 280, 50);
 
@@ -93,6 +93,10 @@ namespace NewspaperRuler
 
         public void Paint(Graphics graphics)
         {
+            graphics.DrawImage(new Bitmap(Properties.Resources.Pen, Scale.Get(50), Scale.Get(500)), Scale.Get(250), Scale.Get(500));
+            graphics.DrawImage(new Bitmap(Properties.Resources.Pencil, Scale.Get(100), Scale.Get(400)), Scale.Get(1100), Scale.Get(500));
+            graphics.DrawImage(new Bitmap(Properties.Resources.Scissors, Scale.Get(250), Scale.Get(400)), Scale.Get(1200), Scale.Get(500));
+            graphics.DrawImage(new Bitmap(Properties.Resources.Eraser, Scale.Get(120), Scale.Get(70)), Scale.Get(1150), Scale.Get(100));
             paper?.Paint(graphics);
             approved?.Paint(graphics);
             rejected?.Paint(graphics);
@@ -366,6 +370,9 @@ namespace NewspaperRuler
                 case Mistake.MissingPerson: remarkText.Append("Объявления о пропажах людей подлежат отказу."); break;
                 case Mistake.Advertisement: remarkText.Append("Рекламные объявления запрещены."); break;
                 case Mistake.Personality: remarkText.Append("Статьи с упоминаниями конкретных личностей запрещены."); break;
+                case Mistake.ObsceneLanguage: remarkText.Append("Кодекс чести государственной газеты предписывает редактору отклонять все статьи с ненормативной лексикой."); break;
+                case Mistake.Opposition: remarkText.Append("Публикация статей оппозиционного характера запрещена."); break;
+                case Mistake.Virus: remarkText.Append("Упоминания о вирусе КРАБ запрещены."); break;
                 default: return;
             }
             if (currentArticle.ReprimandScore == 0)

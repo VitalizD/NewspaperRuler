@@ -87,6 +87,12 @@ namespace NewspaperRuler
                 {
                     ["MinistryIsSatisfied"] = false,
                     ["MainCharacterWentToFestival"] = true,
+                },
+                new Dictionary<string, bool>
+                {
+                    ["MinistryIsSatisfied"] = false,
+                    ["WifeIsFaithful"] = false,
+                    ["MainCharacterHelpedGrasshoppers"] = false,
                 }
             };
         }
@@ -182,6 +188,20 @@ namespace NewspaperRuler
                     }
                     else if (EventFlags[3]["TheMainCharacterPaidForSilence"] && !EventFlags[3]["TheMainCharacterPaidLarisa"])
                         dayEnd.InformationTexts.Add(GetLabel("Шантажистка получила Ваши деньги."));
+                    break;
+                case 6:
+                    if (EventFlags[3]["MainCharacterGaveOutAboutSecretEditorialOffice"])
+                    {
+                        Money += 120;
+                        dayEnd.StatsTexts.Add(GetLabel($"Премия:\t\t120"));
+                        dayEnd.InformationTexts.Add(GetLabel("Вы получили премию за раскрытие незаконной тайной редакции."));
+                    }
+                    if (EventFlags[3]["TheMainCharacterPaidForSilence"] && !EventFlags[3]["TheMainCharacterPaidLarisa"])
+                    {
+                        Money += 50;
+                        dayEnd.StatsTexts.Add(GetLabel($"Шантажистка:\t\t50"));
+                        dayEnd.InformationTexts.Add(GetLabel("Шантажистка решила вернуть часть похищенных денег."));
+                    }
                     break;
             }
             dayEnd.StatsTexts.Add(GetLabel($"Итого:\t\t{Money} {MonetaryCurrencyName}"));
@@ -298,6 +318,11 @@ namespace NewspaperRuler
                     "Вас выселили из квартиры. Вам пришлось вернуться в деревню к семье, " +
                     "но Вы не можете ежедневно ходить на работу из-за дальнего расстояния. " +
                     "Вас уволили. Вы обречены жить в бедности до конца своих дней...");
+
+            if (heatingDebts >= 3)
+                return new GameOver(controls, new GraphicObject(Properties.Resources.DoctorRecommended, 450, 450),
+                    "Вы тяжело заболели и не в состоянии работать. Вас уволили." +
+                    "Вы вернулись к своей семье, где Вам суждено жить в бедности до конца своих дней...");
 
             return null;
         }

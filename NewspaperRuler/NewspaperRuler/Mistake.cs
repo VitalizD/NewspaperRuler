@@ -11,6 +11,9 @@
         Deprecated,
         Future,
         Advertisement,
-        Personality
+        Personality,
+        Virus,
+        Opposition,
+        ObsceneLanguage
     }
 }

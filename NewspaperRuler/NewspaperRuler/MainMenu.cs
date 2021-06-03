@@ -19,7 +19,7 @@ namespace NewspaperRuler
         private string description = "";
 
         private readonly Waiting createBeginText;
-        private readonly GraphicObject logo = new GraphicObject(Properties.Resources.Logo, 550, 350);
+        private readonly GraphicObject logo = new GraphicObject(Properties.Resources.Logo, 550, 220);
 
         private Difficulties difficulty;
 
