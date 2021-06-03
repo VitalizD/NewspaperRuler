@@ -190,6 +190,7 @@ namespace NewspaperRuler
                         dayEnd.InformationTexts.Add(GetLabel("Шантажистка получила Ваши деньги."));
                     break;
                 case 6:
+                    dayEnd.InformationTexts.Add(GetLabel("Ваша жена заразилась вирусом КРАБ."));
                     if (EventFlags[3]["MainCharacterGaveOutAboutSecretEditorialOffice"])
                     {
                         Money += 120;

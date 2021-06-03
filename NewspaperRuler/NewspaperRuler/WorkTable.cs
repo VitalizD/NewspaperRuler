@@ -93,7 +93,7 @@ namespace NewspaperRuler
 
         public void Paint(Graphics graphics)
         {
-            graphics.DrawImage(new Bitmap(Properties.Resources.Pen, Scale.Get(50), Scale.Get(500)), Scale.Get(250), Scale.Get(500));
+            graphics.DrawImage(new Bitmap(Properties.Resources.Pen, Scale.Get(50), Scale.Get(500)), Scale.Get(275), Scale.Get(500));
             graphics.DrawImage(new Bitmap(Properties.Resources.Pencil, Scale.Get(100), Scale.Get(400)), Scale.Get(1100), Scale.Get(500));
             graphics.DrawImage(new Bitmap(Properties.Resources.Scissors, Scale.Get(250), Scale.Get(400)), Scale.Get(1200), Scale.Get(500));
             graphics.DrawImage(new Bitmap(Properties.Resources.Eraser, Scale.Get(120), Scale.Get(70)), Scale.Get(1150), Scale.Get(100));
