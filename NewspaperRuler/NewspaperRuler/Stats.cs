@@ -116,9 +116,7 @@ namespace NewspaperRuler
 
         public void FinishLevel()
         {
-            Loyality += Level.Loyality;
             Money += Level.Salary - Level.GetTotalFine();
-
             LevelNumber++;
 
             CreateWarnings();
@@ -203,6 +201,11 @@ namespace NewspaperRuler
                         dayEnd.StatsTexts.Add(GetLabel($"Шантажистка:\t\t50"));
                         dayEnd.InformationTexts.Add(GetLabel("Шантажистка решила вернуть часть похищенных денег."));
                     }
+                    if (EventFlags[5]["MainCharacterHelpedGrasshoppers"])
+                    {
+                        Money += 100;
+                        dayEnd.StatsTexts.Add(GetLabel($"Подарок от \"Кузнечиков\":\t\t100"));
+                    }
                     break;
             }
             dayEnd.StatsTexts.Add(GetLabel($"Итого:\t\t{Money} {MonetaryCurrencyName}"));
@@ -246,11 +249,15 @@ namespace NewspaperRuler
                     dayEnd.InformationTexts.Add(GetLabel("У Вас остались неоплаченные долги по счетам."));
                 else if (rentDebts == 3 || rentDebts == 4)
                     dayEnd.InformationTexts.Add(GetLabel("Коммунальное хозяйство собирается выселить Вас из квартиры."));
+
+                if (Loyality > -10 && Loyality <= -5)
+                    dayEnd.InformationTexts.Add(GetLabel("Граждане протестуют. Они недовольны, что от них скрывают правду."));
             }
         }
 
         public void UpdateReprimandScore()
         {
+            Loyality += Level.Loyality;
             if (Level.ReprimandScore < 3)
             {
                 if (EventFlags[LevelNumber - 1].ContainsKey("MinistryIsSatisfied"))
@@ -308,6 +315,11 @@ namespace NewspaperRuler
             if (degreeGovernmentAnger >= 5)
                 return new GameOver(controls, new GraphicObject(Properties.Resources.Fired, 450, 350),
                     "Вы уволены. Министерство цензуры и печати нашло Вам замену. " +
+                    "Вы вернулись к своей семье, где Вам суждено жить в бедности до конца своих дней...");
+
+            if (Loyality <= -10)
+                return new GameOver(controls, new GraphicObject(Properties.Resources.Fired, 450, 350),
+                    "Вы не справились со своими обязанностями. Вас уволили. " +
                     "Вы вернулись к своей семье, где Вам суждено жить в бедности до конца своих дней...");
 
             if (productsDebts >= 3)
