@@ -71,17 +71,6 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Loyality: 1
-        ///Content:
-        ///	Правительство стартовало глобальную общественно-политическую Перестройку, в ходе которой пообещали увеличить количество рабочих мест более чем в 2 раза!.
-        /// </summary>
-        internal static string Article1_1 {
-            get {
-                return ResourceManager.GetString("Article1_1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 2
         ///Content:
         ///	Фестиваль света уже скоро! 30 сентября на главной площади столицы традиционно состоится одно из самых знаменательных событий страны – фестиваль света: тысячи лампочек будут зажжены в центре города.
@@ -1123,6 +1112,246 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Virus
+        ///Title: И снова «здравствуйте»
+        ///Content:
+        ///	Ещё недавно казалось, что со штаммом нового вируса КРАБ уже справились. Однако, не тут-то было. В приграничных районах произошла новая вспышка заболеваний..
+        /// </summary>
+        internal static string Article7_1 {
+            get {
+                return ResourceManager.GetString("Article7_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Нуждающимся надо помогать
+        ///Content:
+        ///	Главное богатство страны – люди. Им надо уделять максимальное внимание. Главное – оказывать всестороннюю помощь нуждающимся, особенно семьям с детьми. 
+        ///
+        ///	В рамках Перестройки правительство разрабатывает соответствующие планы. Неужели нас услышали?.
+        /// </summary>
+        internal static string Article7_10 {
+            get {
+                return ResourceManager.GetString("Article7_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: В какое будущее идёт страна?
+        ///Content:
+        ///	Страна пережила много разных потрясений. Но всё возвращается на круги своя, благодаря программе Перестройки. Трудно сказать, что ожидает страну в будущем. Это зависит от многих факторов, прежде всего от действий каждого гражданина. Только объединившись можно строить процветающее будущее, где не будет места злу, войне, насилию и унижению. Данные от 3 октября 1987 г..
+        /// </summary>
+        internal static string Article7_11 {
+            get {
+                return ResourceManager.GetString("Article7_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: Что включает в себя корзина счастья?
+        ///Content:
+        ///	Представление о счастье постоянно меняется. Когда-то счастьем была возможность досыта наесться, затем к этому добавилась комфортность жилья. 
+        ///
+        ///	Сегодня народ предъявляет требования другого уровня: больше свободы, правды, достоинства. 
+        ///
+        ///	Способны ли это понять государственные структуры?.
+        /// </summary>
+        internal static string Article7_12 {
+            get {
+                return ResourceManager.GetString("Article7_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Mistake: Opposition
+        ///Flag: MainCharacterHelpedGrasshoppersFirstTime
+        ///Title: Мы достойны большего!
+        ///Content:
+        ///	Каждому собственную квартиру, работу, низкие налоги и прекращение срочного призыва на войну! Дать шанс молодым выпускникам построить достойное будущее! Прекратить военные действия на границе! Да здравствуют «Кузнечики»!
+        ///
+        ///	---цык-цык-цык---.
+        /// </summary>
+        internal static string Article7_14 {
+            get {
+                return ResourceManager.GetString("Article7_14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Opposition
+        ///Flag: MainCharacterHelpedGrasshoppersSecondTime
+        ///Title: Счастье всем!
+        ///Content:
+        ///	Выдвиженцы из оппозиционной организации «Кузнечики» обеспечили большую часть бездомных людей пропитанием, одеждой и достаточным количеством финансовых средств для того, чтобы приобрести жильё. Счастливые граждане безмерно благодарны «Кузнечикам» за это.
+        ///
+        ///	Напоминаем, что «Кузнечики» позиционируют себя как «светлое будущее государства» и готовятся заменить действующее правительс [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string Article7_15 {
+            get {
+                return ResourceManager.GetString("Article7_15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Mistake: MassEvent
+        ///Title: Фестиваль парковой скульптуры
+        ///Content:
+        ///	В столице состоится фестиваль парковой скульптуры, посвященный краснолимским легендам. Мероприятие проведут на открытой площадке с 4 по 6 октября.
+        ///
+        ///	В конкурсе примут участие 7 мастеров — резчиков по дереву, скульпторов и художников. В течение пяти дней они будут создавать деревянные скульптуры, малые архитектурные формы и другие арт-объекты по теме краснолимских мифов.
+        ///.
+        /// </summary>
+        internal static string Article7_16 {
+            get {
+                return ResourceManager.GetString("Article7_16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Reprimand: 1
+        ///Mistake: MassEvent
+        ///Title: Форум древних городов
+        ///Content:
+        ///	В Плиувиле состоится Международный форум древних городов. Его основной темой станет театр.
+        ///
+        ///	Форум будет проходить с 5 по 8 октября. Сюда прибудут театральные деятели, встречи которых будут способствовать развитию театрального искусства.
+        ///.
+        /// </summary>
+        internal static string Article7_17 {
+            get {
+                return ResourceManager.GetString("Article7_17", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Virus
+        ///Title: Защитят ли вакцины от новых штаммов КРАБа?
+        ///Content:
+        ///	В зарубежных странах обнаружили новые случаи мутации вируса КРАБ. Разработанная вакцина ориентирована на уже изученный штамм. В СМИ появились сообщения о разработках наших учёных в этом плане. Необходимо использовать их опыт и предложить свой вариант универсальной вакцины..
+        /// </summary>
+        internal static string Article7_2 {
+            get {
+                return ResourceManager.GetString("Article7_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Virus
+        ///Title: Может ли КРАБ стать хроническим?
+        ///Content:
+        ///	Ученые и врачи обсуждают хвост из неполадок со здоровьем, который может тянуться у пациентов вслед за перенесенным КРАБом неделями и месяцами. Пока нет достоверных научных данных по этому вопросу, но во избежание рисков даже переболевшим и вакцинированным гражданам обязательно нужно носить медицинские маски..
+        /// </summary>
+        internal static string Article7_3 {
+            get {
+                return ResourceManager.GetString("Article7_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Virus
+        ///Title: Поколение разбитых сердец
+        ///Content:
+        ///	Кардиологи с тревогой сообщают о том, что у половины людей, перенёсших инфекцию КРАБ, наблюдаются проблемы с сердцем. Причём осложнения возникают даже у тех, кто переболел бессимптомно. 
+        ///
+        ///	Эту действительно серьёзную проблему в радио-эфире разбирали врачи-вирусологи и кардиологи..
+        /// </summary>
+        internal static string Article7_4 {
+            get {
+                return ResourceManager.GetString("Article7_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Mistake: NoTitle
+        ///Content:
+        ///	Каждый человек задумывался, для чего он живет на этом свете, в чем смысл его существования. Жизнь наша драгоценна, и нельзя тратить ее попусту. 
+        ///
+        ///	Должна быть цель, смысл — творить добро, чтобы делать этот мир еще более прекрасным и совершенным..
+        /// </summary>
+        internal static string Article7_5 {
+            get {
+                return ResourceManager.GetString("Article7_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Mistake: NoTitle
+        ///Content:
+        ///	Немало семей в стране до сих пор живёт без удобств. 
+        ///
+        ///	В рамках Перестройки правительство разрабатывает четкий план поэтапного улучшения комфортности возводимого жилья. Данные от 3 октября 1987 г..
+        /// </summary>
+        internal static string Article7_6 {
+            get {
+                return ResourceManager.GetString("Article7_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Mistake: Deprecated
+        ///Title: Что шепчет погода?
+        ///Content:
+        ///	Не стоит верить долгосрочным прогнозам. Наука способна дать верный прогноз только на ближайшие 5-6 дней. 
+        ///
+        ///	Атмосфера хаотична. Метеорологи могут только предположить возможный сценарий. 
+        ///
+        ///	Наиболее вероятно, что 1 октября погода будет в пределах нормы с небольшими отклонениями..
+        /// </summary>
+        internal static string Article7_7 {
+            get {
+                return ResourceManager.GetString("Article7_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: Тяжёлое наследие
+        ///Content:
+        ///	Проблема бедности преследует страну. Свою лепту внесла длительная война, локальные конфликты на границе. Бедность наносит человеку психологические травмы. Начинается процесс деградации личности, а вместе с ней деградирует государство. 
+        ///
+        ///	Власти должны понимать это и предпринимать меры по изменению положения..
+        /// </summary>
+        internal static string Article7_8 {
+            get {
+                return ResourceManager.GetString("Article7_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: На птичьих правах
+        ///Content:
+        ///	Более 3 млн человек в стране ищут работу. Объявления о вакансиях часто оказываются ложными. Реальность не соответствует данным объявлениям: на самом деле зарплата оказывается ниже, а условия труда – хуже. 
+        ///
+        ///	Государство должно защищать от подобных махинаций. Данные от 3 октября 1987 г..
+        /// </summary>
+        internal static string Article7_9 {
+            get {
+                return ResourceManager.GetString("Article7_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Background {
@@ -1261,7 +1490,8 @@ namespace NewspaperRuler.Properties {
         ///№ 34.16. Отклонять рекламные объявления
         ///№ 34.17. Отклонять статьи о конкретных личностях
         ///№ 34.18. Отклонять статьи о вирусе КРАБ
-        ///№ 34.19. Отклонять статьи без направленности.
+        ///№ 34.19. Отклонять статьи оппозиционного характера
+        ///№ 34.20. Отклонять статьи о массовых мероприятиях.
         /// </summary>
         internal static string DecreesLevel7 {
             get {
@@ -1373,16 +1603,6 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Mail {
-            get {
-                object obj = ResourceManager.GetObject("Mail", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream MainMenu {
@@ -1441,9 +1661,9 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap NoteBackground1 {
+        internal static System.Drawing.Bitmap NoteBackground {
             get {
-                object obj = ResourceManager.GetObject("NoteBackground1", resourceCulture);
+                object obj = ResourceManager.GetObject("NoteBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1691,6 +1911,17 @@ namespace NewspaperRuler.Properties {
         internal static string TrendsLevel6 {
             get {
                 return ResourceManager.GetString("TrendsLevel6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Новый неисследованный заразный вирус КРАБ
+        ///Социальная программа Перестройки
+        ///Оппозиционная организация &quot;Кузнечики&quot;.
+        /// </summary>
+        internal static string TrendsLevel7 {
+            get {
+                return ResourceManager.GetString("TrendsLevel7", resourceCulture);
             }
         }
     }

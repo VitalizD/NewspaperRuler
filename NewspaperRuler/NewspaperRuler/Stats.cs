@@ -43,14 +43,14 @@ namespace NewspaperRuler
         
         public LevelData Level { get; set; }
 
-        public List<Dictionary<string, bool>> EventFlags { get; }
+        public List<Dictionary<string, bool>> Flags { get; }
 
         public Stats(DayEnd dayEnd)
         {
             Money = 100;
             this.dayEnd = dayEnd;
-            noteBackground = new GraphicObject(Properties.Resources.NoteBackground1, 750, 1000, 125);
-            EventFlags = new List<Dictionary<string, bool>>
+            noteBackground = new GraphicObject(Properties.Resources.NoteBackground, 750, 1000, 125);
+            Flags = new List<Dictionary<string, bool>>
             {
                 new Dictionary<string, bool>
                 {
@@ -93,6 +93,16 @@ namespace NewspaperRuler
                     ["MinistryIsSatisfied"] = false,
                     ["WifeIsFaithful"] = false,
                     ["MainCharacterHelpedGrasshoppers"] = false,
+                    ["MainCharacterBoughtPresentForHisSon"] = true,
+                },
+                new Dictionary<string, bool>
+                {
+                    ["MinistryIsSatisfied"] = false,
+                    ["MainCharacterHelpedGrasshoppersFirstTime"] = false,
+                    ["MainCharacterHelpedGrasshoppersSecondTime"] = false,
+                    ["GalinaWillHelpMainCharacterFreeCharge"] = false,
+                    ["MainCharacterPaidGalina"] = true,
+                    ["MedicineWasDeliveredToWife"] = true,
                 }
             };
         }
@@ -101,9 +111,9 @@ namespace NewspaperRuler
 
         public void SetFlagToTrue(string flag)
         {
-            if (!EventFlags[LevelNumber - 1].ContainsKey(flag))
-                throw new Exception($"The \"{flag}\" flag doesn't exist in the collection {EventFlags[LevelNumber - 1]}");
-            EventFlags[LevelNumber - 1][flag] = true;
+            if (!Flags[LevelNumber - 1].ContainsKey(flag))
+                throw new Exception($"The \"{flag}\" flag doesn't exist in the collection {Flags[LevelNumber - 1]}");
+            Flags[LevelNumber - 1][flag] = true;
         }
 
         public void GoToNextLevel()
@@ -133,26 +143,26 @@ namespace NewspaperRuler
                 case 2:
                     rent += 30;
                     dayEnd.InformationTexts.Add(GetLabel("Квартплата увеличена."));
-                    if (!EventFlags[0]["ArticleAboutChampionWasApproved"])
+                    if (!Flags[0]["ArticleAboutChampionWasApproved"])
                     {
                         Money += 50;
                         dayEnd.StatsTexts.Add(GetLabel($"Подарок от Галины Руш:\t\t50"));
                     }
-                    if (EventFlags[1]["MainCharacterWasOnDate"])
+                    if (Flags[1]["MainCharacterWasOnDate"])
                     {
                         Money -= 30;
                         dayEnd.StatsTexts.Add(GetLabel($"Посещение бара \"Алый цветок\":\t\t-30"));
                     }
                     break;
                 case 3:
-                    if (EventFlags[0]["ArticleAboutChampionWasApproved"])
+                    if (Flags[0]["ArticleAboutChampionWasApproved"])
                     {
                         Money -= 50;
                         dayEnd.StatsTexts.Add(GetLabel($"Штраф от Министерства социальной защиты:\t\t-50"));
                         dayEnd.InformationTexts.Add(GetLabel("Министерство социальной защиты налагает штраф за нарушение"));
                         dayEnd.InformationTexts.Add(GetLabel("неприкосновенности частной жизни гражданки Галины Руш."));
                     }
-                    if (EventFlags[1]["SalaryIncreased"])
+                    if (Flags[1]["SalaryIncreased"])
                     {
                         Money += 100;
                         dayEnd.StatsTexts.Add(GetLabel($"Бонус к зарплате:\t\t100"));
@@ -163,7 +173,7 @@ namespace NewspaperRuler
                     productsCost += 10;
                     dayEnd.InformationTexts.Add(GetLabel("Цены на продукты повысились."));
                     dayEnd.Expenses.Add(new Expense($"Плата за молчание:\t\t250 {MonetaryCurrencyName}", 250, ExpenseType.Stranger));
-                    if (EventFlags[2]["ArticleOnProhibitionWeaponsWasApproved"])
+                    if (Flags[2]["ArticleOnProhibitionWeaponsWasApproved"])
                     {
                         Money -= 75;
                         dayEnd.StatsTexts.Add(GetLabel($"Вычет из зарплаты:\t\t-75"));
@@ -173,38 +183,63 @@ namespace NewspaperRuler
                 case 5:
                     dayEnd.InformationTexts.Add(GetLabel("Становится холодно. Пора платить за отопление."));
                     dayEnd.InformationTexts.Add(GetLabel("Вы можете пойти на фестиваль света, оплатив стоимость билета."));
+                    dayEnd.InformationTexts.Add(GetLabel("У Вашего сына завтра День Рождения."));
                     dayEnd.Expenses.Add(new Expense($"Фестиваль света:\t\t30 {MonetaryCurrencyName}", 30, ExpenseType.Festival));
-                    if (EventFlags[3]["TheMainCharacterPaidLarisa"] && EventFlags[3]["TheMainCharacterPaidForSilence"])
+                    if (Flags[3]["TheMainCharacterPaidLarisa"] && Flags[3]["TheMainCharacterPaidForSilence"])
                     {
                         Money += 200;
                         dayEnd.StatsTexts.Add(GetLabel($"Возврат похищенных денег:\t\t200"));
                     }
-                    if (!EventFlags[3]["TheMainCharacterPaidForSilence"] && !EventFlags[3]["TheMainCharacterPaidLarisa"])
+                    if (!Flags[3]["TheMainCharacterPaidForSilence"] && !Flags[3]["TheMainCharacterPaidLarisa"])
                     {
                         dayEnd.InformationTexts.Add(GetLabel("Сегодня последний шанс подкупить шантажистку."));
                         dayEnd.Expenses.Add(new Expense($"Плата за молчание:\t\t250 {MonetaryCurrencyName}", 250, ExpenseType.Stranger));
                     }
-                    else if (EventFlags[3]["TheMainCharacterPaidForSilence"] && !EventFlags[3]["TheMainCharacterPaidLarisa"])
+                    else if (Flags[3]["TheMainCharacterPaidForSilence"] && !Flags[3]["TheMainCharacterPaidLarisa"])
                         dayEnd.InformationTexts.Add(GetLabel("Шантажистка получила Ваши деньги."));
                     break;
                 case 6:
                     dayEnd.InformationTexts.Add(GetLabel("Ваша жена заразилась вирусом КРАБ."));
-                    if (EventFlags[3]["MainCharacterGaveOutAboutSecretEditorialOffice"])
+                    dayEnd.InformationTexts.Add(GetLabel("Сегодня День Рождения Вашего сына. Вы можете отправить ему подарок."));
+                    dayEnd.Expenses.Add(new Expense($"Подарок сыну:\t\t35 {MonetaryCurrencyName}", 35, ExpenseType.Son));
+                    if (Flags[3]["MainCharacterGaveOutAboutSecretEditorialOffice"])
                     {
                         Money += 120;
                         dayEnd.StatsTexts.Add(GetLabel($"Премия:\t\t120"));
                         dayEnd.InformationTexts.Add(GetLabel("Вы получили премию за раскрытие незаконной тайной редакции."));
                     }
-                    if (EventFlags[3]["TheMainCharacterPaidForSilence"] && !EventFlags[3]["TheMainCharacterPaidLarisa"])
+                    if (Flags[3]["TheMainCharacterPaidForSilence"] && !Flags[3]["TheMainCharacterPaidLarisa"])
                     {
                         Money += 50;
                         dayEnd.StatsTexts.Add(GetLabel($"Шантажистка:\t\t50"));
                         dayEnd.InformationTexts.Add(GetLabel("Шантажистка решила вернуть часть похищенных денег."));
                     }
-                    if (EventFlags[5]["MainCharacterHelpedGrasshoppers"])
+                    if (Flags[5]["MainCharacterHelpedGrasshoppers"])
                     {
                         Money += 100;
-                        dayEnd.StatsTexts.Add(GetLabel($"Подарок от \"Кузнечиков\":\t\t100"));
+                        dayEnd.StatsTexts.Add(GetLabel($"Привет от \"Кузнечиков\":\t\t100"));
+                    }
+                    break;
+                case 7:
+                    rent += 20;
+                    dayEnd.InformationTexts.Add(GetLabel("Квартплата увеличена."));
+                    dayEnd.InformationTexts.Add(GetLabel("Курс лечения Вашей жены начался. Регулярно поставляйте ей лекарство. Осталось 3 дня."));
+                    if ((!Flags[0]["ArticleAboutChampionWasApproved"] || Flags[3]["AnnouncementOfDisappearanceOfGalinasHusbandWasApproved"])
+                        && !Flags[6]["GalinaWillHelpMainCharacterFreeCharge"])
+                        dayEnd.Expenses.Add(new Expense($"Помощь Галины Руш:\t\t110 {MonetaryCurrencyName}", 110, ExpenseType.Galina));
+                    if (Flags[3]["MissingPersonNoticeWasPublished"])
+                    {
+                        dayEnd.InformationTexts.Add(GetLabel("Женщина из плиувильской аптеки украла препарат для Вашей жены и поплатилась за это:"));
+                        dayEnd.InformationTexts.Add(GetLabel("её уволили. Она больше не сможет Вам помочь. Лекарство успешно доставлено Вашей жене."));
+                    }
+                    else dayEnd.Expenses.Add(new Expense($"Лекарство для жены:\t\t200 {MonetaryCurrencyName}", 200, ExpenseType.Medicine));
+                    if (Flags[5]["MainCharacterBoughtPresentForHisSon"])
+                        dayEnd.InformationTexts.Add(GetLabel("Вашему сыну понравился подарок."));
+                    else dayEnd.InformationTexts.Add(GetLabel("Ваш сын расстроился, что Вы не проявили к нему внимание в его День Рождения."));
+                    if (Flags[6]["MainCharacterHelpedGrasshoppersFirstTime"] && Flags[6]["MainCharacterHelpedGrasshoppersSecondTime"])
+                    {
+                        Money += 150;
+                        dayEnd.StatsTexts.Add(GetLabel($"Привет от \"Кузнечиков\":\t\t150"));
                     }
                     break;
             }
@@ -260,10 +295,10 @@ namespace NewspaperRuler
             Loyality += Level.Loyality;
             if (Level.ReprimandScore < 3)
             {
-                if (EventFlags[LevelNumber - 1].ContainsKey("MinistryIsSatisfied"))
+                if (Flags[LevelNumber - 1].ContainsKey("MinistryIsSatisfied"))
                 {
                     if (degreeGovernmentAnger > 0) degreeGovernmentAnger--;
-                    EventFlags[LevelNumber - 1]["MinistryIsSatisfied"] = true;
+                    Flags[LevelNumber - 1]["MinistryIsSatisfied"] = true;
                 }
             }
             else degreeGovernmentAnger += Level.ReprimandScore - 1;
@@ -279,9 +314,12 @@ namespace NewspaperRuler
                     case ExpenseType.Rent: rentDebts += 3; break;
                     case ExpenseType.Products: productsDebts += 2; break;
                     case ExpenseType.Heating: heatingDebts += 2; break;
-                    case ExpenseType.Stranger: EventFlags[3]["TheMainCharacterPaidForSilence"] = false; break;
-                    case ExpenseType.Larisa: EventFlags[3]["TheMainCharacterPaidLarisa"] = false; break;
-                    case ExpenseType.Festival: EventFlags[4]["MainCharacterWentToFestival"] = false; break;
+                    case ExpenseType.Stranger: Flags[3]["TheMainCharacterPaidForSilence"] = false; break;
+                    case ExpenseType.Larisa: Flags[3]["TheMainCharacterPaidLarisa"] = false; break;
+                    case ExpenseType.Festival: Flags[4]["MainCharacterWentToFestival"] = false; break;
+                    case ExpenseType.Son: Flags[5]["MainCharacterBoughtPresentForHisSon"] = false; break;
+                    case ExpenseType.Galina: Flags[6]["MainCharacterPaidGalina"] = false; break;
+                    case ExpenseType.Medicine: Flags[6]["MedicineWasDeliveredToWife"] = false; break;
                 }
             }
             if (rentDebts > 0) rentDebts--;
@@ -343,7 +381,11 @@ namespace NewspaperRuler
         public void SetDifficulty(Difficulties difficulty)
         {
             if (difficulty is Difficulties.Normal) loyalityFactor = 1;
-            else loyalityFactor = 2;
+            else
+            {
+                loyalityFactor = 2;
+                Money = 200;
+            }
         }
     }
 }

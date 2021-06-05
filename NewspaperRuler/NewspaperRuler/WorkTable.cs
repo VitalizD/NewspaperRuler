@@ -373,6 +373,7 @@ namespace NewspaperRuler
                 case Mistake.ObsceneLanguage: remarkText.Append("Кодекс чести государственной газеты предписывает редактору отклонять все статьи с ненормативной лексикой."); break;
                 case Mistake.Opposition: remarkText.Append("Публикация статей оппозиционного характера запрещена."); break;
                 case Mistake.Virus: remarkText.Append("Упоминания о вирусе КРАБ запрещены."); break;
+                case Mistake.MassEvent: remarkText.Append("Массовые мероприятия запрещены в связи с ограничениями, созданными с целью уменьшения скорости распространения вируса КРАБ."); break;
                 default: return;
             }
             if (currentArticle.ReprimandScore == 0)

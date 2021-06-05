@@ -5,9 +5,11 @@
         Rent,
         Products,
         Heating,
-        Family,
         Larisa,
         Stranger,
-        Festival
+        Festival,
+        Galina,
+        Son,
+        Medicine
     }
 }

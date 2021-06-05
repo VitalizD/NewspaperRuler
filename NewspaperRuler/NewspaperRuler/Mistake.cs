@@ -14,6 +14,7 @@
         Personality,
         Virus,
         Opposition,
-        ObsceneLanguage
+        ObsceneLanguage,
+        MassEvent
     }
 }

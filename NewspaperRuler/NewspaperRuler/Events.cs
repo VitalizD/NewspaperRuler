@@ -34,7 +34,7 @@ namespace NewspaperRuler
                             "\n\n\tВстретимся в баре \"Алый цветок\" сегодня в 20:00";
                         notes.Add(new Note(noteBackground, text, "Пойти", "Игнорировать", "Вы пойдёте на свидание с таинственной незнакомкой",
                             "Вы не пойдёте на свидание с таинственной незнакомкой", "MainCharacterWasOnDate"));
-                        if (EventFlags[0]["ArticleAboutChampionWasApproved"])
+                        if (Flags[0]["ArticleAboutChampionWasApproved"])
                             text = "\tМногоуважаемый государственный служащий," +
                                 "\n\n\tНе знаю, как статья о моих намерениях завести семью попала к Вам, но из-за Вас сегодня мне отказали в поездке за рубеж, где известные спортсмены со всего мира проводят мастер-классы по олимпийским видам спорта. " +
                                 "Туда не берут беременных. Никто бы не узнал, ведь срок моей беременности только начался. Я не разглашала информацию об этом." +
@@ -53,11 +53,11 @@ namespace NewspaperRuler
                     {
                         var text = new StringBuilder("\tСегодня мы, обычные люди, запускаем собственную газету, которая будет повествовать о РЕАЛЬНЫХ событиях в стране, а не о" +
                             " бессовестной лжи, которую забивают в наши головы чиновники.");
-                        if (!EventFlags[1]["ArticleOnMassStarvationWasApproved"])
+                        if (!Flags[1]["ArticleOnMassStarvationWasApproved"])
                             text.Append("\n\n\tПочему нам не рассказывают о массовом голоде, охватившем всю страну?");
-                        if (!EventFlags[1]["ArticleAboutSalaryDelayWasApproved"])
+                        if (!Flags[1]["ArticleAboutSalaryDelayWasApproved"])
                             text.Append("\n\n\tПочему от нас скрыли информацию о задержке зарплаты в Плиувиле?");
-                        if (!EventFlags[1]["ArticleOnMassStarvationWasApproved"] || !EventFlags[1]["ArticleAboutSalaryDelayWasApproved"])
+                        if (!Flags[1]["ArticleOnMassStarvationWasApproved"] || !Flags[1]["ArticleAboutSalaryDelayWasApproved"])
                             text.Append(" Да-да, мы об этом знаем и без гос. газеты.");
                         text.Append("\n\n\tПосмотрите на здание мэрии столицы — на нём же отчётливо кто-то написал \"Лжецы!\"." +
                             "\n\n\tНаша маленькая редакция будет работать в скрытном режиме. Просим не разглашать сведения о нашем существовании правительственным органам.");
@@ -65,7 +65,7 @@ namespace NewspaperRuler
 
                         text.Clear();
                         text.Append("\tИ снова привет, красавчик!");
-                        if (EventFlags[1]["MainCharacterWasOnDate"])
+                        if (Flags[1]["MainCharacterWasOnDate"])
                             text.Append("\n\n\tПомнишь нашу с тобой встречу в баре? У тебя был такой удивлённый взгляд... " +
                                 "Жаль, что встреча так быстро завершилась, ведь ты почему-то поспешил уйти. " +
                                 "Предлагаю встретиться повторно, но уже с обсуждением ближайшего будущего твоей семьи. ");
@@ -79,7 +79,7 @@ namespace NewspaperRuler
 
                         text.Clear();
                         text.Append("\tЗдравствуй, дорогой!");
-                        if (EventFlags[1]["ArticleOnDryRationsWasApproved"])
+                        if (Flags[1]["ArticleOnDryRationsWasApproved"])
                             text.Append("\n\n\tЯ видела опубликованную тобой новость о том, что всем выдадут индивидуальный рацион питания. И это случилось! " +
                                 "Сегодня на почте мне действительно выдали 2 сухих пайка.");
                         else text.Append("\n\n\tСоседка сообщила, что на почте каждого ждёт индивидуальный рацион питания от государства. " +
@@ -107,7 +107,7 @@ namespace NewspaperRuler
                     {
                         var text = new StringBuilder();
                         text.Append("\tНу что, красавчик, наконец-то ты понял, что я та ещё стерва. Ты, наверное, не понимаешь, но я тебе скажу. ");
-                        if (EventFlags[2]["MainCharacterWasOnDate"])
+                        if (Flags[2]["MainCharacterWasOnDate"])
                             text.Append("Ты пришёл на встречу, но вместо обсуждения делового предложения я вцепилась тебе в губы, после чего ты тут же поспешил уйти.");
                         else
                             text.Append("Ты явно не ожидал увидеть меня у своего подъезда. Я тут же вцепилась тебе в губы, но ты в недоумении поспешил скрыться за дверью.");
@@ -122,7 +122,7 @@ namespace NewspaperRuler
                         notes.Add(new Note(noteBackground, text.ToString(), "OK", 0));
 
                         text.Clear();
-                        if (EventFlags[2]["ArticleOnProhibitionWeaponsWasApproved"])
+                        if (Flags[2]["ArticleOnProhibitionWeaponsWasApproved"])
                             text.Append("\tЗдравствуйте, уважаемый." +
                                 "\n\n\tЭто снова я, Лариса. Команда МАМБА выражает Вам огромную благодарность за публикацию требуемой статьи. " +
                                 "Похоже, у военного руководства будут серьёзные проблемы…" +
@@ -140,13 +140,13 @@ namespace NewspaperRuler
                                 "Я не стану вмешиваться в Вашу личную жизнь, но знайте, что Вы поступили очень подло по отношению к своей жене. " +
                                 "Не забывайте о своей семье: она самое дорогое, что у Вас есть." +
                                 "\n\n\tПрощайте");
-                            EventFlags[3]["TheMainCharacterPaidLarisa"] = false;
+                            Flags[3]["TheMainCharacterPaidLarisa"] = false;
                         }
                         notes.Add(new Note(noteBackground, text.ToString(), "OK"));
 
                         text.Clear();
                         text.Append("\tЗдравствуйте,");
-                        if (EventFlags[0]["ArticleAboutChampionWasApproved"])
+                        if (Flags[0]["ArticleAboutChampionWasApproved"])
                             text.Append("\n\n\tЯ сожалею, что поведала о Вас в Министерство социальной защиты, ведь могла просто промолчать. " +
                                 "Но сейчас мне нужна Ваша помощь!");
                         else
@@ -176,7 +176,7 @@ namespace NewspaperRuler
                 case 5:
                     {
                         var text = new StringBuilder();
-                        if (EventFlags[3]["MissingPersonNoticeWasPublished"])
+                        if (Flags[3]["MissingPersonNoticeWasPublished"])
                             text.Append("\tВы просто чудо! Вы мне очень помогли! Я мать пропавшего Геночки – моего сына. " +
                                 "Вы распространили объявление о пропаже, и его быстро нашли. Он был в лесу, стоял на краю обрыва. " +
                                 "Ещё бы немного, и он упал! Вы настоящий спаситель!" +
@@ -200,19 +200,19 @@ namespace NewspaperRuler
                             "Пожалуйста, придумай что-нибудь! Пожалуйста, не дай им забрать нашего Тимошу... Я этого не вынесу…");
                         notes.Add(new Note(noteBackground, text.ToString(), "OK"));
 
-                        if (EventFlags[3]["TheMainCharacterPaidLarisa"])
+                        if (Flags[3]["TheMainCharacterPaidLarisa"])
                         {
                             text.Clear();
                             text.Append("\tЗдравствуйте, уважаемый." +
                                 "\n\n\tВам по-прежнему пишет Лариса. Мой план сработал идеально. Знаете? Оказывается, шантажистка та ещё хитрюга: такой аферой она провела многих других мужчин. " +
                                 "Её «нежданчики» больше никому не навредят: дело передали в суд. Мы победили.");
-                            if (EventFlags[3]["TheMainCharacterPaidForSilence"])
+                            if (Flags[3]["TheMainCharacterPaidForSilence"])
                                 text.Append("\n\n\tВы всё-таки дали ей деньги. Я же сказала не давать. Радуйтесь. " +
                                     "Мне удалось через суд вернуть часть Ваших похищенных денег, 200 ТОКЕНОВ. Это всё, что я смогла вытащить.");
                             text.Append("\n\n\tБыло приятно иметь с Вами дело. Теперь я могу со спокойной душой вернуться в родную деревню." +
                                 "\n\n\tПрощайте!");
                             notes.Add(new Note(noteBackground, text.ToString(), "OK"));
-                            EventFlags[5]["WifeIsFaithful"] = true;
+                            Flags[5]["WifeIsFaithful"] = true;
                         }
 
                         text.Clear();
@@ -228,11 +228,11 @@ namespace NewspaperRuler
                         notes.Add(new Note(noteBackground, text.ToString(), "OK"));
 
                         text.Clear();
-                        if (EventFlags[3]["AnnouncementOfDisappearanceOfGalinasHusbandWasApproved"])
+                        if (Flags[3]["AnnouncementOfDisappearanceOfGalinasHusbandWasApproved"])
                         {
                             text.Append("\tВы действительно опубликовали объявление о пропаже моего мужа! Большое спасибо! Он напился в стельку и неосознанно забрёл в центральный парк. " +
                                 "Там и уснул. Эх, что за балбес!");
-                            if (EventFlags[0]["ArticleAboutChampionWasApproved"])
+                            if (Flags[0]["ArticleAboutChampionWasApproved"])
                                 text.Append("\n\n\tМне действительно очень жаль за тот казус с Министерством социальной защиты. Вы хороший человек.");
                             else
                                 text.Append("\n\n\tВы выручили меня дважды. Я Вас никогда не забуду.");
@@ -243,7 +243,7 @@ namespace NewspaperRuler
                         {
                             text.Append("\t«Большое спасибо за помощь» называется… Неужели так трудно опубликовать одно единственное объявление о пропаже моего мужа? Сама нашла уже! " +
                             "Он напился в стельку и неосознанно забрёл в центральный парк. Там и уснул. Эх, что за балбес!");
-                            if (EventFlags[0]["ArticleAboutChampionWasApproved"])
+                            if (Flags[0]["ArticleAboutChampionWasApproved"])
                                 text.Append("\n\n\tНадеюсь, мне с Вами больше никогда не придётся иметь дело. " +
                                     "Мы переезжаем в другую страну, где начнём жизнь с чистого листа. Прощайте.");
                             else
@@ -257,7 +257,7 @@ namespace NewspaperRuler
                 case 6:
                     {
                         var text = new StringBuilder();
-                        if (EventFlags[4]["MainCharacterWentToFestival"])
+                        if (Flags[4]["MainCharacterWentToFestival"])
                         {
                             text.Append("\tХей, дружище!" +
                                 "\n\n\tТебе пишет бывший главный редактор, которого теперь заменяешь ты. " +
@@ -273,7 +273,7 @@ namespace NewspaperRuler
                             text.Clear();
                         }
                         
-                        if (EventFlags[3]["TheMainCharacterPaidForSilence"] && !EventFlags[3]["TheMainCharacterPaidLarisa"])
+                        if (Flags[3]["TheMainCharacterPaidForSilence"] && !Flags[3]["TheMainCharacterPaidLarisa"])
                         {
                             text.Append("\tХелло, пупсик!" +
                                 "\n\n\tЗа 250 ТОКЕНОВ спасибо. Как и обещала, я больше не трону ни тебя, ни твою семью. " +
@@ -281,10 +281,10 @@ namespace NewspaperRuler
                                 "\n\n\tХм… Ну, так и быть. Сегодня я добрая. Лови 50 ТОКЕНОВ! Но не больше!" +
                                 "\n\n\tПока-пока, *чмок*");
                             notes.Add(new Note(noteBackground, text.ToString(), "OK"));
-                            EventFlags[5]["WifeIsFaithful"] = true;
+                            Flags[5]["WifeIsFaithful"] = true;
                             text.Clear();
                         }
-                        else if (!EventFlags[3]["TheMainCharacterPaidForSilence"] && !EventFlags[3]["TheMainCharacterPaidLarisa"])
+                        else if (!Flags[3]["TheMainCharacterPaidForSilence"] && !Flags[3]["TheMainCharacterPaidLarisa"])
                         {
                             text.Append("\tЯ получила фото, на котором ты и… ещё какая-то… мымра. " +
                                 "Я в тебе разочаровалась. Нам не суждено жить счастливо вместе. Не возвращайся…" +
@@ -293,7 +293,7 @@ namespace NewspaperRuler
                             text.Clear();
                         }
 
-                        if (!EventFlags[0]["ArticleAboutChampionWasApproved"] || EventFlags[3]["AnnouncementOfDisappearanceOfGalinasHusbandWasApproved"])
+                        if (!Flags[0]["ArticleAboutChampionWasApproved"] || Flags[3]["AnnouncementOfDisappearanceOfGalinasHusbandWasApproved"])
                         {
                             text.Append("\tВы мне звонили вчера. Не думала, что моя помощь пригодится Вам так скоро. " +
                                 "Сожалею о страшной судьбе Вашего сына. У него большое будущее, а тут призыв на войну. " +
@@ -303,6 +303,62 @@ namespace NewspaperRuler
                                 "\n\n\tГалина Руш");
                             notes.Add(new Note(noteBackground, text.ToString(), "OK"));
                             text.Clear();
+                        }
+                        break;
+                    }
+                case 7:
+                    {
+                        var text = new StringBuilder("\t");
+                        if (Flags[5]["WifeIsFaithful"])
+                            text.Append("Дорогой, я понимаю, насколько тебе сейчас нелегко. ");
+                        else text.Append("Не могу простить тебя за предательство, но всё же я должна сообщить. ");
+                        text.Append("Ты знаешь, что я заражена. Вчера я ходила в поликлинику. " +
+                            "Прогнозы неутешительные. Если своевременно не начать лечение, я могу умереть. " +
+                            "\n\n\tВсе койки в поликлинике заняты, поэтому меня не положили. " +
+                            "Требуется обязательное трёхдневное лечение в виде ежедневной инъекции очень сильного импортного препарата, но цена… " +
+                            "Я не могу себе позволить это лекарство." +
+                            "\n\n\tЯ не знаю, что делать. Чувствую себя гадко. Сегодня утром меня стошнило, у меня была одышка. Кажется, мой конец уже близок…" +
+                            "\n\n\tТимошу временно приютила соседка Лариса, я не хочу его заразить. " +
+                            "Они сказали, что заберут его на войну послезавтра. Я не могу сдержать слёзы… ");
+                        if (Flags[5]["WifeIsFaithful"])
+                            text.Append("Прости меня за всё.");
+                        else text.Append("\n\n\tНе знаю, зачем тебе это пишу, но если ты изменяешь мне, то позаботься хотя бы о Тимоше. " +
+                            "Он единственный, кто может сейчас меня утешить…");
+                        text.Append("\n\n\tТвоя жена");
+                        notes.Add(new Note(noteBackground, text.ToString(), "ДЕРЖИСЬ..."));
+
+                        text.Clear();
+                        text.Append("\tПривет, друг.\n\n\t");
+                        if (Flags[5]["MainCharacterHelpedGrasshoppers"])
+                            text.Append("Мы довольны твоей работой, продолжай в том же духе. Обещаем, одним «спасибо» это не обойдётся.");
+                        else text.Append("Вчера ты нас подвёл. Люди должны знать о спасителях государства. " +
+                            "Если поможешь нам, обещаем, одним «спасибо» это не обойдётся.");
+                        text.Append("\n\n\t---цык-цык-цык---");
+                        notes.Add(new Note(noteBackground, text.ToString(), "OK", 0));
+
+                        text.Clear();
+                        if (!Flags[0]["ArticleAboutChampionWasApproved"] || Flags[3]["AnnouncementOfDisappearanceOfGalinasHusbandWasApproved"])
+                        {
+                            text.Append("\tМногоуважаемый служащий," +
+                                "\n\n\tВам очень повезло, ведь мой муж работает служащим в сфере военного дела. У него есть почётный статус. " +
+                                "Он готов приложить необходимые усилия, чтобы предотвратить срочный призыв Вашего сына на войну." +
+                                "\n\n\tОднако, видите ли, это не совсем законно, всё-таки государственные приказы превыше всего. " +
+                                "И поэтому потребуются некоторые расходы, чтобы уладить одно «дельце».");
+                            if (!Flags[0]["ArticleAboutChampionWasApproved"] && Flags[3]["AnnouncementOfDisappearanceOfGalinasHusbandWasApproved"])
+                            {
+                                text.Append("\n\n\tТо, что Вы сделали дня нас, мы никогда не забудем. " +
+                                    "Мы готовы покрыть все эти расходы самостоятельно и рискнуть безвозмездно, чтобы предотвратить призыв Вашего сына! " +
+                                    "Однако знайте, что это небыстро и потребует некоторое время. Я обязательно сообщу, когда дело будет сделано.");
+                                Flags[6]["GalinaWillHelpMainCharacterFreeCharge"] = true;
+                                Flags[6]["MainCharacterPaidGalina"] = false;
+                            }
+                            else if (Flags[0]["ArticleAboutChampionWasApproved"] && Flags[3]["AnnouncementOfDisappearanceOfGalinasHusbandWasApproved"] ||
+                                !Flags[0]["ArticleAboutChampionWasApproved"] && !Flags[3]["AnnouncementOfDisappearanceOfGalinasHusbandWasApproved"])
+                                text.Append("\n\n\tМы и так сильно рискуем, пытаясь Вам помочь, поэтому даже такая столь небольшая «компенсация» нам бы не помешала. " +
+                                    "Однако знайте, что это небыстро и потребует некоторое время. Я обязательно сообщу, когда дело будет сделано." +
+                                    "\n\n\tЯ позвоню Вам сегодня вечером.");
+                            text.Append("\n\n\tГалина Руш");
+                            notes.Add(new Note(noteBackground, text.ToString(), "OK"));
                         }
                         break;
                     }
@@ -329,7 +385,7 @@ namespace NewspaperRuler
                     break;
                 case 2:
                     text.Append("\tЗдравствуйте, редактор!");
-                    if (EventFlags[0]["MinistryIsSatisfied"])
+                    if (Flags[0]["MinistryIsSatisfied"])
                         text.Append("\n\n\tМы выражаем восхищение Вашей способностью поднимать " +
                             "позитивные настроения граждан, однако проблем ещё предостаточно.");
                     else text.Append("\n\n\tМы недовольны Вашей работой: восстания продолжаются, " +
@@ -344,21 +400,21 @@ namespace NewspaperRuler
                     break;
                 case 3:
                     text.Append("\tЗдравствуйте, редактор!");
-                    if (!EventFlags[1]["MinistryIsSatisfied"])
+                    if (!Flags[1]["MinistryIsSatisfied"])
                         text.Append("\n\n\tМы недовольны Вашей работой. Ваша задача состояла в публикации исключительно статей " +
                             "позитивного характера, но Вы с ней не справились.");
                     text.Append("\n\n\tВероятно, Вы слышали о художестве проказников на стенах мэрии. Это недопустимо. " +
                         "Люди хотят слышать правду. Приказ №34.10 утрачивает свою силу: Вы можете публиковать статьи пессимистического характера. " +
                         "Однако мы не имеем права разглашать информацию о ходе военных конфликтов на границе, иначе у нас будут серьёзные проблемы. " +
                         "Пожалуйста, не забудьте проверить перечень приказов.");
-                    if (!EventFlags[1]["ArticleOnProhibitionWeaponsWasApproved"])
+                    if (!Flags[1]["ArticleOnProhibitionWeaponsWasApproved"])
                     {
                         text.Append("\n\n\tМы, несомненно, признательны Вам в том, что Вы не допустили к публикации новость о наставлениях МАМБА. " +
                             "Министерство безопасности планирует пусть новое оружие в ход. Просим продолжать держать это в секрете.");
-                        if (EventFlags[1]["MinistryIsSatisfied"])
+                        if (Flags[1]["MinistryIsSatisfied"])
                         {
                             text.Append($"\n\tВы хорошо поработали. Ваша зарплата будет увеличена на 100 {MonetaryCurrencyName}.");
-                            EventFlags[1]["SalaryIncreased"] = true;
+                            Flags[1]["SalaryIncreased"] = true;
                         }
                     }
                     else
@@ -371,12 +427,12 @@ namespace NewspaperRuler
                     break;
                 case 4:
                     text.Append("\tЗдравствуйте, редактор!");
-                    if (EventFlags[2]["ArticleOnProhibitionWeaponsWasApproved"])
+                    if (Flags[2]["ArticleOnProhibitionWeaponsWasApproved"])
                         text.Append("\n\n\tВы не сохранили в секрете информацию о применении оружия массового поражения. " +
                             "Мы в Вас разочарованы. Ваша зарплата сегодня будет урезана.");
                     text.Append("\n\n\tВ последнее время много разговоров идёт о «фальшивых новостях», которые публикуются в мусорных СМИ. " +
                         "Наша газета гарантирует полную достоверность выпускаемых новостей." +
-                        "\n\n\tОдни из способов проверить фальшивость – сверить даты. Пожалуйста, сверяйте даты в статье (если таковые есть) с текущей сегодняшней датой. " +
+                        "\n\n\tОдин из способов проверить фальшивость – сверить даты. Пожалуйста, сверяйте даты в статье (если таковые есть) с текущей сегодняшней датой. " +
                         "Отклоняйте статьи, в которых содержится устаревшая информация или информация «из будущего». Публикуйте только актуальные новости." +
                         "\n\n\tГраждане с чего-то взяли, что в гос. газете можно размещать объявления о пропажах, однако этим занимается иная организация. " +
                         "Пожалуйста, не забывайте также отклонять ОБЪЯВЛЕНИЯ О ПРОПАЖАХ ЛЮДЕЙ." +
@@ -385,12 +441,12 @@ namespace NewspaperRuler
                     break;
                 case 5:
                     text.Append("\tЗдравствуйте, редактор!");
-                    if (!EventFlags[3]["MinistryIsSatisfied"])
+                    if (!Flags[3]["MinistryIsSatisfied"])
                         text.Append("\n\n\tМы недовольны Вашей работой: Вам нужно было отклонять все неактуальные статьи.");
                     text.Append("\n\n\tКак Вы знаете, сегодня пройдёт одно из самых масштабных мероприятий – ФЕСТИВАЛЬ СВЕТА. " +
                         "Именно поэтому сегодня Ваша смена будет сокращена на 1 час с сохранением стандартной заработной платы." +
                         "\n\n\tМы устанавливаем ОГРАНИЧЕНИЕ на публикацию статей о КОНКРЕТНЫХ ЛИЧНОСТЯХ во избежание спорных ситуаций");
-                    if (EventFlags[0]["ArticleAboutChampionWasApproved"])
+                    if (Flags[0]["ArticleAboutChampionWasApproved"])
                         text.Append(", как это было с гражданкой Галиной Руш.");
                     else text.Append(".");
                     text.Append("\n\n\tМы проводим исследование и выявляем горячие темы, которые желают видеть граждане. " +
@@ -405,12 +461,29 @@ namespace NewspaperRuler
                         "Первые случаи заболевания зафиксированы вчера и в нашем государстве." +
                         "\n\n\tТяжёлое состояние государства может усугубиться в условиях начала народных волнений, поэтому мы стараемся минимизировать распространение информации о данном вирусе. " +
                         "Пожалуйста, отклоняйте все статьи о вирусе КРАБ.\n\n\t");
-                    if (EventFlags[3]["MainCharacterGaveOutAboutSecretEditorialOffice"])
+                    if (Flags[3]["MainCharacterGaveOutAboutSecretEditorialOffice"])
                         text.Append("Благодаря Вам мы обнаружили и ликвидировали незаконную тайную редакцию. Ваша зарплата сегодня будет увеличена. ");
                     text.Append("Нам важно, чтобы граждане доверяли государству, поэтому просим Вас не допускать к публикации СТАТЬИ ОППОЗИЦИОННОГО ХАРАКТЕРА." +
                         "\n\n\tПродолжайте работать в обычном режиме. Мы делаем всё возможное, чтобы восстановить государственный порядок." +
                         "\n\n\tС уважением," +
                         "\n\tМинистерство цензуры и печати");
+                    break;
+                case 7:
+                    text.Append("\tЗдравствуйте, редактор!" +
+                        "\n\n\tВирус КРАБ продолжает стремительно распространяться. В связи с этим мы вводим ограничения на массовые мероприятия. " +
+                        "Отклоняйте все статьи, в которых имеются упоминания о МАССОВЫХ СБОРАХ И МЕРОПРИЯТИЯХ." +
+                        "\n\n\tВы могли заметить, что запрет на упоминания о войне был снят. " +
+                        "Военное положение на границе стабилизируется, однако всё ещё не идеально.");
+                    if (Flags[5]["MainCharacterHelpedGrasshoppers"])
+                        text.Append("\n\n\tВо вчерашнем выпуске мы обнаружили одну статью оппозиционного характера от некой организации «Кузнечики». " +
+                            "Она вышла по Вашей инициативе. С этого дня мы начинаем расследование по поиску и ликвидации «Кузнечиков». " +
+                            "Пожалуйста, не забывайте проверять ПРИКАЗЫ и не идите на поводу у незаконных организаций: это может плохо закончиться для Вас.");
+                    else text.Append("\n\n\tВчера до нас дошла информация о некой оппозиционной организации «Кузнечики», целью которой является свержение действующего правительства. " +
+                        "С этого дня мы начинаем расследование по поиску и ликвидации «Кузнечиков». Они пытались продвинуть свои требования через гос. газету, но Вы не позволили им это сделать. " +
+                        "Благодарим Вас за преданность государству.");
+                    text.Append("\n\n\tС уважением," +
+                        "\n\tМинистерство цензуры и печати");
+                    order = 1;
                     break;
             }
             if (text.ToString() == "") return;

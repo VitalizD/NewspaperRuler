@@ -121,9 +121,6 @@
   <data name="Approved" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Approved.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Article1_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Articles\Level1\Article1_1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="Article1_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Articles\Level1\Article1_10.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -346,6 +343,54 @@
   <data name="Article6_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Articles\Level6\Article6_9.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="Article7_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article7_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_10.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article7_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_11.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article7_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_12.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article7_14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_14.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article7_15" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_15.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article7_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_16.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article7_17" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_17.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article7_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article7_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_3.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article7_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_4.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article7_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_5.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article7_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_6.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article7_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_7.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article7_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_8.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Article7_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level7\Article7_9.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -415,9 +460,6 @@
   <data name="Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Mail" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="MainMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Sounds\MainMenu.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -436,7 +478,7 @@
   <data name="Music" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Sounds\Music.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="NoteBackground1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="NoteBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NoteBackground1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Notification" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -516,5 +558,8 @@
   </data>
   <data name="TrendsLevel6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Trends\TrendsLevel6.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="TrendsLevel7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Trends\TrendsLevel7.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>
