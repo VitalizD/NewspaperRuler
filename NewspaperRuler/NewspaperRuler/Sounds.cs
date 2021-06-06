@@ -36,6 +36,8 @@ namespace NewspaperRuler
         public Sounds()
         {
             music.settings.volume = 60;
+            finalMusic1.settings.volume = 60;
+            finalMusic2.settings.volume = 60;
             music.URL = @"Sounds\Music.wav";
             stampPut.URL = @"Sounds\StampPut.wav";
             for (var i = 0; i < stampTake.Length; i++) stampTake[i] = new WindowsMediaPlayer();
@@ -64,6 +66,11 @@ namespace NewspaperRuler
             menuButton.URL = @"Sounds\MenuButton.wav";
             finalMusic1.URL = @"Sounds\FinalMusic1.wav";
             finalMusic2.URL = @"Sounds\FinalMusic2.wav";
+            StopAll();
+        }
+
+        public void StopAll()
+        {
             finalMusic2.close();
             finalMusic1.close();
             menuButton.close();
@@ -84,6 +91,10 @@ namespace NewspaperRuler
             music.close();
             foreach (var sound in stampTake) sound.close();
             foreach (var sound in stampReturn) sound.close();
+            playFinalMusic1Loop = false;
+            playFinalMusic2Loop = false;
+            playMainMenuLoop = false;
+            playMusicLoop = false;
         }
 
         public void EveryTick()

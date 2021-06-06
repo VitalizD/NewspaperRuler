@@ -18,6 +18,7 @@
         MassEvent,
         NoGenre,
         IncorrectGenre,
-        Protests
+        Protests,
+        NewWar
     }
 }

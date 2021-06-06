@@ -109,6 +109,10 @@ namespace NewspaperRuler
                     ["MainCharacterHelpedGrasshoppersFirstTime"] = false,
                     ["MainCharacterHelpedGrasshoppersSecondTime"] = false,
                     ["MainCharacterHelpedGrasshoppersThirdTime"] = false,
+                },
+                new Dictionary<string, bool>
+                {
+                    ["MinistryIsSatisfied"] = false,
                 }
             };
         }
@@ -261,6 +265,23 @@ namespace NewspaperRuler
                         Money += 250;
                         dayEnd.StatsTexts.Add(GetLabel($"Привет от \"Кузнечиков\":\t\t250"));
                     }
+                    else if (!Flags[7]["MainCharacterHelpedGrasshoppersFirstTime"]
+                        && !Flags[7]["MainCharacterHelpedGrasshoppersSecondTime"]
+                        && !Flags[7]["MainCharacterHelpedGrasshoppersThirdTime"])
+                    {
+                        Money += 300;
+                        dayEnd.InformationTexts.Add(GetLabel("Министерство цензуры и печати благодарит Вас за противодействие \"Кузнечикам\"."));
+                        dayEnd.StatsTexts.Add(GetLabel($"Бонус к зарплате:\t\t250"));
+                    }
+                    break;
+                case 9:
+                    if (Flags[6]["MedicineWasDeliveredToWife"])
+                    {
+                        dayEnd.InformationTexts.Add(GetLabel("Сегодня последний день курса лечения Вашей жены."));
+                        dayEnd.Expenses.Add(new Expense($"Лекарство для жены:\t\t200 {MonetaryCurrencyName}", 200, ExpenseType.Medicine));
+                    }
+                    if (!Flags[6]["GalinaWillHelpMainCharacterFreeCharge"] && !Flags[6]["MainCharacterPaidGalina"])
+                        dayEnd.InformationTexts.Add(GetLabel("Вашего сына забрали на войну."));
                     break;
             }
             dayEnd.StatsTexts.Add(GetLabel($"Итого:\t\t{Money} {MonetaryCurrencyName}"));

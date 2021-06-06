@@ -20,13 +20,11 @@ namespace NewspaperRuler
 
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None;
-            //this.BackgroundImage = Properties.Resources.Background;
 
             Paint += OnPaint;
             MouseDown += OnMouseDown;
             MouseUp += OnMouseUp;
             MouseMove += OnMouseMove;
-            KeyDown += OnKeyDown;
 
             var graphicsUpdate = new Timer { Interval = 40 };
             graphicsUpdate.Tick += OnTick;
@@ -49,7 +47,5 @@ namespace NewspaperRuler
         private void OnMouseUp(object sender, MouseEventArgs e) => controller.MouseUp();
 
         private void OnMouseMove(object sender, MouseEventArgs e) => controller.MouseMove();
-
-        private void OnKeyDown(object sender, KeyEventArgs e) { }
     }
 }

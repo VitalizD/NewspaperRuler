@@ -150,7 +150,7 @@ namespace NewspaperRuler
             remark.MouseDown();
 
             if (menuButton.CursorIsHovered())
-                GoMainMenu();
+                GoToMainMenu();
         }
 
         public void MouseUp()
@@ -343,6 +343,10 @@ namespace NewspaperRuler
                     loudspeaker.ShowImage(new Point(0, Scale.Resolution.Height - 2 * loudspeaker.Bitmap.Height - Scale.Get(10)));
                     loudspeaker.ShowDescription(new Point(loudspeaker.Position.X + loudspeaker.Bitmap.Width + Scale.Get(10), loudspeaker.Position.Y + loudspeaker.Bitmap.Height / 3));
                     break;
+                case 9:
+                    sounds.StopMusic();
+                    sounds.PlayFinalMusic1();
+                    break;
             }
 
             var newDecrees = Stats.GetDecrees();
@@ -377,6 +381,7 @@ namespace NewspaperRuler
                 case Mistake.IncorrectGenre: remarkText.Append("Целевая направленность не соответствует содержанию статьи."); break;
                 case Mistake.NoGenre: remarkText.Append("Статья без целевой направленности"); break;
                 case Mistake.Protests: remarkText.Append("Упоминания о массовых протестах запрещены."); break;
+                case Mistake.NewWar: remarkText.Append("Упоминания о начавшейся войне запрещены."); break;
                 default: return;
             }
             if (currentArticle.ReprimandScore == 0)
@@ -429,11 +434,11 @@ namespace NewspaperRuler
             GoToDayEndOrLoss();
         }
 
-        private void MouseDownOnMainMenuButton(object sender, MouseEventArgs e) => GoMainMenu();
+        private void MouseDownOnMainMenuButton(object sender, MouseEventArgs e) => GoToMainMenu();
 
-        private void GoMainMenu()
+        private void GoToMainMenu()
         {
-            sounds.StopMusic();
+            sounds.StopAll();
             sounds.PlayMenuButton();
             changeInterfaceToMainMenu();
         }
