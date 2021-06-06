@@ -25,9 +25,13 @@ namespace NewspaperRuler
         private readonly WindowsMediaPlayer suddenness = new WindowsMediaPlayer();
         private readonly WindowsMediaPlayer gameOver = new WindowsMediaPlayer();
         private readonly WindowsMediaPlayer menuButton = new WindowsMediaPlayer();
+        private readonly WindowsMediaPlayer finalMusic1 = new WindowsMediaPlayer();
+        private readonly WindowsMediaPlayer finalMusic2 = new WindowsMediaPlayer();
 
         private bool playMusicLoop;
         private bool playMainMenuLoop;
+        private bool playFinalMusic1Loop;
+        private bool playFinalMusic2Loop;
 
         public Sounds()
         {
@@ -58,6 +62,10 @@ namespace NewspaperRuler
             suddenness.URL = @"Sounds\Suddenness.wav";
             gameOver.URL = @"Sounds\GameOver.wav";
             menuButton.URL = @"Sounds\MenuButton.wav";
+            finalMusic1.URL = @"Sounds\FinalMusic1.wav";
+            finalMusic2.URL = @"Sounds\FinalMusic2.wav";
+            finalMusic2.close();
+            finalMusic1.close();
             menuButton.close();
             gameOver.close();
             suddenness.close();
@@ -86,11 +94,19 @@ namespace NewspaperRuler
                 && mainMenu.playState != WMPPlayState.wmppsPlaying
                 && title.playState != WMPPlayState.wmppsPlaying)
                 Play(mainMenu);
+            if (playFinalMusic1Loop && finalMusic1.playState != WMPPlayState.wmppsPlaying)
+                Play(finalMusic1);
+            if (playFinalMusic2Loop && finalMusic2.playState != WMPPlayState.wmppsPlaying)
+                Play(finalMusic2);
         }
 
         public void PlayMusic() => playMusicLoop = true;
 
         public void PlayMainMenu() => playMainMenuLoop = true;
+
+        public void PlayFinalMusic1() => playFinalMusic1Loop = true;
+
+        public void PlayFinalMusic2() => playFinalMusic2Loop = true;
 
         public void StopMusic()
         {
@@ -102,6 +118,18 @@ namespace NewspaperRuler
         {
             mainMenu.close();
             playMainMenuLoop = false;
+        }
+
+        public void StopFinalMusic1()
+        {
+            finalMusic1.close();
+            playFinalMusic1Loop = false;
+        }
+
+        public void StopFinalMusic2()
+        {
+            finalMusic2.close();
+            playFinalMusic2Loop = false;
         }
 
         public void PlayTitle() => Play(title);

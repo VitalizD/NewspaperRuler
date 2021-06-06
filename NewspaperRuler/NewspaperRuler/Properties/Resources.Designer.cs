@@ -1352,6 +1352,291 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Снимаются ограничения
+        ///Genre: Здоровье
+        ///Content:
+        ///	Во некоторых зарубежных странах снимаются ограничения, связанные с распространением вируса КРАБ, несмотря на то, что число заболевших пока растёт..
+        /// </summary>
+        internal static string Article8_1 {
+            get {
+                return ResourceManager.GetString("Article8_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Mistake: Advertisement
+        ///Title: Исправим зрение!
+        ///Genre: Здоровье
+        ///Content:
+        ///	У вас проблемы со зрением? Есть правильное решение! 
+        ///
+        ///	Коррекция близорукости и дальнозоркости с помощью лазера. Вам больше не нужны контактные линзы и очки!
+        ///
+        ///	Наш адрес: ул. Добромяковская, 41..
+        /// </summary>
+        internal static string Article8_10 {
+            get {
+                return ResourceManager.GetString("Article8_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: Помочь вовремя
+        ///Genre: Социум
+        ///Content:
+        ///	Чего не хватает подросткам? На что должны реагировать родители? Как спасти ребёнка от трагедии? 
+        ///
+        ///	В первую очередь необходимо узнать, чем он интересуется, с кем общается. Если разговоры с ним не помогают, надо обратиться к специалистам..
+        /// </summary>
+        internal static string Article8_11 {
+            get {
+                return ResourceManager.GetString("Article8_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Mistake: NoGenre
+        ///Title: Проблема дефицита рабочих рук
+        ///Content:
+        ///	В промышленности страны ощущается дефицит рабочих кадров. Профессиональные училища закрываются, молодёжь не хочет связывать свою жизнь с заводом или фабрикой. 
+        ///
+        ///	Что делать? Показать возможности, которые открывают рабочие профессии. Для этого нужен экономический рост..
+        /// </summary>
+        internal static string Article8_12 {
+            get {
+                return ResourceManager.GetString("Article8_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: Эх, дороги…
+        ///Genre: Социальные проблемы
+        ///Content:
+        ///	Качество дорог в стране почти не меняется. Больше половины из них не соответствуют нормативам, а в некоторых регионах их совсем нет. Всё это влияет на моральное и материальное положение жителей регионов..
+        /// </summary>
+        internal static string Article8_13 {
+            get {
+                return ResourceManager.GetString("Article8_13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: Здоровье в опасности
+        ///Genre: Экология
+        ///Content:
+        ///	Экология и здоровье человека подвергаются большой опасности. 
+        ///
+        ///	Негативное влияние окружающей среды на здоровье происходит из-за производственных отходов, применения химических веществ в быту и в сельском хозяйстве, что приводит к сильному загрязнению атмосферы, почвы и воды. 
+        ///
+        ///	Примерно 25% заболеваний человека, так или иначе, связаны с изменениями в окружающей среде!.
+        /// </summary>
+        internal static string Article8_14 {
+            get {
+                return ResourceManager.GetString("Article8_14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Opposition
+        ///Flag: MainCharacterHelpedGrasshoppersFirstTime
+        ///Title: И снова «Кузнечики» в центре внимания
+        ///Genre: Оппозиция
+        ///Content:
+        ///	«Кузнечики» профинансировали строительство восточного парка в столице, которое откладывалось правительством на поздние сроки на протяжении нескольких лет. 
+        ///
+        ///	Парк будет торжественно открыт предположительно в конце октября.
+        ///
+        ///	---цык-цык-цык---.
+        /// </summary>
+        internal static string Article8_15 {
+            get {
+                return ResourceManager.GetString("Article8_15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Mistake: Opposition
+        ///Flag: MainCharacterHelpedGrasshoppersSecondTime
+        ///Title: Бесплатная вакцинация
+        ///Genre: Здоровье
+        ///Content:
+        ///	«Кузнечики» готовят программу предоставления бесплатной вакцины от вируса КРАБ нуждающимся гражданам. Первые бесплатные вакцины планируют испытать предположительно 6 октября. 
+        ///
+        ///	Напомним, что сегодня цена вакцины, предлагаемая государством, равняется 200 ТОКЕНОВ.
+        ///
+        ///	---цык-цык-цык---.
+        /// </summary>
+        internal static string Article8_16 {
+            get {
+                return ResourceManager.GetString("Article8_16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Opposition
+        ///Flag: MainCharacterHelpedGrasshoppersThirdTime
+        ///Title: Новое «правильное» государство?
+        ///Genre: Оппозиция
+        ///Content:
+        ///	«Кузнечики» продолжают позиционировать себя в качестве скорых преемников действующей правительственной верхушки. Они действительно многое делают для народа.
+        ///
+        ///	---цык-цык-цык---.
+        /// </summary>
+        internal static string Article8_17 {
+            get {
+                return ResourceManager.GetString("Article8_17", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Вакцинироваться страшно, не вакцинироваться – тоже
+        ///Genre: Здоровье
+        ///Content:
+        ///	Проводится исследование по уровню смертности после вакцинации в 14 странах. Меньше всего рисков летального исхода у Андиплантийской вакцины, в других странах этот показатель выше в 10 и даже в 20 раз. 
+        ///
+        ///	У людей теряется вера в силу нашей науки. Возникают сомнения на счёт необходимости прививки. Но это ведь единственное спасение на данном уровне развития медицины. 
+        ///
+        ///	Выбор за вами!.
+        /// </summary>
+        internal static string Article8_2 {
+            get {
+                return ResourceManager.GetString("Article8_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Mistake: IncorrectGenre
+        ///Title: Избыточная смертность от КРАБа
+        ///Genre: Благотворительность
+        ///Content:
+        ///	Подсчитано, что во время эпидемии в стране умерло на 23 % больше людей, чем в обычные годы. 
+        ///
+        ///	Семь из десяти избыточных смертей, по данным исследования, — непосредственное следствие КРАБа. 
+        ///
+        ///	Ученые объясняют эти смерти параличом системы здравоохранения, который вызвала эпидемия. .
+        /// </summary>
+        internal static string Article8_3 {
+            get {
+                return ResourceManager.GetString("Article8_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Всё гораздо хуже
+        ///Genre: Здоровье
+        ///Content:
+        ///	Эксперты утверждают, что КРАБ убил почти 7 миллионов человек по всему миру — это в два раза больше официально заявленных данных. 
+        ///
+        ///	Реальные цифры более чем вдвое превышают официально заявленных смертельных случаев. .
+        /// </summary>
+        internal static string Article8_4 {
+            get {
+                return ResourceManager.GetString("Article8_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Protests
+        ///Title: Народ недоволен
+        ///Genre: Социальные проблемы
+        ///Content:
+        ///	Жители страны возмущены ростом налоговой нагрузки. Жалобы и недовольство связаны с ростом различных штрафов, поборов на дорогах, ростом стоимости недвижимости и земельных участков. 
+        ///
+        ///	Это приводит в серьёзным протестам и волнениям граждан..
+        /// </summary>
+        internal static string Article8_5 {
+            get {
+                return ResourceManager.GetString("Article8_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Protests
+        ///Title: Государство во мгле
+        ///Genre: Социальные проблемы
+        ///Content:
+        ///	Страна массово протестовала против налоговой политики правительства. 
+        ///
+        ///	Погибло более 20 человек, сотни ранены, включая полицейских. Власти практически развязали уличную войну с протестующими. 
+        ///
+        ///	Правительство рассчитывало с помощью новых мер увеличить доходы в бюджет на 1,3 млн ТОКЕНОВ. Экономика страны в глубоком кризисе..
+        /// </summary>
+        internal static string Article8_6 {
+            get {
+                return ResourceManager.GetString("Article8_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Protests
+        ///Title: Столкновение с участниками протеста
+        ///Genre: Социальные проблемы
+        ///Content:
+        ///	В столице полиция столкнулась с участниками несанкционированного протеста против повышения налогов. Полиция применила слезоточивый газ и водометы. На улицы в районе протестов вывели 4,2 тыс. полицейских. 
+        ///
+        ///	Департамент полиции города предупредил, что участие в запрещенном митинге может быть наказано штрафом..
+        /// </summary>
+        internal static string Article8_7 {
+            get {
+                return ResourceManager.GetString("Article8_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Protests
+        ///Title: Сталь для пополнения бюджета
+        ///Genre: Социальные проблемы
+        ///Content:
+        ///	Металлурги сообщили о двукратном повышении налоговых платежей и задолженности по зарплате. Они находятся на грани выхода на массовый протест. 
+        ///
+        ///	С целью снижения недовольства рабочих администрация выплатила задолженность за один месяц и пообещало, что все погасит..
+        /// </summary>
+        internal static string Article8_8 {
+            get {
+                return ResourceManager.GetString("Article8_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: Protests
+        ///Title: Социологи предупреждают
+        ///Genre: Социальные проблемы
+        ///Content:
+        ///	В уходящем году в стране можно зафиксировать рост в обществе социального раздражения, недовольства высокими налогами и тревожного ощущения неопределенности будущего. 
+        ///
+        ///	Люди готовы протестовать. Причем на улицы готовы выходить не только образованные и активные слои населения, но и рабочие, служащие..
+        /// </summary>
+        internal static string Article8_9 {
+            get {
+                return ResourceManager.GetString("Article8_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Background {
@@ -1505,8 +1790,11 @@ namespace NewspaperRuler.Properties {
         ///№ 34.15. Отклонять объявления о пропажах
         ///№ 34.16. Отклонять рекламные объявления
         ///№ 34.17. Отклонять статьи о конкретных личностях
-        ///№ 34.19. Отклонять статьи без направленности
-        ///№ 34.20. Отклонять статьи о массовых протестах.
+        ///№ 34.19. Отклонять статьи оппозиционного характера
+        ///№ 34.20. Отклонять статьи о массовых мероприятиях
+        ///№ 34.21. Отклонять статьи без направленности
+        ///№ 34.22. Отклонять статьи с неверной направленностью
+        ///№ 34.23. Отклонять статьи о массовых протестах.
         /// </summary>
         internal static string DecreesLevel8 {
             get {
@@ -1550,6 +1838,24 @@ namespace NewspaperRuler.Properties {
             get {
                 object obj = ResourceManager.GetObject("Expired", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream FinalMusic1 {
+            get {
+                return ResourceManager.GetStream("FinalMusic1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream FinalMusic2 {
+            get {
+                return ResourceManager.GetStream("FinalMusic2", resourceCulture);
             }
         }
         
@@ -1922,6 +2228,17 @@ namespace NewspaperRuler.Properties {
         internal static string TrendsLevel7 {
             get {
                 return ResourceManager.GetString("TrendsLevel7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Новый неисследованный заразный вирус КРАБ
+        ///Оппозиционная организация &quot;Кузнечики&quot;
+        ///Массовые протесты.
+        /// </summary>
+        internal static string TrendsLevel8 {
+            get {
+                return ResourceManager.GetString("TrendsLevel8", resourceCulture);
             }
         }
     }

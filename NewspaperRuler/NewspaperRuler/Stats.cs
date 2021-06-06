@@ -47,7 +47,6 @@ namespace NewspaperRuler
 
         public Stats(DayEnd dayEnd)
         {
-            Money = 100;
             this.dayEnd = dayEnd;
             noteBackground = new GraphicObject(Properties.Resources.NoteBackground, 750, 1000, 125);
             Flags = new List<Dictionary<string, bool>>
@@ -103,6 +102,13 @@ namespace NewspaperRuler
                     ["GalinaWillHelpMainCharacterFreeCharge"] = false,
                     ["MainCharacterPaidGalina"] = true,
                     ["MedicineWasDeliveredToWife"] = true,
+                },
+                new Dictionary<string, bool>
+                {
+                    ["MinistryIsSatisfied"] = false,
+                    ["MainCharacterHelpedGrasshoppersFirstTime"] = false,
+                    ["MainCharacterHelpedGrasshoppersSecondTime"] = false,
+                    ["MainCharacterHelpedGrasshoppersThirdTime"] = false,
                 }
             };
         }
@@ -240,6 +246,20 @@ namespace NewspaperRuler
                     {
                         Money += 150;
                         dayEnd.StatsTexts.Add(GetLabel($"Привет от \"Кузнечиков\":\t\t150"));
+                    }
+                    break;
+                case 8:
+                    if (Flags[6]["MedicineWasDeliveredToWife"])
+                    {
+                        dayEnd.InformationTexts.Add(GetLabel("До конца курса лечения Вашей жены осталось 2 дня."));
+                        dayEnd.Expenses.Add(new Expense($"Лекарство для жены:\t\t200 {MonetaryCurrencyName}", 200, ExpenseType.Medicine));
+                    }
+                    if (Flags[7]["MainCharacterHelpedGrasshoppersFirstTime"]
+                        && Flags[7]["MainCharacterHelpedGrasshoppersSecondTime"]
+                        && Flags[7]["MainCharacterHelpedGrasshoppersThirdTime"])
+                    {
+                        Money += 250;
+                        dayEnd.StatsTexts.Add(GetLabel($"Привет от \"Кузнечиков\":\t\t250"));
                     }
                     break;
             }
@@ -380,7 +400,11 @@ namespace NewspaperRuler
 
         public void SetDifficulty(Difficulties difficulty)
         {
-            if (difficulty is Difficulties.Normal) loyalityFactor = 1;
+            if (difficulty is Difficulties.Normal)
+            {
+                loyalityFactor = 1;
+                Money = 100;
+            }
             else
             {
                 loyalityFactor = 2;

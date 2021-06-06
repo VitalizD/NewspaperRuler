@@ -374,6 +374,9 @@ namespace NewspaperRuler
                 case Mistake.Opposition: remarkText.Append("Публикация статей оппозиционного характера запрещена."); break;
                 case Mistake.Virus: remarkText.Append("Упоминания о вирусе КРАБ запрещены."); break;
                 case Mistake.MassEvent: remarkText.Append("Массовые мероприятия запрещены в связи с ограничениями, созданными с целью уменьшения скорости распространения вируса КРАБ."); break;
+                case Mistake.IncorrectGenre: remarkText.Append("Целевая направленность не соответствует содержанию статьи."); break;
+                case Mistake.NoGenre: remarkText.Append("Статья без целевой направленности"); break;
+                case Mistake.Protests: remarkText.Append("Упоминания о массовых протестах запрещены."); break;
                 default: return;
             }
             if (currentArticle.ReprimandScore == 0)

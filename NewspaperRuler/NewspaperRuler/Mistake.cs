@@ -15,6 +15,9 @@
         Virus,
         Opposition,
         ObsceneLanguage,
-        MassEvent
+        MassEvent,
+        NoGenre,
+        IncorrectGenre,
+        Protests
     }
 }

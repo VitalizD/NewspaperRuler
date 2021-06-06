@@ -39,7 +39,11 @@ namespace NewspaperRuler
             if (Title != null)
                 graphics.DrawString(Title, StringStyle.TitleFont, StringStyle.Black, new Rectangle(
                     Background.Position + new Size(Scale.Get(30), Scale.Get(70)), new Size(Background.Bitmap.Width - Scale.Get(90), Scale.Get(100))), 
-                    new StringFormat { Alignment = StringAlignment.Center });
+                    StringStyle.Center);
+            if (Genre != null)
+                graphics.DrawString(Genre, StringStyle.TextFont, StringStyle.Black, new Rectangle(
+                    Background.Position + new Size(Scale.Get(30), Scale.Get(130)), new Size(Background.Bitmap.Width - Scale.Get(100), Scale.Get(40))),
+                    StringStyle.Right);
         }
 
         public string ExtractBeginning() => Text.Substring(0, Scale.Get(55));

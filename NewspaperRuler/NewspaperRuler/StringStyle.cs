@@ -15,6 +15,7 @@ namespace NewspaperRuler
         public static SolidBrush White { get; } = new SolidBrush(Color.White);
         public static Pen Pen { get; } = new Pen(Color.Black);
         public static StringFormat Center { get; } = new StringFormat { Alignment = StringAlignment.Center };
+        public static StringFormat Right { get; } = new StringFormat { Alignment = StringAlignment.Far };
 
         static StringStyle()
         {
