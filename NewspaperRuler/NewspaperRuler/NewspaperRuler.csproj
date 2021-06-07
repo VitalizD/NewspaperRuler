@@ -56,6 +56,7 @@
     <Compile Include="Article.cs" />
     <Compile Include="AuxiliaryMethods.cs" />
     <Compile Include="Difficulties.cs" />
+    <Compile Include="End.cs" />
     <Compile Include="Events.cs" />
     <Compile Include="GameOver.cs" />
     <Compile Include="ExpenseType.cs" />
@@ -1032,6 +1033,195 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Articles\Level9\Article9_16.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Trends\TrendsLevel10.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Decrees\DecreesLevel10.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WifeAliveSonAlive.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WifeAliveSonDead.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WifeDeadSonAlive.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WifeDeadSonDead.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gallows.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ubringston.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Galina.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hummer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Prison.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Crowd.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Grasshopper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_4.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_5.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_6.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_7.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_8.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_9.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_10.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_11.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_12.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_13.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_14.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_15.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_16.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_17.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_18.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_19.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_20.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Articles\Level91\Article10_21.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BrokenHeart.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Confederate.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeadTown.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hands.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Town.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Flower.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CommunalService.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Team.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bird.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fox.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Landscape.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sounds\End.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

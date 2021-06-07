@@ -10,6 +10,8 @@
         Festival,
         Galina,
         Son,
-        Medicine
+        Medicine,
+        Operation,
+        Passports
     }
 }

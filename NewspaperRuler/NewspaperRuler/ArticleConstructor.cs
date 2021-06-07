@@ -18,6 +18,7 @@ namespace NewspaperRuler
             ArticlesByLevel = Directory.GetDirectories("Articles")
                 .Select(GetArticlesFromDirectory)
                 .ToList();
+            ArticlesByLevel.RemoveAt(1);
         }
 
         private static List<Article> GetArticlesFromDirectory(string directory)

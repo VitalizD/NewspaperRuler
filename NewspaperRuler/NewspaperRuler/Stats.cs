@@ -109,15 +109,125 @@ namespace NewspaperRuler
                     ["MainCharacterHelpedGrasshoppersFirstTime"] = false,
                     ["MainCharacterHelpedGrasshoppersSecondTime"] = false,
                     ["MainCharacterHelpedGrasshoppersThirdTime"] = false,
+                    ["SonStayedAtHome"] = false,
                 },
                 new Dictionary<string, bool>
                 {
                     ["MinistryIsSatisfied"] = false,
+                    ["GrasshoppersEliminated"] = false,
+                },
+                new Dictionary<string, bool>
+                {
+                    ["MinistryIsSatisfied"] = false,
+                    ["WifesOperationPaid"] = true,
+                    ["MainCharacterBoughtFakePassports"] = true,
+                    ["WifeAlive"] = false,
+                    ["SonAlive"] = false,
+                    ["MainCharacterIsFree"] = false,
                 }
             };
         }
 
         public void IncreaseLevelNumber() => LevelNumber++;
+
+        public (string, Bitmap)[] GetGameResults()
+        {
+            var result = new List<(string, Bitmap)>();
+            if ((Flags[6]["MedicineWasDeliveredToWife"] || Flags[9]["WifesOperationPaid"]) && Flags[7]["SonStayedAtHome"])
+            {
+                result.Add(("Жена выздоровела. Сын избежал призыва на войну. Все живы.", new Bitmap(Properties.Resources.WifeAliveSonAlive, Scale.Get(500), Scale.Get(500))));
+                Flags[9]["WifeAlive"] = true;
+                Flags[9]["SonAlive"] = true;
+            }
+            else if ((Flags[6]["MedicineWasDeliveredToWife"] || Flags[9]["WifesOperationPaid"]) && !Flags[7]["SonStayedAtHome"])
+            {
+                result.Add(("Жена выздоровела. Сына забрали на войну. Он не вернулся...", new Bitmap(Properties.Resources.WifeAliveSonDead, Scale.Get(500), Scale.Get(500))));
+                if (!Flags[5]["WifeIsFaithful"])
+                    result.Add(("Однако жена не могла смириться с Вашим предательством и смертью сына. Она свела свою жизнь с концами...", new Bitmap(Properties.Resources.Gallows, Scale.Get(500), Scale.Get(500))));
+                else Flags[9]["WifeAlive"] = true;
+            }
+            else if (!(Flags[6]["MedicineWasDeliveredToWife"] || Flags[9]["WifesOperationPaid"]) && Flags[7]["SonStayedAtHome"])
+            {
+                Flags[9]["SonAlive"] = true;
+                result.Add(("Жена умерла. Сын избежал призыва на войну.", new Bitmap(Properties.Resources.WifeDeadSonAlive, Scale.Get(500), Scale.Get(500))));
+            }
+            else result.Add(("Жена умерла. Сына забрали на войну. Он не вернулся...", new Bitmap(Properties.Resources.WifeDeadSonDead, Scale.Get(500), Scale.Get(500))));
+            if (!Flags[8]["GrasshoppersEliminated"])
+                result.Add(("\"Кузнечики\" осуществили попытку захватить гос. власть, однако государство оказалось сильнее...", new Bitmap(Properties.Resources.Grasshopper, Scale.Get(500), Scale.Get(500))));
+            if (Flags[9]["MainCharacterBoughtFakePassports"])
+            {
+                Flags[9]["MainCharacterIsFree"] = true;
+                var bitmap = new Bitmap(Properties.Resources.Ubringston, Scale.Get(500), Scale.Get(400));
+                if (Flags[9]["SonAlive"] && Flags[9]["WifeAlive"])
+                    result.Add(("Вы с семьёй успешно сбежали в Убрингстон, где начали жизнь с чистого листа.", bitmap));
+                else if (Flags[9]["SonAlive"])
+                    result.Add(("Вы с сыном успешно сбежали в Убрингстон, где начали жизнь с чистого листа.", bitmap));
+                else if (Flags[9]["WifeAlive"])
+                    result.Add(("Вы с женой успешно сбежали в Убрингстон, где начали жизнь с чистого листа.", bitmap));
+                else result.Add(("Вы в одиночку успешно сбежали в Убрингстон, где начали жизнь с чистого листа.", bitmap));
+                if (Flags[6]["GalinaWillHelpMainCharacterFreeCharge"] || Flags[6]["MainCharacterPaidGalina"])
+                    result.Add(("В Убрингстоне Вы вновь встретились с Галиной Руш. Она стала Вашим частым гостем.", new Bitmap(Properties.Resources.Galina, Scale.Get(450), Scale.Get(500))));
+            }
+            else
+            {
+                result.Add(("Вы прибыли на слушание по делу причастия гос. служащих к \"Кузнечикам\".", new Bitmap(Properties.Resources.Hummer, Scale.Get(500), Scale.Get(500))));
+                if (!Flags[8]["GrasshoppersEliminated"])
+                {
+                    result.Add(("Против Вас найдены улики в Вашем причастии к \"Кузнечикам\". За измену государству Вам положено наказание в виде лишения свободы на 3 года.", new Bitmap(Properties.Resources.Prison, Scale.Get(600), Scale.Get(450))));
+                    if (!Flags[3]["MainCharacterGaveOutAboutSecretEditorialOffice"])
+                    {
+                        result.Add(("Разъярённая толпа граждан из тайной редакции, существование которой Вы оставили в секрете, силой добилась Вашего освобождения.", new Bitmap(Properties.Resources.Crowd, Scale.Get(600), Scale.Get(400))));
+                        Flags[9]["MainCharacterIsFree"] = true;
+                    }
+                }
+                else
+                {
+                    Flags[9]["MainCharacterIsFree"] = true;
+                    result.Add(("Вы абсолютно чисты, и с Вас сняты все подозрения. Государство благодарит Вас за преданность!", new Bitmap(Properties.Resources.Hummer, Scale.Get(500), Scale.Get(500))));
+                }
+            }
+            if (Flags[2]["ArticleOnProhibitionWeaponsWasApproved"])
+                result.Add(("Международная ассоциация мировой безопасности \"Апостол\" изгнала захватчиков из страны, " +
+                    "передав часть Андиплантийской территории государству. Да прибудет справедливость!", new Bitmap(Properties.Resources.Town, Scale.Get(500), Scale.Get(350))));
+            else
+                result.Add(("Международная ассоциация мировой безопасности \"Апостол\" отказалась изгонять захватчиков из страны. " +
+                    "Государство пало. Теперь эти территории присоединены к Андиплантийской коалиции.", new Bitmap(Properties.Resources.DeadTown, Scale.Get(500), Scale.Get(350))));
+            if (Flags[9]["MainCharacterIsFree"])
+            {
+                if (Flags[9]["SonAlive"])
+                {
+                    if (Flags[5]["MainCharacterBoughtPresentForHisSon"])
+                        result.Add(("Вы нашли с сыном общий язык. Теперь Вы проводите больше времени вместе.", null));
+                    else result.Add(("Вы пытаетесь найти с сыном общий язык, но он сторонится Вас. Что не так?", null));
+                }
+                if (Flags[9]["WifeAlive"])
+                {
+                    if (Flags[5]["WifeIsFaithful"])
+                        result.Add(("У Вас с женой тёплые отношения. Вы живёте в верности и согласии.", new Bitmap(Properties.Resources.Hands, Scale.Get(300), Scale.Get(500))));
+                    else result.Add(("Жена отвергает Вас. Она проводит большую часть своего времени с сыном.", new Bitmap(Properties.Resources.BrokenHeart, Scale.Get(500), Scale.Get(500))));
+                }
+            }
+            if (Flags[9]["SonAlive"])
+                result.Add(("Сын поступил в высшую академию. Там он нашёл свою вторую половинку.", new Bitmap(Properties.Resources.Confederate, Scale.Get(500), Scale.Get(400))));
+            if (Flags[1]["ArticleOnProhibitionWeaponsWasApproved"])
+                result.Add(("Всё это время МАМБА за Вами наблюдала. Вам предложили там вакансию. " +
+                    "Вы успешно прошли испытательный срок и теперь являетесь частью команды одной из самых авторитетных организаций в мире.", new Bitmap(Properties.Resources.Team, Scale.Get(500), Scale.Get(400))));
+            else if (!Flags[9]["MainCharacterBoughtFakePassports"])
+            {
+                if (Flags[4]["MainCharacterWentToFestival"])
+                    result.Add(("Вы устроились на работу технического специалиста в сфере коммунального хозяйства. " +
+                        "Сделать это помог Ваш новый приятель, с которым Вы познакомились на фестивале света.", new Bitmap(Properties.Resources.CommunalService, Scale.Get(500), Scale.Get(500))));
+                else result.Add(("Вы не смогли найти новую работу. Вам суждено жить в бедности до конца жизни.", new Bitmap(Properties.Resources.Trash, Scale.Get(500), Scale.Get(500))));
+            }
+            result.Add(("Ничего в этой жизни не даётся легко. Чтобы достичь своих целей, необходимо идти на определенные жертвы — " +
+                "тратить свои силы, время, ограничивать себя в чём-либо.", new Bitmap(Properties.Resources.Landscape, Scale.Get(500), Scale.Get(400))));
+            result.Add(("Иногда бывают моменты, когда хочется всё бросить и отказаться от мечты.", new Bitmap(Properties.Resources.Fox, Scale.Get(500), Scale.Get(300))));
+            result.Add(("В такие моменты вспомни, как много ты получишь, если пойдёшь дальше, и как много потеряешь, если сдашься. " +
+                "Цена успеха, как правило, меньше, чем цена неудачи.", new Bitmap(Properties.Resources.Bird, Scale.Get(400), Scale.Get(500))));
+            result.Add(("Единственный способ жить — это жить. Говорить себе: \"Я могу это сделать\", — даже зная, что не можешь.", new Bitmap(Properties.Resources.Flower, Scale.Get(300), Scale.Get(500))));
+            result.Add(("Спасибо за игру", null));
+            return result.ToArray();
+        }
 
         public void SetFlagToTrue(string flag)
         {
@@ -271,7 +381,7 @@ namespace NewspaperRuler
                     {
                         Money += 300;
                         dayEnd.InformationTexts.Add(GetLabel("Министерство цензуры и печати благодарит Вас за противодействие \"Кузнечикам\"."));
-                        dayEnd.StatsTexts.Add(GetLabel($"Бонус к зарплате:\t\t250"));
+                        dayEnd.StatsTexts.Add(GetLabel($"Бонус к зарплате:\t\t300"));
                     }
                     break;
                 case 9:
@@ -282,6 +392,26 @@ namespace NewspaperRuler
                     }
                     if (!Flags[6]["GalinaWillHelpMainCharacterFreeCharge"] && !Flags[6]["MainCharacterPaidGalina"])
                         dayEnd.InformationTexts.Add(GetLabel("Вашего сына забрали на войну."));
+                    break;
+                case 10:
+                    dayEnd.InformationTexts.Add(GetLabel("Вы в шаге от конца игры."));
+                    if (Flags[6]["MedicineWasDeliveredToWife"])
+                        dayEnd.InformationTexts.Add(GetLabel("Ваша жена пошла на поправку."));
+                    else
+                    {
+                        dayEnd.InformationTexts.Add(GetLabel("Вашу жену положили в больницу. Она умирает."));
+                        dayEnd.InformationTexts.Add(GetLabel("Требуется срочная хирургическая операция – последняя надежда на её спасение."));
+                        dayEnd.Expenses.Add(new Expense($"Операция:\t\t400 {MonetaryCurrencyName}", 400, ExpenseType.Operation));
+                    }
+                    if (Flags[6]["MainCharacterHelpedGrasshoppersFirstTime"]
+                                && Flags[6]["MainCharacterHelpedGrasshoppersSecondTime"]
+                                && Flags[7]["MainCharacterHelpedGrasshoppersFirstTime"]
+                                && Flags[7]["MainCharacterHelpedGrasshoppersSecondTime"]
+                                && Flags[7]["MainCharacterHelpedGrasshoppersThirdTime"])
+                    {
+                        dayEnd.InformationTexts.Add(GetLabel("\"Кузнечики\" готовы достать поддельные паспорта за \"относительно низкую цену\"."));
+                        dayEnd.Expenses.Add(new Expense($"Поддельные паспорта:\t\t500 {MonetaryCurrencyName}", 500, ExpenseType.Passports));
+                    }
                     break;
             }
             dayEnd.StatsTexts.Add(GetLabel($"Итого:\t\t{Money} {MonetaryCurrencyName}"));
@@ -361,6 +491,8 @@ namespace NewspaperRuler
                     case ExpenseType.Son: Flags[5]["MainCharacterBoughtPresentForHisSon"] = false; break;
                     case ExpenseType.Galina: Flags[6]["MainCharacterPaidGalina"] = false; break;
                     case ExpenseType.Medicine: Flags[6]["MedicineWasDeliveredToWife"] = false; break;
+                    case ExpenseType.Operation: Flags[9]["WifesOperationPaid"] = false; break;
+                    case ExpenseType.Passports: Flags[9]["MainCharacterBoughtFakePassports"] = false; break;
                 }
             }
             if (rentDebts > 0) rentDebts--;

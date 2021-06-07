@@ -35,6 +35,7 @@ namespace NewspaperRuler
         private readonly DayEnd dayEnd;
         private readonly Form1 form;
         private GameOver gameOver;
+        private readonly End end;
 
         public Stats Stats { get; private set; }
         private Stats backup;
@@ -43,7 +44,7 @@ namespace NewspaperRuler
         private readonly Action<IUserInterface> changeInterface;
         private readonly Action changeInterfaceToMainMenu;
 
-        public WorkTable(Form1 form, Sounds sounds, DayEnd dayEnd, 
+        public WorkTable(Form1 form, Sounds sounds, DayEnd dayEnd,
             Action<IUserInterface> changeInterface, Action changeInterfaceToMainMenu)
         {
             this.sounds = sounds;
@@ -51,6 +52,7 @@ namespace NewspaperRuler
             this.dayEnd = dayEnd;
             this.changeInterface = changeInterface;
             this.changeInterfaceToMainMenu = changeInterfaceToMainMenu;
+            end = new End(changeInterfaceToMainMenu, sounds);
             dayEnd.CreateEventClickOnContinue(MouseDownOnNextDayButton);
 
             approved = new Stamp(Properties.Resources.Approved, 300, 250);
@@ -76,6 +78,9 @@ namespace NewspaperRuler
             sounds.PlayMusic();
 
             RemoveStamps();
+
+            currentArticle = null;
+            currentNote = null;
 
             Stats = new Stats(dayEnd);
             Stats.SetDifficulty(difficulty);
@@ -195,6 +200,13 @@ namespace NewspaperRuler
             if (gameOver != null)
             {
                 GoToGameOver();
+                return;
+            }
+
+            if (Stats.LevelNumber > 10)
+            {
+                end.CreateQueue(Stats.GetGameResults());
+                changeInterface(end);
                 return;
             }
 
@@ -346,6 +358,11 @@ namespace NewspaperRuler
                 case 9:
                     sounds.StopMusic();
                     sounds.PlayFinalMusic1();
+                    break;
+                case 10:
+                    sounds.StopMusic();
+                    sounds.StopFinalMusic1();
+                    sounds.PlayFinalMusic2();
                     break;
             }
 

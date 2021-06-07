@@ -27,17 +27,20 @@ namespace NewspaperRuler
         private readonly WindowsMediaPlayer menuButton = new WindowsMediaPlayer();
         private readonly WindowsMediaPlayer finalMusic1 = new WindowsMediaPlayer();
         private readonly WindowsMediaPlayer finalMusic2 = new WindowsMediaPlayer();
+        private readonly WindowsMediaPlayer end = new WindowsMediaPlayer();
 
         private bool playMusicLoop;
         private bool playMainMenuLoop;
         private bool playFinalMusic1Loop;
         private bool playFinalMusic2Loop;
+        private bool playEndLoop;
 
         public Sounds()
         {
             music.settings.volume = 60;
             finalMusic1.settings.volume = 60;
             finalMusic2.settings.volume = 60;
+            end.settings.volume = 50;
             music.URL = @"Sounds\Music.wav";
             stampPut.URL = @"Sounds\StampPut.wav";
             for (var i = 0; i < stampTake.Length; i++) stampTake[i] = new WindowsMediaPlayer();
@@ -66,6 +69,7 @@ namespace NewspaperRuler
             menuButton.URL = @"Sounds\MenuButton.wav";
             finalMusic1.URL = @"Sounds\FinalMusic1.wav";
             finalMusic2.URL = @"Sounds\FinalMusic2.wav";
+            end.URL = @"Sounds\End.wav";
             StopAll();
         }
 
@@ -89,12 +93,14 @@ namespace NewspaperRuler
             stampEnter.close();
             stampPut.close();
             music.close();
+            end.close();
             foreach (var sound in stampTake) sound.close();
             foreach (var sound in stampReturn) sound.close();
             playFinalMusic1Loop = false;
             playFinalMusic2Loop = false;
             playMainMenuLoop = false;
             playMusicLoop = false;
+            playEndLoop = false;
         }
 
         public void EveryTick()
@@ -109,6 +115,8 @@ namespace NewspaperRuler
                 Play(finalMusic1);
             if (playFinalMusic2Loop && finalMusic2.playState != WMPPlayState.wmppsPlaying)
                 Play(finalMusic2);
+            if (playEndLoop && end.playState != WMPPlayState.wmppsPlaying)
+                Play(end);
         }
 
         public void PlayMusic() => playMusicLoop = true;
@@ -118,6 +126,8 @@ namespace NewspaperRuler
         public void PlayFinalMusic1() => playFinalMusic1Loop = true;
 
         public void PlayFinalMusic2() => playFinalMusic2Loop = true;
+
+        public void PlayEnd() => playEndLoop = true;
 
         public void StopMusic()
         {
@@ -141,6 +151,12 @@ namespace NewspaperRuler
         {
             finalMusic2.close();
             playFinalMusic2Loop = false;
+        }
+
+        public void StopEnd()
+        {
+            end.close();
+            playEndLoop = false;
         }
 
         public void PlayTitle() => Play(title);

@@ -184,6 +184,334 @@ namespace NewspaperRuler.Properties {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: КРАБ отступает
+        ///Genre: Здоровье
+        ///Content:
+        ///	Есть и положительные новости по поводу вируса КРАБ. Вакцинация даёт надежду на прекращение эпидемии. Об этом говорят данные Министерства здравоохранения..
+        /// </summary>
+        internal static string Article10_1 {
+            get {
+                return ResourceManager.GetString("Article10_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Не до игр…
+        ///Genre: Социальные проблемы
+        ///Content:
+        ///	В Южных регионах для посещения будут закрыты все бильярдные, ночные и караоке-клубы с полуночи до 9:00. Также в это время не будут работать залы ресторанов и кафе. 
+        ///
+        ///	Соответствующие изменения в постановление областного правительства внесла администрация южных регионов..
+        /// </summary>
+        internal static string Article10_10 {
+            get {
+                return ResourceManager.GetString("Article10_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Соревнования не состоятся
+        ///Genre: Социальные проблемы
+        ///Content:
+        ///	В стране отменены все спортивные соревнования, в частности, велогонка и два этапа Мирового состязания по академической гребле..
+        /// </summary>
+        internal static string Article10_11 {
+            get {
+                return ResourceManager.GetString("Article10_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Планы – мечты на бумаге
+        ///Genre: Социальные проблемы
+        ///Content:
+        ///	В стране отменен чемпионат мира по ралли-кроссу. Чемпионат Балтии по тяжелой атлетике перенесен на более позднее время..
+        /// </summary>
+        internal static string Article10_12 {
+            get {
+                return ResourceManager.GetString("Article10_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Форс мажор
+        ///Genre: Социальные проблемы
+        ///Content:
+        ///	В стране отменена Неделя бизнеса, в рамках которой планировалось провести съезд Союза промышленников и предпринимателей с участием зарубежных гостей..
+        /// </summary>
+        internal static string Article10_13 {
+            get {
+                return ResourceManager.GetString("Article10_13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Mistake: NewWar
+        ///Title: Когда люди делают войны, они делают беженцев
+        ///Genre: Социальные проблемы
+        ///Content:
+        ///	Война в стране привела к кризису, связанному с перемещением населения. 
+        ///
+        ///	2,2 млн её жителей стали вынужденными переселенцами и почти 1 млн получили убежище в соседних странах..
+        /// </summary>
+        internal static string Article10_14 {
+            get {
+                return ResourceManager.GetString("Article10_14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Mistake: NewWar
+        ///Title: Всё для фронта, всё для победы!
+        ///Genre: Военные конфликты
+        ///Content:
+        ///	В условиях смертельной опасности, нависшей над страной, государство сумело сплотить народ и разработать программу отпора захватчикам. 
+        ///
+        ///	Страна стала единым военным лагерем. Захватчики не имели права нарушать мирную жизнь, убивать, калечить людей, оставлять детей сиротами. Против этого восстал народ, он защищал своё право мирно жить..
+        /// </summary>
+        internal static string Article10_15 {
+            get {
+                return ResourceManager.GetString("Article10_15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: NewWar
+        ///Title: Не шпионь, и не вреди, а осмелишься – гляди!
+        ///Genre: Военные конфликты
+        ///Content:
+        ///	Сотрудники контрразведки задержали по обвинению в шпионаже высокопоставленного чиновника. 
+        ///
+        ///	В ходе последовавшего вскоре судебного процесса стало известно, что тот под угрозой убийства передал врагам массу совершенно секретных сведений о важнейших стратегических точках страны. 
+        ///
+        ///	Приговором для предателя стала смертная казнь..
+        /// </summary>
+        internal static string Article10_16 {
+            get {
+                return ResourceManager.GetString("Article10_16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Загадочные смерти
+        ///Genre: Криминал
+        ///Content:
+        ///	Не секрет, что чиновники, связанные с обороной часто умирают не всегда естественной смертью. 
+        ///
+        ///	Есть основания предполагать, что проводится серия зачисток в аппарате высшего военного руководства. 
+        ///
+        ///	Масштабы позволяют предположить, что в связи с ухудшением экономической ситуации в стране, причины только обострятся..
+        /// </summary>
+        internal static string Article10_17 {
+            get {
+                return ResourceManager.GetString("Article10_17", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Mistake: NoGenre
+        ///Title: Государство – это мы!
+        ///Content:
+        ///	В каждой стране складывается определённая система взаимоотношений государства и граждан. Военное положение наложит свой отпечаток на эти взаимоотношения. Людям необходимо вселить надежду на лучшее будущее, а трудности объявить временным явлением. Экономика будет полностью восстановлена, но уровень её развития останется низким, хотя необходимая база для дальнейшего развития будет создана. Эпидемия в конце концов закончится, но переболеть [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string Article10_18 {
+            get {
+                return ResourceManager.GetString("Article10_18", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Mistake: IncorrectGenre
+        ///Title: За молодёжью будущее?
+        ///Genre: Философская дискуссия
+        ///Content:
+        ///	Сильнее всех от эпидемии пострадала молодежь: именно молодые люди чаще всего работали в сферах, понесших убытки. 
+        ///
+        ///	Проблема приобрела такой масштаб, что эксперты уже начали говорить о появлении «потерянного поколения». 
+        ///
+        ///	Рынок труда в минувшем году потерял миллион молодых работников..
+        /// </summary>
+        internal static string Article10_19 {
+            get {
+                return ResourceManager.GetString("Article10_19", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: NewWar
+        ///Title: Страна в опасности!
+        ///Genre: Военные конфликты
+        ///Content:
+        ///	Несмотря на отчаянное сопротивление наших войск, противнику удалось прорваться вглубь страны. 
+        ///
+        ///	Захвачены важные стратегические объекты. Страна находится в критическом положении..
+        /// </summary>
+        internal static string Article10_2 {
+            get {
+                return ResourceManager.GetString("Article10_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: Самое великое благо для человека
+        ///Genre: Образование
+        ///Content:
+        ///	Очень низкое государственное финансирование образования и запредельные нагрузки педагогов в сочетании с падением их заработков; перегруженность школьных программ и потеря детьми мотивации к обучению. Так эксперты оценивают острейшие проблемы сегодняшнего образования. 
+        ///
+        ///	«А без образования люди и грубы, и бедны, и несчастны», — говорил ещё в середине 19 века Н. Чернышевский..
+        /// </summary>
+        internal static string Article10_20 {
+            get {
+                return ResourceManager.GetString("Article10_20", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Концы с концами можно сводить без конца
+        ///Genre: Социальные проблемы
+        ///Content:
+        ///	Реальные располагаемые доходы населения страны сократились почти на 9%. 
+        ///
+        ///	Ожидаемое по итогам года снижение доходов на 3% может быть превышено, допускают эксперты..
+        /// </summary>
+        internal static string Article10_21 {
+            get {
+                return ResourceManager.GetString("Article10_21", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: NewWar
+        ///Title: Оккупанты расширяют плацдарм
+        ///Genre: Военные конфликты
+        ///Content:
+        ///	Захватчики овладели крупнейшей магистралью страны, нефтяными месторождениями и заняли еще 3 города на востоке страны..
+        /// </summary>
+        internal static string Article10_3 {
+            get {
+                return ResourceManager.GetString("Article10_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: NewWar
+        ///Title: В плену сложившихся обстоятельств
+        ///Genre: Военные конфликты
+        ///Content:
+        ///	В районе города Герден группа войск оказалась в окружении врага. 
+        ///
+        ///	Есть информация о наших соотечественниках, попавших в плен к врагу. Это предварительная информация. На данный момент сведения уточняются..
+        /// </summary>
+        internal static string Article10_4 {
+            get {
+                return ResourceManager.GetString("Article10_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: NewWar
+        ///Title: Героями не рождаются, героями становятся!
+        ///Genre: Военные конфликты
+        ///Content:
+        ///	Бессмертный подвиг совершили бойцы одного из отрядов, вступившие в неравную схватку с передовыми частями врага. 
+        ///
+        ///	Небольшой отряд погиб, но уничтожил свыше 100 захватчиков и замедлил дальнейшее наступление. 
+        ///
+        ///	Наш выбор – смерть, чем плен иль рабство..
+        /// </summary>
+        internal static string Article10_5 {
+            get {
+                return ResourceManager.GetString("Article10_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Reprimand: 1
+        ///Mistake: NewWar
+        ///Title: Зверства оккупантов
+        ///Genre: Военные конфликты
+        ///Content:
+        ///	С первых дней оккупации проводились массовые расстрелы «непослушных» среди мирного населения. 
+        ///
+        ///	С начала вторжения погибло уже более 4 тыс. человек..
+        /// </summary>
+        internal static string Article10_6 {
+            get {
+                return ResourceManager.GetString("Article10_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Кризис власти
+        ///Genre: Политика
+        ///Content:
+        ///	Первые дни войны показали неспособность власти управлять в критические для страны времена. 
+        ///
+        ///	Промышленность не справляется со снабжением армии, усилились трудности с обеспечением городов продовольствием. 
+        ///
+        ///	Внутри самого правительства царит разлад в то время, когда именно сейчас, как никогда, важна консолидация общества!.
+        /// </summary>
+        internal static string Article10_7 {
+            get {
+                return ResourceManager.GetString("Article10_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: Запретный плод сладок
+        ///Genre: Социум
+        ///Content:
+        ///	Новые ограничения ввели в Горском крае. Теперь жителям региона нельзя проводить массовые мероприятия с участием более 20 человек. 
+        ///
+        ///	Однако, молодёжь запрет не остановил. В кафе состоялось  празднование Дня рождения, где присутствовало более 50 приглашённых..
+        /// </summary>
+        internal static string Article10_8 {
+            get {
+                return ResourceManager.GetString("Article10_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Title: Еды запретные плоды на время не таят беды
+        ///Genre: Социальные проблемы
+        ///Content:
+        ///	Работа организаций общественного питания в ночное время приостановлена на время. 
+        ///
+        ///	Также в ресторанах и кафе теперь запрещено проводить и развлекательные мероприятия — никакой живой музыки, свадеб и корпоративов..
+        /// </summary>
+        internal static string Article10_9 {
+            get {
+                return ResourceManager.GetString("Article10_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
         ///Reprimand: 1
         ///Flag: ArticleOnMassStarvationWasApproved
         ///Mistake: PessimisticArticle
@@ -1653,7 +1981,6 @@ namespace NewspaperRuler.Properties {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 3
-        ///Mistake: Protests
         ///Title: Соль жизни – в протесте
         ///Genre: Социальные проблемы
         ///Content:
@@ -1742,6 +2069,7 @@ namespace NewspaperRuler.Properties {
         ///Genre: Социум
         ///Content:
         ///	Рекомендация по соблюдению правил гигиены в период эпидемии:
+        ///
         ///	1. Чаще мой руки.
         ///	2. Используй антисептики и маски.
         ///	3. Избегай близких контактов в местах массового скопления людей.
@@ -1873,10 +2201,11 @@ namespace NewspaperRuler.Properties {
         ///Genre: Интервью
         ///Content:
         ///	Сегодня мы взяли интервью у известного Плиувильского фотографа Александра Пилюлькина.
+        ///
         ///	– Добрый день, Александр! Почему Вас заинтересовала именно фотография?
         ///	– Здравствуйте! Это началось ещё в школе. Мне пришла в голову идея запечатлеть важные, забавные, необычные моменты школьной жизни. А затем стал снимать всё, что заслуживало моего внимания.
         ///	– Как Вы относитесь к критике?
-        ///	– Положительно. Вед [остаток строки не уместился]&quot;;.
+        ///	– Положительно. В [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string Article9_9 {
             get {
@@ -1906,9 +2235,29 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Bird {
+            get {
+                object obj = ResourceManager.GetObject("Bird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Book {
             get {
                 object obj = ResourceManager.GetObject("Book", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BrokenHeart {
+            get {
+                object obj = ResourceManager.GetObject("BrokenHeart", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1944,10 +2293,68 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CommunalService {
+            get {
+                object obj = ResourceManager.GetObject("CommunalService", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Confederate {
+            get {
+                object obj = ResourceManager.GetObject("Confederate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Crowd {
+            get {
+                object obj = ResourceManager.GetObject("Crowd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Dead {
             get {
                 object obj = ResourceManager.GetObject("Dead", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DeadTown {
+            get {
+                object obj = ResourceManager.GetObject("DeadTown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на № 34.11. Отклонять статьи без заголовка
+        ///№ 34.14. Отклонять статьи с неактуальной информацией
+        ///№ 34.15. Отклонять объявления о пропажах
+        ///№ 34.16. Отклонять рекламные объявления
+        ///№ 34.17. Отклонять статьи о конкретных личностях
+        ///№ 34.19. Отклонять статьи оппозиционного характера
+        ///№ 34.21. Отклонять статьи без направленности
+        ///№ 34.22. Отклонять статьи с неверной направленностью
+        ///№ 34.23. Отклонять статьи о массовых протестах
+        ///№ 34.24. Отклонять статьи о начавшейся войне.
+        /// </summary>
+        internal static string DecreesLevel10 {
+            get {
+                return ResourceManager.GetString("DecreesLevel10", resourceCulture);
             }
         }
         
@@ -2078,6 +2485,15 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream End {
+            get {
+                return ResourceManager.GetStream("End", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Eraser {
@@ -2135,12 +2551,32 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Flower {
+            get {
+                object obj = ResourceManager.GetObject("Flower", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
         internal static byte[] Font {
             get {
                 object obj = ResourceManager.GetObject("Font", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fox {
+            get {
+                object obj = ResourceManager.GetObject("Fox", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -2155,11 +2591,71 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Galina {
+            get {
+                object obj = ResourceManager.GetObject("Galina", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gallows {
+            get {
+                object obj = ResourceManager.GetObject("Gallows", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream GameOver {
             get {
                 return ResourceManager.GetStream("GameOver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Grasshopper {
+            get {
+                object obj = ResourceManager.GetObject("Grasshopper", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hands {
+            get {
+                object obj = ResourceManager.GetObject("Hands", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hummer {
+            get {
+                object obj = ResourceManager.GetObject("Hummer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Landscape {
+            get {
+                object obj = ResourceManager.GetObject("Landscape", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -2317,6 +2813,16 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Prison {
+            get {
+                object obj = ResourceManager.GetObject("Prison", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Rejected {
             get {
                 object obj = ResourceManager.GetObject("Rejected", resourceCulture);
@@ -2446,6 +2952,16 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Team {
+            get {
+                object obj = ResourceManager.GetObject("Team", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream Title {
@@ -2457,10 +2973,41 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Town {
+            get {
+                object obj = ResourceManager.GetObject("Town", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Trash {
+            get {
+                object obj = ResourceManager.GetObject("Trash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap TrashCan {
             get {
                 object obj = ResourceManager.GetObject("TrashCan", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Война со странами Андиплантийской коалиции
+        ///Криминал
+        ///Социальные проблемы.
+        /// </summary>
+        internal static string TrendsLevel10 {
+            get {
+                return ResourceManager.GetString("TrendsLevel10", resourceCulture);
             }
         }
         
@@ -2515,6 +3062,56 @@ namespace NewspaperRuler.Properties {
         internal static string TrendsLevel9 {
             get {
                 return ResourceManager.GetString("TrendsLevel9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ubringston {
+            get {
+                object obj = ResourceManager.GetObject("Ubringston", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WifeAliveSonAlive {
+            get {
+                object obj = ResourceManager.GetObject("WifeAliveSonAlive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WifeAliveSonDead {
+            get {
+                object obj = ResourceManager.GetObject("WifeAliveSonDead", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WifeDeadSonAlive {
+            get {
+                object obj = ResourceManager.GetObject("WifeDeadSonAlive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WifeDeadSonDead {
+            get {
+                object obj = ResourceManager.GetObject("WifeDeadSonDead", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
