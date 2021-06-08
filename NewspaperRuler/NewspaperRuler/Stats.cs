@@ -209,15 +209,18 @@ namespace NewspaperRuler
             }
             if (Flags[9]["SonAlive"])
                 result.Add(("Сын поступил в высшую академию. Там он нашёл свою вторую половинку.", new Bitmap(Properties.Resources.Confederate, Scale.Get(500), Scale.Get(400))));
-            if (Flags[1]["ArticleOnProhibitionWeaponsWasApproved"])
-                result.Add(("Всё это время МАМБА за Вами наблюдала. Вам предложили там вакансию. " +
-                    "Вы успешно прошли испытательный срок и теперь являетесь частью команды одной из самых авторитетных организаций в мире.", new Bitmap(Properties.Resources.Team, Scale.Get(500), Scale.Get(400))));
-            else if (!Flags[9]["MainCharacterBoughtFakePassports"])
+            if (Flags[9]["MainCharacterIsFree"])
             {
-                if (Flags[4]["MainCharacterWentToFestival"])
-                    result.Add(("Вы устроились на работу технического специалиста в сфере коммунального хозяйства. " +
-                        "Сделать это помог Ваш новый приятель, с которым Вы познакомились на фестивале света.", new Bitmap(Properties.Resources.CommunalService, Scale.Get(500), Scale.Get(500))));
-                else result.Add(("Вы не смогли найти новую работу. Вам суждено жить в бедности до конца жизни.", new Bitmap(Properties.Resources.Trash, Scale.Get(500), Scale.Get(500))));
+                if (Flags[1]["ArticleOnProhibitionWeaponsWasApproved"])
+                    result.Add(("Всё это время МАМБА за Вами наблюдала. Вам предложили там вакансию. " +
+                        "Вы успешно прошли испытательный срок и теперь являетесь частью команды одной из самых авторитетных организаций в мире.", new Bitmap(Properties.Resources.Team, Scale.Get(500), Scale.Get(400))));
+                else if (!Flags[9]["MainCharacterBoughtFakePassports"])
+                {
+                    if (Flags[4]["MainCharacterWentToFestival"])
+                        result.Add(("Вы устроились на работу технического специалиста в сфере коммунального хозяйства. " +
+                            "Сделать это помог Ваш новый приятель, с которым Вы познакомились на фестивале света.", new Bitmap(Properties.Resources.CommunalService, Scale.Get(500), Scale.Get(500))));
+                    else result.Add(("Вы не смогли найти новую работу. Вам суждено жить в бедности до конца жизни.", new Bitmap(Properties.Resources.Trash, Scale.Get(500), Scale.Get(500))));
+                }
             }
             result.Add(("Ничего в этой жизни не даётся легко. Чтобы достичь своих целей, необходимо идти на определенные жертвы — " +
                 "тратить свои силы, время, ограничивать себя в чём-либо.", new Bitmap(Properties.Resources.Landscape, Scale.Get(500), Scale.Get(400))));
