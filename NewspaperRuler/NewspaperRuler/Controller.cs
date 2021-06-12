@@ -40,15 +40,9 @@ namespace NewspaperRuler
             workTable.Stats.Money += dayEnd.MouseDown(money);
         }
 
-        public void MouseUp()
-        {
-            currentInterface.MouseUp();
-        }
+        public void MouseUp() => currentInterface.MouseUp();
 
-        public void MouseMove()
-        {
-            currentInterface.MouseMove();
-        }
+        public void MouseMove() => currentInterface.MouseMove();
 
         public void EveryTick()
         {
@@ -58,7 +52,7 @@ namespace NewspaperRuler
 
         private void ChangeInterface(IUserInterface value)
         {
-            value.SetFormBackground(form);
+            value.ExecuteAfterTransition(form);
             currentInterface = value;
             form.Controls.Clear();
         }

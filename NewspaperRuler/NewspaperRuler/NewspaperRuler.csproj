@@ -124,64 +124,40 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Background.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\Background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Frame.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\Frame.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Megaphone.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\Megaphone.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Paper.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\Paper.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Approved.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\Approved.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Rejected.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\Rejected.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Book.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\Book.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\NoteBackground1.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\NoteBackground1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\RemarkBackground.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\RemarkBackground.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TrashCan.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\TrashCan.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SwitchOff.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\SwitchOff.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SwitchOn.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\SwitchOn.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Sounds\Cancel.wav">
@@ -464,24 +440,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dead.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\Dead.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Expired.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\Expired.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Fired.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\Fired.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Button.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\Button.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Logo.png" />

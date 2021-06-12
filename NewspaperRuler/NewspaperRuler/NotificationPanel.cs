@@ -71,9 +71,9 @@ namespace NewspaperRuler
                 StopMoving();
                 outNotification.WaitAndExecute(80);
             }
-            else if (Position.Y < -45)
+            else if (Position.Y < -55)
             {
-                Position = new Point(Position.X, -45);
+                Position = new Point(Position.X, -55);
                 StopMoving();
                 ShowPanel();
             }

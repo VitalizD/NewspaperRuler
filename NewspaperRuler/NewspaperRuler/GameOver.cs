@@ -81,7 +81,7 @@ namespace NewspaperRuler
             iconOver.Paint(graphics);
         }
 
-        public void SetFormBackground(Form1 form)
+        public void ExecuteAfterTransition(Form1 form)
         {
             form.BackgroundImage = null;
             form.BackColor = Color.Black;

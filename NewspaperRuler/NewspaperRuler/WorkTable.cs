@@ -28,7 +28,7 @@ namespace NewspaperRuler
 
         private readonly ElementControl decreesBook = new ElementControl("ПРИКАЗЫ", StringStyle.White, Properties.Resources.Book, 120, 100);
         private readonly ElementControl loudspeaker = new ElementControl("ТРЕНДЫ ОБЩ. МНЕНИЯ", StringStyle.White, Properties.Resources.Megaphone, 120, 110);
-        private readonly ElementControl menuButton = new ElementControl("МЕНЮ", StringStyle.Black, Properties.Resources.Button, 130, 50);
+        private readonly ElementControl menuButton = new ElementControl("ЗАНОВО", StringStyle.Black, Properties.Resources.Button, 150, 50);
         private readonly ElementControl date = new ElementControl("", StringStyle.Black, Properties.Resources.Button, 280, 50);
 
         private readonly Sounds sounds;
@@ -69,7 +69,7 @@ namespace NewspaperRuler
 
             date.ShowImage(new Point(0, 0));
             date.ShowDescription(new Point(date.Position.X + Scale.Get(10), date.Position.Y + Scale.Get(10)));
-            date.SetTextAreaSize(new Size(300, 50));
+            date.SetTextAreaSize(new Size(350, 50));
         }
 
         public void StartGame(Difficulties difficulty)
@@ -460,6 +460,6 @@ namespace NewspaperRuler
             changeInterfaceToMainMenu();
         }
 
-        public void SetFormBackground(Form1 form) => form.BackgroundImage = Properties.Resources.Background;
+        public void ExecuteAfterTransition(Form1 form) => form.BackgroundImage = Properties.Resources.Background;
     }
 }

@@ -171,7 +171,7 @@ namespace NewspaperRuler
                 StringStyle.Center);
         }
 
-        public void SetFormBackground(Form1 form)
+        public void ExecuteAfterTransition(Form1 form)
         {
             var image = new Bitmap(Properties.Resources.MenuBackground, Scale.Get(1480), Scale.Get(1100));
             form.BackgroundImage = image;
