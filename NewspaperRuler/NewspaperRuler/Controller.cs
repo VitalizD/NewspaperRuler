@@ -14,6 +14,8 @@ namespace NewspaperRuler
 
         private IUserInterface currentInterface;
 
+        private Waiting waitIntro;
+
         public Controller(Form1 form)
         {
             this.form = form;
@@ -23,31 +25,40 @@ namespace NewspaperRuler
             workTable = new WorkTable(form, sounds, dayEnd, ChangeInterface, () => ChangeInterface(menu));
             menu = new MainMenu(form, sounds, () => ChangeInterface(workTable), workTable.StartGame);
 
-            ChangeInterface(menu);
+            form.BackColor = Color.Black;
+            waitIntro = new Waiting(() => ChangeInterface(menu));
+            waitIntro.WaitAndExecute(200);
         }
 
         public void Paint(Graphics graphics)
         {
-            currentInterface.Paint(graphics);
+            if (currentInterface is null)
+                graphics.DrawString("Все ресурсы (изображения, звуки) взяты из открытых источников " +
+                "и используются в некоммерческих целях.\n\nЗапрещено любое коммерческое использование ресурсов игры " +
+                "без письменного разрешения авторов (правообладателей) ресурсов." +
+                "\n\nСоздатель игры не несёт ответственность за использование ресурсов, находящихся в корневом каталоге игры.",
+                StringStyle.BigFont, StringStyle.White, new Rectangle(Scale.Get(200), Scale.Resolution.Height / 2 - Scale.Get(200), Scale.Get(1000), 0), StringStyle.Center);
+            currentInterface?.Paint(graphics);
         }
 
         public void MouseDown()
         {
-            currentInterface.MouseDown();
+            currentInterface?.MouseDown();
 
             if (workTable.Stats is null) return;
             var money = workTable.Stats.Money;
             workTable.Stats.Money += dayEnd.MouseDown(money);
         }
 
-        public void MouseUp() => currentInterface.MouseUp();
+        public void MouseUp() => currentInterface?.MouseUp();
 
-        public void MouseMove() => currentInterface.MouseMove();
+        public void MouseMove() => currentInterface?.MouseMove();
 
         public void EveryTick()
         {
-            sounds.EveryTick();
-            currentInterface.EveryTick();
+            sounds?.EveryTick();
+            waitIntro?.EveryTick();
+            currentInterface?.EveryTick();
         }
 
         private void ChangeInterface(IUserInterface value)
