@@ -295,35 +295,41 @@ namespace NewspaperRuler
                 case 4:
                     productsCost += 10;
                     dayEnd.InformationTexts.Add(GetLabel("Цены на продукты повысились."));
-                    dayEnd.Expenses.Add(new Expense($"Плата за молчание:\t\t250 {MonetaryCurrencyName}", 250, ExpenseType.Stranger));
+                    if (flags[1]["MainCharacterWasOnDate"] || flags[2]["MainCharacterWasOnDate"])
+                        dayEnd.Expenses.Add(new Expense($"Плата за молчание:\t\t250 {MonetaryCurrencyName}", 250, ExpenseType.Stranger));
                     if (flags[2]["ArticleOnProhibitionWeaponsWasApproved"])
                     {
                         Money -= 75;
                         dayEnd.StatsTexts.Add(GetLabel($"Вычет из зарплаты:\t\t-75"));
-                        dayEnd.Expenses.Add(new Expense($"План Ларисы:\t\t25 {MonetaryCurrencyName}", 25, ExpenseType.Larisa));
+                        if (flags[1]["MainCharacterWasOnDate"] || flags[2]["MainCharacterWasOnDate"])
+                            dayEnd.Expenses.Add(new Expense($"План Ларисы:\t\t25 {MonetaryCurrencyName}", 25, ExpenseType.Larisa));
                     }
                     break;
                 case 5:
                     dayEnd.InformationTexts.Add(GetLabel("Становится холодно. Пора платить за отопление."));
                     dayEnd.InformationTexts.Add(GetLabel("Вы можете пойти на фестиваль света, оплатив стоимость билета."));
-                    dayEnd.InformationTexts.Add(GetLabel("У Вашего сына завтра День Рождения."));
+                    dayEnd.InformationTexts.Add(GetLabel("У Вашего сына завтра день рождения."));
                     dayEnd.Expenses.Add(new Expense($"Фестиваль света:\t\t30 {MonetaryCurrencyName}", 30, ExpenseType.Festival));
-                    if (flags[3]["TheMainCharacterPaidLarisa"] && flags[3]["TheMainCharacterPaidForSilence"])
+                    if (flags[1]["MainCharacterWasOnDate"] || flags[2]["MainCharacterWasOnDate"])
                     {
-                        Money += 200;
-                        dayEnd.StatsTexts.Add(GetLabel($"Возврат похищенных денег:\t\t200"));
+                        if (flags[3]["TheMainCharacterPaidLarisa"] && flags[3]["TheMainCharacterPaidForSilence"])
+                        {
+                            Money += 200;
+                            dayEnd.StatsTexts.Add(GetLabel($"Возврат похищенных денег:\t\t200"));
+                        }
+                        if (!flags[3]["TheMainCharacterPaidForSilence"] && !flags[3]["TheMainCharacterPaidLarisa"])
+                        {
+                            flags[3]["TheMainCharacterPaidForSilence"] = true;
+                            dayEnd.InformationTexts.Add(GetLabel("Сегодня последний шанс подкупить шантажистку."));
+                            dayEnd.Expenses.Add(new Expense($"Плата за молчание:\t\t250 {MonetaryCurrencyName}", 250, ExpenseType.Stranger));
+                        }
+                        else if (flags[3]["TheMainCharacterPaidForSilence"] && !flags[3]["TheMainCharacterPaidLarisa"])
+                            dayEnd.InformationTexts.Add(GetLabel("Шантажистка получила Ваши деньги."));
                     }
-                    if (!flags[3]["TheMainCharacterPaidForSilence"] && !flags[3]["TheMainCharacterPaidLarisa"])
-                    {
-                        dayEnd.InformationTexts.Add(GetLabel("Сегодня последний шанс подкупить шантажистку."));
-                        dayEnd.Expenses.Add(new Expense($"Плата за молчание:\t\t250 {MonetaryCurrencyName}", 250, ExpenseType.Stranger));
-                    }
-                    else if (flags[3]["TheMainCharacterPaidForSilence"] && !flags[3]["TheMainCharacterPaidLarisa"])
-                        dayEnd.InformationTexts.Add(GetLabel("Шантажистка получила Ваши деньги."));
                     break;
                 case 6:
                     dayEnd.InformationTexts.Add(GetLabel("Ваша жена заразилась вирусом КРАБ."));
-                    dayEnd.InformationTexts.Add(GetLabel("Сегодня День Рождения Вашего сына. Вы можете отправить ему подарок."));
+                    dayEnd.InformationTexts.Add(GetLabel("Сегодня день рождения Вашего сына. Вы можете отправить ему подарок."));
                     dayEnd.Expenses.Add(new Expense($"Подарок сыну:\t\t35 {MonetaryCurrencyName}", 35, ExpenseType.Son));
                     if (flags[3]["MainCharacterGaveOutAboutSecretEditorialOffice"])
                     {
@@ -355,7 +361,7 @@ namespace NewspaperRuler
                         dayEnd.InformationTexts.Add(GetLabel("Женщина из плиувильской аптеки украла препарат для Вашей жены и поплатилась за это:"));
                         dayEnd.InformationTexts.Add(GetLabel("её уволили. Она больше не сможет Вам помочь. Лекарство успешно доставлено Вашей жене."));
                     }
-                    else dayEnd.Expenses.Add(new Expense($"Лекарство для жены:\t\t200 {MonetaryCurrencyName}", 200, ExpenseType.Medicine));
+                    else dayEnd.Expenses.Add(new Expense($"Лекарство для жены:\t\t145 {MonetaryCurrencyName}", 145, ExpenseType.Medicine));
                     if (flags[5]["MainCharacterBoughtPresentForHisSon"])
                         dayEnd.InformationTexts.Add(GetLabel("Вашему сыну понравился подарок."));
                     else dayEnd.InformationTexts.Add(GetLabel("Ваш сын расстроился, что Вы не проявили к нему внимание в его День Рождения."));
@@ -369,7 +375,7 @@ namespace NewspaperRuler
                     if (flags[6]["MedicineWasDeliveredToWife"])
                     {
                         dayEnd.InformationTexts.Add(GetLabel("До конца курса лечения Вашей жены осталось 2 дня."));
-                        dayEnd.Expenses.Add(new Expense($"Лекарство для жены:\t\t200 {MonetaryCurrencyName}", 200, ExpenseType.Medicine));
+                        dayEnd.Expenses.Add(new Expense($"Лекарство для жены:\t\t145 {MonetaryCurrencyName}", 145, ExpenseType.Medicine));
                     }
                     if (flags[7]["MainCharacterHelpedGrasshoppersFirstTime"]
                         && flags[7]["MainCharacterHelpedGrasshoppersSecondTime"]
@@ -391,7 +397,7 @@ namespace NewspaperRuler
                     if (flags[6]["MedicineWasDeliveredToWife"])
                     {
                         dayEnd.InformationTexts.Add(GetLabel("Сегодня последний день курса лечения Вашей жены."));
-                        dayEnd.Expenses.Add(new Expense($"Лекарство для жены:\t\t200 {MonetaryCurrencyName}", 200, ExpenseType.Medicine));
+                        dayEnd.Expenses.Add(new Expense($"Лекарство для жены:\t\t145 {MonetaryCurrencyName}", 145, ExpenseType.Medicine));
                     }
                     if (!flags[6]["GalinaWillHelpMainCharacterFreeCharge"] && !flags[6]["MainCharacterPaidGalina"])
                         dayEnd.InformationTexts.Add(GetLabel("Вашего сына забрали на войну."));
@@ -404,7 +410,7 @@ namespace NewspaperRuler
                     {
                         dayEnd.InformationTexts.Add(GetLabel("Вашу жену положили в больницу. Она умирает."));
                         dayEnd.InformationTexts.Add(GetLabel("Требуется срочная хирургическая операция – последняя надежда на её спасение."));
-                        dayEnd.Expenses.Add(new Expense($"Операция:\t\t400 {MonetaryCurrencyName}", 400, ExpenseType.Operation));
+                        dayEnd.Expenses.Add(new Expense($"Операция:\t\t500 {MonetaryCurrencyName}", 500, ExpenseType.Operation));
                     }
                     if (flags[6]["MainCharacterHelpedGrasshoppersFirstTime"]
                                 && flags[6]["MainCharacterHelpedGrasshoppersSecondTime"]
@@ -413,7 +419,7 @@ namespace NewspaperRuler
                                 && flags[7]["MainCharacterHelpedGrasshoppersThirdTime"])
                     {
                         dayEnd.InformationTexts.Add(GetLabel("\"Кузнечики\" готовы достать поддельные паспорта за \"относительно низкую цену\"."));
-                        dayEnd.Expenses.Add(new Expense($"Поддельные паспорта:\t\t500 {MonetaryCurrencyName}", 500, ExpenseType.Passports));
+                        dayEnd.Expenses.Add(new Expense($"Поддельные паспорта:\t\t400 {MonetaryCurrencyName}", 400, ExpenseType.Passports));
                     }
                     break;
             }
