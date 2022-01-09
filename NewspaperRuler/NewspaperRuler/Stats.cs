@@ -72,6 +72,7 @@ namespace NewspaperRuler
                     ["MinistryIsSatisfied"] = false,
                     ["MainCharacterWasOnDate"] = false,
                     ["ArticleOnProhibitionWeaponsWasApproved"] = false,
+                    ["TimasStudiesWerePaid"] = true
                 },
                 new Dictionary<string, bool>
                 {
@@ -115,6 +116,7 @@ namespace NewspaperRuler
                 {
                     ["MinistryIsSatisfied"] = false,
                     ["GrasshoppersEliminated"] = false,
+                    ["TimasStudiesWerePaid"] = true
                 },
                 new Dictionary<string, bool>
                 {
@@ -173,7 +175,7 @@ namespace NewspaperRuler
                 result.Add(("Вы прибыли на слушание по делу причастия гос. служащих к \"Кузнечикам\".", new Bitmap(Properties.Resources.Hummer, Scale.Get(500), Scale.Get(500))));
                 if (!flags[8]["GrasshoppersEliminated"])
                 {
-                    result.Add(("Против Вас найдены улики в Вашем причастии к \"Кузнечикам\". За измену государству Вам положено наказание в виде лишения свободы на 3 года.", new Bitmap(Properties.Resources.Prison, Scale.Get(600), Scale.Get(450))));
+                    result.Add(("Против Вас найдены улики в Вашем причастии к \"Кузнечикам\". За измену государству Вам положено наказание в виде лишения свободы на 10 лет.", new Bitmap(Properties.Resources.Prison, Scale.Get(600), Scale.Get(450))));
                     if (!flags[3]["MainCharacterGaveOutAboutSecretEditorialOffice"])
                     {
                         result.Add(("Разъярённая толпа граждан из тайной редакции, существование которой Вы оставили в секрете, силой добилась Вашего освобождения.", new Bitmap(Properties.Resources.Crowd, Scale.Get(600), Scale.Get(400))));
@@ -208,7 +210,15 @@ namespace NewspaperRuler
                 }
             }
             if (flags[9]["SonAlive"])
-                result.Add(("Сын поступил в высшую академию. Там он нашёл свою вторую половинку.", new Bitmap(Properties.Resources.Confederate, Scale.Get(500), Scale.Get(400))));
+            {
+                if (flags[2]["TimasStudiesWerePaid"] && flags[8]["TimasStudiesWerePaid"])
+                    result.Add(("Сын достигает отличных успехов в высшей академии. Там он нашёл свою вторую половинку. Теперь они счастливы вместе.", new Bitmap(Properties.Resources.Confederate, Scale.Get(500), Scale.Get(400))));
+                else
+                {
+                    result.Add(("Сын устроился в бригаду лесозаготовительного завода. Он несчастен, потому что не поступил в высшую академию.", new Bitmap(Properties.Resources.NoConfederate, Scale.Get(500), Scale.Get(450))));
+                    result.Add(("Но затем в стрессе он уволился и со временем спился. Он всех отвергает и не хочет никого видеть.", new Bitmap(Properties.Resources.Alcohol, Scale.Get(500), Scale.Get(500))));
+                }
+            }
             if (flags[9]["MainCharacterIsFree"])
             {
                 if (flags[1]["ArticleOnProhibitionWeaponsWasApproved"])
@@ -291,6 +301,7 @@ namespace NewspaperRuler
                         dayEnd.StatsTexts.Add(GetLabel($"Бонус к зарплате:\t\t100"));
                         dayEnd.InformationTexts.Add(GetLabel("Ваша сегодняшняя зарплата увеличена за хорошую работу."));
                     }
+                    dayEnd.Expenses.Add(new Expense($"Высшая академия:\t\t100 {MonetaryCurrencyName}", 100, ExpenseType.FirstStudies));
                     break;
                 case 4:
                     productsCost += 10;
@@ -400,7 +411,20 @@ namespace NewspaperRuler
                         dayEnd.Expenses.Add(new Expense($"Лекарство для жены:\t\t145 {MonetaryCurrencyName}", 145, ExpenseType.Medicine));
                     }
                     if (!flags[6]["GalinaWillHelpMainCharacterFreeCharge"] && !flags[6]["MainCharacterPaidGalina"])
+                    {
                         dayEnd.InformationTexts.Add(GetLabel("Вашего сына забрали на войну."));
+                        if (flags[2]["TimasStudiesWerePaid"])
+                        {
+                            dayEnd.InformationTexts.Add(GetLabel("Высшая академия вернула средства за обучение Вашего сына."));
+                            Money += 100;
+                            dayEnd.StatsTexts.Add(GetLabel($"Возврат за обучение:\t\t100"));
+                        }
+                    }
+                    else if (flags[2]["TimasStudiesWerePaid"])
+                    {
+                        dayEnd.InformationTexts.Add(GetLabel("Для продолжения обучения сына в высшей академии требуется орг. взнос."));
+                        dayEnd.Expenses.Add(new Expense($"Высшая академия:\t\t125 {MonetaryCurrencyName}", 125, ExpenseType.SecondStudies));
+                    }
                     break;
                 case 10:
                     dayEnd.InformationTexts.Add(GetLabel("Вы в шаге от конца игры."));
@@ -494,12 +518,14 @@ namespace NewspaperRuler
                     case ExpenseType.Rent: rentDebts += 3; break;
                     case ExpenseType.Products: productsDebts += 2; break;
                     case ExpenseType.Heating: heatingDebts += 2; break;
+                    case ExpenseType.FirstStudies: flags[2]["TimasStudiesWerePaid"] = false; break;
                     case ExpenseType.Stranger: flags[3]["TheMainCharacterPaidForSilence"] = false; break;
                     case ExpenseType.Larisa: flags[3]["TheMainCharacterPaidLarisa"] = false; break;
                     case ExpenseType.Festival: flags[4]["MainCharacterWentToFestival"] = false; break;
                     case ExpenseType.Son: flags[5]["MainCharacterBoughtPresentForHisSon"] = false; break;
                     case ExpenseType.Galina: flags[6]["MainCharacterPaidGalina"] = false; break;
                     case ExpenseType.Medicine: flags[6]["MedicineWasDeliveredToWife"] = false; break;
+                    case ExpenseType.SecondStudies: flags[8]["TimasStudiesWerePaid"] = false; break;
                     case ExpenseType.Operation: flags[9]["WifesOperationPaid"] = false; break;
                     case ExpenseType.Passports: flags[9]["MainCharacterBoughtFakePassports"] = false; break;
                 }

@@ -19,7 +19,7 @@ namespace NewspaperRuler.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -63,6 +63,16 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Alcohol {
+            get {
+                object obj = ResourceManager.GetObject("Alcohol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Approved {
             get {
                 object obj = ResourceManager.GetObject("Approved", resourceCulture);
@@ -74,7 +84,8 @@ namespace NewspaperRuler.Properties {
         ///   Ищет локализованную строку, похожую на Loyality: 2
         ///Content:
         ///	Фестиваль света уже скоро! 30 сентября на главной площади столицы традиционно состоится одно из самых знаменательных событий страны – фестиваль света: тысячи лампочек будут зажжены в центре города.
-        ///	Из них будут созданы рисунки и картины, которые оценят даже самые искушённые ценители красоты. Да-да, послевоенное время не станет помехой для проведения традиционного праздника. Следите за нам в новостях!
+        ///
+        ///	Из них будут созданы рисунки и картины, которые оценят даже самые искушённые ценители красоты. Да-да, послевоенное время не станет помехой для проведения традиционного праздника. Следите за нами в новостях!
         ///.
         /// </summary>
         internal static string Article1_10 {
@@ -1078,7 +1089,7 @@ namespace NewspaperRuler.Properties {
         ///Reprimand: 1
         ///Title: Воспламенение автобуса в Гординске
         ///Content:
-        ///	12 июня 1987 года в Гординске на остановке «Перелётная» вспыхнул маршрутный автобус №410.
+        ///	3 мая 1987 года в Гординске на остановке «Перелётная» вспыхнул маршрутный автобус №410.
         ///
         ///	Об инциденте сообщили свидетели. Сначала автобус задымился, пассажиров успели эвакуировать. После транспортное средство загорелось, пламя перекинулось на остановку.
         ///
@@ -2722,6 +2733,16 @@ namespace NewspaperRuler.Properties {
         internal static System.IO.UnmanagedMemoryStream Music {
             get {
                 return ResourceManager.GetStream("Music", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NoConfederate {
+            get {
+                object obj = ResourceManager.GetObject("NoConfederate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

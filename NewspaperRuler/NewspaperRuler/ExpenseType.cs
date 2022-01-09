@@ -12,6 +12,8 @@
         Son,
         Medicine,
         Operation,
-        Passports
+        Passports,
+        FirstStudies,
+        SecondStudies
     }
 }

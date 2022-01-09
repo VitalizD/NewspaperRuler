@@ -1198,6 +1198,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Newspaper.ico" />
+    <None Include="Resources\NoConfederate.jpg" />
+    <None Include="Resources\Alcohol.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
