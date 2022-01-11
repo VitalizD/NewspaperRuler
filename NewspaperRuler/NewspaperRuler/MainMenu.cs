@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 
 namespace NewspaperRuler
 {
@@ -9,8 +10,10 @@ namespace NewspaperRuler
         private readonly Form1 form;
         private readonly Action changeInterface;
         private readonly Action<Difficulties> startGame;
+        private readonly Action loadGame;
 
-        private readonly TextBoxControl start;
+        private readonly TextBoxControl newGame;
+        private readonly TextBoxControl continueGame;
         private readonly TextBoxControl exit;
         private readonly TextBoxControl normal;
         private readonly TextBoxControl easy;
@@ -20,17 +23,21 @@ namespace NewspaperRuler
 
         private readonly Waiting createBeginText;
         private readonly GraphicObject logo = new GraphicObject(Properties.Resources.Logo, 550, 220);
+        private Difficulties newGameDifficulty;
 
-        private Difficulties difficulty;
+        private Difficulties savedGameDifficulty;
+        private DateTime savedGameDate;
 
         private string beginText = "";
 
-        public MainMenu(Form1 form, Sounds sounds, Action changeInterface, Action<Difficulties> startGame)
+        public MainMenu(Form1 form, Sounds sounds, Action changeInterface, Action<Difficulties> startGame,
+            Action loadGame)
         {
             this.sounds = sounds;
             this.form = form;
             this.changeInterface = changeInterface;
             this.startGame = startGame;
+            this.loadGame = loadGame;
             createBeginText = new Waiting(GoTransition);
             var imageButton = Properties.Resources.Button;
             var width = 300;
@@ -39,7 +46,8 @@ namespace NewspaperRuler
             var shiftY = 30;
             var font = StringStyle.BigFont;
             var brush = StringStyle.Black;
-            start = new TextBoxControl(imageButton, width, height, shiftX, shiftY, "СТАРТ", font, brush);
+            newGame = new TextBoxControl(imageButton, width, height, shiftX, shiftY, "НОВАЯ ИГРА", font, brush);
+            continueGame = new TextBoxControl(imageButton, width, height, shiftX, shiftY, "ПРОДОЛЖИТЬ", font, brush);
             exit = new TextBoxControl(imageButton, width, height, shiftX, shiftY, "ВЫХОД", font, brush);
             normal = new TextBoxControl(imageButton, width, height, shiftX, shiftY, "ОБЫЧНЫЙ", font, brush);
             easy = new TextBoxControl(imageButton, width, height, shiftX, shiftY, "ЛЁГКИЙ", font, brush);
@@ -48,40 +56,46 @@ namespace NewspaperRuler
 
         public void EveryTick() 
         {
-            start.EveryTick();
+            newGame.EveryTick();
             exit.EveryTick();
             easy.EveryTick();
             normal.EveryTick();
             back.EveryTick();
+            continueGame.EveryTick();
 
             createBeginText.EveryTick();
 
-            if (start.CursorIsHovered()) description = "Начните строить СВОЮ историю.";
+            if (newGame.CursorIsHovered()) description = "Начните строить СВОЮ историю.";
             else if (exit.CursorIsHovered()) description = "Хотите выйти? Мы будем по Вам скучать...";
             else if (normal.CursorIsHovered())
                 description = "Оригинальная сложность игры. Вам предстоит столкнуться со множеством трудностей.";
             else if (easy.CursorIsHovered())
                 description = "Для тех, кто хочет играть в расслабленном режиме.";
-            else if (back.CursorIsHovered()) description = "Назад.";
+            else if (back.CursorIsHovered()) description = "";
+            else if (continueGame.CursorIsHovered())
+                description = "Продолжите игру с последнего сохранённого дня." +
+                    $"\n\n{savedGameDate:D}\nСложность: {Translation.ruDifficulties[savedGameDifficulty]}";
             else description = "";
         }
 
         public void MouseDown() 
         {
-            if (exit.CursorIsHovered()) 
+            if (exit.CursorIsHovered())
                 form.Close();
-            else if (start.CursorIsHovered()) 
+            else if (newGame.CursorIsHovered())
                 ClickStart();
-            else if (back.CursorIsHovered()) 
+            else if (back.CursorIsHovered())
                 ClickBack();
-            else if (normal.CursorIsHovered()) 
+            else if (normal.CursorIsHovered())
                 ClickDifficulty(Difficulties.Normal);
-            else if (easy.CursorIsHovered()) 
+            else if (easy.CursorIsHovered())
                 ClickDifficulty(Difficulties.Easy);
+            else if (continueGame.CursorIsHovered())
+                ClickContinue();
             else if (beginText != "")
             {
                 changeInterface();
-                startGame(difficulty);
+                startGame(newGameDifficulty);
             }
         }
 
@@ -99,9 +113,17 @@ namespace NewspaperRuler
             EnterPhase1();
         }
 
+        private void ClickContinue()
+        {
+            Leave();
+            loadGame();
+        }
+
         private void RemovePhase1()
         {
-            start.GoLeft();
+            if (AuxiliaryMethods.SaveExists())
+                continueGame.GoLeft();
+            newGame.GoLeft();
             exit.GoLeft();
         }
 
@@ -114,10 +136,18 @@ namespace NewspaperRuler
 
         private void EnterPhase1()
         {
-            start.Position = new Point(0, Scale.Get(300));
-            exit.Position = new Point(0, Scale.Get(420));
-            start.GoRight();
+            if (AuxiliaryMethods.SaveExists())
+            {
+                continueGame.Position = new Point(0, Scale.Get(230));
+                var savedGame = AuxiliaryMethods.GetSave();
+                savedGameDate = new DateTime(savedGame.Year, savedGame.Mouth, savedGame.Day).AddDays(1);
+                savedGameDifficulty = savedGame.Difficulty;
+            }
+            newGame.Position = new Point(0, Scale.Get(350));
+            exit.Position = new Point(0, Scale.Get(470));
+            newGame.GoRight();
             exit.GoRight();
+            continueGame.GoRight();
         }
 
         private void EnterPhase2()
@@ -132,15 +162,22 @@ namespace NewspaperRuler
 
         private void ClickDifficulty(Difficulties difficulty)
         {
-            sounds.StopMainMenu();
-            sounds.StopTitle();
             sounds.PlayMenuButton();
-            this.difficulty = difficulty;
+            Leave();
+            this.newGameDifficulty = difficulty;
             RemovePhase2();
-            form.BackgroundImage = null;
-            form.BackColor = Color.Black;
+            if (AuxiliaryMethods.SaveExists())
+                File.Delete(SavedData.name);
             logo.RemoveFromLayout();
             createBeginText.WaitAndExecute(25);
+        }
+
+        private void Leave()
+        {
+            sounds.StopMainMenu();
+            sounds.StopTitle();
+            form.BackgroundImage = null;
+            form.BackColor = Color.Black;
         }
 
         private void GoTransition()
@@ -156,11 +193,12 @@ namespace NewspaperRuler
 
         public void Paint(Graphics graphics)
         {
-            start.Paint(graphics);
+            newGame.Paint(graphics);
             exit.Paint(graphics);
             normal.Paint(graphics);
             easy.Paint(graphics);
             back.Paint(graphics);
+            continueGame.Paint(graphics);
 
             logo.Paint(graphics);
             graphics.DrawString(description, StringStyle.BigFont, StringStyle.White, new Rectangle

@@ -23,7 +23,8 @@ namespace NewspaperRuler
 
             dayEnd = new DayEnd(sounds, form.Controls);
             workTable = new WorkTable(form, sounds, dayEnd, ChangeInterface, () => ChangeInterface(menu));
-            menu = new MainMenu(form, sounds, () => ChangeInterface(workTable), workTable.StartGame);
+            menu = new MainMenu(form, sounds, () => ChangeInterface(workTable), workTable.StartGame,
+                workTable.LoadLevel);
 
             form.BackColor = Color.Black;
             waitIntro = new Waiting(() => ChangeInterface(menu));

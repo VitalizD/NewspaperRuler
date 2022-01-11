@@ -28,7 +28,7 @@ namespace NewspaperRuler
 
         private readonly ElementControl decreesBook = new ElementControl("ПРИКАЗЫ", StringStyle.White, Properties.Resources.Book, 120, 100);
         private readonly ElementControl loudspeaker = new ElementControl("ТРЕНДЫ ОБЩ. МНЕНИЯ", StringStyle.White, Properties.Resources.Megaphone, 120, 110);
-        private readonly ElementControl menuButton = new ElementControl("ЗАНОВО", StringStyle.Black, Properties.Resources.Button, 150, 50);
+        private readonly ElementControl menuButton = new ElementControl("ГЛАВНОЕ МЕНЮ", StringStyle.Black, Properties.Resources.Button, 250, 50);
         private readonly ElementControl date = new ElementControl("", StringStyle.Black, Properties.Resources.Button, 280, 50);
 
         private readonly Sounds sounds;
@@ -38,8 +38,8 @@ namespace NewspaperRuler
         private readonly End end;
 
         public Stats Stats { get; private set; }
-        private Stats backup;
-        private Stats tempBackup;
+        //private Stats backup;
+        //private Stats tempBackup;
 
         private readonly Action<IUserInterface> changeInterface;
         private readonly Action changeInterfaceToMainMenu;
@@ -66,6 +66,7 @@ namespace NewspaperRuler
 
             menuButton.ShowImage(new Point(Scale.Resolution.Width - menuButton.Bitmap.Width, 0));
             menuButton.ShowDescription(new Point(menuButton.Position.X + Scale.Get(10), menuButton.Position.Y + Scale.Get(10)));
+            menuButton.SetTextAreaSize(new Size(300, 50));
 
             date.ShowImage(new Point(0, 0));
             date.ShowDescription(new Point(date.Position.X + Scale.Get(10), date.Position.Y + Scale.Get(10)));
@@ -210,12 +211,25 @@ namespace NewspaperRuler
                 return;
             }
 
-            backup = (Stats)tempBackup.Clone();
+            //backup = (Stats)tempBackup.Clone();
+            PrepareLevel();
+        }
+
+        public void LoadLevel()
+        {
+            Stats = new Stats(dayEnd);
+            Stats.LoadFromJson();
+            //backup = (Stats)Stats.Clone();
+            PrepareLevel();
+        }
+
+        private void PrepareLevel()
+        {
             sounds.PlayBeginLevel();
             sounds.PlayMusic();
             Stats.GoToNextLevel();
             changeInterface(this);
-            UpdateElements();
+            UpdateElementsOnLevel();
             NextEvent();
         }
 
@@ -343,18 +357,22 @@ namespace NewspaperRuler
             stampsAreVisible = false;
         }
 
-        private void UpdateElements()
+        private void UpdateElementsOnLevel()
         {
+            if (Stats.DecreesAreVisible && !decreesBook.IsVisible)
+            {
+                decreesBook.ShowImage(new Point(0, Scale.Resolution.Height - decreesBook.Bitmap.Height));
+                decreesBook.ShowDescription(new Point(decreesBook.Position.X + decreesBook.Bitmap.Width + Scale.Get(10), decreesBook.Position.Y + decreesBook.Bitmap.Height / 2));
+            }
+
+            if (Stats.TrendsAreVisible && !loudspeaker.IsVisible)
+            {
+                loudspeaker.ShowImage(new Point(0, Scale.Resolution.Height - 2 * loudspeaker.Bitmap.Height - Scale.Get(10)));
+                loudspeaker.ShowDescription(new Point(loudspeaker.Position.X + loudspeaker.Bitmap.Width + Scale.Get(10), loudspeaker.Position.Y + loudspeaker.Bitmap.Height / 3));
+            }
+
             switch (Stats.LevelNumber)
             {
-                case 2:
-                    decreesBook.ShowImage(new Point(0, Scale.Resolution.Height - decreesBook.Bitmap.Height));
-                    decreesBook.ShowDescription(new Point(decreesBook.Position.X + decreesBook.Bitmap.Width + Scale.Get(10), decreesBook.Position.Y + decreesBook.Bitmap.Height / 2));
-                    break;
-                case 5:
-                    loudspeaker.ShowImage(new Point(0, Scale.Resolution.Height - 2 * loudspeaker.Bitmap.Height - Scale.Get(10)));
-                    loudspeaker.ShowDescription(new Point(loudspeaker.Position.X + loudspeaker.Bitmap.Width + Scale.Get(10), loudspeaker.Position.Y + loudspeaker.Bitmap.Height / 3));
-                    break;
                 case 9:
                     sounds.StopMusic();
                     sounds.PlayFinalMusic1();
@@ -426,7 +444,7 @@ namespace NewspaperRuler
             gameOver = Stats.CheckLoss(form.Controls);
             if (gameOver is null)
             {
-                tempBackup = (Stats)Stats.Clone();
+                //tempBackup = (Stats)Stats.Clone();
                 Stats.FinishLevel();
                 dayEnd.ShowAll();
                 changeInterface(dayEnd);
@@ -439,16 +457,17 @@ namespace NewspaperRuler
             changeInterface(gameOver);
             sounds.StopMusic();
             sounds.PlayGameOver();
-            if (backup is null) gameOver.CreateOnlyMainMenuButton(MouseDownOnMainMenuButton);
-            else gameOver.CreateMainMenuButtonAndReturnButton(MouseDownOnMainMenuButton, MouseDownOnReturnButton);
+            if (AuxiliaryMethods.SaveExists())
+                gameOver.CreateMainMenuButtonAndReturnButton(MouseDownOnMainMenuButton, MouseDownOnReturnButton);
+            else gameOver.CreateOnlyMainMenuButton(MouseDownOnMainMenuButton);
         }
 
 
         private void MouseDownOnReturnButton(object sender, MouseEventArgs e)
         {
-            Stats = backup;
-            sounds.PlayBeginLevel();
-            GoToDayEndOrLoss();
+            //Stats = backup;
+            //sounds.PlayBeginLevel();
+            LoadLevel();
         }
 
         private void MouseDownOnMainMenuButton(object sender, MouseEventArgs e) => GoToMainMenu();

@@ -4,6 +4,8 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.Json;
+using System.Linq;
 
 namespace NewspaperRuler
 {
@@ -24,8 +26,11 @@ namespace NewspaperRuler
 
         private int money;
         private int loyalityFactor = 1;
+        private Difficulties difficulty;
 
         public DateTime Date { get; private set; } = new DateTime(1987, 9, 26);
+        public bool DecreesAreVisible { get; private set; } = false;
+        public bool TrendsAreVisible { get; private set; } = false;
 
         public int Money
         {
@@ -43,7 +48,7 @@ namespace NewspaperRuler
         
         public LevelData Level { get; set; }
 
-        private readonly List<Dictionary<string, bool>> flags;
+        private List<Dictionary<string, bool>> flags;
 
         public Stats(DayEnd dayEnd)
         {
@@ -251,9 +256,12 @@ namespace NewspaperRuler
 
         public void GoToNextLevel()
         {
+            if (LevelNumber > 1 && LevelNumber <= 10)
+                SaveToJson();
             Date = Date.AddDays(1);
             Level = new LevelData(CreateNotes(), ArticleConstructor.ArticlesByLevel[LevelNumber - 1], loyalityFactor);
             CreateIntroduction();
+            UpdateElements();
             Level.BuildEventQueue();
         }
 
@@ -550,6 +558,15 @@ namespace NewspaperRuler
             return result.ToArray();
         }
 
+        private void UpdateElements()
+        {
+            switch (LevelNumber)
+            {
+                case 2: DecreesAreVisible = true; break;
+                case 5: TrendsAreVisible = true; break;
+            }
+        }
+
         public string[] GetDecrees() => Read($"Decrees\\DecreesLevel{LevelNumber}.txt");
 
         public string[] GetTrends() => Read($"Trends\\TrendsLevel{LevelNumber}.txt");
@@ -588,6 +605,7 @@ namespace NewspaperRuler
 
         public void SetDifficulty(Difficulties difficulty)
         {
+            this.difficulty = difficulty;
             if (difficulty is Difficulties.Normal)
             {
                 loyalityFactor = 1;
@@ -598,6 +616,59 @@ namespace NewspaperRuler
                 loyalityFactor = 2;
                 Money = 200;
             }
+        }
+
+        public void LoadFromJson()
+        {
+            if (!File.Exists(SavedData.name))
+                throw new FileNotFoundException();
+
+            var savedData = AuxiliaryMethods.GetSave();
+
+            rent = savedData.Rent;
+            productsCost = savedData.ProductsCost;
+            heatingCost = savedData.HeatingCost;
+            degreeGovernmentAnger = savedData.DegreeGovernmentAnger;
+            rentDebts = savedData.RentDebts;
+            productsDebts = savedData.ProductsDebts;
+            heatingDebts = savedData.HeatingDebts;
+            rent = savedData.Rent;
+            productsCost = savedData.ProductsCost;
+            heatingCost = savedData.HeatingCost;
+            Date = new DateTime(savedData.Year, savedData.Mouth, savedData.Day);
+            DecreesAreVisible = savedData.DecreesAreVisible;
+            TrendsAreVisible = savedData.TrendsAreVisible;
+            flags = savedData.GetFlags();
+            money = savedData.Money;
+            loyalityFactor = savedData.LoyalityFactor;
+            loyality = savedData.Loyality;
+            LevelNumber = savedData.LevelNumber;
+        }
+
+        private void SaveToJson()
+        {
+            var savedData = new SavedData
+            {
+                Flags = flags.Select(dict => new Flags(dict.Keys.ToArray(), dict.Values.ToArray())).ToArray(),
+                Rent = rent,
+                ProductsCost = productsCost,
+                HeatingCost = heatingCost,
+                DegreeGovernmentAnger = degreeGovernmentAnger,
+                RentDebts = rentDebts,
+                ProductsDebts = productsDebts,
+                HeatingDebts = heatingDebts,
+                Money = money,
+                LoyalityFactor = loyalityFactor,
+                Year = Date.Year,
+                Mouth = Date.Month,
+                Day = Date.Day,
+                LevelNumber = LevelNumber,
+                Loyality = loyality,
+                Difficulty = difficulty,
+                DecreesAreVisible = DecreesAreVisible,
+                TrendsAreVisible = TrendsAreVisible,
+            };
+            savedData.ToJson();
         }
     }
 }

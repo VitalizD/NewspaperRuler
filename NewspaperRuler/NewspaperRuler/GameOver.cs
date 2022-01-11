@@ -34,8 +34,8 @@ namespace NewspaperRuler
         public void CreateMainMenuButtonAndReturnButton(MouseEventHandler actionForMainMenuButton,
             MouseEventHandler actionForReturnButton)
         {
-            suggestion = "Откатить прогресс на 1 день назад?";
-            returnButton = GetLabel("ОТКАТ", Scale.Resolution.Width / 2 - Scale.Get(405));
+            suggestion = "Загрузить последнее сохранение?";
+            returnButton = GetLabel("ЗАГРУЗИТЬ", Scale.Resolution.Width / 2 - Scale.Get(405));
             mainMenuButton = GetLabel("В МЕНЮ", Scale.Resolution.Width / 2 + Scale.Get(5));
 
             mainMenuButton.MouseDown += actionForMainMenuButton;
