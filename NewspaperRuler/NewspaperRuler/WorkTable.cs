@@ -223,7 +223,6 @@ namespace NewspaperRuler
             currentArticle = null;
             currentNote = null;
             RemoveStamps();
-            notifications.Hide();
             PrepareLevel();
         }
 
@@ -232,6 +231,7 @@ namespace NewspaperRuler
             sounds.PlayBeginLevel();
             sounds.PlayMusic();
             Stats.GoToNextLevel();
+            notifications.Hide();
             changeInterface(this);
             UpdateElementsOnLevel();
             NextEvent();
