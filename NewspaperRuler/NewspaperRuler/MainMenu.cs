@@ -213,7 +213,7 @@ namespace NewspaperRuler
         {
             var image = new Bitmap(Properties.Resources.MenuBackground, Scale.Get(1480), Scale.Get(1100));
             form.BackgroundImage = image;
-            sounds.PlayTitle();
+            //sounds.PlayTitle();
             sounds.PlayMainMenu();
             logo.Position = new Point(Scale.Get(360), Scale.Get(80));
             beginText = "";

@@ -40,6 +40,14 @@ namespace NewspaperRuler
             ShowPanel();
         }
 
+        public void Hide()
+        {
+            Clear();
+            StopMoving();
+            enabled = false;
+            Position = new Point(Position.X, -55);
+        }
+
         private void ShowPanel()
         {
             if (notifications.Count == 0)

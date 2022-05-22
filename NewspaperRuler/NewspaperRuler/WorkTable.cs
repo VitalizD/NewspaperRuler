@@ -220,6 +220,10 @@ namespace NewspaperRuler
             Stats = new Stats(dayEnd);
             Stats.LoadFromJson();
             //backup = (Stats)Stats.Clone();
+            currentArticle = null;
+            currentNote = null;
+            RemoveStamps();
+            notifications.Hide();
             PrepareLevel();
         }
 
