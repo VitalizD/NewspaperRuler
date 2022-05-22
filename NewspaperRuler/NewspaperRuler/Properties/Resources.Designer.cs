@@ -1019,7 +1019,9 @@ namespace NewspaperRuler.Properties {
         ///Content:
         ///	В Плиувиле пропал мальчик, Геннадий, 13 лет. 29 сентября, в районе 19:30 сказал, что пошёл погулять с друзьями в сторону Капрастского пустыря, но домой он так и не вернулся. Рост 165 см, одет был в светлые джинсы и клетчатую красную рубашку.
         ///
-        ///	СРОЧНО! Помогите его найти!.
+        ///	СРОЧНО! Помогите его найти!
+        ///
+        ///	Неравнодушным людям помогу, чем смогу (даже тому, кто помог распространить это объявление)..
         /// </summary>
         internal static string Article4_4 {
             get {
@@ -2264,6 +2266,34 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream BookHide {
+            get {
+                return ResourceManager.GetStream("BookHide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BookPart {
+            get {
+                object obj = ResourceManager.GetObject("BookPart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream BookShow {
+            get {
+                return ResourceManager.GetStream("BookShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap BrokenHeart {
@@ -2354,7 +2384,6 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на № 34.11. Отклонять статьи без заголовка
         ///№ 34.14. Отклонять статьи с неактуальной информацией
-        ///№ 34.15. Отклонять объявления о пропажах
         ///№ 34.16. Отклонять рекламные объявления
         ///№ 34.17. Отклонять статьи о конкретных личностях
         ///№ 34.19. Отклонять статьи оппозиционного характера
@@ -2470,7 +2499,6 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на № 34.11. Отклонять статьи без заголовка
         ///№ 34.14. Отклонять статьи с неактуальной информацией
-        ///№ 34.15. Отклонять объявления о пропажах
         ///№ 34.16. Отклонять рекламные объявления
         ///№ 34.17. Отклонять статьи о конкретных личностях
         ///№ 34.19. Отклонять статьи оппозиционного характера
@@ -2766,24 +2794,6 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream PanelHide {
-            get {
-                return ResourceManager.GetStream("PanelHide", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream PanelShow {
-            get {
-                return ResourceManager.GetStream("PanelShow", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Paper {
@@ -2819,6 +2829,15 @@ namespace NewspaperRuler.Properties {
             get {
                 object obj = ResourceManager.GetObject("Pencil", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Point {
+            get {
+                return ResourceManager.GetStream("Point", resourceCulture);
             }
         }
         

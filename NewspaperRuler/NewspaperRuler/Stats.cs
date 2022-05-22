@@ -560,11 +560,10 @@ namespace NewspaperRuler
 
         private void UpdateElements()
         {
-            switch (LevelNumber)
-            {
-                case 2: DecreesAreVisible = true; break;
-                case 5: TrendsAreVisible = true; break;
-            }
+            if (LevelNumber >= 2)
+                DecreesAreVisible = true;
+            if (LevelNumber >= 5)
+                TrendsAreVisible = true;
         }
 
         public string[] GetDecrees() => Read($"Decrees\\DecreesLevel{LevelNumber}.txt");

@@ -60,8 +60,8 @@ namespace NewspaperRuler
             providedStamp = new GraphicObject(Properties.Resources.Approved, 300, 250, Form1.Beyond);
 
             notifications = new NotificationPanel(Scale.Resolution, sounds.PlayNotification);
-            decrees = new InformationPanel(Properties.Resources.Frame, 500, 800, new Point(-Scale.Get(500), 0), sounds.PlayPanelShow, sounds.PlayPanelHide);
-            trends = new InformationPanel(Properties.Resources.Frame, 500, 800, new Point(-Scale.Get(500), 0), sounds.PlayPanelShow, sounds.PlayPanelHide);
+            decrees = new InformationPanel(Properties.Resources.BookPart, 480, 750, new Point(-Scale.Get(500), Scale.Get(30)), sounds.PlayPanelShow, sounds.PlayPanelHide);
+            trends = new InformationPanel(Properties.Resources.BookPart, 480, 750, new Point(-Scale.Get(500), Scale.Get(30)), sounds.PlayPanelShow, sounds.PlayPanelHide);
             remark = new Remark(Properties.Resources.RemarkBackground, 600, 300, sounds);
 
             menuButton.ShowImage(new Point(Scale.Resolution.Width - menuButton.Bitmap.Width, 0));
@@ -93,6 +93,7 @@ namespace NewspaperRuler
             trends.Clear();
 
             Stats.GoToNextLevel();
+            UpdateElementsOnLevel();
             date.Description = Stats.Date.ToString("D");
             NextEvent();
         }

@@ -227,16 +227,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Sounds\PanelHide.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Sounds\PanelShow.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Sounds\Paper.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -1230,6 +1220,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Newspaper.ico" />
+    <None Include="Sounds\Point.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Sounds\BookShow.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Sounds\BookHide.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\BookPart.png" />
     <None Include="Resources\NoConfederate.jpg" />
     <None Include="Resources\Alcohol.png" />
   </ItemGroup>

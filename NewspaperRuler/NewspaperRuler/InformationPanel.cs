@@ -7,7 +7,8 @@ namespace NewspaperRuler
 {
     public class InformationPanel : GraphicObject
     {
-        private readonly List<(string text, Rectangle rectangle)> areas = new List<(string, Rectangle)>();
+        //private readonly List<(string text, Rectangle rectangle)> areas = new List<(string, Rectangle)>();
+        private string text;
         private bool enabled;
         private readonly Action playSoundPanelShow;
         private readonly Action playSoundPanelHide;
@@ -19,8 +20,10 @@ namespace NewspaperRuler
             this.playSoundPanelShow = playSoundPanelShow;
         }
 
-        public void Add(string text) => 
-            areas.Add((text, new Rectangle(new Point(), new Size(Scale.Get(350), Scale.Get(50)))));
+        //public void Add(string text) => 
+        //    areas.Add((text, new Rectangle(new Point(), new Size(Scale.Get(350), Scale.Get(50)))));
+
+        public void Add(string text) => this.text += text + "\n\n";
 
         public void Add(string[] texts)
         {
@@ -28,19 +31,27 @@ namespace NewspaperRuler
                 Add(text);
         }
 
-        public void Clear() => areas.Clear();
+        //public void Clear() => areas.Clear();
+        public void Clear() => text = "";
+
+        //public new void Paint(Graphics graphics)
+        //{
+        //    base.Paint(graphics);
+        //    for (var i = 0; i < areas.Count; i++)
+        //    {
+        //        var rectangle = areas[i].rectangle;
+        //        rectangle.Location = new Point(Position.X + Scale.Get(70), Position.Y + Scale.Get(40) + (Scale.Get(15) + rectangle.Height) * i);
+        //        //graphics.DrawRectangle(StringStyle.Pen, rectangle);
+        //        //graphics.FillRectangle(new SolidBrush(Color.FromArgb(240, 229, 181)), rectangle);
+        //        graphics.DrawString(areas[i].text, StringStyle.TextFont, StringStyle.Black, rectangle);
+        //    }
+        //}
 
         public new void Paint(Graphics graphics)
         {
             base.Paint(graphics);
-            for (var i = 0; i < areas.Count; i++)
-            {
-                var rectangle = areas[i].rectangle;
-                rectangle.Location = new Point(Position.X + Scale.Get(100), Position.Y + Scale.Get(70) + (Scale.Get(10)  + rectangle.Height) * i);
-                graphics.DrawRectangle(StringStyle.Pen, rectangle);
-                graphics.FillRectangle(new SolidBrush(Color.LightGray), rectangle);
-                graphics.DrawString(areas[i].text, StringStyle.TextFont, StringStyle.Black, rectangle);
-            }
+            var rectangle = new Rectangle(new Point(Position.X + Scale.Get(70), Position.Y + Scale.Get(40)), new Size(Scale.Get(350), 0));
+            graphics.DrawString(text, StringStyle.TextFont, StringStyle.Black, rectangle);
         }
 
         public void Show()
@@ -59,10 +70,10 @@ namespace NewspaperRuler
         public void EveryTick()
         {
             Move();
-            if (Position.X > -Bitmap.Width / 5)
+            if (Position.X > 0)
             {
                 Stop();
-                Position = new Point(-Bitmap.Width / 5, Position.Y);
+                Position = new Point(0, Position.Y);
                 enabled = true;
                 playSoundPanelShow();
             }

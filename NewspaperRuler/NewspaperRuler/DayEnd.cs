@@ -120,7 +120,7 @@ namespace NewspaperRuler
         private void Print()
         {
             showNextText.WaitAndExecute(10);
-            sounds.PlayPanelHide();
+            sounds.PlayPoint();
             if (!flag)
             {
                 if (iterator == InformationTexts.Count || InformationTexts.Count == 0)

@@ -25,6 +25,7 @@ namespace NewspaperRuler
         private readonly WindowsMediaPlayer suddenness = new WindowsMediaPlayer();
         private readonly WindowsMediaPlayer gameOver = new WindowsMediaPlayer();
         private readonly WindowsMediaPlayer menuButton = new WindowsMediaPlayer();
+        private readonly WindowsMediaPlayer point = new WindowsMediaPlayer();
         private readonly WindowsMediaPlayer finalMusic1 = new WindowsMediaPlayer();
         private readonly WindowsMediaPlayer finalMusic2 = new WindowsMediaPlayer();
         private readonly WindowsMediaPlayer end = new WindowsMediaPlayer();
@@ -55,8 +56,8 @@ namespace NewspaperRuler
             chooseOption.URL = @"Sounds\ChooseOption.wav";
             paper.URL = @"Sounds\Paper.wav";
             notification.URL = @"Sounds\Notification.wav";
-            panelShow.URL = @"Sounds\PanelShow.wav";
-            panelHide.URL = @"Sounds\PanelHide.wav";
+            panelShow.URL = @"Sounds\BookShow.wav";
+            panelHide.URL = @"Sounds\BookHide.wav";
             printingMachine.URL = @"Sounds\Print.wav";
             beginLevel.URL = @"Sounds\BeginLevel.wav";
             beginLevel.settings.volume = 60;
@@ -67,6 +68,7 @@ namespace NewspaperRuler
             suddenness.URL = @"Sounds\Suddenness.wav";
             gameOver.URL = @"Sounds\GameOver.wav";
             menuButton.URL = @"Sounds\MenuButton.wav";
+            point.URL = @"Sounds\Point.wav";
             finalMusic1.URL = @"Sounds\FinalMusic1.wav";
             finalMusic2.URL = @"Sounds\FinalMusic2.wav";
             end.URL = @"Sounds\End.wav";
@@ -92,6 +94,7 @@ namespace NewspaperRuler
             chooseOption.close();
             stampEnter.close();
             stampPut.close();
+            point.close();
             music.close();
             end.close();
             foreach (var sound in stampTake) sound.close();
@@ -194,6 +197,8 @@ namespace NewspaperRuler
         public void PlayGameOver() => Play(gameOver);
 
         public void PlayMenuButton() => Play(menuButton);
+
+        public void PlayPoint() => Play(point);
 
         private void Play(WindowsMediaPlayer sound) => sound?.controls.play();
 
