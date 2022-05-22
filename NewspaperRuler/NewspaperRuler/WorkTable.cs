@@ -25,6 +25,7 @@ namespace NewspaperRuler
 
         private bool paperIsEntering;
         private bool levelCompleted;
+        private bool showIncreasedLoyality;
 
         private readonly ElementControl decreesBook = new ElementControl("ПРИКАЗЫ", StringStyle.White, Properties.Resources.Book, 120, 100);
         private readonly ElementControl loudspeaker = new ElementControl("ТРЕНДЫ ОБЩ. МНЕНИЯ", StringStyle.White, Properties.Resources.Megaphone, 120, 110);
@@ -104,9 +105,16 @@ namespace NewspaperRuler
             graphics.DrawImage(new Bitmap(Properties.Resources.Pencil, Scale.Get(100), Scale.Get(400)), Scale.Get(1100), Scale.Get(500));
             graphics.DrawImage(new Bitmap(Properties.Resources.Scissors, Scale.Get(250), Scale.Get(400)), Scale.Get(1200), Scale.Get(500));
             graphics.DrawImage(new Bitmap(Properties.Resources.Eraser, Scale.Get(120), Scale.Get(70)), Scale.Get(1150), Scale.Get(100));
+
             paper?.Paint(graphics);
             approved?.Paint(graphics);
             rejected?.Paint(graphics);
+
+            if (showIncreasedLoyality && currentArticle != null)
+                graphics.DrawString($"ЛОЯЛЬНОСТЬ  x{currentArticle.Loyality}", StringStyle.TextFont, new SolidBrush(Color.Green),
+                    new Rectangle(approved.Position.X + Scale.Get(15), approved.Position.Y - Scale.Get(45), Scale.Get(250), 0),
+                    new StringFormat { Alignment = StringAlignment.Center });
+
             providedStamp?.Paint(graphics);
             currentArticle?.Paint(graphics);
             currentNote?.Paint(graphics);
@@ -118,6 +126,7 @@ namespace NewspaperRuler
             decrees?.Paint(graphics);
             trends?.Paint(graphics);
             remark?.Paint(graphics);
+
         }
 
         public void EveryTick()
@@ -353,6 +362,8 @@ namespace NewspaperRuler
             approved.SetPosition(new Point(paper.Position.X - approved.Bitmap.Width, Scale.Get(250)));
             rejected.SetPosition(new Point(paper.Position.X + paper.Bitmap.Width, Scale.Get(250)));
             stampsAreVisible = true;
+            if (currentArticle.Loyality > 1 && Stats.LevelNumber > 1)
+                showIncreasedLoyality = true;
         }
 
         private void RemoveStamps()
@@ -360,6 +371,7 @@ namespace NewspaperRuler
             approved.Position = Form1.Beyond;
             rejected.Position = Form1.Beyond;
             stampsAreVisible = false;
+            showIncreasedLoyality = false;
         }
 
         private void UpdateElementsOnLevel()
