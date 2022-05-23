@@ -1220,6 +1220,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Newspaper.ico" />
+    <None Include="Resources\PaperIcon.png" />
     <None Include="Sounds\Point.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

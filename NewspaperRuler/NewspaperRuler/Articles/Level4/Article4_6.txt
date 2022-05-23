@@ -1,4 +1,4 @@
-Loyality: 1
+Loyality: 2
 Mistake: Deprecated
 Reprimand: 1
 Title: Фестиваль света пройдёт в обычном режиме

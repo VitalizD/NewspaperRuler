@@ -31,6 +31,7 @@ namespace NewspaperRuler
         private readonly ElementControl loudspeaker = new ElementControl("ТРЕНДЫ ОБЩ. МНЕНИЯ", StringStyle.White, Properties.Resources.Megaphone, 120, 110);
         private readonly ElementControl menuButton = new ElementControl("ГЛАВНОЕ МЕНЮ", StringStyle.Black, Properties.Resources.Button, 250, 50);
         private readonly ElementControl date = new ElementControl("", StringStyle.Black, Properties.Resources.Button, 280, 50);
+        private readonly ElementControl articlesCount = new ElementControl("", StringStyle.White, Properties.Resources.PaperIcon, 37, 57);
 
         private readonly Sounds sounds;
         private readonly DayEnd dayEnd;
@@ -71,7 +72,13 @@ namespace NewspaperRuler
 
             date.ShowImage(new Point(0, 0));
             date.ShowDescription(new Point(date.Position.X + Scale.Get(10), date.Position.Y + Scale.Get(10)));
-            date.SetTextAreaSize(new Size(350, 50));
+            date.SetTextAreaSize(new Size(280, 50));
+            date.SetStringFormat(new StringFormat { Alignment = StringAlignment.Center });
+
+            articlesCount.ShowImage(new Point(Scale.Resolution.Width - articlesCount.Bitmap.Width - Scale.Get(35), menuButton.Position.Y + menuButton.Bitmap.Height + Scale.Get(20)));
+            articlesCount.ShowDescription(new Point(articlesCount.Position.X - Scale.Get(60), articlesCount.Position.Y + Scale.Get(15)));
+            articlesCount.SetTextAreaSize(new Size(50, 0));
+            articlesCount.SetStringFormat(new StringFormat { Alignment = StringAlignment.Far });
         }
 
         public void StartGame(Difficulties difficulty)
@@ -104,7 +111,7 @@ namespace NewspaperRuler
             graphics.DrawImage(new Bitmap(Properties.Resources.Pen, Scale.Get(50), Scale.Get(500)), Scale.Get(275), Scale.Get(500));
             graphics.DrawImage(new Bitmap(Properties.Resources.Pencil, Scale.Get(100), Scale.Get(400)), Scale.Get(1100), Scale.Get(500));
             graphics.DrawImage(new Bitmap(Properties.Resources.Scissors, Scale.Get(250), Scale.Get(400)), Scale.Get(1200), Scale.Get(500));
-            graphics.DrawImage(new Bitmap(Properties.Resources.Eraser, Scale.Get(120), Scale.Get(70)), Scale.Get(1150), Scale.Get(100));
+            //graphics.DrawImage(new Bitmap(Properties.Resources.Eraser, Scale.Get(120), Scale.Get(70)), Scale.Get(1150), Scale.Get(100));
 
             paper?.Paint(graphics);
             approved?.Paint(graphics);
@@ -126,7 +133,7 @@ namespace NewspaperRuler
             decrees?.Paint(graphics);
             trends?.Paint(graphics);
             remark?.Paint(graphics);
-
+            articlesCount?.Paint(graphics);
         }
 
         public void EveryTick()
@@ -256,6 +263,7 @@ namespace NewspaperRuler
             }
 
             var _event = Stats.Level.Events.Dequeue();
+            articlesCount.Description = (Stats.Level.Events.Count + 1).ToString();
 
             if (_event.GetType() == typeof(Article))
             {

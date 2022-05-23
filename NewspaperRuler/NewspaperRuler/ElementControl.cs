@@ -18,6 +18,7 @@ namespace NewspaperRuler
         private readonly SolidBrush brush;
         private readonly Action playSound;
         private Size textAreaSize;
+        private StringFormat stringFormat;
 
         public ElementControl(string description, SolidBrush brush, Image image, int width, int height, bool zoom = true) 
             : base(image, width, height, zoom)
@@ -45,7 +46,6 @@ namespace NewspaperRuler
             Position = imagePosition;
         }
         
-        
         public void ShowDescription(Point descriptionPosition)
         {
             if (Description != null) 
@@ -68,10 +68,18 @@ namespace NewspaperRuler
         {
             base.Paint(graphics);
             if (Description != null)
-                graphics.DrawString(Description, StringStyle.TitleFont, brush, new Rectangle
-                (descriptionPosition, textAreaSize));
+            {
+                if (stringFormat == null)
+                    graphics.DrawString(Description, StringStyle.TitleFont, brush, new Rectangle
+                        (descriptionPosition, textAreaSize));
+                else
+                    graphics.DrawString(Description, StringStyle.TitleFont, brush, new Rectangle
+                        (descriptionPosition, textAreaSize), stringFormat);
+            }
         }
 
         public void SetTextAreaSize(Size value) => textAreaSize = value;
+
+        public void SetStringFormat(StringFormat value) => stringFormat = value;
     }
 }

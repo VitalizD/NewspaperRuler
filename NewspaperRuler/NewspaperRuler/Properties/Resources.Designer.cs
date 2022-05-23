@@ -2815,6 +2815,16 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PaperIcon {
+            get {
+                object obj = ResourceManager.GetObject("PaperIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Pen {
             get {
                 object obj = ResourceManager.GetObject("Pen", resourceCulture);
