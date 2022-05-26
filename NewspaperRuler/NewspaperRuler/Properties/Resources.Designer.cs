@@ -407,6 +407,21 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///Title: Минирование жилых домов
+        ///Genre: Криминал
+        ///Content:
+        ///	Сегодня утром было подорвано очередное жилое здание.
+        ///
+        ///	Операция по ликвидации опасной группировки, специализирующейся на бомбах и взрывчатых устройствах, продолжается..
+        /// </summary>
+        internal static string Article10_22 {
+            get {
+                return ResourceManager.GetString("Article10_22", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 2
         ///Reprimand: 1
         ///Mistake: NewWar
@@ -1046,7 +1061,7 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Loyality: 1
+        ///   Ищет локализованную строку, похожую на Loyality: 2
         ///Mistake: Deprecated
         ///Reprimand: 1
         ///Title: Фестиваль света пройдёт в обычном режиме
@@ -2099,6 +2114,28 @@ namespace NewspaperRuler.Properties {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на Loyality: 2
+        ///Mistake: IncorrectGenre
+        ///Title: Объявилась опасная группировка
+        ///Genre: Оппозиция
+        ///Content:
+        ///	ВНИМАНИЕ!
+        ///
+        ///	Сегодня в некоторых городах были подорваны жилые дома. 
+        ///
+        ///	По данным Министерства правопорядка, на западе страны образовалась очень опасная преступная группировка. Её члены отправляют гражданам шантажные письма, при невыполнении условий которых преступники минируют здания, где находятся родственники жертвы.
+        ///
+        ///	Расследование по ликвидации группировки уже начато.
+        ///
+        ///	Граждане, будьте бдите [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string Article9_17 {
+            get {
+                return ResourceManager.GetString("Article9_17", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Loyality: 2
         ///Title: Пост кипящего возмущения
         ///Genre: Здоровье
         ///Content:
@@ -2251,6 +2288,16 @@ namespace NewspaperRuler.Properties {
         internal static System.Drawing.Bitmap Bird {
             get {
                 object obj = ResourceManager.GetObject("Bird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Bomb {
+            get {
+                object obj = ResourceManager.GetObject("Bomb", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2681,6 +2728,16 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap House {
+            get {
+                object obj = ResourceManager.GetObject("House", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Hummer {
             get {
                 object obj = ResourceManager.GetObject("Hummer", resourceCulture);
@@ -2756,6 +2813,16 @@ namespace NewspaperRuler.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MuchMoney {
+            get {
+                object obj = ResourceManager.GetObject("MuchMoney", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream Music {
@@ -2767,9 +2834,29 @@ namespace NewspaperRuler.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap NoBomb {
+            get {
+                object obj = ResourceManager.GetObject("NoBomb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap NoConfederate {
             get {
                 object obj = ResourceManager.GetObject("NoConfederate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NoMuchMoney {
+            get {
+                object obj = ResourceManager.GetObject("NoMuchMoney", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2866,6 +2953,16 @@ namespace NewspaperRuler.Properties {
         internal static System.Drawing.Bitmap Prison {
             get {
                 object obj = ResourceManager.GetObject("Prison", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Protest {
+            get {
+                object obj = ResourceManager.GetObject("Protest", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

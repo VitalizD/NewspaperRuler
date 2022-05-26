@@ -166,6 +166,9 @@
   <data name="Article10_21" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Articles\Level91\Article10_21.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="Article10_22" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level91\Article10_22.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Article10_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Articles\Level91\Article10_3.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -532,6 +535,9 @@
   <data name="Article9_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Articles\Level9\Article9_16.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="Article9_17" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Articles\Level9\Article9_17.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Article9_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Articles\Level9\Article9_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -564,6 +570,9 @@
   </data>
   <data name="Bird" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bird.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bomb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bomb.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Book" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Book.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -682,6 +691,9 @@
   <data name="Hands" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Hands.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="House" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\House.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Hummer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Hummer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -706,11 +718,20 @@
   <data name="Money" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Sounds\Money.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="MuchMoney" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MuchMoney.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Music" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Sounds\Music.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="NoBomb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NoBomb.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="NoConfederate" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NoConfederate.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NoMuchMoney" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NoMuchMoney.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NoteBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NoteBackground1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -741,6 +762,9 @@
   </data>
   <data name="Prison" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Prison.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Protest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Protest.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Rejected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Rejected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

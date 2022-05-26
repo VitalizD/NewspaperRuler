@@ -44,8 +44,11 @@ namespace NewspaperRuler
 
         public int LevelNumber { get; private set; } = 1;
 
-        private int loyality;
-        
+        private int loyality = 0;
+
+        private int ministrySatisfactionsCount = 0;
+
+
         public LevelData Level { get; set; }
 
         private List<Dictionary<string, bool>> flags;
@@ -128,6 +131,7 @@ namespace NewspaperRuler
                     ["MinistryIsSatisfied"] = false,
                     ["WifesOperationPaid"] = true,
                     ["MainCharacterBoughtFakePassports"] = true,
+                    ["MainCharacterPlantedBomb"] = false,
                     ["WifeAlive"] = false,
                     ["SonAlive"] = false,
                     ["MainCharacterIsFree"] = false,
@@ -135,11 +139,12 @@ namespace NewspaperRuler
             };
         }
 
-        public void IncreaseLevelNumber() => LevelNumber++;
+        public void IncreaseLevelNumber() => ++LevelNumber;
 
         public (string, Bitmap)[] GetGameResults()
         {
             var result = new List<(string, Bitmap)>();
+
             if ((flags[6]["MedicineWasDeliveredToWife"] || flags[9]["WifesOperationPaid"]) && flags[7]["SonStayedAtHome"])
             {
                 result.Add(("Жена выздоровела. Сын избежал призыва на войну. Все живы.", new Bitmap(Properties.Resources.WifeAliveSonAlive, Scale.Get(500), Scale.Get(500))));
@@ -159,11 +164,32 @@ namespace NewspaperRuler
                 result.Add(("Жена умерла. Сын избежал призыва на войну.", new Bitmap(Properties.Resources.WifeDeadSonAlive, Scale.Get(500), Scale.Get(500))));
             }
             else result.Add(("Жена умерла. Сына забрали на войну. Он не вернулся...", new Bitmap(Properties.Resources.WifeDeadSonDead, Scale.Get(500), Scale.Get(500))));
+
+            if (!flags[9]["MainCharacterPlantedBomb"])
+            {
+                if (flags[9]["SonAlive"] || flags[9]["WifeAlive"])
+                {
+                    result.Add(("Бомбу оперативно обезвредили сапёры. Узнав об опасности, которая нависла над Вашей семьёй, Вы обратились в Министерство правопорядка.", new Bitmap(Properties.Resources.Bomb, Scale.Get(500), Scale.Get(500))));
+                    if (ministrySatisfactionsCount <= 7)
+                    {
+                        flags[9]["SonAlive"] = false;
+                        flags[9]["WifeAlive"] = false;
+                        result.Add(("Но там не восприняли Вас всерьёз, указав на Вашу беззалаберность и неисполнение приказов при служении государству. Дом, в котором жила Ваша семья, ночью был заминирован и взорван. Все его жильцы трагически погибли.", new Bitmap(Properties.Resources.House, Scale.Get(500), Scale.Get(400))));
+                    }
+                    else
+                        result.Add(("Вы отлично служили государству и совершали минимум ошибок, поэтому Вам готовы помочь! Стражи правопорядка вовремя прибыли к дому, где жила Ваша семья, и предотвратили минирование. Преступная организация поймана, жильцы дома остались живы.", new Bitmap(Properties.Resources.NoBomb, Scale.Get(500), Scale.Get(500))));
+                }
+                else
+                    result.Add(("Бомбу оперативно обезвредили сапёры. А дом, в котором жили покойные члены семьи, был заминирован и взорван. Все жильцы трагически погибли.", new Bitmap(Properties.Resources.Bomb, Scale.Get(500), Scale.Get(500))));
+            }
+
             if (!flags[8]["GrasshoppersEliminated"])
                 result.Add(("\"Кузнечики\" осуществили попытку захватить гос. власть, однако государство оказалось сильнее...", new Bitmap(Properties.Resources.Grasshopper, Scale.Get(500), Scale.Get(500))));
+
             if (flags[9]["MainCharacterBoughtFakePassports"])
             {
                 flags[9]["MainCharacterIsFree"] = true;
+
                 var bitmap = new Bitmap(Properties.Resources.Ubringston, Scale.Get(500), Scale.Get(400));
                 if (flags[9]["SonAlive"] && flags[9]["WifeAlive"])
                     result.Add(("Вы с семьёй успешно сбежали в Убрингстон, где начали жизнь с чистого листа.", bitmap));
@@ -172,6 +198,7 @@ namespace NewspaperRuler
                 else if (flags[9]["WifeAlive"])
                     result.Add(("Вы с женой успешно сбежали в Убрингстон, где начали жизнь с чистого листа.", bitmap));
                 else result.Add(("Вы в одиночку успешно сбежали в Убрингстон, где начали жизнь с чистого листа.", bitmap));
+
                 if (flags[6]["GalinaWillHelpMainCharacterFreeCharge"] || flags[6]["MainCharacterPaidGalina"])
                     result.Add(("В Убрингстоне Вы вновь встретились с Галиной Руш. Она стала Вашим частым гостем.", new Bitmap(Properties.Resources.Galina, Scale.Get(450), Scale.Get(500))));
             }
@@ -193,12 +220,21 @@ namespace NewspaperRuler
                     result.Add(("Вы абсолютно чисты, и с Вас сняты все подозрения. Государство благодарит Вас за преданность!", new Bitmap(Properties.Resources.Hummer, Scale.Get(500), Scale.Get(500))));
                 }
             }
-            if (flags[2]["ArticleOnProhibitionWeaponsWasApproved"])
-                result.Add(("Международная ассоциация мировой безопасности \"Апостол\" изгнала захватчиков из страны, " +
-                    "передав часть Андиплантийской территории государству. Да прибудет справедливость!", new Bitmap(Properties.Resources.Town, Scale.Get(500), Scale.Get(350))));
-            else
-                result.Add(("Международная ассоциация мировой безопасности \"Апостол\" отказалась изгонять захватчиков из страны. " +
-                    "Государство пало. Теперь эти территории присоединены к Андиплантийской коалиции.", new Bitmap(Properties.Resources.DeadTown, Scale.Get(500), Scale.Get(350))));
+
+            if (flags[9]["MainCharacterPlantedBomb"])
+            {
+                result.Add(("Здание Министерства цензуры и печати было взорвано по Вашей инициативе. Все находящиеся в нём гос. служащие трагически погибли. В ходе расследования стражи правопорядка вышли на Ваш след.", new Bitmap(Properties.Resources.Bomb, Scale.Get(500), Scale.Get(500))));
+                if (flags[9]["MainCharacterBoughtFakePassports"])
+                    result.Add(("Однако Вы успели скрыться за границей, и Вам ничего не грозит. Теперь Вы официально признаны предателем Родины.", new Bitmap(Properties.Resources.Ubringston, Scale.Get(500), Scale.Get(400))));
+                else if (flags[9]["MainCharacterIsFree"])
+                {
+                    flags[9]["MainCharacterIsFree"] = false;
+                    result.Add(("За столь тяжёлое преступление Вам положено наказание в виде лишения свободы на 10 лет.", new Bitmap(Properties.Resources.Prison, Scale.Get(600), Scale.Get(450))));
+                }
+                else
+                    result.Add(("За двойное преступление Вы приговорены к смертной казни. Последнее, о чём Вы желали перед неизбежным, - встретить и обнять свою семью на небесах.", new Bitmap(Properties.Resources.Gallows, Scale.Get(500), Scale.Get(500))));
+            }
+
             if (flags[9]["MainCharacterIsFree"])
             {
                 if (flags[9]["SonAlive"])
@@ -207,6 +243,7 @@ namespace NewspaperRuler
                         result.Add(("Вы нашли с сыном общий язык. Теперь Вы проводите больше времени вместе.", null));
                     else result.Add(("Вы пытаетесь найти с сыном общий язык, но он сторонится Вас. Что не так?", null));
                 }
+
                 if (flags[9]["WifeAlive"])
                 {
                     if (flags[5]["WifeIsFaithful"])
@@ -214,6 +251,41 @@ namespace NewspaperRuler
                     else result.Add(("Жена отвергает Вас. Она проводит большую часть своего времени с сыном.", new Bitmap(Properties.Resources.BrokenHeart, Scale.Get(500), Scale.Get(500))));
                 }
             }
+
+            if (loyality >= 50)
+            {
+                if (!flags[9]["MainCharacterBoughtFakePassports"])
+                {
+                    var bitmap = new Bitmap(Properties.Resources.MuchMoney, Scale.Get(500), Scale.Get(250));
+                    if (flags[9]["MainCharacterIsFree"])
+                    {
+                        if (flags[9]["SonAlive"] && flags[9]["WifeAlive"])
+                            result.Add(("Вы смогли добиться высокой лояльности граждан к государству. Вам и Вашей семье выделена квартира премиум-класса в центре столицы и 50000 ТОКЕНОВ. О таких богатствах Вы и не могли мечтать!", bitmap));
+                        else if (flags[9]["SonAlive"])
+                            result.Add(("Вы смогли добиться высокой лояльности граждан к государству. Вам и Вашему сыну выделена квартира премиум-класса в центре столицы и 50000 ТОКЕНОВ. Но Вас не радовали эти богатства. Вы хотели лишь одного: вернуть любимую.", bitmap));
+                        else if (flags[9]["WifeAlive"])
+                            result.Add(("Вы смогли добиться высокой лояльности граждан к государству. Вам и Вашей жене выделена квартира премиум-класса в центре столицы и 50000 ТОКЕНОВ. Но вас не радовали эти богатства. Вы с женой хотели лишь одного: вернуть сына.", bitmap));
+                        else
+                            result.Add(("Вы смогли добиться высокой лояльности граждан к государству. Вам выделена квартира премиум-класса в центре столицы и 50000 ТОКЕНОВ. Но вас не радовали эти богатства. Вы хотели лишь одного: вернуть свою семью.", bitmap));
+                    }
+                    else
+                    {
+                        if (flags[9]["SonAlive"] && flags[9]["WifeAlive"])
+                            result.Add(("Вы смогли добиться высокой лояльности граждан к государству. Вашей семье выделена квартира премиум-класса в центре столицы и 50000 ТОКЕНОВ. Но их не радовали эти богатства. Они хотели лишь одного: вернуть Вас.", bitmap));
+                        else if (flags[9]["SonAlive"])
+                            result.Add(("Вы смогли добиться высокой лояльности граждан к государству. Вашему сыну выделена квартира премиум-класса в центре столицы и 50000 ТОКЕНОВ. Но его не радовали эти богатства. Он хотел лишь одного: вернуть своих родителей.", bitmap));
+                        else if (flags[9]["WifeAlive"])
+                            result.Add(("Вы смогли добиться высокой лояльности граждан к государству. Вашей жене выделена квартира премиум-класса в центре столицы и 50000 ТОКЕНОВ. Но её не радовали эти богатства. Она хотела лишь одного: вернуть свою семью.", bitmap));
+                        else
+                            result.Add(("Вы смогли добиться высокой лояльности граждан к государству. Вам полагалась квартира премиум-класса в центре столицы и 50000 ТОКЕНОВ, однако никому из членов семьи не суждено увидеть эти богатства.", bitmap));
+                    }
+                }
+                else
+                    result.Add(("Вы смогли добиться высокой лояльности граждан к государству. Вам полагалась квартира премиум-класса в центре столицы и 50000 ТОКЕНОВ, однако спокойная, мирная, тихая жизнь за границей не стоит таких богатств.", new Bitmap(Properties.Resources.NoMuchMoney, Scale.Get(500), Scale.Get(250))));
+            }
+            else
+                result.Add(("Вы не смогли добиться высокой лояльности граждан к государству. Страна погрязла в народных волнениях и протестах.", new Bitmap(Properties.Resources.Protest, Scale.Get(500), Scale.Get(300))));
+
             if (flags[9]["SonAlive"])
             {
                 if (flags[2]["TimasStudiesWerePaid"] && flags[8]["TimasStudiesWerePaid"])
@@ -224,6 +296,7 @@ namespace NewspaperRuler
                     result.Add(("Но затем в стрессе он уволился и со временем спился. Он всех отвергает и не хочет никого видеть.", new Bitmap(Properties.Resources.Alcohol, Scale.Get(500), Scale.Get(500))));
                 }
             }
+
             if (flags[9]["MainCharacterIsFree"])
             {
                 if (flags[1]["ArticleOnProhibitionWeaponsWasApproved"])
@@ -237,6 +310,14 @@ namespace NewspaperRuler
                     else result.Add(("Вы не смогли найти новую работу. Вам суждено жить в бедности до конца жизни.", new Bitmap(Properties.Resources.Trash, Scale.Get(500), Scale.Get(500))));
                 }
             }
+
+            if (flags[2]["ArticleOnProhibitionWeaponsWasApproved"])
+                result.Add(("Международная ассоциация мировой безопасности \"Апостол\" изгнала захватчиков из страны, " +
+                    "передав часть Андиплантийской территории государству. Да прибудет справедливость!", new Bitmap(Properties.Resources.Town, Scale.Get(500), Scale.Get(350))));
+            else
+                result.Add(("Международная ассоциация мировой безопасности \"Апостол\" отказалась изгонять захватчиков из страны. " +
+                    "Государство пало. Теперь эти территории присоединены к Андиплантийской коалиции.", new Bitmap(Properties.Resources.DeadTown, Scale.Get(500), Scale.Get(350))));
+
             result.Add(("Ничего в этой жизни не даётся легко. Чтобы достичь своих целей, необходимо идти на определенные жертвы — " +
                 "тратить свои силы, время, ограничивать себя в чём-либо.", new Bitmap(Properties.Resources.Landscape, Scale.Get(500), Scale.Get(400))));
             result.Add(("Иногда бывают моменты, когда хочется всё бросить и отказаться от мечты.", new Bitmap(Properties.Resources.Fox, Scale.Get(500), Scale.Get(300))));
@@ -509,8 +590,9 @@ namespace NewspaperRuler
             {
                 if (flags[LevelNumber - 1].ContainsKey("MinistryIsSatisfied"))
                 {
-                    if (degreeGovernmentAnger > 0) degreeGovernmentAnger--;
+                    if (degreeGovernmentAnger > 0) --degreeGovernmentAnger;
                     flags[LevelNumber - 1]["MinistryIsSatisfied"] = true;
+                    ++ministrySatisfactionsCount;
                 }
             }
             else degreeGovernmentAnger += Level.ReprimandScore - 1;

@@ -1219,7 +1219,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Articles\Level91\Article10_22.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Articles\Level9\Article9_17.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Newspaper.ico" />
+    <None Include="Resources\NoBomb.jpg" />
+    <None Include="Resources\House.jpg" />
+    <None Include="Resources\Bomb.jpg" />
+    <None Include="Resources\NoMuchMoney.jpg" />
+    <None Include="Resources\Protest.jpg" />
+    <None Include="Resources\MuchMoney.jpg" />
     <None Include="Resources\PaperIcon.png" />
     <None Include="Sounds\Point.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
