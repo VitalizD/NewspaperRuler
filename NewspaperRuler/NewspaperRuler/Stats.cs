@@ -171,7 +171,7 @@ namespace NewspaperRuler
                 if (flags[9]["SonAlive"] || flags[9]["WifeAlive"])
                 {
                     result.Add(("Бомбу оперативно обезвредили сапёры. Узнав об опасности, которая нависла над Вашей семьёй, Вы обратились в Министерство правопорядка.", new Bitmap(Properties.Resources.Bomb, Scale.Get(500), Scale.Get(500))));
-                    if (ministrySatisfactionsCount <= 7)
+                    if (ministrySatisfactionsCount <= 8)
                     {
                         flags[9]["SonAlive"] = false;
                         flags[9]["WifeAlive"] = false;
@@ -727,6 +727,8 @@ namespace NewspaperRuler
             loyalityFactor = savedData.LoyalityFactor;
             loyality = savedData.Loyality;
             LevelNumber = savedData.LevelNumber;
+            ministrySatisfactionsCount = savedData.MinistrySatisfactionsCount;
+            requiredLoyality = savedData.RequiredLoyality;
         }
 
         private void SaveToJson()
@@ -751,6 +753,8 @@ namespace NewspaperRuler
                 Difficulty = difficulty,
                 DecreesAreVisible = DecreesAreVisible,
                 TrendsAreVisible = TrendsAreVisible,
+                MinistrySatisfactionsCount = ministrySatisfactionsCount,
+                RequiredLoyality = requiredLoyality
             };
             savedData.ToJson();
         }

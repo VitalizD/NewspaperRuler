@@ -28,6 +28,8 @@ namespace NewspaperRuler
         public Difficulties Difficulty { get; set; }
         public bool DecreesAreVisible { get; set; }
         public bool TrendsAreVisible { get; set; }
+        public int MinistrySatisfactionsCount { get; set; }
+        public int RequiredLoyality { get; set; }
 
         public void ToJson()
         {

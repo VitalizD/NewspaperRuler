@@ -34,7 +34,7 @@ namespace NewspaperRuler
         {
             base.Paint(graphics);
             trashCan.Paint(graphics);
-            graphics.DrawString(currentText, StringStyle.TextFont, StringStyle.Black, new Rectangle(
+            graphics.DrawString(currentText, StringStyle.TextFont, new SolidBrush(Color.DarkRed), new Rectangle(
                 Position + new Size(Scale.Get(55), Scale.Get(20)), Bitmap.Size - new Size(Scale.Get(80), Scale.Get(40))));
         }
 
@@ -60,7 +60,7 @@ namespace NewspaperRuler
             GoUp();
         }
 
-        private void Hide()
+        public void Hide()
         {
             showed = false;
             MovementSpeed = 100;

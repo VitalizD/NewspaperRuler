@@ -239,6 +239,7 @@ namespace NewspaperRuler
             //backup = (Stats)Stats.Clone();
             currentArticle = null;
             currentNote = null;
+            remark.Hide();
             RemoveStamps();
             PrepareLevel();
         }
