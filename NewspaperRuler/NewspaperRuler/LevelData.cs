@@ -63,14 +63,14 @@ namespace NewspaperRuler
                 {
                     preEvents.Remove(note);
                     preEvents.Insert(note.NumberInQueue, note);
-                    if (note.NumberInQueue > maxIndex) maxIndex = note.NumberInQueue;
+                    if (note.NumberInQueue + 1 > maxIndex) maxIndex = note.NumberInQueue + 1;
                 }
             foreach (var article in articles)
                 if (article.NumberInQueue >= 0)
                 {
                     preEvents.Remove(article);
                     preEvents.Insert(article.NumberInQueue, article);
-                    if (article.NumberInQueue > maxIndex) maxIndex = article.NumberInQueue;
+                    if (article.NumberInQueue + 1 > maxIndex) maxIndex = article.NumberInQueue + 1;
                 }
             Mix(maxIndex);
         }
@@ -82,9 +82,9 @@ namespace NewspaperRuler
         private void Mix(int index)
         {
             var random = new Random();
-            for (int i = preEvents.Count - 1; i > index; i--)
+            for (int i = preEvents.Count - 1; i >= index; i--)
             {
-                int j = random.Next(index + 1, i + 1);
+                int j = random.Next(index + 1, preEvents.Count - 1);
                 var temp = preEvents[j];
                 preEvents[j] = preEvents[i];
                 preEvents[i] = temp;

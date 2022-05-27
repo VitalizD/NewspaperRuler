@@ -1219,6 +1219,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\NewDecree.png" />
     <None Include="Articles\Level91\Article10_22.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
