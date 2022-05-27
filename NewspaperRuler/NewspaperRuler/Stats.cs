@@ -45,6 +45,7 @@ namespace NewspaperRuler
         public int LevelNumber { get; private set; } = 1;
 
         private int loyality = 0;
+        private int requiredLoyality;
 
         private int ministrySatisfactionsCount = 0;
 
@@ -252,7 +253,7 @@ namespace NewspaperRuler
                 }
             }
 
-            if (loyality >= 50)
+            if (loyality >= requiredLoyality)
             {
                 if (!flags[9]["MainCharacterBoughtFakePassports"])
                 {
@@ -691,11 +692,13 @@ namespace NewspaperRuler
             {
                 loyalityFactor = 1;
                 Money = 100;
+                requiredLoyality = 45;
             }
             else
             {
                 loyalityFactor = 2;
                 Money = 200;
+                requiredLoyality = 60;
             }
         }
 
