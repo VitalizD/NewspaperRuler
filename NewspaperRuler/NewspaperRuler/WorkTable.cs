@@ -29,7 +29,7 @@ namespace NewspaperRuler
 
         private readonly ElementControl decreesBook = new ElementControl("ПРИКАЗЫ", StringStyle.White, Properties.Resources.Book, 120, 100);
         private readonly ElementControl loudspeaker = new ElementControl("ТРЕНДЫ ОБЩ. МНЕНИЯ", StringStyle.White, Properties.Resources.Megaphone, 120, 110);
-        private readonly ElementControl menuButton = new ElementControl("ГЛАВНОЕ МЕНЮ", StringStyle.Black, Properties.Resources.Button, 250, 50);
+        private readonly ElementControl menuButton = new ElementControl("ГЛАВНОЕ МЕНЮ", StringStyle.Black, Properties.Resources.Button, 280, 50);
         private readonly ElementControl date = new ElementControl("", StringStyle.Black, Properties.Resources.Button, 280, 50);
         private readonly ElementControl articlesCount = new ElementControl("", StringStyle.White, Properties.Resources.PaperIcon, 37, 57);
 
@@ -62,22 +62,23 @@ namespace NewspaperRuler
             providedStamp = new GraphicObject(Properties.Resources.Approved, 300, 250, Form1.Beyond);
 
             notifications = new NotificationPanel(Scale.Resolution, sounds.PlayNotification);
-            decrees = new InformationPanel(Properties.Resources.BookPart, 480, 750, new Point(-Scale.Get(500), Scale.Get(30)), sounds.PlayPanelShow, sounds.PlayPanelHide);
+            decrees = new InformationPanel(Properties.Resources.BookPart, 480, 750, new Point(-Scale.Get(500), Scale.Resolution.Height / 2 - Scale.Get(750) / 2), sounds.PlayPanelShow, sounds.PlayPanelHide);
             trends = new InformationPanel(Properties.Resources.BookPart, 480, 750, new Point(-Scale.Get(500), Scale.Get(30)), sounds.PlayPanelShow, sounds.PlayPanelHide);
             remark = new Remark(Properties.Resources.RemarkBackground, 600, 300, sounds);
 
-            menuButton.ShowImage(new Point(Scale.Resolution.Width - menuButton.Bitmap.Width, 0));
-            menuButton.ShowDescription(new Point(menuButton.Position.X + Scale.Get(10), menuButton.Position.Y + Scale.Get(10)));
-            menuButton.SetTextAreaSize(new Size(300, 50));
+            menuButton.ShowImage(new Point(Scale.Resolution.Width - menuButton.Bitmap.Width - Scale.Get(15), 0));
+            menuButton.ShowDescription(new Point(menuButton.Position.X, menuButton.Position.Y + Scale.Get(10)));
+            menuButton.SetTextAreaSize(new Size(Scale.Get(280), 0));
+            menuButton.SetStringFormat(new StringFormat { Alignment = StringAlignment.Center });
 
             date.ShowImage(new Point(0, 0));
-            date.ShowDescription(new Point(date.Position.X + Scale.Get(10), date.Position.Y + Scale.Get(10)));
-            date.SetTextAreaSize(new Size(280, 50));
+            date.ShowDescription(new Point(date.Position.X, date.Position.Y + Scale.Get(10)));
+            date.SetTextAreaSize(new Size(Scale.Get(280), 0));
             date.SetStringFormat(new StringFormat { Alignment = StringAlignment.Center });
 
             articlesCount.ShowImage(new Point(Scale.Resolution.Width - articlesCount.Bitmap.Width - Scale.Get(35), menuButton.Position.Y + menuButton.Bitmap.Height + Scale.Get(20)));
             articlesCount.ShowDescription(new Point(articlesCount.Position.X - Scale.Get(60), articlesCount.Position.Y + Scale.Get(15)));
-            articlesCount.SetTextAreaSize(new Size(50, 0));
+            articlesCount.SetTextAreaSize(new Size(Scale.Get(50), 0));
             articlesCount.SetStringFormat(new StringFormat { Alignment = StringAlignment.Far });
         }
 
